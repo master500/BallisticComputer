@@ -1,4 +1,4 @@
-# BallisticComputer (Demo) – v1.1.0
+# BallisticComputer (Demo) – v1.2.0
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert,
@@ -19,7 +19,7 @@ nohup python3 server.py --port 8080 > ../server.log 2>&1 &
 ```
 
 Kein Build-Schritt, keine Abhängigkeiten (nur Python 3 Standardbibliothek).
-Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
+Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
 
 ## Ansichten
 
@@ -29,7 +29,7 @@ Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs`. Links prüfe
 | **Simulation** | Druckverlauf über Weg/Zeit + Mündungsgeschwindigkeit für Pulver × Geschoss × Ladung |
 | **Optimierung** | Parameter-Sweep: höchste simulierte v mit Spitzendruck ≤ Demo-Limit |
 | **KI-Squad** | Statuskarten der 6 simulierten Agenten aus `log.jsonl` |
-| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze (localStorage) + Offizielle Quellen |
+| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze (CSV/JSON und `.grtload`, localStorage) + Offizielle Quellen |
 
 ## Architektur
 
@@ -46,7 +46,7 @@ app/
 ├── js/chart.js           Minimaler Canvas-Linienchart
 ├── js/util.js            DOM-/Format-Helfer
 ├── js/views/*.js         Je eine Datei pro Ansicht: render<View>(root, {db, log})
-├── js/userdata/          csv.js (Parser), mapping.js (Schema/Zuordnung), store.js (localStorage), sources.js (Links)
+├── js/userdata/          csv.js, grtload.js (Anzeige einer eigenen .grtload), mapping.js, store.js, sources.js
 ├── icons/                apple-touch-icon (180), icon-192, icon-512
 ├── data/                 Statische Kopie der Daten für Hosting ohne server.py
 ├── scripts/              make_icons.py, sync-data.sh, check-links.sh, shots-daten.mjs
@@ -70,9 +70,15 @@ validation, safety, reporting); sonst wird über Stichwörter in `event` zugeord
 
 > **Eigene Daten – Verantwortung beim Nutzer. Immer mit aktuellen Herstellerangaben abgleichen.**
 
-- Import per Dateiauswahl (CSV/JSON) oder eingefügtem Text; vor dem Speichern
+- Import per Dateiauswahl (CSV/JSON/`.grtload`) oder eingefügtem Text; vor dem Speichern
   Spaltenzuordnung + Vorschau. Gespeichert wird nur im `localStorage` des Geräts
   (Schlüssel `bc.userdata.v1`), mit JSON-Backup-Export, Einzel- und Komplettlöschung.
+- Eine eigene GRT-Projektdatei (`.grtload`, XML) wird mit `DOMParser` im Browser gelesen.
+  Angezeigt werden Titel, Kaliber, Hülsenvolumen, zulässiger Druck (`pMaxZul` und Verfahren),
+  Geschoss (Name, Gewicht in g und grain, Länge), Pulvername, Ladungen (in der Datei kg,
+  Anzeige in g und grain) mit Ladungsnotiz sowie gemessene Schussgeschwindigkeiten
+  mit Mittelwert, Standardabweichung und Extremstreuung je Serie, falls vorhanden.
+  Pulvermodell-Parameter werden nicht übernommen. Nur Anzeige, kein Upload, keine Simulation.
 - Jeder Datensatz trägt `origin = "Eigene Daten / Import: <Dateiname>"`.
 - **Strikte Trennung:** Simulation/Optimierung verwenden ausschließlich die fiktiven
   Demo-Pulver aus `db.json`. `js/model.js` und die Demo-Views lesen keine Nutzerdaten

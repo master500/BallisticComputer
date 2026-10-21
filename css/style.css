@@ -120,3 +120,13 @@ a.ext { color: var(--text); text-decoration: none; flex: 1; }
   width: max-content; max-width: 90vw; text-align: center;
   background: var(--good); color: #041; font-weight: 600; padding: 10px 16px; border-radius: 12px; z-index: 20; }
 h2, h3, .card { scroll-margin-top: 140px; }
+
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 8px 0 4px; }
+.facts div { background: var(--surface-2); border-radius: 10px; padding: 8px 10px; }
+.facts dt { color: var(--muted); font-size: 12px; }
+.facts dd { margin: 2px 0 0; font-weight: 700; }
+.facts div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.charge-block { border-top: 1px solid var(--grid); margin-top: 10px; padding-top: 10px; }
+.charge-note { background: var(--warn); color: #1a1000; font-weight: 800; border-radius: 10px;
+  padding: 10px 12px; margin: 8px 0; line-height: 1.35; }
+.charge-note-label { display: block; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 2px; }

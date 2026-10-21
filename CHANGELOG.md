@@ -2,6 +2,17 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.2.0] – 2026-10-21
+### Hinzugefügt
+- **Meine Daten:** Import einer eigenen Gordon's-Reloading-Tool-Projektdatei (`.grtload`, XML) per `DOMParser`.
+  Anzeige von Titel, Kaliber, Hülsenvolumen, `pMaxZul` mit Verfahren, Geschoss (Name, g/grain, Länge),
+  Pulvername, Ladungen (kg in der Datei, Anzeige in g und grain) inklusive Ladungsnotiz und
+  gemessenen Geschwindigkeiten mit Mittelwert, SD und ES je Serie. Nur localStorage, keine Simulation.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.2.0` (`js/userdata/grtload.js` im Cache).
+### Bewusst nicht enthalten
+- Keine Pulvermodell-Parameter aus GRT und keine Beispielwerte aus Fremddateien.
+
 ## [1.1.0] – 2026-10-21
 ### Hinzugefügt
 - Neuer Tab **Meine Daten** (`#/daten`): Import eigener Daten aus CSV/JSON (Datei oder eingefügter Text),
