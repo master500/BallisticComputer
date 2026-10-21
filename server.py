@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ChamberSim – minimaler lokaler Server (DEMO).
+"""BallisticComputer – minimaler lokaler Server (DEMO).
 
 Liefert die statische App aus diesem Verzeichnis aus und bildet die
 Live-Daten der Status-Routine aus dem übergeordneten Ordner ab:
@@ -53,12 +53,12 @@ class Server(socketserver.ThreadingMixIn, http.server.HTTPServer):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="ChamberSim Demo-Server")
+    ap = argparse.ArgumentParser(description="BallisticComputer Demo-Server")
     ap.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8080)))
     ap.add_argument("--host", default=os.environ.get("HOST", "127.0.0.1"))
     args = ap.parse_args()
     with Server((args.host, args.port), Handler) as httpd:
-        print(f"ChamberSim (DEMO) läuft auf http://{args.host}:{args.port}/", flush=True)
+        print(f"BallisticComputer (DEMO) läuft auf http://{args.host}:{args.port}/", flush=True)
         httpd.serve_forever()
 
 

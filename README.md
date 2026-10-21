@@ -1,4 +1,4 @@
-# ChamberSim (Demo) – v1.0.0
+# BallisticComputer (Demo) – v1.0.0
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert,
@@ -6,7 +6,7 @@
 > Die Ergebnisse haben keinerlei Bezug zu realen Waffen, Pulvern oder Ladedaten
 > und dürfen niemals als solche verwendet werden.
 
-ChamberSim ist eine mobile-first Web-App (PWA, iPhone-Homescreen-fähig) zur
+BallisticComputer ist eine mobile-first Web-App (PWA, iPhone-Homescreen-fähig) zur
 Veranschaulichung eines lehrbuchartigen Innenballistik-Spielzeugmodells.
 
 ## Starten (lokal)

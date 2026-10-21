@@ -2,6 +2,9 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## 1.0.1 – 2026-10-21
+- App umbenannt: ChamberSim → BallisticComputer (Titel, Manifest, Home-Bildschirm-Name, Cache-Version).
+
 ## [1.0.0] – 2026-10-21
 ### Hinzugefügt
 - Erste Version von ChamberSim (Demo) als mobile-first PWA für iPhone Safari.

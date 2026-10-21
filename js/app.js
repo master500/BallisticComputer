@@ -1,5 +1,5 @@
 /**
- * ChamberSim – Einstiegspunkt. Einfacher Hash-Router mit vier Views und
+ * BallisticComputer – Einstiegspunkt. Einfacher Hash-Router mit vier Views und
  * unterer Tab-Leiste. Daten werden bei jedem View-Wechsel neu geladen.
  */
 import { loadDb, loadLog } from './api.js';

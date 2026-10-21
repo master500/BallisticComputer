@@ -1,6 +1,6 @@
 {
-  "name": "ChamberSim",
-  "short_name": "ChamberSim",
+  "name": "BallisticComputer",
+  "short_name": "BallisticComputer",
   "description": "Innenballistik-Simulation – DEMO, fiktive Werte, keine Ladedaten",
   "lang": "de",
   "start_url": "./#/simulation",

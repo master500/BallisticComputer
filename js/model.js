@@ -1,5 +1,5 @@
 /**
- * ChamberSim – Spielzeug-Innenballistikmodell (DEMO).
+ * BallisticComputer – Spielzeug-Innenballistikmodell (DEMO).
  *
  * Vereinfachtes, lehrbuchartiges "Lumped-Parameter"-Modell mit
  * Lagrange-artiger Massenkorrektur. ALLE Konstanten sind frei erfunden und
