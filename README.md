@@ -125,3 +125,7 @@ Die App ist rein statisch – vor dem Deploy `scripts/sync-data.sh` ausführen.
 - Alternativ temporär: Tunnel (z. B. Cloudflare Tunnel / Tailscale Funnel) direkt auf `server.py` – dann mit Live-Daten.
 
 Siehe [ROADMAP.md](ROADMAP.md) und [CHANGELOG.md](CHANGELOG.md).
+
+## Lizenz & Sicherheit
+
+MIT-Lizenz (siehe `LICENSE`). Bitte unbedingt `SAFETY.md` lesen. Mitmachen: `CONTRIBUTING.md`, KI-Agenten: `AGENTS.md`.

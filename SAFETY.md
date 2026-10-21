@@ -1,0 +1,10 @@
+# Sicherheitshinweis / Safety notice
+
+**DE:** BallisticComputer ist ein freies Lern- und Demo-Projekt. Das Simulationsmodell nutzt fiktive, unkalibrierte Werte und liefert **keine Ladedaten**. Wiederladen ist gefährlich. Verwende ausschließlich aktuelle, veröffentlichte Ladedaten der Pulver- und Geschosshersteller und beginne immer mit den Startladungen. Nutzung auf eigene Verantwortung.
+
+**EN:** BallisticComputer is a free learning/demo project. The simulation model uses fictional, uncalibrated values and provides **no load data**. Handloading is dangerous. Only use current published data from powder and bullet manufacturers and always start low. Use at your own risk.
+
+## Project rules (also for AI contributors)
+- Never add proprietary databases (e.g. QuickLOAD, GRT) or copied published load tables.
+- The demo simulation must only use fictional components; never let it predict pressures for real powders.
+- User-imported data stays on the user's device and is only displayed, never extrapolated.
