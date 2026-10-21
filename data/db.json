@@ -1,0 +1,18 @@
+{
+  "_note": "SIMULATED DEMO DATA - fictional values, not real or safe load data",
+  "version": 1,
+  "updated": "2026-10-21T22:25:00Z",
+  "powders": [
+    {"id": "P-01", "name": "DemoPowder Fast-A", "burn_rate_rank": 1},
+    {"id": "P-02", "name": "DemoPowder Medium-B", "burn_rate_rank": 2},
+    {"id": "P-03", "name": "DemoPowder Slow-C", "burn_rate_rank": 3}
+  ],
+  "bullets": [
+    {"id": "B-01", "name": "Demo FMJ 9.5g"},
+    {"id": "B-02", "name": "Demo HPBT 10.9g"}
+  ],
+  "pressure_limits": [
+    {"cartridge": "Demo-Cartridge-1", "max_mpa_sim": 380}
+  ],
+  "last_optimization": null
+}
