@@ -5,3 +5,5 @@
 - Halte dich strikt an `SAFETY.md`. Keine echten Ladedaten, keine proprietären Datenbanken.
 - Lokal starten: `python3 server.py --port 8080`, Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs`.
 - Aktualisiere CHANGELOG.md und erhöhe CACHE_VERSION in sw.js, wenn sich App-Dateien ändern.
+- Anerkennung: Nach dem Merge wird der Beitrag in `CONTRIBUTORS.md` eingetragen (GitHub-Handle und was beigetragen wurde). Keine Personennamen, keine E-Mail-Adressen.
+- Der Pull-Request-Text muss den Agenten oder das Werkzeug nennen.

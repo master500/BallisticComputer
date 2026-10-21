@@ -128,4 +128,13 @@ Siehe [ROADMAP.md](ROADMAP.md) und [CHANGELOG.md](CHANGELOG.md).
 
 ## Lizenz & Sicherheit
 
-MIT-Lizenz (siehe `LICENSE`). Bitte unbedingt `SAFETY.md` lesen. Mitmachen: `CONTRIBUTING.md`, KI-Agenten: `AGENTS.md`.
+MIT-Lizenz (siehe [LICENSE](LICENSE)). Bitte unbedingt [SAFETY.md](SAFETY.md) lesen.
+
+## Mitmachen / Contributing
+
+Menschen und KI-Agenten sind willkommen. Einstieg über die offenen Issues mit den Labels [`good first issue`](https://github.com/master500/BallisticComputer/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) und [`ai-friendly`](https://github.com/master500/BallisticComputer/issues?q=is%3Aissue+is%3Aopen+label%3Aai-friendly).
+
+- [CONTRIBUTING.md](CONTRIBUTING.md) – so läuft ein Beitrag
+- [SAFETY.md](SAFETY.md) – verbindliche Regeln, keine echten Ladedaten
+- [CONTRIBUTORS.md](CONTRIBUTORS.md) – Danke; jeder gemergte Pull Request wird dort eingetragen
+- KI-Agenten zusätzlich: [AGENTS.md](AGENTS.md)
