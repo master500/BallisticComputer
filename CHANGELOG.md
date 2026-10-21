@@ -2,6 +2,13 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.3.0] – 2026-10-21
+### Hinzugefügt
+- Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.
+- Simulation: Auswahl der Demo-Patrone. Optimierung: Limit je Patrone; Diagramm je Geschoss; Liste aller Pulver×Geschoss-Kombinationen.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.3.0`.
+
 ## [1.2.0] – 2026-10-21
 ### Hinzugefügt
 - **Meine Daten:** Import einer eigenen Gordon's-Reloading-Tool-Projektdatei (`.grtload`, XML) per `DOMParser`.

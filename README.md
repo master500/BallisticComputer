@@ -1,4 +1,4 @@
-# BallisticComputer (Demo) – v1.2.0
+# BallisticComputer (Demo) – v1.3.0
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert,
@@ -25,9 +25,9 @@ Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/
 
 | Tab | Inhalt |
 |---|---|
-| **Datenbank** | Pulver, Geschosse, Druckgrenzen aus `db.json` |
-| **Simulation** | Druckverlauf über Weg/Zeit + Mündungsgeschwindigkeit für Pulver × Geschoss × Ladung |
-| **Optimierung** | Parameter-Sweep: höchste simulierte v mit Spitzendruck ≤ Demo-Limit |
+| **Datenbank** | Acht DemoPowder, acht Demo-Geschosse, Demo-Cartridge-1…4 aus `db.json` |
+| **Simulation** | Druckverlauf für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Ladung |
+| **Optimierung** | Sweep aller Demo-Kombinationen; Limit je Demo-Patrone (sim-MPa) |
 | **KI-Squad** | Statuskarten der 6 simulierten Agenten aus `log.jsonl` |
 | **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze (CSV/JSON und `.grtload`, localStorage) + Offizielle Quellen |
 
@@ -57,7 +57,9 @@ app/
 `log.jsonl`. Lokal liefert `server.py` diese Live-Dateien unter `/data/` aus.
 Für statisches Hosting kopiert `scripts/sync-data.sh` sie nach `app/data/`.
 Das Format von `db.json` wird nur gelesen; optionale Zusatzfelder, die das Modell
-nutzt: `powders[].sim_beta` (Abbrandkoeffizient), `bullets[].sim_mass`.
+nutzt: `powders[].sim_beta` (Abbrandkoeffizient), `powders[].burn_class`, `bullets[].sim_mass`.
+Der Demo-Katalog ist erfunden: acht `DemoPowder`-Klassen, acht `Demo`-Geschosse und
+`Demo-Cartridge-1` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.
 Log-Zeilen: `{"ts", "event", "note", optional "agent"}` – `agent` ordnet einen
 Eintrag eindeutig einem KI-Squad-Agenten zu (ballistics, database, optimization,
 validation, safety, reporting); sonst wird über Stichwörter in `event` zugeordnet.
