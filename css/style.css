@@ -74,9 +74,10 @@ pre { white-space: pre-wrap; word-break: break-word; margin: 0; }
 .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: flex;
   background: rgba(21,25,34,.94); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   border-top: 1px solid var(--grid); padding: 0 var(--sar) var(--sab) var(--sal); }
-.tabbar a { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 2px; height: var(--tabbar-h); color: var(--muted); text-decoration: none; font-size: 11px; }
-.tabbar .ti { font-size: 22px; line-height: 1; filter: grayscale(1); opacity: .7; }
+.tabbar a { flex: 1 0 auto; min-width: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; height: var(--tabbar-h); color: var(--muted); text-decoration: none; font-size: 10px; padding: 0 2px; }
+.tabbar a span:last-child { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tabbar .ti { font-size: 18px; line-height: 1; filter: grayscale(1); opacity: .7; }
 .tabbar a[aria-current=page] { color: var(--accent); }
 .tabbar a[aria-current=page] .ti { filter: none; opacity: 1; }
 
@@ -87,7 +88,10 @@ pre { white-space: pre-wrap; word-break: break-word; margin: 0; }
 }
 
 /* --- v1.1.0: Meine Daten --- */
-.tabbar a { font-size: 10px; }
+.tabbar { overflow-x: auto; }
+.hint-yellow { color: var(--warn); font-weight: 700; }
+.hint-red { color: var(--bad); font-weight: 800; }
+.hint-under { color: var(--muted); }
 .notice { border: 1px solid var(--warn); background: rgba(255,159,10,.10); }
 .notice strong { color: var(--warn); }
 .notice p { margin: 6px 0 0; }
