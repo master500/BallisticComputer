@@ -4,14 +4,16 @@ import { simulate } from '../model.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 
-const state = { powderId: null, bulletId: null, cartridge: null, charge: 5, axis: 'x' };
+const state = { powderId: null, bulletId: null, primerId: null, cartridge: null, charge: 5, axis: 'x' };
 
 export function renderSimulation(root, { db }) {
   db.powders ??= [];
   db.bullets ??= [];
+  db.primers ??= [];
   db.pressure_limits ??= [];
   if (!db.powders.some((p) => p.id === state.powderId)) state.powderId = db.powders[0]?.id ?? null;
   if (!db.bullets.some((b) => b.id === state.bulletId)) state.bulletId = db.bullets[0]?.id ?? null;
+  if (!db.primers.some((p) => p.id === state.primerId)) state.primerId = db.primers[0]?.id ?? null;
   if (!db.pressure_limits.some((l) => l.cartridge === state.cartridge)) state.cartridge = db.pressure_limits[0]?.cartridge ?? null;
 
   const select = (items, key, valueOf, labelOf) => el('select', {
@@ -40,6 +42,7 @@ export function renderSimulation(root, { db }) {
       el('label', {}, 'Demo-Patrone', select(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${l.max_mpa_sim} sim-MPa)`)),
       el('label', {}, 'Demo-Pulver', select(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
       el('label', {}, 'Demo-Geschoss', select(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
+      el('label', {}, 'Demo-Zündhütchen', select(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
       el('label', {}, el('span', {}, 'Ladung (abstrakte LE): ', chargeOut), slider)),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
@@ -49,9 +52,10 @@ export function renderSimulation(root, { db }) {
   function run() {
     const powder = db.powders.find((p) => p.id === state.powderId);
     const bullet = db.bullets.find((b) => b.id === state.bulletId);
+    const primer = db.primers.find((p) => p.id === state.primerId);
     const limit = limitFor(db, state.cartridge);
     if (!powder || !bullet) return;
-    const r = simulate({ powder, bullet, charge: state.charge });
+    const r = simulate({ powder, bullet, primer, charge: state.charge });
     const over = r.peakPressure > limit.max;
     kpis.replaceChildren(
       kpi('Spitzendruck', `${fmt(r.peakPressure)} sim-MPa`, over ? 'bad' : 'good'),

@@ -20,6 +20,9 @@ export const userStore = {
     return added.length;
   },
   remove(id) { write(read().filter((r) => r.id !== id)); },
+  update(id, patch) {
+    write(read().map((record) => (record.id === id ? { ...record, ...patch } : record)));
+  },
   clear() { localStorage.removeItem(KEY); },
   /** Backup als JSON-Text (wieder importierbar). */
   exportJSON() {

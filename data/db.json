@@ -1,7 +1,7 @@
 {
   "_note": "SIMULATED DEMO DATA - fictional values, not real or safe load data",
   "version": 2,
-  "updated": "2026-10-21T23:50:00Z",
+  "updated": "2026-10-22T00:30:00Z",
   "powders": [
     {"id": "P-04", "name": "DemoPowder Extrafast-D", "burn_rate_rank": 1, "burn_class": "extrafast", "sim_beta": 0.40},
     {"id": "P-01", "name": "DemoPowder Fast-A", "burn_rate_rank": 2, "burn_class": "fast", "sim_beta": 0.30},
@@ -21,6 +21,14 @@
     {"id": "B-06", "name": "Demo TC 6.8g", "sim_mass": 6.8},
     {"id": "B-07", "name": "Demo FN 11.4g", "sim_mass": 11.4},
     {"id": "B-08", "name": "Demo WC 5.5g", "sim_mass": 5.5}
+  ],
+  "primers": [
+    {"id": "PR-SR", "name": "DemoPrimer Small Rifle", "sim_ignition": 1.00},
+    {"id": "PR-SRM", "name": "DemoPrimer Small Rifle Magnum", "sim_ignition": 1.05},
+    {"id": "PR-LR", "name": "DemoPrimer Large Rifle", "sim_ignition": 1.01},
+    {"id": "PR-LRM", "name": "DemoPrimer Large Rifle Magnum", "sim_ignition": 1.06},
+    {"id": "PR-SP", "name": "DemoPrimer Small Pistol", "sim_ignition": 0.98},
+    {"id": "PR-LP", "name": "DemoPrimer Large Pistol", "sim_ignition": 0.99}
   ],
   "pressure_limits": [
     {"cartridge": "Demo-Cartridge-1", "max_mpa_sim": 380},

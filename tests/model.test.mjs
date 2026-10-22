@@ -1,7 +1,7 @@
 // Einfache Plausibilitätstests für das Spielzeugmodell. Aufruf: node tests/model.test.mjs
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { bulletMass, powderBeta, simulate, sweep } from '../js/model.js';
+import { bulletMass, ignitionFactor, powderBeta, simulate, sweep } from '../js/model.js';
 
 const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url)));
 const fast = db.powders.find((p) => p.burn_class === 'fast');
@@ -17,6 +17,19 @@ assert.ok(simulate({ powder: slow, bullet, charge: 6 }).peakPressure < b.peakPre
 
 assert.equal(db.powders.length, 8);
 assert.equal(db.bullets.length, 8);
+assert.deepEqual(db.primers.map((p) => p.name), [
+  'DemoPrimer Small Rifle',
+  'DemoPrimer Small Rifle Magnum',
+  'DemoPrimer Large Rifle',
+  'DemoPrimer Large Rifle Magnum',
+  'DemoPrimer Small Pistol',
+  'DemoPrimer Large Pistol',
+]);
+assert.equal(ignitionFactor(undefined), 1);
+assert.ok(simulate({ powder: fast, bullet, charge: 6, primer: { sim_ignition: 1.06 } }).peakPressure
+  > simulate({ powder: fast, bullet, charge: 6 }).peakPressure);
+assert.ok(simulate({ powder: fast, bullet, charge: 6, primer: { sim_ignition: 0.98 } }).peakPressure
+  < simulate({ powder: fast, bullet, charge: 6 }).peakPressure);
 assert.deepEqual(db.pressure_limits.map((l) => l.cartridge), ['Demo-Cartridge-1', 'Demo-Cartridge-2', 'Demo-Cartridge-3', 'Demo-Cartridge-4']);
 for (const powder of db.powders) assert.match(powder.name, /^DemoPowder /);
 for (const item of db.bullets) assert.match(item.name, /^Demo /);

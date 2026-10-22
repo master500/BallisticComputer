@@ -15,6 +15,7 @@ import { userStore } from '../userdata/store.js';
 import { OFFICIAL_SOURCES } from '../userdata/sources.js';
 import { loadCipIndex } from '../cip/lookup.js';
 import { mountCipCheck } from '../userdata/cipcheck.js';
+import { primerHintFor } from '../userdata/primer.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
 const ui = { filter: '', pending: null };
@@ -203,9 +204,27 @@ function recordItem(r, refresh) {
       el('div', { class: 'small' },
         `Ladung ${r.charge != null ? fmt(r.charge, 2) : '—'} · COAL ${r.coal != null ? fmt(r.coal, 2) : '—'} · v gemessen ${r.measured_velocity != null ? fmt(r.measured_velocity) : '—'}`),
       r.notes ? el('div', { class: 'muted small' }, r.notes) : null,
+      primerEditor(r, refresh),
       el('div', { class: 'origin small' }, r.origin, r.source ? ` · Quelle: ${r.source}` : '', ` · ${fmtTime(r.importedAt)}`)),
     el('button', { class: 'icon-btn small-btn', type: 'button', 'aria-label': 'Löschen',
       onclick: () => { if (confirm('Datensatz löschen?')) { userStore.remove(r.id); refresh(); } } }, '🗑'));
+}
+
+function primerEditor(record, refresh) {
+  const draft = { value: record.primer || '' };
+  const hint = el('p', { class: 'hint-yellow small', role: 'status' });
+  const show = () => { hint.textContent = primerHintFor(userStore.all(), record, draft.value); };
+  const input = el('input', {
+    type: 'text',
+    'aria-label': 'Zündhütchen',
+    placeholder: 'Boxer/Berdan, klein/groß, Büchse/Pistole, Standard/Magnum, Marke',
+    value: record.primer || '',
+    oninput: (e) => { draft.value = e.target.value; show(); },
+  });
+  return el('div', {},
+    el('label', {}, 'Zündhütchen (Freitext, keine Leistungswerte)', input),
+    hint,
+    el('button', { class: 'btn', type: 'button', onclick: () => { userStore.update(record.id, { primer: draft.value.trim() }); refresh(); } }, 'Zündhütchen speichern'));
 }
 
 function stampGrt(project, fileName) {
@@ -270,6 +289,7 @@ function grtRecordItem(r, refresh) {
   return el('li', {},
     el('div', { class: 'rec' },
       grtDetails(r),
+      primerEditor(r, refresh),
       el('div', { class: 'origin small' }, r.origin || '', r.origin ? ' · ' : '', fmtTime(r.importedAt))),
     el('button', { class: 'icon-btn small-btn', type: 'button', 'aria-label': 'Löschen',
       onclick: () => { if (confirm('Datensatz löschen?')) { userStore.remove(r.id); refresh(); } } }, '🗑'));

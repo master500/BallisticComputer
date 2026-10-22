@@ -5,15 +5,17 @@ import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
-const state = { cartridge: null, chartBulletId: null, timer: 0, token: 0 };
+const state = { cartridge: null, chartBulletId: null, primerId: null, timer: 0, token: 0 };
 const SELECT_DEBOUNCE_MS = 200;
 
 export function renderOptimization(root, { db }) {
   db.powders ??= [];
   db.bullets ??= [];
+  db.primers ??= [];
   db.pressure_limits ??= [];
   if (!db.pressure_limits.some((l) => l.cartridge === state.cartridge)) state.cartridge = db.pressure_limits[0]?.cartridge ?? null;
   if (!db.bullets.some((b) => b.id === state.chartBulletId)) state.chartBulletId = db.bullets[0]?.id ?? null;
+  if (!db.primers.some((p) => p.id === state.primerId)) state.primerId = db.primers[0]?.id ?? null;
 
   const out = el('div');
   const cartridgeSelect = el('select', {
@@ -26,11 +28,15 @@ export function renderOptimization(root, { db }) {
   }, db.bullets.map((b) => el('option', {
     value: b.id, selected: b.id === state.chartBulletId,
   }, b.name)));
+  const primerSelect = el('select', {
+    onchange: (e) => { state.primerId = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
+  }, db.primers.map((p) => el('option', { value: p.id, selected: p.id === state.primerId }, p.name)));
 
   root.replaceChildren(
     el('section', { class: 'card' },
       el('label', {}, 'Demo-Patrone (Drucklimit)', cartridgeSelect),
       el('label', {}, 'Diagramm-Geschoss', bulletSelect),
+      el('label', {}, 'Demo-Zündhütchen', primerSelect),
       el('button', { class: 'btn primary', type: 'button', onclick: () => schedule(0) }, 'Sweep starten')),
     out,
   );
@@ -58,7 +64,8 @@ export function renderOptimization(root, { db }) {
         return;
       }
       const powder = db.powders[index++];
-      results.push(...sweep({ powders: [powder], bullets: db.bullets, limit: limit.max }).results);
+      const primer = db.primers.find((p) => p.id === state.primerId);
+      results.push(...sweep({ powders: [powder], bullets: db.bullets, primer, limit: limit.max }).results);
       setTimeout(step, 0);
     };
     step();

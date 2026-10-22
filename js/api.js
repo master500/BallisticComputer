@@ -13,6 +13,7 @@ export async function loadDb() {
   const db = await res.json();
   db.powders ??= [];
   db.bullets ??= [];
+  db.primers ??= [];
   db.pressure_limits ??= [];
   return db;
 }

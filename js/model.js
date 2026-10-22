@@ -53,6 +53,15 @@ export function powderBeta(powder) {
 }
 
 /**
+ * Erfundener Zündfaktor eines Demo-Zündhütchens. Wirkt nur auf das Spielzeugmodell
+ * (p0 und beta). Ohne Angabe bleibt der Faktor 1.
+ */
+export function ignitionFactor(primer) {
+  if (primer && typeof primer.sim_ignition === 'number') return primer.sim_ignition;
+  return 1;
+}
+
+/**
  * Pseudo-Masse eines Demo-Geschosses. Nutzt optional `sim_mass`, sonst wird
  * eine Zahl mit "g" aus dem Namen gelesen (z. B. "Demo FMJ 9.5g"), sonst 10.
  * Der Wert wird nur als dimensionslose Modellgröße verwendet.
@@ -65,15 +74,18 @@ export function bulletMass(bullet) {
 
 /**
  * Führt eine Simulation aus.
- * @param {{powder: object, bullet: object, charge: number, constants?: object}} input
- *        charge in Ladungseinheiten (LE, abstrakt, sinnvoll ca. 1–10)
+ * @param {{powder: object, bullet: object, charge: number, primer?: object, constants?: object}} input
+ *        charge in Ladungseinheiten (LE, abstrakt, sinnvoll ca. 1–10).
+ *        primer.sim_ignition ist ein erfundener Faktor, Standard 1.
  * @returns {{samples: Array<{t:number,x:number,v:number,p:number,z:number}>,
  *            peakPressure:number, muzzleVelocity:number, exitTime:number,
  *            burnedAtExit:number, exited:boolean}}
  */
-export function simulate({ powder, bullet, charge, constants = {} }) {
+export function simulate({ powder, bullet, charge, primer, constants = {} }) {
   const C = { ...MODEL_CONSTANTS, ...constants };
-  const beta = powderBeta(powder);
+  const ignite = ignitionFactor(primer);
+  const beta = powderBeta(powder) * ignite;
+  const p0 = C.p0 * ignite;
   const m = bulletMass(bullet) / 10; // normiert
   const c = Math.max(0, Number(charge) || 0);
   const effMass = m + (c * C.mc) / 3;
@@ -85,7 +97,7 @@ export function simulate({ powder, bullet, charge, constants = {} }) {
 
   for (let i = 0; i < C.maxSteps && x < C.barrelLength; i++) {
     // Druck: Gas aus verbranntem Anteil, verdünnt durch Expansionsvolumen.
-    const p = Math.max(C.p0, (C.K * c * z) / (C.V0 + x));
+    const p = Math.max(p0, (C.K * c * z) / (C.V0 + x));
     if (p > peak) peak = p;
     if (i % sampleEvery === 0) samples.push({ t, x, v: v * C.vScale, p, z });
 
@@ -97,7 +109,7 @@ export function simulate({ powder, bullet, charge, constants = {} }) {
     t += C.dt;
   }
   const exited = x >= C.barrelLength;
-  const lastP = Math.max(C.p0, (C.K * c * z) / (C.V0 + x));
+  const lastP = Math.max(p0, (C.K * c * z) / (C.V0 + x));
   samples.push({ t, x: Math.min(x, C.barrelLength), v: v * C.vScale, p: lastP, z });
 
   return {
@@ -114,13 +126,13 @@ export function simulate({ powder, bullet, charge, constants = {} }) {
  * Einfacher Parameter-Sweep über Pulver × Geschoss × Ladung.
  * @returns {{results: Array, best: object|null}} best = höchste v unter Limit
  */
-export function sweep({ powders, bullets, limit, chargeMin = 1, chargeMax = 10, chargeStep = 0.25 }) {
+export function sweep({ powders, bullets, limit, primer, chargeMin = 1, chargeMax = 10, chargeStep = 0.25 }) {
   const results = [];
   for (const powder of powders) {
     for (const bullet of bullets) {
       for (let c = chargeMin; c <= chargeMax + 1e-9; c += chargeStep) {
         const charge = Math.round(c * 100) / 100;
-        const r = simulate({ powder, bullet, charge });
+        const r = simulate({ powder, bullet, primer, charge });
         results.push({
           powderId: powder.id, powderName: powder.name,
           bulletId: bullet.id, bulletName: bullet.name,
