@@ -10,5 +10,6 @@
 - User-imported data stays on the user's device and is only displayed, never extrapolated.
 - A user's own Gordon's Reloading Tool project (`*.grtload`) may be parsed in the browser for display on that device only. Do not copy those files or their values into the repository, do not import GRT powder-model parameters, and do not feed imported records into the demo simulation.
 - CIP Pmax and L6 values are lookup numbers only. They may appear in the CIP table and in the checks on Meine Daten. The simulation and the optimizer must not import or apply them. Ladder limits stay on the fictional demo cartridges.
+- Pressure units other than bar and PSI are not supported.
 
-**DE (CIP):** CIP-Pmax und CIP-L6 sind nur Nachschlagewerte in der CIP-Tabelle und in den Prüfungen unter Meine Daten. Simulation und Optimierung dürfen sie nicht lesen und nicht verwenden. Die Ladungsleiter bleibt an den fiktiven Demo-Grenzen.
+**DE (CIP):** CIP-Pmax und CIP-L6 sind nur Nachschlagewerte in der CIP-Tabelle und in den Prüfungen unter Meine Daten. Simulation und Optimierung dürfen sie nicht lesen und nicht verwenden. Die Ladungsleiter bleibt an den fiktiven Demo-Grenzen. Druckeinheiten außer bar und PSI werden nicht unterstützt.

@@ -1,6 +1,7 @@
 // Jede Gewichtsanzeige sagt grain. Die Oberfläche zeigt kein Gramm, kein MPa, kein Inch.
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
 import { GRAMS_PER_GRAIN } from '../js/userdata/grtload.js';
 import { GRAMS_PER_GRAIN as MODEL_FACTOR } from '../js/model.js';
 
@@ -30,5 +31,20 @@ for (const file of files) {
 assert.equal(GRAMS_PER_GRAIN, 0.06479891);
 assert.equal(MODEL_FACTOR, 0.06479891);
 assert.equal(1.5 / GRAMS_PER_GRAIN, 1.5 / 0.06479891);
+
+const unitToken = /\b(?:CUP|LUP)\b/i;
+const skipDirs = new Set(['.git', 'node_modules', 'tests']);
+const textFile = /\.(js|mjs|html|css|md|json|csv|txt)$/;
+const hits = [];
+function walk(dir) {
+  for (const name of readdirSync(dir)) {
+    if (skipDirs.has(name)) continue;
+    const path = join(dir, name);
+    if (statSync(path).isDirectory()) walk(path);
+    else if (textFile.test(name) && unitToken.test(readFileSync(path, 'utf8'))) hits.push(path);
+  }
+}
+walk(new URL('..', import.meta.url).pathname);
+assert.deepEqual(hits, []);
 
 console.log('OK – Einheiten grain und bar.');
