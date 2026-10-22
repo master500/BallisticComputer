@@ -56,9 +56,10 @@ export function renderSimulation(root, { db }) {
       el('label', {}, 'Demo-Zündhütchen', select(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
       primerHints,
       el('label', {}, el('span', {}, 'Ladung ', chargeOut), slider)),
+    el('p', { class: 'warn-text', role: 'note' }, 'Rechenwert – keine echten Ladedaten, keine Freigabe'),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
-      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Demo-Wert, keine echten Ladedaten.')),
+      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert).')),
   );
 
   function run() {
@@ -76,7 +77,7 @@ export function renderSimulation(root, { db }) {
     const limitBar = limit.bar;
     kpis.replaceChildren(
       kpi('Spitzendruck', `${fmt(demoBar(r.peakPressure), 0)} bar`, over ? 'bad' : ''),
-      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity, 0)} m/s · Demo-Wert`),
+      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity, 0)} m/s`),
       kpi('Demo-Grenze', `${fmt(limitBar, 0)} bar`, over ? 'bad' : ''),
       kpi('Abbrand an Mündung', `${fmt(r.burnedAtExit * 100, 0)} %`),
     );

@@ -3,7 +3,7 @@
  * App-Shell: cache-first. Daten (data/*): network-first mit Cache-Fallback.
  * Bei Änderungen an der App-Shell CACHE_VERSION erhöhen.
  */
-const CACHE_VERSION = 'ballisticcomputer-v1.5.4';
+const CACHE_VERSION = 'ballisticcomputer-v1.5.5';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/style.css',
   'js/app.js', 'js/api.js', 'js/util.js', 'js/chart.js', 'js/model.js', 'js/ladder.js',

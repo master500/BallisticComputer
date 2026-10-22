@@ -2,6 +2,11 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.5] – 2026-10-22
+### Geändert
+- Simulation, Ladungsleiter, Setztiefe und die Demo-Datenbank zeigen je Ergebnis einmal „Rechenwert – keine echten Ladedaten, keine Freigabe“. Die CIP-Tabelle bleibt ohne diesen Hinweis. Demo-Zahlen tragen keine Einheiten-Abkürzung mehr.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.5`.
+
 ## [1.5.4] – 2026-10-22
 ### Geändert
 - Sichtbare Einheiten sind bar, grain, mm und m/s. Demo-Felder heißen `beta`, `ignition`, `mass_grain`, `ogive_form` und `pmax_bar`. Berechnete Demo-Zahlen heißen Demo-Wert.

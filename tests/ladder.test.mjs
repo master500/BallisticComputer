@@ -86,12 +86,21 @@ assert.equal(buildLadder({ powder, bullet: plain, limitPressure: limit, run: sim
 assert.equal(secantBullet.ogive_form, 'secant');
 assert.equal(seatingDepthsMm(secantBullet.ogive_form)[0], -0.25);
 assert.equal(db.bullets.every((item) => typeof item.ogive_form === 'string' && item.ogive_form.length > 0), true);
+const secantLadder = buildLadder({ powder, bullet: secantBullet, primer: db.primers[0], limitPressure: limit, run: simulate });
+assert.ok(secantLadder.seating.length > 0, 'Sekanten-Geschoss führt den Setztiefentest aus');
+assert.equal(secantLadder.seating[0].depthMm, -0.25);
+assert.equal(secantLadder.seating[0].label, '0,25 mm in den Feldern');
 assert.equal(demoBar(380), 3800);
 assert.equal(demoBar(265), 2650);
 
 const view = readFileSync(new URL('../js/views/optimization.js', import.meta.url), 'utf8');
 assert.match(view, /Maximalladung = Demo-Grenze/);
-assert.match(view, /Rechenwert – keine Freigabe/);
+const notice = 'Rechenwert – keine echten Ladedaten, keine Freigabe';
+assert.equal(view.split(notice).length - 1, 2);
+assert.equal(readFileSync(new URL('../js/views/simulation.js', import.meta.url), 'utf8').split(notice).length - 1, 1);
+assert.equal(readFileSync(new URL('../js/views/database.js', import.meta.url), 'utf8').split(notice).length - 1, 1);
+assert.equal(readFileSync(new URL('../js/views/cip.js', import.meta.url), 'utf8').includes('Rechenwert'), false);
+assert.equal(/· Demo-Wert/.test(view), false);
 assert.match(view, /Startladung des Herstellers/);
 assert.match(view, /row\.label/);
 assert.match(view, /Keine Empfehlung/);

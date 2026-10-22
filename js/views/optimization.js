@@ -43,7 +43,6 @@ export function renderOptimization(root, { db }) {
       el('label', {}, 'Demo-Geschoss', choose(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
       el('label', {}, 'Demo-Zündhütchen', choose(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
       el('p', {}, 'Maximalladung = Demo-Grenze'),
-      el('p', {}, 'Rechenwert – keine Freigabe'),
       el('p', { class: 'muted small' }, '„Maximal“ meint die Demo-Grenze. Echte Ladungen beginnen immer bei der Startladung des Herstellers.')),
     out,
   );
@@ -81,6 +80,7 @@ export function renderOptimization(root, { db }) {
       el('p', { class: 'muted small' }, `Leiter ab 90 % der Demo-Grenzladung, Schritte 0,8 % davon, Ende an der Grenze. Farben und Abbruch nutzen ${fmt(limitBar, 0)} bar (${limit.cartridge}).`),
       el('section', { class: 'card' },
         el('h2', {}, 'Ladungsleiter'),
+        el('p', { class: 'warn-text', role: 'note' }, 'Rechenwert – keine echten Ladedaten, keine Freigabe'),
         ladder.steps.length
           ? el('ul', { class: 'list' }, ladder.steps.map((step) => stepRow(step, ladder.selection)))
           : el('p', {}, 'Keine Demo-Ladung unter der Demo-Grenze.')),
@@ -121,6 +121,7 @@ function seatingSection(ladder) {
   const recommendation = ladder.seatingRecommendation;
   return el('section', { class: 'card' },
     el('h2', {}, 'Setztiefe'),
+    el('p', { class: 'warn-text', role: 'note' }, 'Rechenwert – keine echten Ladedaten, keine Freigabe'),
     el('p', {}, `Ladung ${fmt(ladder.seatingChargeGrain, 1)} grain, mindestens 3 % unter dem obersten Leiter-Schritt.`),
     recommendation
       ? el('p', {}, `Empfehlung: ${recommendation.label}`)

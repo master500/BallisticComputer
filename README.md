@@ -1,4 +1,4 @@
-# BallisticComputer (Demo) – v1.5.4
+# BallisticComputer (Demo) – v1.5.5
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-, Geschoss- und Zündhütchennamen sind erfunden, alle Modellkonstanten unkalibriert.
