@@ -147,6 +147,33 @@ for (const secret of ['SENTINEL-CIP-9', 'SENTINEL-BA-9', 'SENTINEL-QEX-9', 'SENT
 }
 assert.equal(JSON.stringify(project.charges).includes('pressure'), false);
 
+const pressureXml = `<?xml version="1.0"?>
+<GordonsReloadingTool>
+  <InnerBallistikInput>
+    <title>Druck</title>
+    <caliber>
+      <input name="CaliberName" value="Fiktiv"/>
+      <input name="pMaxZul" value="1111"/>
+    </caliber>
+    <projectile><input name="mp" value="1"/></projectile>
+    <propellant></propellant>
+    <appendix><Measurement>
+      <charge name="S" value="0.000125">
+        <shot pressure="12.5" velocity="10"/>
+        <shot pressure="SENTINEL-P-9" velocity="11"/>
+        <shot pressure="0" velocity="12"/>
+      </charge>
+    </Measurement></appendix>
+  </InnerBallistikInput>
+</GordonsReloadingTool>`;
+const withBars = parseGrtLoad(pressureXml);
+assert.deepEqual(withBars.charges[0].bars, [125]);
+assert.equal(withBars.charges[0].barOrigin, 'berechnet (GRT)');
+assert.equal(withBars.pMaxBar, 1111);
+assert.equal(JSON.stringify(withBars).includes('SENTINEL-P-9'), false);
+assert.equal(JSON.stringify(withBars.charges).includes('pressure'), false);
+assert.equal(project.charges[0].bars.length, 0);
+
 assert.throws(() => parseGrtLoad('<not-a-project/>'), /Keine GRT-Projektdatei/);
 assert.throws(() => parseGrtLoad('<GordonsReloadingTool><InnerBallistikInput>'), /kein gültiges XML/);
 

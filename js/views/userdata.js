@@ -13,12 +13,15 @@ import { isGrtLoad, parseGrtLoad } from '../userdata/grtload.js';
 import { FIELDS, suggestMapping, applyMapping, normalizeHeader, LIKELY_PREDICTED } from '../userdata/mapping.js';
 import { userStore } from '../userdata/store.js';
 import { OFFICIAL_SOURCES } from '../userdata/sources.js';
+import { loadCipIndex } from '../cip/lookup.js';
+import { mountCipCheck } from '../userdata/cipcheck.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
 const ui = { filter: '', pending: null };
 
 export function renderUserData(root) {
   const importBox = el('div');
+  const cipBox = el('div');
   const listBox = el('div');
   const compareBox = el('div');
 
@@ -27,10 +30,17 @@ export function renderUserData(root) {
       el('strong', {}, 'Eigene Daten – Verantwortung beim Nutzer. Immer mit aktuellen Herstellerangaben abgleichen.'),
       el('p', { class: 'small' }, 'Diese Daten werden nur angezeigt – ohne Extrapolation oder Druckprognose. Sie bleiben lokal auf diesem Gerät und werden nicht in Simulation/Optimierung verwendet (dort nur fiktive Demo-Werte).')),
     importSection(importBox, refresh),
+    cipBox,
     listBox,
     compareBox,
     sourcesSection(),
   );
+  mountCipCheck(cipBox, null);
+  loadCipIndex().then((index) => {
+    if (cipBox.isConnected) mountCipCheck(cipBox, index);
+  }).catch((err) => {
+    if (cipBox.isConnected) cipBox.replaceChildren(el('section', { class: 'card' }, el('h2', {}, 'CIP-Prüfung'), el('p', {}, String(err.message || err))));
+  });
 
   function refresh() {
     renderPending(importBox, refresh);
@@ -250,6 +260,7 @@ function chargeBlock(charge) {
     el('strong', {}, charge.name || 'Ladung'),
     charge.note ? el('p', { class: 'charge-note', role: 'note' }, el('span', { class: 'charge-note-label' }, 'Ladungsnotiz'), charge.note) : null,
     el('div', {}, Number.isFinite(charge.grams) ? `${flex(charge.grams, 3)} g · ${flex(charge.grains, 1)} gr` : '—'),
+    charge.bars?.length ? el('div', {}, `${charge.bars.map((bar) => `${flex(bar, 0)} bar`).join(', ')} · ${charge.barOrigin}`) : null,
     Number.isFinite(charge.kilograms) ? el('div', { class: 'muted small' }, `in der Datei: ${flex(charge.kilograms, 6)} kg`) : null,
     velocities.length ? el('div', { class: 'small' }, `Schüsse: ${velocities.map((v) => flex(v, 1)).join(', ')} m/s`) : null,
     el('div', { class: 'small' }, summary));

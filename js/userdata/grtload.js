@@ -3,6 +3,8 @@
  *
  * Geparst wird im Browser mit DOMParser. Textwerte sind URL-kodiert
  * (decodeURIComponent). Die Ladung steht in der Datei in Kilogramm.
+ * Ein numerischer Schussdruck in MPa wird mit Faktor 10 in bar übernommen
+ * und als „berechnet (GRT)“ gekennzeichnet. Text-Platzhalter werden verworfen.
  *
  * Übernommen werden ausschließlich Anzeigefelder: Titel, Kalibername,
  * Hülsenvolumen, pMaxZul und Verfahren, Geschoss (Name, Gewicht, Länge),
@@ -10,8 +12,9 @@
  * Interne Pulvermodell-Parameter (Ba, Qex, a0, …) und CIP-Zeichnungsdaten
  * werden nicht gelesen und nicht gespeichert.
  */
+import { mpaToBar } from '../cip/pressure.js';
 
-/** Avoirdupois-Grain: 1 gr = 0.06479891 g. Nur zur Anzeige, keine Umrechnung von Drücken. */
+/** Avoirdupois: 1 grain = 0.06479891 g. */
 export const GRAMS_PER_GRAIN = 0.06479891;
 
 export function decodeGrtValue(raw) {
@@ -95,9 +98,12 @@ function parseCharge(node) {
   const kilograms = readNumber(node.getAttribute('value'));
   const grams = kilograms == null ? null : kilograms * 1000;
   const velocitiesMs = [];
+  const bars = [];
   for (const shot of directChildren(node, 'shot')) {
     const velocity = readNumber(shot.getAttribute('velocity'));
     if (velocity != null && velocity > 0) velocitiesMs.push(velocity);
+    const mpa = readNumber(shot.getAttribute('pressure'));
+    if (mpa != null && mpa > 0) bars.push(mpaToBar(mpa));
   }
   return {
     name: decodeGrtValue(node.getAttribute('name')).trim(),
@@ -107,6 +113,8 @@ function parseCharge(node) {
     grains: grainsFromGrams(grams),
     velocitiesMs,
     stats: seriesStats(velocitiesMs),
+    bars,
+    barOrigin: bars.length ? 'berechnet (GRT)' : '',
   };
 }
 
