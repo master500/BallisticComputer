@@ -15,11 +15,11 @@ Veranschaulichung eines lehrbuchartigen Innenballistik-Spielzeugmodells.
 | --- | --- |
 | ![Datenbank](docs/screenshot-datenbank.png) | ![Simulation](docs/screenshot-simulation.png) |
 | **Optimierung** | **KI-Squad** |
-| ![Optimierung](docs/screenshot-optimierung.png) | ![KI-Squad](docs/screenshot-squad.png) |
+| ![Optimierung](docs/screenshot-optimierung.png) | ![KI-Squad](docs/screenshot-KI-squad.png) |
 
 ## Try it
 
-Try the live demo here: [**Open BallisticComputer Demo**](https://master500.github.io/BallisticComputer/)
+## Try the live demo here: [**Open BallisticComputer Demo**](https://master500.github.io/BallisticComputer/)
 
 > ⚠️ This is a simulation with fictional values, not real-world loading data. See the demo warning above.
 
