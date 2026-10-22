@@ -9,6 +9,8 @@ Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versioni
 - Sechs fiktive Demo-Zündhütchen mit erfundenem Zündfaktor nur für das Spielzeugmodell. In Meine Daten ist das Zündhütchen Freitext ohne Leistungswerte; ändert es sich, erscheint ein gelber Hinweis.
 - Demo-Ladungsleiter in grain (Start 90 % der Demo-Grenze, Schritte 0,8 %, Ende an der Grenze, nie darüber). Setztiefe in mm. Ogivenform je Demo-Geschoss.
 - Identische Backup-Zeilen werden beim zweiten Import derselben Datei übersprungen.
+### Behoben
+- Leere CIP-Hinweise und optionale Karten schreiben nicht mehr das Wort „null“ in die Ansicht.
 ### Geändert
 - Demo-Geschossmassen stehen als `sim_mass_gr` (grain). Die Anzeige von Gewichten ist grain, Drücke der Demo sind bar. GRT-Gewichte werden mit 1 grain = 0,06479891 g umgerechnet und als „aus Gramm umgerechnet“ gekennzeichnet.
 - Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.0`.

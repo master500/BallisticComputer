@@ -1,5 +1,5 @@
 /** View: Optimierung – Demo-Leiter unter der Demo-Grenze, nie unter CIP. */
-import { el, fmt } from '../util.js';
+import { el, fmt, setChildren } from '../util.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 import { buildLadder, demoBar, ladderNeedsRestart } from '../ladder.js';
@@ -65,7 +65,7 @@ export function renderOptimization(root, { db }) {
     const ladder = buildLadder({ powder, bullet, primer, limitPressure: limit.max });
     const canvas = el('canvas', { class: 'chart', 'aria-label': 'Leiter Druck über Ladung' });
     const limitBar = demoBar(limit.max);
-    out.replaceChildren(
+    setChildren(out,
       el('p', { class: 'muted small' }, `Leiter ab 90 % der Demo-Grenzladung, Schritte 0,8 % davon, Ende an der Grenze. Farben und Abbruch nutzen ${fmt(limitBar, 0)} bar (${limit.cartridge}).`),
       el('section', { class: 'card' },
         el('h2', {}, 'Ladungsleiter'),

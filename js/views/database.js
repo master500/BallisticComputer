@@ -1,5 +1,5 @@
 /** View: Datenbank – zeigt Pulver, Geschosse und Druckgrenzen aus db.json. */
-import { el, fmt, fmtTime } from '../util.js';
+import { el, fmt, fmtTime, setChildren } from '../util.js';
 
 function ogiveLabel(ogive) {
   return { tangent: 'Ogival Tangente', secant: 'Ogival Sekante', hybrid: 'Ogival Hybrid', none: 'ohne Ogive' }[ogive] || '';
@@ -12,7 +12,7 @@ function section(title, rows, render) {
 }
 
 export function renderDatabase(root, { db }) {
-  root.replaceChildren(
+  setChildren(root,
     el('p', { class: 'muted small' }, `Stand: ${fmtTime(db.updated)} · Version ${db.version ?? '—'}`),
     section('Pulver', db.powders, (p) => el('li', {},
       el('div', {}, el('strong', {}, p.name), el('div', { class: 'muted small' }, p.id)),

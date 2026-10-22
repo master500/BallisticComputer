@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { aliasCartridge, normalizeCipKey } from '../js/cip/aliases.js';
 import { buildCipIndex, filterCipRows, resolveCipQuery } from '../js/cip/lookup.js';
+import { setChildren } from '../js/util.js';
 
 const read = (name) => JSON.parse(readFileSync(new URL(`../data/cip/${name}`, import.meta.url)));
 const tab1 = read('cip_pmax_tab1.json');
@@ -66,5 +67,9 @@ assert.match(view, /Quelle: C\.I\.P\., abgerufen 21\.10\.2026/);
 assert.match(view, /bar/);
 assert.equal(/MPa|pmax_mpa|inch/i.test(view), false);
 assert.equal(/model\.js|simulate\(/.test(view), false);
+
+const placed = [];
+setChildren({ replaceChildren: (...nodes) => placed.push(nodes) }, null, false);
+assert.deepEqual(placed, [[]]);
 
 console.log('OK – CIP-Nachschlagewerte.');

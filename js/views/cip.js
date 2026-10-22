@@ -1,5 +1,5 @@
 /** Ansicht: CIP-Tabelle – nur Nachschlagewerte, Pmax in bar und L6 in mm. */
-import { el, fmt } from '../util.js';
+import { el, fmt, setChildren } from '../util.js';
 import { filterCipRows, loadCipIndex, resolveCipQuery } from '../cip/lookup.js';
 
 const state = { query: '', index: null };
@@ -36,7 +36,7 @@ export function renderCip(root) {
     function fill() {
       const resolved = resolveCipQuery(state.index, state.query);
       const rows = filterCipRows(state.index, state.query);
-      note.replaceChildren(resolved.status === 'alias' && resolved.entry
+      setChildren(note, resolved.status === 'alias' && resolved.entry
         ? el('p', { class: 'hint-yellow' }, `Vorschlag (Alias): ${resolved.entry.cartridge}`)
         : resolved.status === 'none'
           ? el('p', { class: 'muted small' }, 'Kein exakter CIP-Name. Teiltreffer werden nicht vorgeschlagen.')

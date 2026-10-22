@@ -2,7 +2,7 @@
  * CIP-Prüfung unter Meine Daten. Zuordnung nur per exaktem Namen oder exaktem Alias.
  * Eingabefelder bleiben stehen, damit eine Suche nicht nach dem ersten Zeichen abbricht.
  */
-import { el, fmt } from '../util.js';
+import { el, fmt, setChildren } from '../util.js';
 import { parseNumber } from './mapping.js';
 import { resolveCipQuery } from '../cip/lookup.js';
 import { PRESSURE_SOURCES, l6Hint, psiNote, ratePressure } from '../cip/pressure.js';
@@ -76,7 +76,7 @@ export function mountCipCheck(box, index) {
   function fill() {
     const resolved = resolveCipQuery(index, state.query);
     const assigned = (resolved.status === 'exact' || resolved.status === 'alias') ? resolved.entry : null;
-    pick.replaceChildren(resolved.status === 'alias' && assigned
+    setChildren(pick, resolved.status === 'alias' && assigned
       ? el('div', {},
         el('p', { class: 'small' }, `Alias trifft ${assigned.cartridge} und kann direkt gelten.`),
         el('button', {
