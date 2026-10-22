@@ -1,4 +1,4 @@
-# BallisticComputer (Demo) – v1.4.0
+# BallisticComputer (Demo) – v1.5.0
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert,
@@ -19,14 +19,16 @@ nohup python3 server.py --port 8080 > ../server.log 2>&1 &
 ```
 
 Kein Build-Schritt, keine Abhängigkeiten (nur Python 3 Standardbibliothek).
-Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
+Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs && node tests/trajectory.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
 
 ## Ansichten
 
 | Tab | Inhalt |
 |---|---|
 | **Datenbank** | Acht DemoPowder, acht Demo-Geschosse, Demo-Cartridge-1…4 aus `db.json` |
-| **Simulation** | Druckverlauf für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Ladung |
+| **Simulation** | Druckverlauf für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Ladung, darunter V0–V300 in 25-m-Schritten |
+
+Die Entfernungstabelle nutzt erfundene Demo-Koeffizienten (`bc_g1`, `bc_g7`) und die Widerstandsfunktionen G1/G7. Ohne Koeffizient erscheint „Kein BC hinterlegt – keine Flugbahnwerte“. Ein in Meine Daten eingetragener BC oder eine gemessene V0 ersetzt die Demo-Werte und bleibt auf dem Gerät.
 | **Optimierung** | Sweep aller Demo-Kombinationen; Limit je Demo-Patrone (sim-MPa) |
 | **KI-Squad** | Statuskarten der 6 simulierten Agenten aus `log.jsonl` |
 | **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze (CSV/JSON und `.grtload`, localStorage) + Offizielle Quellen |

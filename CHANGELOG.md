@@ -2,6 +2,14 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.0] – 2026-10-22
+### Hinzugefügt
+- Simulation: Tabelle V0 bis V300 in 25-m-Schritten (13 Zeilen). Spalten Entfernung (m), Geschwindigkeit (m/s), Energie (J). Geschossmasse in grain, intern mit 1 grain = 0,06479891 g. Widerstandsfunktion G7, wenn ein G7-BC vorliegt, sonst G1. Standardatmosphäre 15 °C und 1013,25 hPa, Temperatur und Luftdruck sind eingebbar. Ohne BC steht „Kein BC hinterlegt – keine Flugbahnwerte“.
+- Demo-Geschosse B-01 bis B-08 haben erfundene Koeffizienten `bc_g1` und `bc_g7`. Daneben steht „fiktiver Demo-BC, Rechenwert“.
+- Meine Daten: eigener BC und gemessene V0 nur auf dem Gerät (`bc.flight.v1`, nicht im Backup). Sie ersetzen die Demo-Werte. Die Herkunft der V0 steht über der Tabelle: „aus Demo-Leiter, Stufe N“ mit Ladung oder „Meine Daten“.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.0`.
+
 ## [1.4.0] – 2026-10-21
 ### Geändert
 - JSON-Backup aus **Meine Daten** wird beim erneuten Import strukturiert übernommen; verschachtelte `.grtload`-Ladungen bleiben erhalten.

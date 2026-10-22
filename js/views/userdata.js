@@ -12,6 +12,7 @@ import { parseInput } from '../userdata/csv.js';
 import { isGrtLoad, parseGrtLoad } from '../userdata/grtload.js';
 import { FIELDS, suggestMapping, applyMapping, normalizeHeader, LIKELY_PREDICTED } from '../userdata/mapping.js';
 import { userStore } from '../userdata/store.js';
+import { flightStore } from '../flight.js';
 import { OFFICIAL_SOURCES } from '../userdata/sources.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
@@ -25,7 +26,8 @@ export function renderUserData(root) {
   root.replaceChildren(
     el('section', { class: 'card notice', role: 'note' },
       el('strong', {}, 'Eigene Daten – Verantwortung beim Nutzer. Immer mit aktuellen Herstellerangaben abgleichen.'),
-      el('p', { class: 'small' }, 'Diese Daten werden nur angezeigt – ohne Extrapolation oder Druckprognose. Sie bleiben lokal auf diesem Gerät und werden nicht in Simulation/Optimierung verwendet (dort nur fiktive Demo-Werte).')),
+      el('p', { class: 'small' }, 'Importierte Ladungen werden nur angezeigt und gehen nicht in das Druckmodell. Ein hier eingetragener BC oder eine V0 gilt nur für die Entfernungstabelle und bleibt auf diesem Gerät.')),
+    flightSection(),
     importSection(importBox, refresh),
     listBox,
     compareBox,
@@ -38,6 +40,28 @@ export function renderUserData(root) {
     renderCompare(compareBox);
   }
   refresh();
+}
+
+function flightSection() {
+  const stored = flightStore.read();
+  const input = (label, key) => el('label', {}, label, el('input', {
+    type: 'text', inputmode: 'decimal', 'aria-label': label,
+    value: stored[key] == null ? '' : String(stored[key]),
+    oninput: (e) => flightStore.save({ [key]: parseDecimal(e.target.value) }),
+  }));
+  return el('section', { class: 'card' },
+    el('h2', {}, 'Flugbahn'),
+    el('p', { class: 'muted small' }, 'Eigener BC und gemessene V0 ersetzen die Demo-Werte in der Entfernungstabelle. Leer lassen verwendet die Demo.'),
+    input('BC G1', 'bcG1'),
+    input('BC G7', 'bcG7'),
+    input('V0 (m/s)', 'v0'));
+}
+
+function parseDecimal(value) {
+  const text = String(value ?? '').trim().replace(',', '.');
+  if (!text) return null;
+  const n = Number(text);
+  return Number.isFinite(n) ? n : null;
 }
 
 /* ---------- Import ---------- */

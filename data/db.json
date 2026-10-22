@@ -13,14 +13,14 @@
     {"id": "P-07", "name": "DemoPowder Extraslow-G", "burn_rate_rank": 8, "burn_class": "extraslow", "sim_beta": 0.06}
   ],
   "bullets": [
-    {"id": "B-01", "name": "Demo FMJ 9.5g", "sim_mass": 9.5},
-    {"id": "B-02", "name": "Demo HPBT 10.9g", "sim_mass": 10.9},
-    {"id": "B-03", "name": "Demo RN 8.2g", "sim_mass": 8.2},
-    {"id": "B-04", "name": "Demo SP 7.4g", "sim_mass": 7.4},
-    {"id": "B-05", "name": "Demo HP 12.6g", "sim_mass": 12.6},
-    {"id": "B-06", "name": "Demo TC 6.8g", "sim_mass": 6.8},
-    {"id": "B-07", "name": "Demo FN 11.4g", "sim_mass": 11.4},
-    {"id": "B-08", "name": "Demo WC 5.5g", "sim_mass": 5.5}
+    {"id": "B-01", "name": "Demo FMJ 9.5g", "sim_mass": 9.5, "bc_g1": 0.390, "bc_g7": 0.195},
+    {"id": "B-02", "name": "Demo HPBT 10.9g", "sim_mass": 10.9, "bc_g1": 0.470, "bc_g7": 0.240},
+    {"id": "B-03", "name": "Demo RN 8.2g", "sim_mass": 8.2, "bc_g1": 0.250, "bc_g7": 0.120},
+    {"id": "B-04", "name": "Demo SP 7.4g", "sim_mass": 7.4, "bc_g1": 0.300, "bc_g7": 0.150},
+    {"id": "B-05", "name": "Demo HP 12.6g", "sim_mass": 12.6, "bc_g1": 0.455, "bc_g7": 0.230},
+    {"id": "B-06", "name": "Demo TC 6.8g", "sim_mass": 6.8, "bc_g1": 0.180, "bc_g7": 0.090},
+    {"id": "B-07", "name": "Demo FN 11.4g", "sim_mass": 11.4, "bc_g1": 0.170, "bc_g7": 0.085},
+    {"id": "B-08", "name": "Demo WC 5.5g", "sim_mass": 5.5, "bc_g1": 0.060, "bc_g7": 0.030}
   ],
   "pressure_limits": [
     {"cartridge": "Demo-Cartridge-1", "max_mpa_sim": 380},
