@@ -5,6 +5,7 @@ import { psiNote } from '../js/cip/pressure.js';
 import { describeManufacturer, MISMATCH } from '../js/mfr/apply.js';
 import { ladderCharges } from '../js/mfr/ladder.js';
 import { PSI_NOTE, combinationMatches, parseManufacturer, psiToBar } from '../js/mfr/parse.js';
+import { mountManufacturer } from '../js/mfr/panel.js';
 import { mfrStore } from '../js/mfr/store.js';
 import { userStore } from '../js/userdata/store.js';
 
@@ -160,6 +161,80 @@ for (const file of ['js/views/simulation.js', 'js/views/optimization.js', 'js/vi
 const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
 assert.equal(sw.includes('samples/fictional-manufacturer-loads.json'), false);
 assert.equal(sw.includes('fictional-manufacturer-loads'), false);
+
+class DomNode {}
+class DomText extends DomNode {
+  constructor(value) { super(); this.childNodes = []; this.textContent = String(value); }
+}
+class DomElement extends DomNode {
+  constructor(tag) {
+    super();
+    this.tagName = String(tag).toUpperCase();
+    this.childNodes = [];
+    this.listeners = {};
+    this.className = '';
+    this._value = '';
+    this._text = '';
+  }
+  setAttribute() {}
+  addEventListener(type, fn) { (this.listeners[type] ||= []).push(fn); }
+  append(...items) {
+    for (const item of items) this.childNodes.push(item instanceof DomNode ? item : new DomText(item));
+  }
+  replaceChildren(...items) { this.childNodes = []; if (items.length) this.append(...items); }
+  get textContent() {
+    return this.childNodes.length ? this.childNodes.map((child) => child.textContent).join('') : this._text;
+  }
+  set textContent(value) { this.childNodes = []; this._text = value == null ? '' : String(value); }
+  get value() { return this._value; }
+  set value(value) { this._value = value == null ? '' : String(value); }
+  get isConnected() { return true; }
+  click() { for (const fn of this.listeners.click || []) fn({ target: this }); }
+}
+function walk(node, found = []) {
+  found.push(node);
+  for (const child of node.childNodes || []) walk(child, found);
+  return found;
+}
+function clickLabel(root, label) {
+  const button = walk(root).find((node) => node.tagName === 'BUTTON' && node.textContent === label);
+  assert.ok(button, label);
+  button.click();
+}
+
+globalThis.Node = DomNode;
+globalThis.document = {
+  createElement: (tag) => new DomElement(tag),
+  createTextNode: (value) => new DomText(value),
+};
+globalThis.fetch = () => Promise.reject(new Error('offline'));
+mfrStore.clear();
+const box = document.createElement('div');
+mountManufacturer(box, { allowImport: true });
+const area = walk(box).find((node) => node.tagName === 'TEXTAREA');
+area.value = JSON.stringify({
+  rows: [
+    baseRow({ pressure: 1000, pressureUnit: unsupportedUnit }),
+    baseRow({ pressure: 1000, pressureUnit: otherUnsupportedUnit }),
+  ],
+});
+clickLabel(box, 'Herstellerzeilen lesen');
+assert.equal(area.value, '');
+const shown = box.textContent;
+assert.equal(shown.includes(unsupportedUnit), false);
+assert.equal(shown.includes(otherUnsupportedUnit), false);
+assert.match(shown, /kein Druck angegeben/);
+assert.match(shown, /2 Druckwerte übersprungen \(Druckeinheit nicht unterstützt\)/);
+const stored = mfrStore.all();
+assert.equal(stored.length, 2);
+assert.equal(stored.every((item) => item.pressureBar == null && item.maxChargeGrain === 12), true);
+clickLabel(box, 'Kombination übernehmen');
+const chosen = box.textContent;
+assert.equal(chosen.includes(unsupportedUnit), false);
+assert.equal(chosen.includes(otherUnsupportedUnit), false);
+assert.match(chosen, /kein Druck angegeben/);
+assert.match(chosen, /grain/);
+mfrStore.clear();
 
 function rowPlaceholder() {
   return baseRow({ pressureBar: 1000 });

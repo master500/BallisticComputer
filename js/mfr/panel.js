@@ -3,7 +3,7 @@
  */
 import { el, fmt, setChildren } from '../util.js';
 import { loadCipIndex, resolveCipQuery } from '../cip/lookup.js';
-import { parseManufacturer, sourceLabel } from './parse.js';
+import { PSI_NOTE, parseManufacturer, sourceLabel } from './parse.js';
 import { mfrStore } from './store.js';
 import { MISMATCH, describeManufacturer } from './apply.js';
 
@@ -78,6 +78,8 @@ export function mountManufacturer(box, { allowImport = false } = {}) {
         el('div', {},
           el('strong', {}, `${row.cartridge} · ${row.powder}`),
           el('div', { class: 'small' }, chargeLine(row)),
+          el('div', { class: 'small' }, pressureLine(row)),
+          row.pressureOrigin === 'psi' ? el('div', { class: 'hint-yellow small' }, PSI_NOTE) : null,
           el('div', { class: 'small' }, `Quelle: ${sourceLabel(row)}`),
           el('div', { class: 'small' }, `Datum: ${row.date || 'nicht angegeben'}`)),
         el('button', { type: 'button', class: 'btn', onclick: () => applyRow(row) }, 'Kombination übernehmen'),
@@ -108,7 +110,7 @@ function importBox(status, done) {
     file,
     text,
     el('div', { class: 'row-btns' },
-      el('button', { type: 'button', class: 'btn primary', onclick: () => take(text.value, status, done) }, 'Herstellerzeilen lesen'),
+      el('button', { type: 'button', class: 'btn primary', onclick: () => { if (take(text.value, status, done)) text.value = ''; } }, 'Herstellerzeilen lesen'),
       el('button', { type: 'button', class: 'btn', onclick: () => { mfrStore.clear(); status.textContent = 'Herstellerladungen auf diesem Gerät gelöscht.'; done(); } }, 'Alle Herstellerladungen löschen')));
 }
 
@@ -116,10 +118,16 @@ function take(raw, status, done) {
   let parsed;
   try { parsed = parseManufacturer(raw); }
   catch (err) { status.textContent = `Fehler: ${err.message || err}`; return; }
-  if (parsed.error) { status.textContent = parsed.error; return; }
+  if (parsed.error) { status.textContent = parsed.error; return false; }
   const n = parsed.rows.length ? mfrStore.add(parsed.rows) : 0;
   status.textContent = [n ? `${n} Zeile(n) nur auf diesem Gerät gespeichert.` : 'Keine Zeile gespeichert.', parsed.summary].filter(Boolean).join(' ');
   done();
+  return true;
+}
+
+function pressureLine(row) {
+  if (!Number.isFinite(row.pressureBar)) return 'kein Druck angegeben';
+  return `Angegeben ${fmt(row.pressureBar, row.pressureOrigin === 'psi' ? 1 : 0)} bar`;
 }
 
 function chargeLine(row) {
@@ -140,9 +148,7 @@ function renderDescribed(described) {
     el('p', { class: 'small' }, chargeLine(row)),
     el('p', { class: 'small' }, `Quelle: ${sourceLabel(row)}`),
     el('p', { class: 'small' }, `Datum: ${row.date || 'nicht angegeben'}`),
-    Number.isFinite(row.pressureBar)
-      ? el('p', {}, `Angegeben ${fmt(row.pressureBar, row.pressureOrigin === 'psi' ? 1 : 0)} bar`)
-      : el('p', {}, 'kein Druck angegeben'),
+    el('p', {}, pressureLine(row)),
     rating?.psiNote ? el('p', { class: 'hint-yellow', role: 'status' }, rating.psiNote) : null,
     rating?.text ? el('p', { class: `cip-rating hint-${tone}`, role: 'status' }, rating.text) : null,
     Number.isFinite(row.velocityMs) ? el('p', { class: 'small' }, `v angegeben ${fmt(row.velocityMs, 0)} m/s`) : null,
