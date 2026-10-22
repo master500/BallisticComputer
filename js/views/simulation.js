@@ -5,6 +5,7 @@ import { simulate } from '../model.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 import { GRAIN_PER_LE, demoBar } from '../ladder.js';
+import { mountManufacturer } from '../mfr/panel.js';
 
 const state = { powderId: null, bulletId: null, primerId: null, cartridge: null, chargeGrain: 25, axis: 'x', primerHint: '' };
 
@@ -56,6 +57,7 @@ export function renderSimulation(root, { db }) {
       el('label', {}, 'Demo-Zündhütchen', select(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
       primerHints,
       el('label', {}, el('span', {}, 'Ladung ', chargeOut), slider)),
+    manufacturerHost(),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
       el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Pseudo-Einheiten, kein Realbezug.')),
@@ -91,6 +93,12 @@ export function renderSimulation(root, { db }) {
   }
   requestAnimationFrame(run);
   window.onresize = () => { if (canvas.isConnected) run(); };
+}
+
+function manufacturerHost() {
+  const box = el('div');
+  mountManufacturer(box);
+  return box;
 }
 
 function kpi(label, value, tone = '') {

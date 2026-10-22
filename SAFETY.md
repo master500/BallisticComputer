@@ -16,3 +16,7 @@
 **DE (CIP):** CIP-Pmax und CIP-L6 sind nur Nachschlagewerte in der CIP-Tabelle und in den Prüfungen unter Meine Daten. Simulation und Optimierung dürfen sie nicht lesen und nicht verwenden. Die Ladungsleiter bleibt an den fiktiven Demo-Grenzen. Druckeinheiten außer bar und PSI werden nicht unterstützt.
 
 **DE (Pulvernamen):** Der Pulverkatalog enthält nur Namen, keine Abbrandgeschwindigkeit und keine Ladungen. Simulation, Leiter und Optimierung dürfen ihn nicht laden.
+
+- Manufacturer load tables are never committed. A user may import them only on the device (`bc.mfrloads.v1`). They are excluded from backup and export. The charge ladder may use a row only when cartridge, powder, bullet weight, bullet type, primer and COAL match exactly, and no step may exceed the stated maximum. The toy model pressure is not shown for those rows. The stated pressure may be compared with CIP Pmax. Pressure units other than bar and PSI drop the whole row. The file `samples/fictional-manufacturer-loads.json` is fictional.
+
+**DE (Herstellerzeilen):** Herstellerladungen gehören nicht ins Repository. Ein Import bleibt auf dem Gerät und fehlt im Backup. Die Leiter nutzt eine Zeile nur bei exakter Kombination und nie über der angegebenen Maximalladung. Der Spielzeugdruck wird dafür nicht angezeigt. Der angegebene Druck darf mit CIP-Pmax verglichen werden. Andere Druckeinheiten als bar und PSI verwerfen die ganze Zeile. `samples/fictional-manufacturer-loads.json` ist fiktiv.

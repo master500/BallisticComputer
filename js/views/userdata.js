@@ -17,6 +17,7 @@ import { loadCipIndex } from '../cip/lookup.js';
 import { mountCipCheck } from '../userdata/cipcheck.js';
 import { primerHintFor } from '../userdata/primer.js';
 import { APPLICATION_LABELS, APPLICATIONS, filterPowderNames, loadPowderCatalog, loadSelectedPowderName, saveSelectedPowderName } from '../userdata/powders.js';
+import { mountManufacturer } from '../mfr/panel.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
 const ui = { filter: '', pending: null };
@@ -32,6 +33,7 @@ export function renderUserData(root) {
       el('strong', {}, 'Eigene Daten – Verantwortung beim Nutzer. Immer mit aktuellen Herstellerangaben abgleichen.'),
       el('p', { class: 'small' }, 'Diese Daten werden nur angezeigt – ohne Extrapolation oder Druckprognose. Sie bleiben lokal auf diesem Gerät und werden nicht in Simulation/Optimierung verwendet (dort nur fiktive Demo-Werte).')),
     powderSection(),
+    manufacturerBox(),
     importSection(importBox, refresh),
     cipBox,
     listBox,
@@ -51,6 +53,12 @@ export function renderUserData(root) {
     renderCompare(compareBox);
   }
   refresh();
+}
+
+function manufacturerBox() {
+  const box = el('div');
+  mountManufacturer(box, { allowImport: true });
+  return box;
 }
 
 /* ---------- Pulvernamen (nur Text) ---------- */

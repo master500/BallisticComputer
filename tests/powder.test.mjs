@@ -31,7 +31,7 @@ for (const file of ['js/model.js', 'js/ladder.js', 'js/views/simulation.js', 'js
 }
 
 const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
-assert.match(sw, /ballisticcomputer-v1\.5\.3/);
+assert.match(sw, /ballisticcomputer-v1\.5\.4/);
 assert.equal(sw.includes('data/powders/powder_catalog.json'), true);
 assert.equal(sw.includes('js/userdata/powders.js'), true);
 

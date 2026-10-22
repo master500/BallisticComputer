@@ -9,7 +9,7 @@ for (const file of ['js/model.js', 'js/ladder.js', 'js/views/simulation.js', 'js
 }
 
 const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
-assert.match(sw, /ballisticcomputer-v1\.5\.3/);
+assert.match(sw, /ballisticcomputer-v1\.5\.4/);
 for (const path of [
   'js/ladder.js',
   'js/views/cip.js',
@@ -18,6 +18,9 @@ for (const path of [
   'js/cip/aliases.js',
   'js/userdata/cipcheck.js',
   'js/userdata/primer.js',
+  'js/mfr/parse.js',
+  'js/mfr/ladder.js',
+  'js/mfr/panel.js',
   'data/cip/cip_pmax_tab1.json',
   'data/cip/cip_pmax_tab2-5.json',
   'data/cip/cip_l6.json',
