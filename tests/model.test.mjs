@@ -1,7 +1,7 @@
 // Einfache Plausibilitätstests für das Spielzeugmodell. Aufruf: node tests/model.test.mjs
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { bulletMass, powderBeta, simulate, sweep } from '../js/model.js';
+import { GRAMS_PER_GRAIN, bulletMass, powderBeta, simulate, sweep } from '../js/model.js';
 
 const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url)));
 const fast = db.powders.find((p) => p.burn_class === 'fast');
@@ -22,9 +22,11 @@ for (const powder of db.powders) assert.match(powder.name, /^DemoPowder /);
 for (const item of db.bullets) assert.match(item.name, /^Demo /);
 for (const limitRow of db.pressure_limits) {
   assert.match(limitRow.cartridge, /^Demo-Cartridge-/);
-  assert.equal(typeof limitRow.max_mpa_sim, 'number');
+  assert.equal(typeof limitRow.pmax_bar, 'number');
+  assert.equal(limitRow.pmax_bar % 10, 0);
 }
-assert.equal(bulletMass({ name: 'Demo X 1g', sim_mass: 4 }), 4);
+assert.ok(Math.abs(bulletMass({ mass_grain: 4 / GRAMS_PER_GRAIN }) - 4) < 1e-9);
+assert.equal(bulletMass({ name: 'Demo X 1g' }), 1);
 assert.equal(powderBeta(db.powders.find((p) => p.burn_class === 'extrafast')), 0.40);
 const byRank = [...db.powders].sort((a, b) => a.burn_rate_rank - b.burn_rate_rank);
 assert.deepEqual(db.powders.map((p) => p.burn_rate_rank), byRank.map((p) => p.burn_rate_rank), 'db.json folgt der Rangfolge');
@@ -34,9 +36,9 @@ for (let i = 1; i < byRank.length; i++) {
 assert.ok(simulate({ powder: db.powders.find((p) => p.burn_class === 'extrafast'), bullet, charge: 6 }).peakPressure
   > simulate({ powder: db.powders.find((p) => p.burn_class === 'extraslow'), bullet, charge: 6 }).peakPressure);
 
-const limit = db.pressure_limits[0].max_mpa_sim;
+const limit = db.pressure_limits[0].pmax_bar / 10;
 const { best, results } = sweep({ powders: db.powders, bullets: db.bullets, limit });
 assert.ok(best && best.peakPressure <= limit, 'Bestes Ergebnis unter Limit');
 assert.ok(results.every((r) => r.underLimit === (r.peakPressure <= limit)));
 console.log('OK – alle Modelltests bestanden. Bestes:', best.powderName, best.bulletName, best.charge, 'LE',
-  Math.round(best.muzzleVelocity), 'sim-m/s @', Math.round(best.peakPressure), 'sim-MPa');
+  Math.round(best.muzzleVelocity), 'm/s @', Math.round(best.peakPressure * 10), 'bar');

@@ -7,7 +7,7 @@
 import { el, fmtTime } from '../util.js';
 
 export const AGENTS = [
-  { id: 'ballistics', name: 'Ballistik', icon: '🎯', role: 'Rechnet Spielzeug-Simulationen', keys: ['ballist', 'sim_run', 'velocity'] },
+  { id: 'ballistics', name: 'Ballistik', icon: '🎯', role: 'Rechnet Spielzeug-Simulationen', keys: ['ballist', 'velocity'] },
   { id: 'database', name: 'Datenbank', icon: '🗄️', role: 'Prüft & aktualisiert db.json', keys: ['seed', 'db_', 'database', 'datenbank', 'update', 'check'] },
   { id: 'optimization', name: 'Optimierung', icon: '📈', role: 'Parameter-Sweeps', keys: ['optim', 'sweep'] },
   { id: 'validation', name: 'Validierung', icon: '✅', role: 'Sucht Widersprüche & Ausreißer', keys: ['valid', 'outlier', 'ausreiß'] },

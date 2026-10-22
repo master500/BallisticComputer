@@ -1,8 +1,8 @@
-# BallisticComputer (Demo) – v1.4.0
+# BallisticComputer (Demo) – v1.5.2
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
-> Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert,
-> alle Einheiten Pseudo-Einheiten (sim-MPa, sim-m/s, Ladungseinheiten „LE“).
+> Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert.
+> Die Oberfläche zeigt Druck in bar, Gewichte in grain, Entfernung in m, Geschwindigkeit in m/s und Energie in J. Simulationszahlen sind Demo-Werte.
 > Die Ergebnisse haben keinerlei Bezug zu realen Waffen, Pulvern oder Ladedaten
 > und dürfen niemals als solche verwendet werden.
 
@@ -19,15 +19,17 @@ nohup python3 server.py --port 8080 > ../server.log 2>&1 &
 ```
 
 Kein Build-Schritt, keine Abhängigkeiten (nur Python 3 Standardbibliothek).
-Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
+Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs && node tests/trajectory.test.mjs && node tests/units.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
 
 ## Ansichten
 
 | Tab | Inhalt |
 |---|---|
 | **Datenbank** | Acht DemoPowder, acht Demo-Geschosse, Demo-Cartridge-1…4 aus `db.json` |
-| **Simulation** | Druckverlauf für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Ladung |
-| **Optimierung** | Sweep aller Demo-Kombinationen; Limit je Demo-Patrone (sim-MPa) |
+| **Simulation** | Druckverlauf für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Ladung, darunter V0–V300 in 25-m-Schritten |
+
+Die Entfernungstabelle nutzt erfundene Demo-Koeffizienten (`bc_g1`, `bc_g7`) und die Widerstandsfunktionen G1/G7. Ohne Koeffizient erscheint „Kein BC hinterlegt – keine Flugbahnwerte“. Ein in Meine Daten eingetragener BC oder eine gemessene V0 ersetzt die Demo-Werte und bleibt auf dem Gerät.
+| **Optimierung** | Sweep aller Demo-Kombinationen; Limit je Demo-Patrone in bar |
 | **KI-Squad** | Statuskarten der 6 simulierten Agenten aus `log.jsonl` |
 | **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze (CSV/JSON und `.grtload`, localStorage) + Offizielle Quellen |
 
@@ -57,9 +59,9 @@ app/
 `log.jsonl`. Lokal liefert `server.py` diese Live-Dateien unter `/data/` aus.
 Für statisches Hosting kopiert `scripts/sync-data.sh` sie nach `app/data/`.
 Das Format von `db.json` wird nur gelesen; optionale Zusatzfelder, die das Modell
-nutzt: `powders[].sim_beta` (Abbrandkoeffizient), `powders[].burn_class`, `bullets[].sim_mass`.
+nutzt: `powders[].beta` (Abbrandkoeffizient), `powders[].burn_class`, `bullets[].mass_grain`, `bullets[].bc_g1`, `bullets[].bc_g7`.
 Der Demo-Katalog ist erfunden: acht `DemoPowder`-Klassen, acht `Demo`-Geschosse und
-`Demo-Cartridge-1` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.
+`Demo-Cartridge-1` bis `Demo-Cartridge-4` mit fiktiven Grenzen in `pmax_bar`.
 Log-Zeilen: `{"ts", "event", "note", optional "agent"}` – `agent` ordnet einen
 Eintrag eindeutig einem KI-Squad-Agenten zu (ballistics, database, optimization,
 validation, safety, reporting); sonst wird über Stichwörter in `event` zugeordnet.

@@ -20,7 +20,7 @@ export function renderOptimization(root, { db }) {
     onchange: (e) => { state.cartridge = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
   }, db.pressure_limits.map((l) => el('option', {
     value: l.cartridge, selected: l.cartridge === state.cartridge,
-  }, `${l.cartridge} (${l.max_mpa_sim} sim-MPa)`)));
+  }, `${l.cartridge} (${fmt(l.pmax_bar, 0)} bar)`)));
   const bulletSelect = el('select', {
     onchange: (e) => { state.chartBulletId = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
   }, db.bullets.map((b) => el('option', {
@@ -73,13 +73,14 @@ export function renderOptimization(root, { db }) {
     const chartCombos = chartBullet ? db.powders.map((p) => ({ p, b: chartBullet })) : [];
 
     out.replaceChildren(
-      el('p', { class: 'muted small' }, `Alle Demo-Pulver × alle Demo-Geschosse × Ladung (1–10 LE, Schritt 0,25). Höchste simulierte Geschwindigkeit mit Spitzendruck ≤ ${fmt(limit.max)} sim-MPa (${limit.cartridge}). Das Diagramm zeigt ${chartBullet ? chartBullet.name : '—'}.`),
+      el('p', { class: 'warn-text', role: 'note' }, 'Rechenwert – keine echten Ladedaten, keine Freigabe'),
+      el('p', { class: 'muted small' }, `Alle Demo-Pulver × alle Demo-Geschosse × Ladung (1–10 LE, Schritt 0,25). Höchste Geschwindigkeit mit Spitzendruck ≤ ${fmt(limit.bar)} bar (${limit.cartridge}). Das Diagramm zeigt ${chartBullet ? chartBullet.name : '—'}.`),
       best
         ? el('section', { class: 'card highlight' },
-            el('h2', {}, 'Bestes Ergebnis (simuliert)'),
+            el('h2', {}, 'Bestes Ergebnis'),
             el('div', { class: 'kpis' },
-              kpiBox('Geschw.', `${fmt(best.muzzleVelocity)} sim-m/s`),
-              kpiBox('Druck', `${fmt(best.peakPressure)} sim-MPa`),
+              kpiBox('Geschw.', `${fmt(best.muzzleVelocity)} m/s`),
+              kpiBox('Druck', `${fmt(best.peakPressure * 10)} bar`),
               kpiBox('Ladung', `${fmt(best.charge, 2)} LE`)),
             el('p', {}, `${best.powderName} + ${best.bulletName}`))
         : el('section', { class: 'card' }, el('p', {}, 'Keine Kombination unter dem Limit.')),
@@ -90,16 +91,16 @@ export function renderOptimization(root, { db }) {
           const ok = results.filter((r) => r.powderId === p.id && r.bulletId === b.id && r.underLimit);
           const top = ok.reduce((a, r) => (!a || r.muzzleVelocity > a.muzzleVelocity ? r : a), null);
           return el('li', {}, el('div', {}, el('strong', {}, p.name), el('div', { class: 'muted small' }, b.name)),
-            el('span', { class: 'chip' }, top ? `${fmt(top.muzzleVelocity)} sim-m/s @ ${fmt(top.charge, 2)} LE` : '—'));
+            el('span', { class: 'chip' }, top ? `${fmt(top.muzzleVelocity)} m/s @ ${fmt(top.charge, 2)} LE` : '—'));
         }))),
     );
     requestAnimationFrame(() => drawLineChart(canvas, {
       series: chartCombos.map(({ p, b }, i) => ({
         color: COLORS[i % COLORS.length],
-        points: results.filter((r) => r.powderId === p.id && r.bulletId === b.id).map((r) => [r.charge, r.peakPressure]),
+        points: results.filter((r) => r.powderId === p.id && r.bulletId === b.id).map((r) => [r.charge, r.peakPressure * 10]),
       })),
-      xLabel: 'Ladung (LE)', yLabel: 'Spitzendruck (sim-MPa)',
-      hLine: { value: limit.max, label: `Demo-Limit ${limit.max}` },
+      xLabel: 'Ladung (LE)', yLabel: 'Spitzendruck (bar)',
+      hLine: { value: limit.bar, label: `Demo-Grenze ${fmt(limit.bar)} bar` },
     }));
   }
   schedule(0);
