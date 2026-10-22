@@ -13,6 +13,11 @@ export function el(tag, attrs = {}, ...children) {
   }
   return node;
 }
+/** replaceChildren macht aus null den Text "null". Leere Knoten weglassen. */
+export function setChildren(parent, ...children) {
+  parent.replaceChildren(...children.flat().filter((child) => child != null && child !== false));
+}
+
 export const fmt = (n, d = 0) => (Number.isFinite(n) ? n.toLocaleString('de-DE', { maximumFractionDigits: d, minimumFractionDigits: d }) : '—');
 export const fmtTime = (iso) => {
   const d = new Date(iso);

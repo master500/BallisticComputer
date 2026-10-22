@@ -2,6 +2,64 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.6] – 2026-10-22
+### Hinzugefügt
+- Meine Daten: Pulvernamen als Textauswahl. Die Liste nennt echte Produktnamen und enthält keine Ladedaten. Filterwerte bleiben `rifle`, `handgun`, `shotshell`, `unbekannt`; die Anzeige sagt Büchse, Kurzwaffe, Flinte und unbekannt. Der gewählte Name bleibt auf dem Gerät (`localStorage`), nicht im Backup. Keine Abbranddaten. Simulation, Leiter und Optimierung laden den Katalog nicht.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.6`.
+
+## [1.5.5] – 2026-10-22
+### Geändert
+- Simulation, Ladungsleiter, Setztiefe und die Demo-Datenbank zeigen je Ergebnis einmal „Rechenwert – keine echten Ladedaten, keine Freigabe“. Die CIP-Tabelle bleibt ohne diesen Hinweis. Demo-Zahlen tragen keine Einheiten-Abkürzung mehr.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.5`.
+
+## [1.5.4] – 2026-10-22
+### Geändert
+- Sichtbare Einheiten sind bar, grain, mm und m/s. Demo-Felder heißen `beta`, `ignition`, `mass_grain`, `ogive_form` und `pmax_bar`. Berechnete Demo-Zahlen heißen Demo-Wert.
+- CIP-Pmax steht nur in `cip_pmax_bar_tab1.json` und `cip_pmax_bar_tab2-5.json`, jeweils mit dem Feld `pmax_bar`.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.4`.
+
+## [1.5.3] – 2026-10-22
+### Geändert
+- Ein GRT-Druck in PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet (62 000 psi → 4 274,8 bar) und mit „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet. Andere Druckeinheiten verwerfen die betroffenen Zeilen. Die Zusammenfassung lautet „X Zeilen verworfen (Druckeinheit nicht unterstützt)“ und nennt die Einheit nicht.
+- Druckzahlen: ein Punkt vor genau drei Ziffern ist ein Tausendertrennzeichen („4.150“ → 4150, „52.000“ → 52000). „1.234,5“ bleibt 1234,5. Länge und Ladung mit expliziter Einheit behalten den Dezimalpunkt.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.3`.
+
+## [1.5.2] – 2026-10-22
+### Geändert
+- TAB II–V Pmax ist die QA-Datei mit `pmax_bar` (Felder `cartridge`, `pmax_bar`, `source`, `retrieved`). Kein Faktor ×10. Die Zeile „9 mm“ bleibt entfernt.
+- Leiter-Schritte werden auf 0,1 grain abgerundet (42,5 grain → erster Schritt 38,2 grain), nie über 90 % der Demo-Grenze.
+- Weniger Sprung senkt den Demo-Druck. −0,25 mm ist „in den Feldern“ und hat den höchsten Druck. Setztiefe nutzt dieselben Farben wie die Leiter; liegt eine Zeile über der Demo-Grenze, gibt es keine Empfehlung.
+- PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet und als „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet. Dieselben Farbstufen wie bei bar.
+- PK wird mit einer Nachkommastelle gezeigt (2702,5 bar). Einzelschüsse zwischen Pmax und PK sind gelb, über PK rot.
+- Ein Alias ist in Meine Daten nur ein Vorschlag, bis die Patrone ausdrücklich gewählt ist. „9 x 19“ bleibt Alias für „9 mm Luger“.
+- Maßspalten werden nur mit erkennbarer Einheit zugeordnet. „Charge [g]“ und „COAL [in]“ werden umgerechnet; „Gewicht“, „Ladung“ und „COAL“ ohne Einheit nicht. „Charge [gr]“ bleibt frei.
+- Gemessene v in m/s, Ladung in der Vergleichstabelle in grain.
+- Zwei weitere fiktive Demo-Zündhütchen: Small Pistol Magnum und Large Pistol Magnum. Simulation und Optimierung zeigen den bestehenden Hinweis bei Zündhütchenwechsel und „Magnum-Zündhütchen in Standardpatrone“.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.2`.
+
+## [1.5.1] – 2026-10-22
+### Hinzugefügt
+- L6 für TAB II–V, 279 Patronen, in `data/cip/cip_l6_tab2-5.json` (Felder `cartridge`, `l6_mm`, `source`, `retrieved`). Kein Patronenname doppelt zu TAB I.
+- TAB II–V Pmax ist die QA-Datei mit den vier Feldern `cartridge`, `pmax_bar`, `source`, `retrieved`.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.1`.
+
+## [1.5.0] – 2026-10-22
+### Hinzugefügt
+- CIP-Tabelle (`#/cip`): Nachschlagewerte Pmax in bar und L6 in mm, Quelle C.I.P., abgerufen 21.10.2026. Suche nur über den exakten Patronennamen oder feste Aliase (u. a. „9 mm“ → „9 mm Luger“). Das Suchfeld bleibt beim Tippen stehen.
+- Meine Daten: CIP-Zuordnung, Druckprüfung in bar (gelb ab 0,9×Pmax bis Pmax, rot darüber oder bei einem Schuss über 1,15×Pmax), PSI umgerechnet mit ungefährem CIP-Vergleich, L6-Hinweis in mm. Numerischer GRT-Schussdruck wird mit Faktor 10 in bar übernommen.
+- Sechs fiktive Demo-Zündhütchen mit erfundenem Zündfaktor nur für das Spielzeugmodell. In Meine Daten ist das Zündhütchen Freitext ohne Leistungswerte; ändert es sich, erscheint ein gelber Hinweis.
+- Demo-Ladungsleiter in grain (Start 90 % der Demo-Grenze, Schritte 0,8 %, Ende an der Grenze, nie darüber). Setztiefe in mm. Ogivenform je Demo-Geschoss.
+- Identische Backup-Zeilen werden beim zweiten Import derselben Datei übersprungen.
+### Behoben
+- Leere CIP-Hinweise und optionale Karten schreiben nicht mehr das Wort „null“ in die Ansicht.
+### Geändert
+- Demo-Geschossmassen stehen als `mass_grain` (grain). Die Anzeige von Gewichten ist grain, Drücke der Demo sind bar. GRT-Gewichte werden mit 1 grain = 0,06479891 g umgerechnet und als „aus Gramm umgerechnet“ gekennzeichnet.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.0`.
+### Bewusst nicht enthalten
+- Keine echten Ladedaten. CIP-Pmax und CIP-L6 gehen nicht in Simulation oder Optimierung. Die Leiter nutzt nur die fiktive Demo-Grenze.
+
 ## [1.4.0] – 2026-10-21
 ### Geändert
 - JSON-Backup aus **Meine Daten** wird beim erneuten Import strukturiert übernommen; verschachtelte `.grtload`-Ladungen bleiben erhalten.
@@ -12,7 +70,7 @@ Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versioni
 
 ## [1.3.0] – 2026-10-21
 ### Hinzugefügt
-- Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.
+- Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in bar.
 - Simulation: Auswahl der Demo-Patrone. Optimierung: Limit je Patrone; Diagramm je Geschoss; Liste aller Pulver×Geschoss-Kombinationen.
 ### Geändert
 - Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.3.0`.

@@ -3,12 +3,15 @@
  * App-Shell: cache-first. Daten (data/*): network-first mit Cache-Fallback.
  * Bei Änderungen an der App-Shell CACHE_VERSION erhöhen.
  */
-const CACHE_VERSION = 'ballisticcomputer-v1.4.0';
+const CACHE_VERSION = 'ballisticcomputer-v1.5.6';
 const SHELL = [
   './', 'index.html', 'manifest.webmanifest', 'css/style.css',
-  'js/app.js', 'js/api.js', 'js/util.js', 'js/chart.js', 'js/model.js',
-  'js/views/database.js', 'js/views/simulation.js', 'js/views/optimization.js', 'js/views/squad.js', 'js/views/userdata.js',
-  'js/userdata/csv.js', 'js/userdata/mapping.js', 'js/userdata/store.js', 'js/userdata/sources.js', 'js/userdata/grtload.js',
+  'js/app.js', 'js/api.js', 'js/util.js', 'js/chart.js', 'js/model.js', 'js/ladder.js',
+  'js/views/database.js', 'js/views/simulation.js', 'js/views/optimization.js', 'js/views/cip.js', 'js/views/squad.js', 'js/views/userdata.js',
+  'js/userdata/csv.js', 'js/userdata/mapping.js', 'js/userdata/store.js', 'js/userdata/sources.js', 'js/userdata/grtload.js', 'js/userdata/cipcheck.js', 'js/userdata/primer.js', 'js/userdata/powders.js',
+  'js/cip/aliases.js', 'js/cip/lookup.js', 'js/cip/pressure.js',
+  'data/cip/cip_pmax_bar_tab1.json', 'data/cip/cip_pmax_bar_tab2-5.json', 'data/cip/cip_l6.json', 'data/cip/cip_l6_tab2-5.json',
+  'data/powders/powder_catalog.json',
   'icons/apple-touch-icon.png', 'icons/icon-192.png', 'icons/icon-512.png',
 ];
 

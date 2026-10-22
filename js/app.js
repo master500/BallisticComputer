@@ -1,12 +1,14 @@
 /**
- * BallisticComputer – Einstiegspunkt. Einfacher Hash-Router mit fünf Views und
- * unterer Tab-Leiste. Daten werden bei jedem View-Wechsel neu geladen.
+ * BallisticComputer – Einstiegspunkt. Einfacher Hash-Router mit Tab-Leiste.
+ * Daten werden bei jedem View-Wechsel neu geladen. Die CIP-Tabelle lädt ihre
+ * Nachschlagewerte selbst und geht nicht ins Spielzeugmodell.
  */
 import { loadDb, loadLog } from './api.js';
 import { el } from './util.js';
 import { renderDatabase } from './views/database.js';
 import { renderSimulation } from './views/simulation.js';
 import { renderOptimization } from './views/optimization.js';
+import { renderCip } from './views/cip.js';
 import { renderSquad } from './views/squad.js';
 import { renderUserData } from './views/userdata.js';
 
@@ -14,6 +16,7 @@ export const VIEWS = {
   datenbank: { title: 'Datenbank', render: renderDatabase },
   simulation: { title: 'Simulation', render: renderSimulation },
   optimierung: { title: 'Optimierung', render: renderOptimization },
+  cip: { title: 'CIP-Tabelle', render: renderCip },
   squad: { title: 'KI-Squad', render: renderSquad },
   // Eigene Daten: strikt getrennt von Demo-DB und Modell (nutzt nur localStorage).
   daten: { title: 'Meine Daten', render: renderUserData },

@@ -1,0 +1,1289 @@
+{
+ "_note": "CIP Pmax (Mittelwert, Transducer, TAB I). Nur fuer die Pruefung unter Meine Daten, nie im Simulationsmodul importieren. Keine Ladedaten.",
+ "entries": [
+  {
+   "cartridge": "4,6 X 30",
+   "pmax_bar": 4000,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "5 mm / 35 SMc",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "5,45 x 39",
+   "pmax_bar": 3550,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "5,6 x 39",
+   "pmax_bar": 3500,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "5,6 x 50 Mag.",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "5,6 x 57",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "5,6 x 61 SE v. H.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "5,7 x 28",
+   "pmax_bar": 3450,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 x 47 ATZL",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 x 47 SM",
+   "pmax_bar": 3900,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 x 51 ATZL",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 x 62 Freres",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm Advanced Rifle Cartridge",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm BR Farè",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm BR Norma",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm B.R. Rem.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm Creedmoor",
+   "pmax_bar": 4350,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm Dasher",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm D.B.G.",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm PPC",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm PPC ITA",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm PPC-USA",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 mm Rem.",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6 XC",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,3 x 57 Farè",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 - 284 Norma",
+   "pmax_bar": 4100,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 39",
+   "pmax_bar": 4100,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 47 Lapua",
+   "pmax_bar": 4350,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 52 Carcano",
+   "pmax_bar": 2850,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 54 Mauser",
+   "pmax_bar": 3050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 54 M.-Sch.",
+   "pmax_bar": 3650,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 55 T.R.I.",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 57",
+   "pmax_bar": 3900,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 58 Mauser",
+   "pmax_bar": 3550,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 63 Messner Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 64",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 64 Brenneke",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 65 RWS",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 x 68",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 Creedmoor",
+   "pmax_bar": 4350,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 G.A.P. 4S",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 Grendel",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 mm D.B.G.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 mm Lahoz",
+   "pmax_bar": 3450,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,5 PRC",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,8 mm Rem. SPC",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "6,8 Western",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 x 33 Sako",
+   "pmax_bar": 2800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 X 44 Penna",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 x 57",
+   "pmax_bar": 3900,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 x 64",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7-47 GS",
+   "pmax_bar": 4350,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm - 08 Rem.",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm Blaser Mag.",
+   "pmax_bar": 4200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm B.R. Rem.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm Exp. Rem.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm KM",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm Precision Rifle Cartridge",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm Rem. SA Ultra Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm Rem. Ultra Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm SE v.H.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm Win. Short Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7 mm Zentile",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7-270 Win. Short Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,21 Firebird",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,5 x 54 MAS",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,5 x 55 Suisse",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,62 x 39",
+   "pmax_bar": 3550,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,62 x 45",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,62 UKM",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,65 x 53 Arg.",
+   "pmax_bar": 3900,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,82 Warbird",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,92 x 24 VBR",
+   "pmax_bar": 3310,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "7,92 x 33 kurz",
+   "pmax_bar": 3400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 51 (Mauser K)",
+   "pmax_bar": 3400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 56 M.-Sch.",
+   "pmax_bar": 3200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 57 I",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 57 IS",
+   "pmax_bar": 3900,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 57 PCC",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 60",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 60 S",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 64",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 64 S",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 68 S",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8 x 75 S",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8,5 x 55 Blaser",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8,5 x 63",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8,5 x 68 Fanzoj",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "8,5 mm Messner Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9 x 39",
+   "pmax_bar": 3550,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9 x 56 M.-Sch.",
+   "pmax_bar": 2080,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9 x 57",
+   "pmax_bar": 2800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9,3 x 57",
+   "pmax_bar": 3000,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9,3 x 62",
+   "pmax_bar": 3900,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9,3 x 64 Brenneke",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9,3 x 66 Sako",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9,3 RSM",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9,5 x 57 M.-Sch.",
+   "pmax_bar": 3050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "9,5 x 66 SE v. H.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "10,3 Capra",
+   "pmax_bar": 4100,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "10,3 CSP",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "10 x 100 BWA",
+   "pmax_bar": 3700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "10,75 x 68",
+   "pmax_bar": 3300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "12,7 x 42",
+   "pmax_bar": 2400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "12,7 x 70 (500 Schüler)",
+   "pmax_bar": 3300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "12,7 x 108",
+   "pmax_bar": 3050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "17 Libra",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "17 Rem.",
+   "pmax_bar": 4250,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "17 Rem. Fireball",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "204 Ruger",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "215",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "22 Advanced Rifle Cartridge",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "22 PPC-USA",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "22-250 Rem.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "220 Swift",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "222 Rem.",
+   "pmax_bar": 3700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "222 Rem. Mag.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "223 Rem.",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "223 Win. SS Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "224 Valkyrie",
+   "pmax_bar": 3890,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "243 Win.",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "243 Win. SS Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "25 Rem.",
+   "pmax_bar": 2450,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "25 Win. SS Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "25-06 Rem.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "250 Savage",
+   "pmax_bar": 3650,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "255 GS",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "256 Mag. Gibbs",
+   "pmax_bar": 3400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "257 Roberts",
+   "pmax_bar": 3550,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "26 Nosler",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "28 Nosler",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "260 Rem.",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "264 Leroy N.E.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "270 Win.",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "270 Win. Short Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "275 H.V. Rigby",
+   "pmax_bar": 3200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "277 GS",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "280 Rem.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "280 Riml. N.E. Ross",
+   "pmax_bar": 3250,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "284 Shehane",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "284 Tony",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "284 Win.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30 BR",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30 Carbine",
+   "pmax_bar": 3200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30 Court",
+   "pmax_bar": 3650,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30 Rem.",
+   "pmax_bar": 2800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30 TC",
+   "pmax_bar": 4250,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30-06 Ackley Improved",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30-06 Court Cartry",
+   "pmax_bar": 3500,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30-06 Spring.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30-284 NOLASCO",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30-284 Win.",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30-338 Prechtl Mag.",
+   "pmax_bar": 4200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "30-47 GS",
+   "pmax_bar": 4350,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 AAC Blackout",
+   "pmax_bar": 3900,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Blacktornado",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Blaser Mag.",
+   "pmax_bar": 4200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 CR",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Lapua Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Norma Mag",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Pegasus",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Precision Rifle Cartridge",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 RCM",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Rem. SA Ultra Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Rem. Ultra Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Savage",
+   "pmax_bar": 3650,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "300 Win. Short Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "308 EH",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "308 Match",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "308 Win.",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "318 Riml. N.E.",
+   "pmax_bar": 3300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "32 Rem.",
+   "pmax_bar": 2950,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "325 WSM",
+   "pmax_bar": 4350,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "333 Riml. N.E.",
+   "pmax_bar": 3300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "338 Blaser Mag.",
+   "pmax_bar": 4200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "338 Federal",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "338 Lapua Mag.",
+   "pmax_bar": 4200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "338 Norma Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "338 RCM",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "338 Rem. Ultra Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "338 Win. Short Mag.",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "35 Rem.",
+   "pmax_bar": 2750,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "35 Whelen",
+   "pmax_bar": 4000,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "350 Legend",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "350 Rigby Mag.",
+   "pmax_bar": 3100,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "358 Win.",
+   "pmax_bar": 4050,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "375 Blaser Mag.",
+   "pmax_bar": 4200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "375 Chey Tac",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "375 Hölderlin",
+   "pmax_bar": 3800,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "375 Rem. Ultra Mag.",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "375 Ruger",
+   "pmax_bar": 4275,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "375 SWISS P",
+   "pmax_bar": 4200,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "375 XLR",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "376 Steyr",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "400 Legend",
+   "pmax_bar": 3180,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "404 Riml. N.E.",
+   "pmax_bar": 3650,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "408 Chey Tac",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "416 A-TEC",
+   "pmax_bar": 4150,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "416 Barrett",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "416 Rigby",
+   "pmax_bar": 3250,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "416 Ruger",
+   "pmax_bar": 4300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "416 TYR",
+   "pmax_bar": 4400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "45 Blaser",
+   "pmax_bar": 3700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "450 Bushmaster",
+   "pmax_bar": 2700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "450 Rigby",
+   "pmax_bar": 4000,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "458 Socom",
+   "pmax_bar": 2400,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "460 Steyr",
+   "pmax_bar": 3700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "50 Browning",
+   "pmax_bar": 3700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "500 Jeffery",
+   "pmax_bar": 3300,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "500 TLD",
+   "pmax_bar": 3700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "505 Mag. Gibbs",
+   "pmax_bar": 2700,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "510 DTC",
+   "pmax_bar": 3600,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  },
+  {
+   "cartridge": "666T",
+   "pmax_bar": 4350,
+   "source": "C.I.P.",
+   "retrieved": "2026-10-21"
+  }
+ ]
+}
