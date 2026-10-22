@@ -43,10 +43,17 @@ for (let i = 1; i < table.rows.length; i += 1) {
 }
 assert.equal(table.rows[0].velocity, 800);
 
-const wad = velocityTable({ v0: 800, bc: 0.06, drag: 'G1', massGrain: 5.5 / GRAMS_PER_GRAIN });
+const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url), 'utf8'));
+const b08 = db.bullets.find((bullet) => bullet.id === 'B-08');
+assert.equal(b08.bc_g1, 0.06);
+const wad = velocityTable({
+  v0: 800, bc: b08.bc_g1, drag: 'G1', massGrain: b08.sim_mass / GRAMS_PER_GRAIN,
+});
 assert.equal(wad.rows.length, 13);
+assert.deepEqual(wad.rows.map((row) => row.distanceM), [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300]);
 assert.ok(wad.rows[0].velocity > wad.sound);
 assert.ok(wad.rows.at(-1).velocity < wad.sound);
+assert.ok(wad.rows.every((row) => row.velocity > 0 && Number.isFinite(row.energyJ)));
 for (let i = 1; i < wad.rows.length; i += 1) assert.ok(wad.rows[i].velocity < wad.rows[i - 1].velocity);
 
 const missing = flightSolution({ v0Simulated: 800, massGrain: 100 });
@@ -76,7 +83,6 @@ assert.equal(v0SourceText({ measured: true }), 'Meine Daten');
 assert.equal(demoLadderStep(5).step, 17);
 assert.equal(v0SourceText({ measured: false, step: 17, chargeText: '5,00 LE' }), 'aus Demo-Leiter, Stufe 17 · 5,00 LE');
 
-const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url), 'utf8'));
 const expectBc = {
   'B-01': [0.39, 0.195], 'B-02': [0.47, 0.24], 'B-03': [0.25, 0.12], 'B-04': [0.3, 0.15],
   'B-05': [0.455, 0.23], 'B-06': [0.18, 0.09], 'B-07': [0.17, 0.085], 'B-08': [0.06, 0.03],
@@ -86,6 +92,7 @@ for (const bullet of db.bullets) {
 }
 const view = readFileSync(new URL('../js/views/simulation.js', import.meta.url), 'utf8');
 const trajectory = readFileSync(new URL('../js/trajectory.js', import.meta.url), 'utf8');
+assert.match(view, /V0 \$\{fmt\(solved\.v0, 1\)\} m\/s/);
 assert.match(view, /Entfernung \(m\)/);
 assert.match(view, /Geschwindigkeit \(m\/s\)/);
 assert.match(view, /Energie \(J\)/);
