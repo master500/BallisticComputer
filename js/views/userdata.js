@@ -3,11 +3,13 @@
  * sowie Links zu offiziellen Quellen.
  *
  * Strikte Trennung: Diese Ansicht nutzt weder js/model.js noch db.json.
- * Es wird nichts berechnet, extrapoliert oder prognostiziert – nur angezeigt.
+ * Keine Druckprognose und keine Extrapolation. Eine .grtload wird nur angezeigt;
+ * Mittelwert, SD und ES fassen die gemessenen Schüsse dieser Datei zusammen.
  */
 import { el, fmt, fmtTime } from '../util.js';
 import { drawLineChart } from '../chart.js';
 import { parseInput } from '../userdata/csv.js';
+import { isGrtLoad, parseGrtLoad } from '../userdata/grtload.js';
 import { FIELDS, suggestMapping, applyMapping, normalizeHeader, LIKELY_PREDICTED } from '../userdata/mapping.js';
 import { userStore } from '../userdata/store.js';
 import { OFFICIAL_SOURCES } from '../userdata/sources.js';
@@ -23,7 +25,7 @@ export function renderUserData(root) {
   root.replaceChildren(
     el('section', { class: 'card notice', role: 'note' },
       el('strong', {}, 'Eigene Daten – Verantwortung beim Nutzer. Immer mit aktuellen Herstellerangaben abgleichen.'),
-      el('p', { class: 'small' }, 'Diese Daten werden nur angezeigt – ohne Berechnung, Extrapolation oder Druckprognose. Sie bleiben lokal auf diesem Gerät und werden nicht in Simulation/Optimierung verwendet (dort nur fiktive Demo-Werte).')),
+      el('p', { class: 'small' }, 'Diese Daten werden nur angezeigt – ohne Extrapolation oder Druckprognose. Sie bleiben lokal auf diesem Gerät und werden nicht in Simulation/Optimierung verwendet (dort nur fiktive Demo-Werte).')),
     importSection(importBox, refresh),
     listBox,
     compareBox,
@@ -42,15 +44,26 @@ export function renderUserData(root) {
 
 function importSection(pendingBox, refresh) {
   const status = el('p', { class: 'muted small' });
-  const fileInput = el('input', { type: 'file', accept: '.csv,.json,.txt,text/csv,application/json', class: 'file' });
+  const fileInput = el('input', { type: 'file', accept: '.csv,.json,.txt,.grtload,.xml,text/csv,application/json,text/xml,application/xml', class: 'file' });
   const textArea = el('textarea', { rows: 4, placeholder: 'CSV oder JSON hier einfügen …\ncartridge;powder;bullet;bullet_weight;charge;coal;measured_velocity;notes;source' });
 
   const start = (text, fileName) => {
     try {
-      const parsed = parseInput(text);
-      if (!parsed.rows.length) throw new Error('Keine Datenzeilen gefunden.');
-      ui.pending = { ...parsed, fileName, mapping: suggestMapping(parsed.headers) };
-      status.textContent = `${parsed.rows.length} Zeile(n) aus „${fileName}“ erkannt (${parsed.format.toUpperCase()}). Bitte Zuordnung prüfen.`;
+      if (isGrtLoad(text, fileName)) {
+        const project = parseGrtLoad(text);
+        ui.pending = { mode: 'grt', fileName, project };
+        status.textContent = `GRT-Projekt „${project.title || fileName}“ gelesen. Nur Anzeige – bitte die Ladungsnotiz prüfen.`;
+      } else {
+        const parsed = parseInput(text);
+        if (parsed.format === 'backup') {
+          ui.pending = { mode: 'backup', fileName, records: parsed.records };
+          status.textContent = `${parsed.records.length} Datensatz/Datensätze aus dem Backup. Verschachtelte Angaben bleiben erhalten.`;
+        } else {
+          if (!parsed.rows.length) throw new Error('Keine Datenzeilen gefunden.');
+          ui.pending = { mode: 'table', ...parsed, fileName, mapping: suggestMapping(parsed.headers) };
+          status.textContent = `${parsed.rows.length} Zeile(n) aus „${fileName}“ erkannt (${parsed.format.toUpperCase()}). Bitte Zuordnung prüfen.`;
+        }
+      }
     } catch (err) {
       ui.pending = null;
       status.textContent = `Fehler: ${err.message}`;
@@ -66,7 +79,8 @@ function importSection(pendingBox, refresh) {
 
   return el('section', { class: 'card' },
     el('h2', {}, 'Importieren'),
-    el('label', {}, 'Datei wählen (CSV / JSON)', fileInput),
+    el('label', {}, 'Datei wählen (CSV / JSON / .grtload)', fileInput),
+    el('p', { class: 'muted small' }, 'Eine eigene GRT-Projektdatei (.grtload, XML) wird im Browser gelesen und nur angezeigt. Die Ladungsnotiz aus der Datei steht über der Ladung.'),
     el('label', {}, 'oder Text einfügen', textArea),
     el('button', { class: 'btn', type: 'button', onclick: () => textArea.value.trim() && start(textArea.value, 'Eingefügter Text') }, 'Text übernehmen'),
     status,
@@ -76,6 +90,37 @@ function importSection(pendingBox, refresh) {
 function renderPending(box, refresh) {
   const p = ui.pending;
   if (!p) { box.replaceChildren(); return; }
+  if (p.mode === 'backup') {
+    const grt = p.records.filter((r) => r.kind === 'grtload');
+    const flat = p.records.filter((r) => r.kind !== 'grtload');
+    box.replaceChildren(el('div', { class: 'mapping' },
+      el('h3', {}, 'Backup'),
+      el('p', { class: 'muted small' }, `${p.records.length} Datensätze, davon ${grt.length} GRT-Projekt(e). Ladungen und andere verschachtelte Felder werden mit gespeichert.`),
+      grt.map((project) => grtDetails(project)),
+      flat.length ? recordTable(flat, { compact: true }) : null,
+      el('div', { class: 'row-btns' },
+        el('button', { class: 'btn primary', type: 'button', onclick: () => {
+          const n = userStore.add(p.records);
+          ui.pending = null;
+          refresh();
+          toast(`${n} Datensatz/Datensätze aus dem Backup gespeichert.`);
+        } }, `${p.records.length} speichern`),
+        el('button', { class: 'btn', type: 'button', onclick: () => { ui.pending = null; refresh(); } }, 'Abbrechen'))));
+    return;
+  }
+  if (p.mode === 'grt') {
+    box.replaceChildren(el('div', { class: 'mapping' },
+      grtDetails(p.project),
+      el('div', { class: 'row-btns' },
+        el('button', { class: 'btn primary', type: 'button', onclick: () => {
+          userStore.add([stampGrt(p.project, p.fileName)]);
+          ui.pending = null;
+          refresh();
+          toast('GRT-Projekt gespeichert (nur auf diesem Gerät).');
+        } }, 'Speichern'),
+        el('button', { class: 'btn', type: 'button', onclick: () => { ui.pending = null; refresh(); } }, 'Abbrechen'))));
+    return;
+  }
 
   const selects = FIELDS.map((f) => {
     const sel = el('select', { onchange: (e) => { p.mapping[f.key] = Number(e.target.value); refresh(); } },
@@ -111,8 +156,9 @@ function renderPending(box, refresh) {
 
 function matches(r, q) {
   if (!q) return true;
-  const hay = `${r.cartridge} ${r.powder} ${r.bullet} ${r.source} ${r.notes} ${r.origin}`.toLowerCase();
-  return q.toLowerCase().split(/\s+/).every((t) => hay.includes(t));
+  const charges = Array.isArray(r.charges) ? r.charges.map((c) => `${c.name} ${c.note}`).join(' ') : '';
+  const hay = `${r.cartridge || ''} ${r.powder || ''} ${r.bullet || ''} ${r.source || ''} ${r.notes || ''} ${r.origin || ''} ${r.title || ''} ${r.caliberName || ''} ${r.propellantName || ''} ${r.projectileName || ''} ${charges}`.toLowerCase();
+  return q.toLowerCase().split(/\s+/).filter(Boolean).every((t) => hay.includes(t));
 }
 
 function renderList(box, refresh) {
@@ -139,6 +185,7 @@ function renderList(box, refresh) {
 }
 
 function recordItem(r, refresh) {
+  if (r.kind === 'grtload') return grtRecordItem(r, refresh);
   return el('li', {},
     el('div', { class: 'rec' },
       el('strong', {}, [r.cartridge, r.powder].filter(Boolean).join(' · ') || '—'),
@@ -147,6 +194,72 @@ function recordItem(r, refresh) {
         `Ladung ${r.charge != null ? fmt(r.charge, 2) : '—'} · COAL ${r.coal != null ? fmt(r.coal, 2) : '—'} · v gemessen ${r.measured_velocity != null ? fmt(r.measured_velocity) : '—'}`),
       r.notes ? el('div', { class: 'muted small' }, r.notes) : null,
       el('div', { class: 'origin small' }, r.origin, r.source ? ` · Quelle: ${r.source}` : '', ` · ${fmtTime(r.importedAt)}`)),
+    el('button', { class: 'icon-btn small-btn', type: 'button', 'aria-label': 'Löschen',
+      onclick: () => { if (confirm('Datensatz löschen?')) { userStore.remove(r.id); refresh(); } } }, '🗑'));
+}
+
+function stampGrt(project, fileName) {
+  return {
+    kind: 'grtload',
+    ...project,
+    origin: `Eigene Daten / Import: ${fileName}`,
+    importedAt: new Date().toISOString(),
+  };
+}
+
+function flex(n, digits) {
+  return Number.isFinite(n) ? n.toLocaleString('de-DE', { maximumFractionDigits: digits }) : '—';
+}
+
+function fact(label, value) {
+  return el('div', {}, el('dt', {}, label), el('dd', {}, value));
+}
+
+function grtDetails(project) {
+  const charges = Array.isArray(project.charges) ? project.charges : [];
+  const notes = charges.filter((charge) => charge.note);
+  return el('div', { class: 'grt' },
+    el('h3', {}, project.title || 'GRT-Projekt'),
+    notes.map((charge) => el('p', { class: 'charge-note', role: 'note' },
+      el('span', { class: 'charge-note-label' }, `Ladungsnotiz${charge.name ? ` · ${charge.name}` : ''}`),
+      charge.note)),
+    el('p', { class: 'muted small' }, 'Nur Anzeige der eigenen Datei. Keine Simulation und keine Extrapolation. Pulvermodell-Parameter werden nicht übernommen.'),
+    el('dl', { class: 'facts' },
+      fact('Kaliber', project.caliberName || '—'),
+      fact('Hülsenvolumen', Number.isFinite(project.caseVolumeCm3) ? `${flex(project.caseVolumeCm3, 3)} cm³` : '—'),
+      fact('pMaxZul', [Number.isFinite(project.pMaxBar) ? `${flex(project.pMaxBar, 1)} bar` : '—', project.pressureMethod].filter(Boolean).join(' · ')),
+      fact('Geschoss', project.projectileName || '—'),
+      fact('Geschossgewicht', [Number.isFinite(project.projectileWeightG) ? `${flex(project.projectileWeightG, 3)} g` : null, Number.isFinite(project.projectileWeightGr) ? `${flex(project.projectileWeightGr, 1)} gr` : null].filter(Boolean).join(' · ') || '—'),
+      fact('Geschosslänge', Number.isFinite(project.projectileLengthMm) ? `${flex(project.projectileLengthMm, 2)} mm` : '—'),
+      fact('Pulvername', project.propellantName || '—')),
+    el('h3', {}, 'Ladungen'),
+    el('p', { class: 'muted small' }, 'Der Ladungswert steht in der Datei in kg und wird hier in g und grain angezeigt.'),
+    charges.length ? charges.map((charge) => chargeBlock(charge)) : el('p', { class: 'muted small' }, 'Keine Ladungen in der Datei.'));
+}
+
+function chargeBlock(charge) {
+  const stats = charge.stats;
+  const velocities = Array.isArray(charge.velocitiesMs) ? charge.velocitiesMs : [];
+  let summary = 'Keine gemessenen Geschwindigkeiten.';
+  if (stats && stats.n >= 2) {
+    summary = `Mittel ${flex(stats.mean, 1)} · SD ${flex(stats.sd, 1)} · ES ${flex(stats.es, 1)} m/s (n=${stats.n})`;
+  } else if (stats && stats.n === 1) {
+    summary = `1 Schuss: ${flex(stats.mean, 1)} m/s`;
+  }
+  return el('div', { class: 'charge-block' },
+    el('strong', {}, charge.name || 'Ladung'),
+    charge.note ? el('p', { class: 'charge-note', role: 'note' }, el('span', { class: 'charge-note-label' }, 'Ladungsnotiz'), charge.note) : null,
+    el('div', {}, Number.isFinite(charge.grams) ? `${flex(charge.grams, 3)} g · ${flex(charge.grains, 1)} gr` : '—'),
+    Number.isFinite(charge.kilograms) ? el('div', { class: 'muted small' }, `in der Datei: ${flex(charge.kilograms, 6)} kg`) : null,
+    velocities.length ? el('div', { class: 'small' }, `Schüsse: ${velocities.map((v) => flex(v, 1)).join(', ')} m/s`) : null,
+    el('div', { class: 'small' }, summary));
+}
+
+function grtRecordItem(r, refresh) {
+  return el('li', {},
+    el('div', { class: 'rec' },
+      grtDetails(r),
+      el('div', { class: 'origin small' }, r.origin || '', r.origin ? ' · ' : '', fmtTime(r.importedAt))),
     el('button', { class: 'icon-btn small-btn', type: 'button', 'aria-label': 'Löschen',
       onclick: () => { if (confirm('Datensatz löschen?')) { userStore.remove(r.id); refresh(); } } }, '🗑'));
 }
@@ -165,7 +278,7 @@ function exportBackup() {
 
 function renderCompare(box) {
   compareBoxRef = box;
-  const recs = userStore.all().filter((r) => matches(r, ui.filter) && r.charge != null && r.measured_velocity != null);
+  const recs = userStore.all().filter((r) => r.kind !== 'grtload' && matches(r, ui.filter) && r.charge != null && r.measured_velocity != null);
   if (!recs.length) { box.replaceChildren(); return; }
   const groups = new Map();
   for (const r of recs) {

@@ -30,8 +30,14 @@ export async function loadLog() {
     .filter(Boolean);
 }
 
+/** Druck-Limit (sim-MPa) einer Demo-Patrone, sonst das erste, sonst Fallback. */
+export function limitFor(db, cartridge) {
+  const limits = db?.pressure_limits || [];
+  const found = limits.find((l) => l.cartridge === cartridge) || limits[0];
+  return found ? { cartridge: found.cartridge, max: Number(found.max_mpa_sim) } : { cartridge: '—', max: 380 };
+}
+
 /** Erstes Druck-Limit (sim-MPa) oder Fallback. */
 export function primaryLimit(db) {
-  const l = db.pressure_limits[0];
-  return l ? { cartridge: l.cartridge, max: Number(l.max_mpa_sim) } : { cartridge: '—', max: 380 };
+  return limitFor(db, db?.pressure_limits?.[0]?.cartridge);
 }

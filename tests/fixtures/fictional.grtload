@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- Synthetic unit-test fixture. Fictional names and values. Not a load. -->
+<GordonsReloadingTool version="test">
+  <InnerBallistikInput>
+    <title>Demo%20Fiktivprojekt</title>
+    <caliber>
+      <input name="CaliberName" value="Fiktiv-Kaliber%207" unit="" type="string"/>
+      <input name="casevol" value="1%2E25" unit="cm3" type="decimal"/>
+      <input name="pMaxZul" value="1111" unit="bar" type="decimal"/>
+      <input name="method" value="Demo-Verfahren" unit="" type="string"/>
+    </caliber>
+    <caliberfile>
+      <var name="Pmax" value="SENTINEL-CIP-9"/>
+    </caliberfile>
+    <projectile>
+      <input name="ProjectileName" value="Fiktivgeschoss%20Alpha" unit="" type="string"/>
+      <input name="mp" value="4.5" unit="g" type="decimal"/>
+      <input name="glen" value="12" unit="mm" type="decimal"/>
+    </projectile>
+    <propellant>
+      <input name="mname" value="DemoChemie" unit="" type="string"/>
+      <input name="pname" value="Pulver%20Zeta" unit="" type="string"/>
+      <input name="Ba" value="SENTINEL-BA-9" unit="" type="decimal"/>
+      <input name="Qex" value="SENTINEL-QEX-9" unit="kJ/kg" type="decimal"/>
+      <input name="a0" value="SENTINEL-A0-9" unit="" type="decimal"/>
+    </propellant>
+    <appendix>
+      <Measurement index="1" title="Messreihe">
+        <charge name="Serie%20A" note="FIKTIV%21%20KEINE%20LADEANGABE" value="0.0015">
+          <shot name="" pressure="SENTINEL-P-9" velocity="10"/>
+          <shot name="" pressure="0" velocity="20"/>
+          <shot name="" pressure="0" velocity="30"/>
+          <shot name="" pressure="0" velocity="0"/>
+          <shot name="" pressure="0" velocity="-4"/>
+          <shot name="" pressure="0" velocity=""/>
+        </charge>
+        <charge name="Serie B" note="" value="0.001">
+          <shot name="" pressure="0" velocity=""/>
+        </charge>
+      </Measurement>
+    </appendix>
+  </InnerBallistikInput>
+</GordonsReloadingTool>
