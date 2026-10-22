@@ -1,7 +1,8 @@
 // Einfache Plausibilitätstests für das Spielzeugmodell. Aufruf: node tests/model.test.mjs
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { bulletMass, powderBeta, simulate, sweep } from '../js/model.js';
+import { limitFor } from '../js/api.js';
+import { GRAMS_PER_GRAIN, bulletMass, ignitionFactor, powderBeta, simulate, sweep } from '../js/model.js';
 
 const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url)));
 const fast = db.powders.find((p) => p.burn_class === 'fast');
@@ -17,14 +18,52 @@ assert.ok(simulate({ powder: slow, bullet, charge: 6 }).peakPressure < b.peakPre
 
 assert.equal(db.powders.length, 8);
 assert.equal(db.bullets.length, 8);
+assert.deepEqual(db.primers.map((p) => p.name), [
+  'DemoPrimer Small Rifle',
+  'DemoPrimer Small Rifle Magnum',
+  'DemoPrimer Large Rifle',
+  'DemoPrimer Large Rifle Magnum',
+  'DemoPrimer Small Pistol',
+  'DemoPrimer Large Pistol',
+  'DemoPrimer Small Pistol Magnum',
+  'DemoPrimer Large Pistol Magnum',
+]);
+const seated = [-0.25, 0, 0.25, 1, 2, 3].map((seatingMm) => simulate({ powder: fast, bullet, charge: 4, seatingMm }).peakPressure);
+assert.equal(seated[1], a.peakPressure);
+for (let i = 1; i < seated.length; i += 1) assert.ok(seated[i] < seated[i - 1], String(i));
+assert.equal(ignitionFactor(undefined), 1);
+assert.ok(simulate({ powder: fast, bullet, charge: 6, primer: { ignition: 1.06 } }).peakPressure
+  > simulate({ powder: fast, bullet, charge: 6 }).peakPressure);
+assert.ok(simulate({ powder: fast, bullet, charge: 6, primer: { ignition: 0.98 } }).peakPressure
+  < simulate({ powder: fast, bullet, charge: 6 }).peakPressure);
 assert.deepEqual(db.pressure_limits.map((l) => l.cartridge), ['Demo-Cartridge-1', 'Demo-Cartridge-2', 'Demo-Cartridge-3', 'Demo-Cartridge-4']);
 for (const powder of db.powders) assert.match(powder.name, /^DemoPowder /);
 for (const item of db.bullets) assert.match(item.name, /^Demo /);
 for (const limitRow of db.pressure_limits) {
   assert.match(limitRow.cartridge, /^Demo-Cartridge-/);
-  assert.equal(typeof limitRow.max_mpa_sim, 'number');
+  assert.equal(typeof limitRow.pmax_bar, 'number');
+  assert.equal(limitRow.pmax_bar % 10, 0);
 }
-assert.equal(bulletMass({ name: 'Demo X 1g', sim_mass: 4 }), 4);
+assert.equal(limitFor(db, 'Demo-Cartridge-1').bar, 3800);
+assert.equal(limitFor(db, 'Demo-Cartridge-1').max, 380);
+assert.equal(bulletMass({ mass_grain: 147 }), 147 * GRAMS_PER_GRAIN);
+assert.equal(bulletMass({}), 10);
+assert.deepEqual(db.bullets.map((b) => [b.id, b.mass_grain, b.ogive_form]), [
+  ['B-01', 147, 'tangent'],
+  ['B-02', 168, 'secant'],
+  ['B-03', 127, 'none'],
+  ['B-04', 114, 'tangent'],
+  ['B-05', 194, 'hybrid'],
+  ['B-06', 105, 'none'],
+  ['B-07', 176, 'none'],
+  ['B-08', 85, 'none'],
+]);
+for (const item of db.bullets) {
+  assert.equal(Object.hasOwn(item, 'sim_mass'), false);
+  assert.equal(typeof item.ogive_form, 'string');
+  assert.ok(item.ogive_form.length > 0);
+  assert.match(item.name, /grain$/);
+}
 assert.equal(powderBeta(db.powders.find((p) => p.burn_class === 'extrafast')), 0.40);
 const byRank = [...db.powders].sort((a, b) => a.burn_rate_rank - b.burn_rate_rank);
 assert.deepEqual(db.powders.map((p) => p.burn_rate_rank), byRank.map((p) => p.burn_rate_rank), 'db.json folgt der Rangfolge');
@@ -34,9 +73,10 @@ for (let i = 1; i < byRank.length; i++) {
 assert.ok(simulate({ powder: db.powders.find((p) => p.burn_class === 'extrafast'), bullet, charge: 6 }).peakPressure
   > simulate({ powder: db.powders.find((p) => p.burn_class === 'extraslow'), bullet, charge: 6 }).peakPressure);
 
-const limit = db.pressure_limits[0].max_mpa_sim;
+const limit = db.pressure_limits[0].pmax_bar / 10;
 const { best, results } = sweep({ powders: db.powders, bullets: db.bullets, limit });
 assert.ok(best && best.peakPressure <= limit, 'Bestes Ergebnis unter Limit');
 assert.ok(results.every((r) => r.underLimit === (r.peakPressure <= limit)));
-console.log('OK – alle Modelltests bestanden. Bestes:', best.powderName, best.bulletName, best.charge, 'LE',
-  Math.round(best.muzzleVelocity), 'sim-m/s @', Math.round(best.peakPressure), 'sim-MPa');
+console.log('OK – alle Modelltests bestanden. Bestes:', best.powderName, best.bulletName,
+  Math.round(best.charge * 5 * 10) / 10, 'grain',
+  Math.round(best.muzzleVelocity), 'm/s @', Math.round(best.peakPressure * 10), 'bar');

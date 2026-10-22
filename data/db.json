@@ -1,32 +1,174 @@
 {
-  "_note": "SIMULATED DEMO DATA - fictional values, not real or safe load data",
+  "_note": "FICTIONAL DEMO DATA - not real or safe load data",
   "version": 2,
-  "updated": "2026-10-21T23:50:00Z",
+  "updated": "2026-10-22T00:30:00Z",
   "powders": [
-    {"id": "P-04", "name": "DemoPowder Extrafast-D", "burn_rate_rank": 1, "burn_class": "extrafast", "sim_beta": 0.40},
-    {"id": "P-01", "name": "DemoPowder Fast-A", "burn_rate_rank": 2, "burn_class": "fast", "sim_beta": 0.30},
-    {"id": "P-05", "name": "DemoPowder Mediumfast-E", "burn_rate_rank": 3, "burn_class": "mediumfast", "sim_beta": 0.24},
-    {"id": "P-08", "name": "DemoPowder Plateau-H", "burn_rate_rank": 4, "burn_class": "plateau", "sim_beta": 0.20},
-    {"id": "P-02", "name": "DemoPowder Medium-B", "burn_rate_rank": 5, "burn_class": "medium", "sim_beta": 0.17},
-    {"id": "P-06", "name": "DemoPowder Mediumslow-F", "burn_rate_rank": 6, "burn_class": "mediumslow", "sim_beta": 0.14},
-    {"id": "P-03", "name": "DemoPowder Slow-C", "burn_rate_rank": 7, "burn_class": "slow", "sim_beta": 0.10},
-    {"id": "P-07", "name": "DemoPowder Extraslow-G", "burn_rate_rank": 8, "burn_class": "extraslow", "sim_beta": 0.06}
+    {
+      "id": "P-04",
+      "name": "DemoPowder Extrafast-D",
+      "burn_rate_rank": 1,
+      "burn_class": "extrafast",
+      "beta": 0.4
+    },
+    {
+      "id": "P-01",
+      "name": "DemoPowder Fast-A",
+      "burn_rate_rank": 2,
+      "burn_class": "fast",
+      "beta": 0.3
+    },
+    {
+      "id": "P-05",
+      "name": "DemoPowder Mediumfast-E",
+      "burn_rate_rank": 3,
+      "burn_class": "mediumfast",
+      "beta": 0.24
+    },
+    {
+      "id": "P-08",
+      "name": "DemoPowder Plateau-H",
+      "burn_rate_rank": 4,
+      "burn_class": "plateau",
+      "beta": 0.2
+    },
+    {
+      "id": "P-02",
+      "name": "DemoPowder Medium-B",
+      "burn_rate_rank": 5,
+      "burn_class": "medium",
+      "beta": 0.17
+    },
+    {
+      "id": "P-06",
+      "name": "DemoPowder Mediumslow-F",
+      "burn_rate_rank": 6,
+      "burn_class": "mediumslow",
+      "beta": 0.14
+    },
+    {
+      "id": "P-03",
+      "name": "DemoPowder Slow-C",
+      "burn_rate_rank": 7,
+      "burn_class": "slow",
+      "beta": 0.1
+    },
+    {
+      "id": "P-07",
+      "name": "DemoPowder Extraslow-G",
+      "burn_rate_rank": 8,
+      "burn_class": "extraslow",
+      "beta": 0.06
+    }
   ],
   "bullets": [
-    {"id": "B-01", "name": "Demo FMJ 9.5g", "sim_mass": 9.5},
-    {"id": "B-02", "name": "Demo HPBT 10.9g", "sim_mass": 10.9},
-    {"id": "B-03", "name": "Demo RN 8.2g", "sim_mass": 8.2},
-    {"id": "B-04", "name": "Demo SP 7.4g", "sim_mass": 7.4},
-    {"id": "B-05", "name": "Demo HP 12.6g", "sim_mass": 12.6},
-    {"id": "B-06", "name": "Demo TC 6.8g", "sim_mass": 6.8},
-    {"id": "B-07", "name": "Demo FN 11.4g", "sim_mass": 11.4},
-    {"id": "B-08", "name": "Demo WC 5.5g", "sim_mass": 5.5}
+    {
+      "id": "B-01",
+      "name": "Demo FMJ 147 grain",
+      "mass_grain": 147,
+      "ogive_form": "tangent"
+    },
+    {
+      "id": "B-02",
+      "name": "Demo HPBT 168 grain",
+      "mass_grain": 168,
+      "ogive_form": "secant"
+    },
+    {
+      "id": "B-03",
+      "name": "Demo RN 127 grain",
+      "mass_grain": 127,
+      "ogive_form": "none"
+    },
+    {
+      "id": "B-04",
+      "name": "Demo SP 114 grain",
+      "mass_grain": 114,
+      "ogive_form": "tangent"
+    },
+    {
+      "id": "B-05",
+      "name": "Demo HP 194 grain",
+      "mass_grain": 194,
+      "ogive_form": "hybrid"
+    },
+    {
+      "id": "B-06",
+      "name": "Demo TC 105 grain",
+      "mass_grain": 105,
+      "ogive_form": "none"
+    },
+    {
+      "id": "B-07",
+      "name": "Demo FN 176 grain",
+      "mass_grain": 176,
+      "ogive_form": "none"
+    },
+    {
+      "id": "B-08",
+      "name": "Demo WC 85 grain",
+      "mass_grain": 85,
+      "ogive_form": "none"
+    }
+  ],
+  "primers": [
+    {
+      "id": "PR-SR",
+      "name": "DemoPrimer Small Rifle",
+      "ignition": 1.0
+    },
+    {
+      "id": "PR-SRM",
+      "name": "DemoPrimer Small Rifle Magnum",
+      "ignition": 1.05
+    },
+    {
+      "id": "PR-LR",
+      "name": "DemoPrimer Large Rifle",
+      "ignition": 1.01
+    },
+    {
+      "id": "PR-LRM",
+      "name": "DemoPrimer Large Rifle Magnum",
+      "ignition": 1.06
+    },
+    {
+      "id": "PR-SP",
+      "name": "DemoPrimer Small Pistol",
+      "ignition": 0.98
+    },
+    {
+      "id": "PR-LP",
+      "name": "DemoPrimer Large Pistol",
+      "ignition": 0.99
+    },
+    {
+      "id": "PR-SPM",
+      "name": "DemoPrimer Small Pistol Magnum",
+      "ignition": 1.03
+    },
+    {
+      "id": "PR-LPM",
+      "name": "DemoPrimer Large Pistol Magnum",
+      "ignition": 1.04
+    }
   ],
   "pressure_limits": [
-    {"cartridge": "Demo-Cartridge-1", "max_mpa_sim": 380},
-    {"cartridge": "Demo-Cartridge-2", "max_mpa_sim": 265},
-    {"cartridge": "Demo-Cartridge-3", "max_mpa_sim": 440},
-    {"cartridge": "Demo-Cartridge-4", "max_mpa_sim": 510}
+    {
+      "cartridge": "Demo-Cartridge-1",
+      "pmax_bar": 3800
+    },
+    {
+      "cartridge": "Demo-Cartridge-2",
+      "pmax_bar": 2650
+    },
+    {
+      "cartridge": "Demo-Cartridge-3",
+      "pmax_bar": 4400
+    },
+    {
+      "cartridge": "Demo-Cartridge-4",
+      "pmax_bar": 5100
+    }
   ],
   "last_optimization": null
 }

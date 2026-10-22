@@ -3,6 +3,8 @@
  *
  * Geparst wird im Browser mit DOMParser. Textwerte sind URL-kodiert
  * (decodeURIComponent). Die Ladung steht in der Datei in Kilogramm.
+ * Ein numerischer Schussdruck aus der Datei wird mit Faktor 10 in bar übernommen
+ * und als „berechnet (GRT)“ gekennzeichnet. Text-Platzhalter werden verworfen.
  *
  * Übernommen werden ausschließlich Anzeigefelder: Titel, Kalibername,
  * Hülsenvolumen, pMaxZul und Verfahren, Geschoss (Name, Gewicht, Länge),
@@ -10,8 +12,10 @@
  * Interne Pulvermodell-Parameter (Ba, Qex, a0, …) und CIP-Zeichnungsdaten
  * werden nicht gelesen und nicht gespeichert.
  */
+import { mpaToBar, psiNote, psiToBar } from '../cip/pressure.js';
+import { parsePressureNumber } from './mapping.js';
 
-/** Avoirdupois-Grain: 1 gr = 0.06479891 g. Nur zur Anzeige, keine Umrechnung von Drücken. */
+/** Avoirdupois: 1 grain = 0.06479891 g. */
 export const GRAMS_PER_GRAIN = 0.06479891;
 
 export function decodeGrtValue(raw) {
@@ -67,6 +71,23 @@ function inputNumber(parent, name) {
   return node ? readNumber(node.getAttribute('value')) : null;
 }
 
+function pressureKind(unit) {
+  const token = String(unit || '').trim().toLowerCase();
+  if (!token) return 'empty';
+  if (token === 'bar') return 'bar';
+  if (token === 'psi') return 'psi';
+  if (token === 'cup' || token === 'lup') return 'drop';
+  return 'label';
+}
+
+function classifyPressure(unitAttr, method) {
+  const fromUnit = pressureKind(unitAttr);
+  const fromMethod = pressureKind(method);
+  if (fromUnit === 'drop' || fromMethod === 'drop') return { kind: 'drop', label: '' };
+  if (fromUnit === 'psi' || (fromUnit !== 'bar' && fromMethod === 'psi')) return { kind: 'psi', label: '' };
+  return { kind: 'bar', label: fromMethod === 'label' ? method : '' };
+}
+
 function joinParts(parts) {
   return parts.map((part) => String(part || '').trim()).filter(Boolean).join(' ');
 }
@@ -95,9 +116,12 @@ function parseCharge(node) {
   const kilograms = readNumber(node.getAttribute('value'));
   const grams = kilograms == null ? null : kilograms * 1000;
   const velocitiesMs = [];
+  const bars = [];
   for (const shot of directChildren(node, 'shot')) {
     const velocity = readNumber(shot.getAttribute('velocity'));
     if (velocity != null && velocity > 0) velocitiesMs.push(velocity);
+    const mpa = readNumber(shot.getAttribute('pressure'));
+    if (mpa != null && mpa > 0) bars.push(mpaToBar(mpa));
   }
   return {
     name: decodeGrtValue(node.getAttribute('name')).trim(),
@@ -107,6 +131,8 @@ function parseCharge(node) {
     grains: grainsFromGrams(grams),
     velocitiesMs,
     stats: seriesStats(velocitiesMs),
+    bars,
+    barOrigin: bars.length ? 'berechnet (GRT)' : '',
   };
 }
 
@@ -138,18 +164,28 @@ export function parseGrtLoad(xmlText) {
 
   const projectileName = inputValue(projectile, 'ProjectileName')
     || joinParts([inputValue(projectile, 'mname'), inputValue(projectile, 'pname')]);
+  const pmaxNode = matchingInput(caliber, 'pMaxZul');
+  const rawMax = pmaxNode ? parsePressureNumber(decodeGrtValue(pmaxNode.getAttribute('value'))) : null;
+  const unitAttr = pmaxNode ? decodeGrtValue(pmaxNode.getAttribute('unit')).trim() : '';
+  const method = inputValue(caliber, 'method');
+  const pressure = classifyPressure(unitAttr, method);
+  const dropped = pressure.kind === 'drop';
+  const kept = dropped ? [] : charges;
 
   return {
     title: decodeGrtValue(titleNode ? titleNode.textContent : '').trim(),
     caliberName: inputValue(caliber, 'CaliberName'),
     caseVolumeCm3: inputNumber(caliber, 'casevol'),
-    pMaxBar: inputNumber(caliber, 'pMaxZul'),
-    pressureMethod: inputValue(caliber, 'method'),
+    pMaxBar: dropped ? null : (pressure.kind === 'psi' && rawMax != null ? psiToBar(rawMax) : rawMax),
+    pressureMethod: dropped ? '' : pressure.label,
+    pressureNote: !dropped && pressure.kind === 'psi' && rawMax != null ? psiNote() : '',
+    droppedUnit: dropped ? Math.max(charges.length, 1) : 0,
+    summary: dropped ? `${Math.max(charges.length, 1)} Zeilen verworfen (Druckeinheit nicht unterstützt)` : '',
+    charges: kept,
     projectileName,
     projectileWeightG: weightG,
     projectileWeightGr: grainsFromGrams(weightG),
     projectileLengthMm: inputNumber(projectile, 'glen'),
     propellantName: joinParts([inputValue(propellant, 'mname'), inputValue(propellant, 'pname')]),
-    charges,
   };
 }

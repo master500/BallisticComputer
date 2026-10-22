@@ -10,15 +10,19 @@ import { el, fmt, fmtTime } from '../util.js';
 import { drawLineChart } from '../chart.js';
 import { parseInput } from '../userdata/csv.js';
 import { isGrtLoad, parseGrtLoad } from '../userdata/grtload.js';
-import { FIELDS, suggestMapping, applyMapping, normalizeHeader, LIKELY_PREDICTED } from '../userdata/mapping.js';
+import { FIELDS, suggestMapping, applyMapping, normalizeHeader, LIKELY_PREDICTED, unitsForMapping, headerMeasureUnit } from '../userdata/mapping.js';
 import { userStore } from '../userdata/store.js';
 import { OFFICIAL_SOURCES } from '../userdata/sources.js';
+import { loadCipIndex } from '../cip/lookup.js';
+import { mountCipCheck } from '../userdata/cipcheck.js';
+import { primerHintFor } from '../userdata/primer.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
 const ui = { filter: '', pending: null };
 
 export function renderUserData(root) {
   const importBox = el('div');
+  const cipBox = el('div');
   const listBox = el('div');
   const compareBox = el('div');
 
@@ -27,10 +31,17 @@ export function renderUserData(root) {
       el('strong', {}, 'Eigene Daten – Verantwortung beim Nutzer. Immer mit aktuellen Herstellerangaben abgleichen.'),
       el('p', { class: 'small' }, 'Diese Daten werden nur angezeigt – ohne Extrapolation oder Druckprognose. Sie bleiben lokal auf diesem Gerät und werden nicht in Simulation/Optimierung verwendet (dort nur fiktive Demo-Werte).')),
     importSection(importBox, refresh),
+    cipBox,
     listBox,
     compareBox,
     sourcesSection(),
   );
+  mountCipCheck(cipBox, null);
+  loadCipIndex().then((index) => {
+    if (cipBox.isConnected) mountCipCheck(cipBox, index);
+  }).catch((err) => {
+    if (cipBox.isConnected) cipBox.replaceChildren(el('section', { class: 'card' }, el('h2', {}, 'CIP-Prüfung'), el('p', {}, String(err.message || err))));
+  });
 
   function refresh() {
     renderPending(importBox, refresh);
@@ -60,7 +71,8 @@ function importSection(pendingBox, refresh) {
           status.textContent = `${parsed.records.length} Datensatz/Datensätze aus dem Backup. Verschachtelte Angaben bleiben erhalten.`;
         } else {
           if (!parsed.rows.length) throw new Error('Keine Datenzeilen gefunden.');
-          ui.pending = { mode: 'table', ...parsed, fileName, mapping: suggestMapping(parsed.headers) };
+          const mapping = suggestMapping(parsed.headers);
+          ui.pending = { mode: 'table', ...parsed, fileName, mapping, units: unitsForMapping(parsed.headers, mapping) };
           status.textContent = `${parsed.rows.length} Zeile(n) aus „${fileName}“ erkannt (${parsed.format.toUpperCase()}). Bitte Zuordnung prüfen.`;
         }
       }
@@ -122,18 +134,42 @@ function renderPending(box, refresh) {
     return;
   }
 
+  p.units ??= { bullet_weight: '', charge: '', coal: '' };
+  const measureUnits = {
+    bullet_weight: [['', 'Einheit wählen'], ['grain', 'grain'], ['masse', 'Masse umrechnen']],
+    charge: [['', 'Einheit wählen'], ['grain', 'grain'], ['masse', 'Masse umrechnen']],
+    coal: [['', 'Einheit wählen'], ['mm', 'mm'], ['zoll', 'Zoll umrechnen']],
+  };
   const selects = FIELDS.map((f) => {
-    const sel = el('select', { onchange: (e) => { p.mapping[f.key] = Number(e.target.value); refresh(); } },
+    const sel = el('select', { onchange: (e) => {
+      p.mapping[f.key] = Number(e.target.value);
+      if (measureUnits[f.key]) {
+        const idx = p.mapping[f.key];
+        p.units[f.key] = idx >= 0 ? (headerMeasureUnit(p.headers[idx]) || '') : '';
+      }
+      refresh();
+    } },
       el('option', { value: -1 }, '— nicht zuordnen —'),
       p.headers.map((h, i) => el('option', { value: i, selected: p.mapping[f.key] === i }, h || `Spalte ${i + 1}`)));
     const idx = p.mapping[f.key];
     const warn = idx >= 0 && (f.key === 'measured_velocity' || f.key === 'notes') && LIKELY_PREDICTED.test(normalizeHeader(p.headers[idx]))
       ? el('div', { class: 'warn-text small' }, '⚠️ Diese Spalte enthält in GRT/QuickLOAD-Exporten oft berechnete Werte. Nur zuordnen, wenn wirklich gemessen.')
       : null;
-    return el('div', { class: 'map-row' }, el('span', { class: 'small' }, f.label), sel, warn);
+    const unitPick = measureUnits[f.key] && idx >= 0
+      ? el('select', {
+        'aria-label': `Einheit ${f.label}`,
+        onchange: (e) => { p.units[f.key] = e.target.value; refresh(); },
+      }, measureUnits[f.key].map(([value, label]) => el('option', { value, selected: p.units[f.key] === value }, label)))
+      : null;
+    const mark = p.units[f.key] === 'masse'
+      ? el('div', { class: 'small' }, 'aus Gramm umgerechnet')
+      : p.units[f.key] === 'zoll'
+        ? el('div', { class: 'small' }, 'umgerechnet')
+        : null;
+    return el('div', { class: 'map-row' }, el('span', { class: 'small' }, f.label), sel, unitPick, mark, warn);
   });
 
-  const preview = applyMapping(p.rows.slice(0, 5), p.mapping, { fileName: p.fileName });
+  const preview = applyMapping(p.rows.slice(0, 5), p.mapping, { fileName: p.fileName, units: p.units });
   box.replaceChildren(
     el('div', { class: 'mapping' },
       el('h3', {}, 'Spaltenzuordnung'),
@@ -143,7 +179,7 @@ function renderPending(box, refresh) {
       recordTable(preview, { compact: true }),
       el('div', { class: 'row-btns' },
         el('button', { class: 'btn primary', type: 'button', onclick: () => {
-          const recs = applyMapping(p.rows, p.mapping, { fileName: p.fileName });
+          const recs = applyMapping(p.rows, p.mapping, { fileName: p.fileName, units: p.units });
           const n = userStore.add(recs);
           ui.pending = null;
           refresh();
@@ -184,18 +220,47 @@ function renderList(box, refresh) {
       el('button', { class: 'btn danger', type: 'button', onclick: () => { if (confirm('Alle eigenen Daten auf diesem Gerät löschen?')) { userStore.clear(); refresh(); } } }, 'Alle löschen')) : null));
 }
 
+function withNote(text, note) {
+  return note ? `${text} · ${note}` : text;
+}
+
+function cellText(record, key) {
+  const value = record[key];
+  if (value == null || value === '') return '—';
+  const shown = typeof value === 'number' ? fmt(value, 2) : value;
+  return withNote(shown, record[`${key}_note`]);
+}
+
 function recordItem(r, refresh) {
   if (r.kind === 'grtload') return grtRecordItem(r, refresh);
   return el('li', {},
     el('div', { class: 'rec' },
       el('strong', {}, [r.cartridge, r.powder].filter(Boolean).join(' · ') || '—'),
-      el('div', { class: 'small' }, [r.bullet, r.bullet_weight != null ? `${fmt(r.bullet_weight, 1)} (Gew.)` : null].filter(Boolean).join(' · ')),
+      el('div', { class: 'small' }, [r.bullet, r.bullet_weight != null ? `${fmt(r.bullet_weight, 1)} grain` : null].filter(Boolean).join(' · ')),
       el('div', { class: 'small' },
-        `Ladung ${r.charge != null ? fmt(r.charge, 2) : '—'} · COAL ${r.coal != null ? fmt(r.coal, 2) : '—'} · v gemessen ${r.measured_velocity != null ? fmt(r.measured_velocity) : '—'}`),
+        `Ladung ${r.charge != null ? withNote(`${fmt(r.charge, 1)} grain`, r.charge_note) : '—'} · COAL ${r.coal != null ? withNote(`${fmt(r.coal, 2)} mm`, r.coal_note) : '—'} · v gemessen ${r.measured_velocity != null ? `${fmt(r.measured_velocity)} m/s` : '—'}`),
       r.notes ? el('div', { class: 'muted small' }, r.notes) : null,
+      primerEditor(r, refresh),
       el('div', { class: 'origin small' }, r.origin, r.source ? ` · Quelle: ${r.source}` : '', ` · ${fmtTime(r.importedAt)}`)),
     el('button', { class: 'icon-btn small-btn', type: 'button', 'aria-label': 'Löschen',
       onclick: () => { if (confirm('Datensatz löschen?')) { userStore.remove(r.id); refresh(); } } }, '🗑'));
+}
+
+function primerEditor(record, refresh) {
+  const draft = { value: record.primer || '' };
+  const hint = el('p', { class: 'hint-yellow small', role: 'status' });
+  const show = () => { hint.textContent = primerHintFor(userStore.all(), record, draft.value); };
+  const input = el('input', {
+    type: 'text',
+    'aria-label': 'Zündhütchen',
+    placeholder: 'Boxer/Berdan, klein/groß, Büchse/Pistole, Standard/Magnum, Marke',
+    value: record.primer || '',
+    oninput: (e) => { draft.value = e.target.value; show(); },
+  });
+  return el('div', {},
+    el('label', {}, 'Zündhütchen (Freitext, keine Leistungswerte)', input),
+    hint,
+    el('button', { class: 'btn', type: 'button', onclick: () => { userStore.update(record.id, { primer: draft.value.trim() }); refresh(); } }, 'Zündhütchen speichern'));
 }
 
 function stampGrt(project, fileName) {
@@ -218,6 +283,10 @@ function fact(label, value) {
 function grtDetails(project) {
   const charges = Array.isArray(project.charges) ? project.charges : [];
   const notes = charges.filter((charge) => charge.note);
+  const dropped = project.droppedUnit > 0;
+  const pressureText = dropped
+    ? (project.summary || '—')
+    : [Number.isFinite(project.pMaxBar) ? `${flex(project.pMaxBar, 1)} bar` : '—', project.pressureNote, project.pressureMethod].filter(Boolean).join(' · ');
   return el('div', { class: 'grt' },
     el('h3', {}, project.title || 'GRT-Projekt'),
     notes.map((charge) => el('p', { class: 'charge-note', role: 'note' },
@@ -227,14 +296,15 @@ function grtDetails(project) {
     el('dl', { class: 'facts' },
       fact('Kaliber', project.caliberName || '—'),
       fact('Hülsenvolumen', Number.isFinite(project.caseVolumeCm3) ? `${flex(project.caseVolumeCm3, 3)} cm³` : '—'),
-      fact('pMaxZul', [Number.isFinite(project.pMaxBar) ? `${flex(project.pMaxBar, 1)} bar` : '—', project.pressureMethod].filter(Boolean).join(' · ')),
+      fact('pMaxZul', pressureText),
       fact('Geschoss', project.projectileName || '—'),
-      fact('Geschossgewicht', [Number.isFinite(project.projectileWeightG) ? `${flex(project.projectileWeightG, 3)} g` : null, Number.isFinite(project.projectileWeightGr) ? `${flex(project.projectileWeightGr, 1)} gr` : null].filter(Boolean).join(' · ') || '—'),
+      fact('Geschossgewicht', Number.isFinite(project.projectileWeightGr) ? `${flex(project.projectileWeightGr, 1)} grain · aus Gramm umgerechnet` : '—'),
       fact('Geschosslänge', Number.isFinite(project.projectileLengthMm) ? `${flex(project.projectileLengthMm, 2)} mm` : '—'),
       fact('Pulvername', project.propellantName || '—')),
-    el('h3', {}, 'Ladungen'),
-    el('p', { class: 'muted small' }, 'Der Ladungswert steht in der Datei in kg und wird hier in g und grain angezeigt.'),
-    charges.length ? charges.map((charge) => chargeBlock(charge)) : el('p', { class: 'muted small' }, 'Keine Ladungen in der Datei.'));
+    dropped ? el('p', { class: 'warn-text', role: 'status' }, project.summary) : null,
+    dropped ? null : el('h3', {}, 'Ladungen'),
+    dropped ? null : el('p', { class: 'muted small' }, 'Gewichte aus der Datei: aus Gramm umgerechnet.'),
+    dropped ? null : (charges.length ? charges.map((charge) => chargeBlock(charge)) : el('p', { class: 'muted small' }, 'Keine Ladungen in der Datei.')));
 }
 
 function chargeBlock(charge) {
@@ -249,8 +319,8 @@ function chargeBlock(charge) {
   return el('div', { class: 'charge-block' },
     el('strong', {}, charge.name || 'Ladung'),
     charge.note ? el('p', { class: 'charge-note', role: 'note' }, el('span', { class: 'charge-note-label' }, 'Ladungsnotiz'), charge.note) : null,
-    el('div', {}, Number.isFinite(charge.grams) ? `${flex(charge.grams, 3)} g · ${flex(charge.grains, 1)} gr` : '—'),
-    Number.isFinite(charge.kilograms) ? el('div', { class: 'muted small' }, `in der Datei: ${flex(charge.kilograms, 6)} kg`) : null,
+    el('div', {}, Number.isFinite(charge.grains) ? `${flex(charge.grains, 1)} grain · aus Gramm umgerechnet` : '—'),
+    charge.bars?.length ? el('div', {}, `${charge.bars.map((bar) => `${flex(bar, 0)} bar`).join(', ')} · ${charge.barOrigin}`) : null,
     velocities.length ? el('div', { class: 'small' }, `Schüsse: ${velocities.map((v) => flex(v, 1)).join(', ')} m/s`) : null,
     el('div', { class: 'small' }, summary));
 }
@@ -259,6 +329,7 @@ function grtRecordItem(r, refresh) {
   return el('li', {},
     el('div', { class: 'rec' },
       grtDetails(r),
+      primerEditor(r, refresh),
       el('div', { class: 'origin small' }, r.origin || '', r.origin ? ' · ' : '', fmtTime(r.importedAt))),
     el('button', { class: 'icon-btn small-btn', type: 'button', 'aria-label': 'Löschen',
       onclick: () => { if (confirm('Datensatz löschen?')) { userStore.remove(r.id); refresh(); } } }, '🗑'));
@@ -297,17 +368,17 @@ function renderCompare(box) {
     recordTable([...recs].sort((a, b) => (a.cartridge || '').localeCompare(b.cartridge || '') || a.charge - b.charge), { compare: true })));
   requestAnimationFrame(() => drawLineChart(canvas, {
     series: keys.map((k, i) => ({ color: COLORS[i % COLORS.length], dots: true, points: groups.get(k).map((r) => [r.charge, r.measured_velocity]) })),
-    xLabel: 'Ladung (wie importiert)', yLabel: 'gemessene v (wie importiert)', fitToData: true,
+    xLabel: 'Ladung (grain)', yLabel: 'gemessene v (m/s)', fitToData: true,
   }));
 }
 
 function recordTable(recs, { compact = false, compare = false } = {}) {
   const cols = compare
-    ? [['cartridge', 'Patrone'], ['powder', 'Pulver'], ['bullet', 'Geschoss'], ['charge', 'Ladung'], ['measured_velocity', 'v gem.']]
+    ? [['cartridge', 'Patrone'], ['powder', 'Pulver'], ['bullet', 'Geschoss'], ['charge', 'Ladung (grain)'], ['measured_velocity', 'v gem. (m/s)']]
     : FIELDS.map((f) => [f.key, f.label]);
   return el('div', { class: 'table-wrap' }, el('table', { class: compact ? 'compact' : '' },
     el('thead', {}, el('tr', {}, cols.map(([, l]) => el('th', {}, l)))),
-    el('tbody', {}, recs.map((r) => el('tr', {}, cols.map(([k]) => el('td', {}, r[k] == null || r[k] === '' ? '—' : (typeof r[k] === 'number' ? fmt(r[k], 2) : r[k]))))))));
+    el('tbody', {}, recs.map((r) => el('tr', {}, cols.map(([k]) => el('td', {}, cellText(r, k))))))));
 }
 
 /* ---------- Offizielle Quellen ---------- */
@@ -316,9 +387,9 @@ function sourcesSection() {
   return el('section', { class: 'card' },
     el('h2', {}, 'Offizielle Quellen'),
     el('p', { class: 'muted small' }, 'Aktuelle Ladedaten nur direkt beim Hersteller. Links öffnen die offiziellen Seiten in einem neuen Fenster.'),
-    OFFICIAL_SOURCES.map((g) => el('div', {},
-      el('h3', { class: 'group-title' }, g.group),
-      el('ul', { class: 'list' }, g.items.map((s) => el('li', {},
+    OFFICIAL_SOURCES.map((group) => el('div', {},
+      el('h3', { class: 'group-title' }, group.group),
+      el('ul', { class: 'list' }, group.items.map((s) => el('li', {},
         el('a', { href: s.url, target: '_blank', rel: 'noopener noreferrer', class: 'ext' },
           el('strong', {}, s.name),
           el('div', { class: 'muted small' }, [s.note, new URL(s.url).hostname].filter(Boolean).join(' · '))),
