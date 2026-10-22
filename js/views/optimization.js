@@ -73,13 +73,14 @@ export function renderOptimization(root, { db }) {
     const chartCombos = chartBullet ? db.powders.map((p) => ({ p, b: chartBullet })) : [];
 
     out.replaceChildren(
-      el('p', { class: 'muted small' }, `Alle Demo-Pulver × alle Demo-Geschosse × Ladung (1–10 LE, Schritt 0,25). Höchste Geschwindigkeit mit Spitzendruck ≤ ${fmt(limit.bar)} bar (${limit.cartridge}). Das Diagramm zeigt ${chartBullet ? chartBullet.name : '—'}. Demo-Wert, keine echten Ladedaten.`),
+      el('p', { class: 'warn-text', role: 'note' }, 'Rechenwert – keine echten Ladedaten, keine Freigabe'),
+      el('p', { class: 'muted small' }, `Alle Demo-Pulver × alle Demo-Geschosse × Ladung (1–10 LE, Schritt 0,25). Höchste Geschwindigkeit mit Spitzendruck ≤ ${fmt(limit.bar)} bar (${limit.cartridge}). Das Diagramm zeigt ${chartBullet ? chartBullet.name : '—'}.`),
       best
         ? el('section', { class: 'card highlight' },
             el('h2', {}, 'Bestes Ergebnis'),
             el('div', { class: 'kpis' },
-              kpiBox('Geschw.', `${fmt(best.muzzleVelocity)} m/s · Demo-Wert`),
-              kpiBox('Druck', `${fmt(best.peakPressure * 10)} bar · Demo-Wert`),
+              kpiBox('Geschw.', `${fmt(best.muzzleVelocity)} m/s`),
+              kpiBox('Druck', `${fmt(best.peakPressure * 10)} bar`),
               kpiBox('Ladung', `${fmt(best.charge, 2)} LE`)),
             el('p', {}, `${best.powderName} + ${best.bulletName}`))
         : el('section', { class: 'card' }, el('p', {}, 'Keine Kombination unter dem Limit.')),

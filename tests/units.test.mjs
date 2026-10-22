@@ -31,4 +31,14 @@ for (const bullet of db.bullets) {
 }
 for (const limit of db.pressure_limits) assert.equal(typeof limit.pmax_bar, 'number');
 
+const notice = 'Rechenwert – keine echten Ladedaten, keine Freigabe';
+const readView = (name) => readFileSync(join(root, 'js/views', name), 'utf8');
+const simulation = readView('simulation.js');
+const optimization = readView('optimization.js');
+const database = readView('database.js');
+assert.equal(simulation.split(notice).length - 1, 2);
+assert.equal(optimization.split(notice).length - 1, 1);
+assert.equal(database.split(notice).length - 1, 1);
+assert.equal(/· Demo-Wert/.test(simulation + optimization + database), false);
+
 console.log('OK – keine sim-Abkürzung in Oberfläche, README oder Datenfeldern.');

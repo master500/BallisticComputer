@@ -2,6 +2,11 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.2] – 2026-10-22
+### Geändert
+- Simulation, Optimierung, die Tabelle V0–V300 und die Demo-Datenbank zeigen je Ergebnis einmal „Rechenwert – keine echten Ladedaten, keine Freigabe“.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.2`.
+
 ## [1.5.1] – 2026-10-22
 ### Geändert
 - Sichtbare Einheiten sind bar, grain, m, m/s und J. Demo-Felder heißen `beta`, `mass_grain`, `bc_g1`, `bc_g7` und `pmax_bar`. Berechnete Demo-Zahlen heißen Demo-Wert, ein Demo-BC „fiktiver Demo-BC“.

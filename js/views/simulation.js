@@ -47,9 +47,10 @@ export function renderSimulation(root, { db }) {
       el('label', {}, 'Demo-Pulver', select(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
       el('label', {}, 'Demo-Geschoss', select(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
       el('label', {}, el('span', {}, 'Ladung (abstrakte LE): ', chargeOut), slider)),
+    el('p', { class: 'warn-text', role: 'note' }, 'Rechenwert – keine echten Ladedaten, keine Freigabe'),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
-      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Demo-Wert, keine echten Ladedaten.')),
+      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert).')),
     el('section', { class: 'card' },
       el('h2', {}, 'Geschwindigkeit über Entfernung'),
       el('p', { class: 'muted small' }, 'Punktmasse mit G1 oder G7. Standardatmosphäre 15 °C, sofern Temperatur und Luftdruck nicht geändert werden.'),
@@ -66,8 +67,8 @@ export function renderSimulation(root, { db }) {
     const r = simulate({ powder, bullet, charge: state.charge });
     const over = r.peakPressure > limit.max;
     kpis.replaceChildren(
-      kpi('Spitzendruck', `${fmt(r.peakPressure * 10)} bar · Demo-Wert`, over ? 'bad' : ''),
-      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity)} m/s · Demo-Wert`),
+      kpi('Spitzendruck', `${fmt(r.peakPressure * 10)} bar`, over ? 'bad' : ''),
+      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity)} m/s`),
       kpi('Demo-Grenze', `${fmt(limit.bar)} bar`, over ? 'bad' : ''),
       kpi('Abbrand an Mündung', `${fmt(r.burnedAtExit * 100)} %`),
     );
@@ -122,6 +123,7 @@ function drawFlight(host, bullet, simulated, charge) {
     chargeText: `${fmt(step.charge, 2)} LE`,
   });
   host.replaceChildren(
+    el('p', { class: 'warn-text', role: 'note' }, 'Rechenwert – keine echten Ladedaten, keine Freigabe'),
     el('p', {}, `V0 ${fmt(solved.v0, 1)} m/s · ${source}`),
     el('p', { class: 'small' }, `${fmt(massGrain, 1)} grain · BC ${fmt(solved.bc, 3)} · Widerstandsfunktion ${solved.drag}`),
     solved.demoNote ? el('p', { class: 'small warn-text' }, solved.demoNote) : null,
