@@ -9,7 +9,7 @@ for (const file of ['js/model.js', 'js/ladder.js', 'js/views/simulation.js', 'js
 }
 
 const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
-assert.match(sw, /ballisticcomputer-v1\.5\.2/);
+assert.match(sw, /ballisticcomputer-v1\.5\.3/);
 for (const path of [
   'js/ladder.js',
   'js/views/cip.js',

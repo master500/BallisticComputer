@@ -35,6 +35,7 @@ assert.equal(1.5 / GRAMS_PER_GRAIN, 1.5 / 0.06479891);
 
 const unitToken = /\b(?:CUP|LUP)\b/i;
 const skipDirs = new Set(['.git', 'node_modules', 'tests']);
+const filterFile = /(?:^|\/)js\/userdata\/grtload\.js$/;
 const textFile = /\.(js|mjs|html|css|md|json|csv|txt)$/;
 const hits = [];
 function walk(dir) {
@@ -42,6 +43,7 @@ function walk(dir) {
     if (skipDirs.has(name)) continue;
     const path = join(dir, name);
     if (statSync(path).isDirectory()) walk(path);
+    else if (filterFile.test(path)) continue;
     else if (textFile.test(name) && unitToken.test(readFileSync(path, 'utf8'))) hits.push(path);
   }
 }

@@ -283,6 +283,10 @@ function fact(label, value) {
 function grtDetails(project) {
   const charges = Array.isArray(project.charges) ? project.charges : [];
   const notes = charges.filter((charge) => charge.note);
+  const dropped = project.droppedUnit > 0;
+  const pressureText = dropped
+    ? (project.summary || '—')
+    : [Number.isFinite(project.pMaxBar) ? `${flex(project.pMaxBar, 1)} bar` : '—', project.pressureNote, project.pressureMethod].filter(Boolean).join(' · ');
   return el('div', { class: 'grt' },
     el('h3', {}, project.title || 'GRT-Projekt'),
     notes.map((charge) => el('p', { class: 'charge-note', role: 'note' },
@@ -292,14 +296,15 @@ function grtDetails(project) {
     el('dl', { class: 'facts' },
       fact('Kaliber', project.caliberName || '—'),
       fact('Hülsenvolumen', Number.isFinite(project.caseVolumeCm3) ? `${flex(project.caseVolumeCm3, 3)} cm³` : '—'),
-      fact('pMaxZul', [Number.isFinite(project.pMaxBar) ? `${flex(project.pMaxBar, 1)} bar` : '—', project.pressureMethod].filter(Boolean).join(' · ')),
+      fact('pMaxZul', pressureText),
       fact('Geschoss', project.projectileName || '—'),
       fact('Geschossgewicht', Number.isFinite(project.projectileWeightGr) ? `${flex(project.projectileWeightGr, 1)} grain · aus Gramm umgerechnet` : '—'),
       fact('Geschosslänge', Number.isFinite(project.projectileLengthMm) ? `${flex(project.projectileLengthMm, 2)} mm` : '—'),
       fact('Pulvername', project.propellantName || '—')),
-    el('h3', {}, 'Ladungen'),
-    el('p', { class: 'muted small' }, 'Gewichte aus der Datei: aus Gramm umgerechnet.'),
-    charges.length ? charges.map((charge) => chargeBlock(charge)) : el('p', { class: 'muted small' }, 'Keine Ladungen in der Datei.'));
+    dropped ? el('p', { class: 'warn-text', role: 'status' }, project.summary) : null,
+    dropped ? null : el('h3', {}, 'Ladungen'),
+    dropped ? null : el('p', { class: 'muted small' }, 'Gewichte aus der Datei: aus Gramm umgerechnet.'),
+    dropped ? null : (charges.length ? charges.map((charge) => chargeBlock(charge)) : el('p', { class: 'muted small' }, 'Keine Ladungen in der Datei.')));
 }
 
 function chargeBlock(charge) {

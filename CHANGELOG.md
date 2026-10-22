@@ -2,6 +2,12 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.3] – 2026-10-22
+### Geändert
+- Ein GRT-Druck in PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet (62 000 psi → 4 274,8 bar) und mit „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet. Andere Druckeinheiten verwerfen die betroffenen Zeilen. Die Zusammenfassung lautet „X Zeilen verworfen (Druckeinheit nicht unterstützt)“ und nennt die Einheit nicht.
+- Druckzahlen: ein Punkt vor genau drei Ziffern ist ein Tausendertrennzeichen („4.150“ → 4150, „52.000“ → 52000). „1.234,5“ bleibt 1234,5. Länge und Ladung mit expliziter Einheit behalten den Dezimalpunkt.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.3`.
+
 ## [1.5.2] – 2026-10-22
 ### Geändert
 - TAB II–V Pmax ist die QA-Datei mit `pmax_bar` (Felder `cartridge`, `pmax_bar`, `source`, `retrieved`). Kein Faktor ×10. Die Zeile „9 mm“ bleibt entfernt.
@@ -25,7 +31,7 @@ Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versioni
 ## [1.5.0] – 2026-10-22
 ### Hinzugefügt
 - CIP-Tabelle (`#/cip`): Nachschlagewerte Pmax in bar und L6 in mm, Quelle C.I.P., abgerufen 21.10.2026. Suche nur über den exakten Patronennamen oder feste Aliase (u. a. „9 mm“ → „9 mm Luger“). Das Suchfeld bleibt beim Tippen stehen.
-- Meine Daten: CIP-Zuordnung, Druckprüfung in bar (gelb ab 0,9×Pmax bis Pmax, rot darüber oder bei einem Schuss über 1,15×Pmax), PSI ohne Vergleich, L6-Hinweis in mm. Numerischer GRT-Schussdruck wird von MPa mit Faktor 10 in bar übernommen.
+- Meine Daten: CIP-Zuordnung, Druckprüfung in bar (gelb ab 0,9×Pmax bis Pmax, rot darüber oder bei einem Schuss über 1,15×Pmax), PSI umgerechnet mit ungefährem CIP-Vergleich, L6-Hinweis in mm. Numerischer GRT-Schussdruck wird von MPa mit Faktor 10 in bar übernommen.
 - Sechs fiktive Demo-Zündhütchen mit erfundenem Zündfaktor nur für das Spielzeugmodell. In Meine Daten ist das Zündhütchen Freitext ohne Leistungswerte; ändert es sich, erscheint ein gelber Hinweis.
 - Demo-Ladungsleiter in grain (Start 90 % der Demo-Grenze, Schritte 0,8 %, Ende an der Grenze, nie darüber). Setztiefe in mm. Ogivenform je Demo-Geschoss.
 - Identische Backup-Zeilen werden beim zweiten Import derselben Datei übersprungen.

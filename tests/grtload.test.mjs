@@ -1,6 +1,7 @@
 // Tests für den lokalen .grtload-Import. Aufruf: node tests/grtload.test.mjs
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { psiNote } from '../js/cip/pressure.js';
 import { GRAMS_PER_GRAIN, decodeGrtValue, isGrtLoad, parseGrtLoad, seriesStats } from '../js/userdata/grtload.js';
 
 class XmlNode {
@@ -174,12 +175,65 @@ assert.equal(JSON.stringify(withBars).includes('SENTINEL-P-9'), false);
 assert.equal(JSON.stringify(withBars.charges).includes('pressure'), false);
 assert.equal(project.charges[0].bars.length, 0);
 
+const unitToken = /\b(?:CUP|LUP)\b/;
+const droppedCup = parseGrtLoad(pressureFile('52000', 'CUP'));
+const droppedLup = parseGrtLoad(pressureFile('1000', 'LUP'));
+assert.equal(droppedCup.charges.length, 0);
+assert.equal(droppedLup.charges.length, 0);
+assert.equal(droppedCup.pMaxBar, null);
+assert.equal(droppedLup.pMaxBar, null);
+assert.equal(droppedCup.droppedUnit, 1);
+assert.equal(droppedLup.droppedUnit, 1);
+assert.equal(droppedCup.droppedUnit + droppedLup.droppedUnit, 2);
+assert.equal(droppedCup.summary, '1 Zeilen verworfen (Druckeinheit nicht unterstützt)');
+assert.equal(droppedLup.summary, '1 Zeilen verworfen (Druckeinheit nicht unterstützt)');
+assert.equal(unitToken.test(JSON.stringify(droppedCup)), false);
+assert.equal(unitToken.test(JSON.stringify(droppedLup)), false);
+assert.equal(unitToken.test(readFileSync(new URL('../js/views/userdata.js', import.meta.url), 'utf8')), false);
+
+const psiProject = parseGrtLoad(pressureFile('62000', 'psi'));
+assert.equal(psiProject.pMaxBar, 4274.8);
+assert.equal(psiProject.pressureNote, psiNote());
+assert.equal(psiProject.pressureNote, 'umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr');
+assert.equal(psiProject.charges.length, 1);
+assert.equal(psiProject.droppedUnit, 0);
+
+const methodCup = parseGrtLoad(pressureFile('52.000', '', 'CUP'));
+assert.equal(methodCup.charges.length, 0);
+assert.equal(methodCup.pMaxBar, null);
+assert.equal(methodCup.summary, '1 Zeilen verworfen (Druckeinheit nicht unterstützt)');
+assert.equal(unitToken.test(JSON.stringify(methodCup)), false);
+const barThousands = parseGrtLoad(pressureFile('4.150', 'bar'));
+assert.equal(barThousands.pMaxBar, 4150);
+assert.equal(barThousands.charges.length, 1);
+
 assert.throws(() => parseGrtLoad('<not-a-project/>'), /Keine GRT-Projektdatei/);
 assert.throws(() => parseGrtLoad('<GordonsReloadingTool><InnerBallistikInput>'), /kein gültiges XML/);
 
 for (const file of ['js/model.js', 'js/views/simulation.js', 'js/views/optimization.js']) {
   const source = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8');
   assert.equal(/grtload|parseGrtLoad|localStorage/.test(source), false, `${file} bleibt von GRT-Importdaten getrennt`);
+}
+
+function pressureFile(value, unit, method = '') {
+  return `<?xml version="1.0"?>
+<GordonsReloadingTool>
+  <InnerBallistikInput>
+    <title>Einheit</title>
+    <caliber>
+      <input name="CaliberName" value="Fiktiv"/>
+      <input name="pMaxZul" value="${value}" unit="${unit}"/>
+      <input name="method" value="${method}"/>
+    </caliber>
+    <projectile><input name="mp" value="1"/></projectile>
+    <propellant></propellant>
+    <appendix><Measurement>
+      <charge name="S" value="0.000125">
+        <shot pressure="12.5" velocity="10"/>
+      </charge>
+    </Measurement></appendix>
+  </InnerBallistikInput>
+</GordonsReloadingTool>`;
 }
 
 console.log('OK – grtload-Importtests bestanden.');

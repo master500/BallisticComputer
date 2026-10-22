@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parseCSV, parseInput } from '../js/userdata/csv.js';
-import { suggestMapping, applyMapping, parseNumber, unitsForMapping } from '../js/userdata/mapping.js';
+import { suggestMapping, applyMapping, parseNumber, parsePressureNumber, unitsForMapping } from '../js/userdata/mapping.js';
 import { userStore } from '../js/userdata/store.js';
 
 // Generisches Schema (Semikolon, deutsches Dezimalkomma, Anführungszeichen)
@@ -69,6 +69,18 @@ assert.deepEqual(backup.records[0].charges, charges);
 assert.equal(backup.records[1].cartridge, 'Demo');
 assert.equal(backup.records[1].charge, 2);
 assert.equal(parseNumber('1.234,5'), 1234.5); assert.equal(parseNumber('42.5 gr'), 42.5); assert.equal(parseNumber(''), null);
+assert.equal(parseNumber('4.150'), 4.15);
+assert.equal(parseNumber('2.800'), 2.8);
+assert.equal(parsePressureNumber('4.150'), 4150);
+assert.equal(parsePressureNumber('52.000'), 52000);
+assert.equal(parsePressureNumber('2702,5'), 2702.5);
+assert.equal(parsePressureNumber('1.234,5'), 1234.5);
+const inchCoal = parseCSV('COAL [in]\n2.800\n');
+const inchMap = suggestMapping(inchCoal.headers);
+assert.equal(applyMapping(inchCoal.rows, inchMap, { units: unitsForMapping(inchCoal.headers, inchMap) })[0].coal, 71.12);
+const grainCharge = parseCSV('Ladung [grain]\n4.150\n');
+const grainMap = suggestMapping(grainCharge.headers);
+assert.equal(applyMapping(grainCharge.rows, grainMap, { units: unitsForMapping(grainCharge.headers, grainMap) })[0].charge, 4.15);
 
 const memory = new Map();
 globalThis.localStorage = {

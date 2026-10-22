@@ -3,7 +3,7 @@
  * Eingabefelder bleiben stehen, damit eine Suche nicht nach dem ersten Zeichen abbricht.
  */
 import { el, fmt, setChildren } from '../util.js';
-import { parseNumber } from './mapping.js';
+import { parseNumber, parsePressureNumber } from './mapping.js';
 import { resolveCipQuery } from '../cip/lookup.js';
 import { PRESSURE_SOURCES, l6Hint, psiNote, psiToBar, ratePressure } from '../cip/pressure.js';
 
@@ -31,14 +31,14 @@ export function parseBarList(text) {
         continue;
       }
     }
-    const value = parseNumber(chunk);
+    const value = parsePressureNumber(chunk);
     if (value != null) out.push(value);
   }
   return out;
 }
 
 function pressureNumber(text) {
-  const parsed = parseNumber(text);
+  const parsed = parsePressureNumber(text);
   if (parsed == null) return null;
   return state.unit === 'psi' ? psiToBar(parsed) : parsed;
 }

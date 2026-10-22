@@ -12,7 +12,8 @@
  * Interne Pulvermodell-Parameter (Ba, Qex, a0, …) und CIP-Zeichnungsdaten
  * werden nicht gelesen und nicht gespeichert.
  */
-import { mpaToBar } from '../cip/pressure.js';
+import { mpaToBar, psiNote, psiToBar } from '../cip/pressure.js';
+import { parsePressureNumber } from './mapping.js';
 
 /** Avoirdupois: 1 grain = 0.06479891 g. */
 export const GRAMS_PER_GRAIN = 0.06479891;
@@ -68,6 +69,23 @@ function inputValue(parent, name) {
 function inputNumber(parent, name) {
   const node = matchingInput(parent, name);
   return node ? readNumber(node.getAttribute('value')) : null;
+}
+
+function pressureKind(unit) {
+  const token = String(unit || '').trim().toLowerCase();
+  if (!token) return 'empty';
+  if (token === 'bar') return 'bar';
+  if (token === 'psi') return 'psi';
+  if (token === 'cup' || token === 'lup') return 'drop';
+  return 'label';
+}
+
+function classifyPressure(unitAttr, method) {
+  const fromUnit = pressureKind(unitAttr);
+  const fromMethod = pressureKind(method);
+  if (fromUnit === 'drop' || fromMethod === 'drop') return { kind: 'drop', label: '' };
+  if (fromUnit === 'psi' || (fromUnit !== 'bar' && fromMethod === 'psi')) return { kind: 'psi', label: '' };
+  return { kind: 'bar', label: fromMethod === 'label' ? method : '' };
 }
 
 function joinParts(parts) {
@@ -146,18 +164,28 @@ export function parseGrtLoad(xmlText) {
 
   const projectileName = inputValue(projectile, 'ProjectileName')
     || joinParts([inputValue(projectile, 'mname'), inputValue(projectile, 'pname')]);
+  const pmaxNode = matchingInput(caliber, 'pMaxZul');
+  const rawMax = pmaxNode ? parsePressureNumber(decodeGrtValue(pmaxNode.getAttribute('value'))) : null;
+  const unitAttr = pmaxNode ? decodeGrtValue(pmaxNode.getAttribute('unit')).trim() : '';
+  const method = inputValue(caliber, 'method');
+  const pressure = classifyPressure(unitAttr, method);
+  const dropped = pressure.kind === 'drop';
+  const kept = dropped ? [] : charges;
 
   return {
     title: decodeGrtValue(titleNode ? titleNode.textContent : '').trim(),
     caliberName: inputValue(caliber, 'CaliberName'),
     caseVolumeCm3: inputNumber(caliber, 'casevol'),
-    pMaxBar: inputNumber(caliber, 'pMaxZul'),
-    pressureMethod: inputValue(caliber, 'method'),
+    pMaxBar: dropped ? null : (pressure.kind === 'psi' && rawMax != null ? psiToBar(rawMax) : rawMax),
+    pressureMethod: dropped ? '' : pressure.label,
+    pressureNote: !dropped && pressure.kind === 'psi' && rawMax != null ? psiNote() : '',
+    droppedUnit: dropped ? Math.max(charges.length, 1) : 0,
+    summary: dropped ? `${Math.max(charges.length, 1)} Zeilen verworfen (Druckeinheit nicht unterstützt)` : '',
+    charges: kept,
     projectileName,
     projectileWeightG: weightG,
     projectileWeightGr: grainsFromGrams(weightG),
     projectileLengthMm: inputNumber(projectile, 'glen'),
     propellantName: joinParts([inputValue(propellant, 'mname'), inputValue(propellant, 'pname')]),
-    charges,
   };
 }

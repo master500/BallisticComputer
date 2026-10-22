@@ -119,13 +119,26 @@ export function convertMeasure(value, unit, field) {
   return { value: null, note: '' };
 }
 
-/** Zahl aus Text ("42,5", "42.5 gr", "2.800") – leere/ungültige Werte -> null. */
+/** Zahl aus Text ("42,5", "42.5 gr", "2.800") – leere/ungültige Werte -> null. Punkt bleibt Dezimaltrennzeichen. */
 export function parseNumber(v) {
   if (v == null) return null;
   let s = String(v).trim().replace(/[^\d.,\-]/g, '');
   if (!s) return null;
   if (s.includes(',') && s.includes('.')) s = s.lastIndexOf(',') > s.lastIndexOf('.') ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
   else s = s.replace(',', '.');
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
+
+/** Druck: „4.150“ und „52.000“ sind Tausender, „2702,5“ und „1.234,5“ Dezimalwerte. */
+export function parsePressureNumber(v) {
+  if (v == null) return null;
+  let s = String(v).trim().replace(/[^\d.,\-]/g, '');
+  if (!s) return null;
+  if (s.includes(',') && s.includes('.')) {
+    s = s.lastIndexOf(',') > s.lastIndexOf('.') ? s.replace(/\./g, '').replace(',', '.') : s.replace(/,/g, '');
+  } else if (s.includes(',')) s = s.replace(',', '.');
+  else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, '');
   const n = Number(s);
   return Number.isFinite(n) ? n : null;
 }
