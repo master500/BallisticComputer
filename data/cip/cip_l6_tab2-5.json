@@ -1,0 +1,1679 @@
+{
+  "_note": "CIP L6 (max. Patronenlaenge). Nur Nachschlagewert unter Meine Daten, nie im Simulationsmodul importieren. Ueberschreitung = gelber Hinweis, kein Fehler.",
+  "entries": [
+    {
+      "cartridge": "4 Bore Rifle",
+      "l6_mm": 119.3,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,6 x 35 R",
+      "l6_mm": 43.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,6 x 50 R Mag.",
+      "l6_mm": 61.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,6 x 52 R",
+      "l6_mm": 63.75,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,6 x 57 R",
+      "l6_mm": 69.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,6 x 61 R SE v. H.",
+      "l6_mm": 80.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,6 x 70 R",
+      "l6_mm": 87.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6 x 50 R Scheiring",
+      "l6_mm": 69.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6 x 52 R BB2",
+      "l6_mm": 69.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6 x 52 R Bretschneider",
+      "l6_mm": 68.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6 x 62 R Freres",
+      "l6_mm": 82.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6 x 70 R",
+      "l6_mm": 87.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 50 R",
+      "l6_mm": 68.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 51 R (Arisaka)",
+      "l6_mm": 76.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 52 R",
+      "l6_mm": 64.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 52 R K&S",
+      "l6_mm": 71.12,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 57 R",
+      "l6_mm": 82.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 58 R",
+      "l6_mm": 78.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 65 R RWS",
+      "l6_mm": 85.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 68 R",
+      "l6_mm": 87.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 x 70 R",
+      "l6_mm": 90.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7-30 Waters",
+      "l6_mm": 64.77,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 50 R",
+      "l6_mm": 68.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 57 R",
+      "l6_mm": 78.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 mm Mag.Fl. H&H",
+      "l6_mm": 82.8,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 65 R",
+      "l6_mm": 83.6,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 67 R Luyven",
+      "l6_mm": 90.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 72 R",
+      "l6_mm": 92.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 75 R SE.v. H.",
+      "l6_mm": 97.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,62 x 53 R",
+      "l6_mm": 77.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,62 x 54 R",
+      "l6_mm": 77.16,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 50 R",
+      "l6_mm": 76.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 51 R Lebel",
+      "l6_mm": 75.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 56 R M30S",
+      "l6_mm": 76.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 56 R M89 Port. Krop.",
+      "l6_mm": 81.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 57 R 360",
+      "l6_mm": 77.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 57 IR",
+      "l6_mm": 82.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 57 IRS",
+      "l6_mm": 82.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 58 R",
+      "l6_mm": 78.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 60 R",
+      "l6_mm": 82.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 60 RS",
+      "l6_mm": 83.6,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 65 R",
+      "l6_mm": 86.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 65 RS",
+      "l6_mm": 87.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 72 R",
+      "l6_mm": 98.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 x 75 RS",
+      "l6_mm": 96.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 mm – 348 Win.",
+      "l6_mm": 82.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8,15 x 46 R",
+      "l6_mm": 62.3,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8,2 x 53 R",
+      "l6_mm": 76.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8,5 x 63 R",
+      "l6_mm": 84.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8,5 x 75 R Scheiring",
+      "l6_mm": 96.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 x 53 R",
+      "l6_mm": 67.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 x 57 R",
+      "l6_mm": 81.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9,3 x 53 R Finnish",
+      "l6_mm": 76.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9,3 x 72 R",
+      "l6_mm": 86.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9,3 x 74 R",
+      "l6_mm": 96.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "10,3 x 60 R",
+      "l6_mm": 85.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "11,15 x 60 R",
+      "l6_mm": 78.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "17 Hornet",
+      "l6_mm": 43.69,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "218 Bee",
+      "l6_mm": 42.67,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "219 Zipper",
+      "l6_mm": 57.4,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "22 Hornet",
+      "l6_mm": 43.76,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "22 Savage",
+      "l6_mm": 63.75,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "222 R Stief",
+      "l6_mm": 54.1,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "225 Win.",
+      "l6_mm": 63.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "240 Fl. N.E.",
+      "l6_mm": 82.55,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "25-20 Win.",
+      "l6_mm": 40.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "25-35 Win.",
+      "l6_mm": 64.77,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "256 Win. Mag.",
+      "l6_mm": 40.39,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "280 Fl. N.E.",
+      "l6_mm": 87.88,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30 R Blaser",
+      "l6_mm": 95.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30 Fl. N.E. Purdey",
+      "l6_mm": 75.69,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30 Super Fl. H&H",
+      "l6_mm": 93.73,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30-06 R Stief",
+      "l6_mm": 84.84,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30-30 Win.",
+      "l6_mm": 64.77,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30-40 Krag",
+      "l6_mm": 78.46,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "300/295 Rook Rifle",
+      "l6_mm": 36.83,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "300 Sherwood",
+      "l6_mm": 51.82,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "303 British",
+      "l6_mm": 78.11,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "303 Savage",
+      "l6_mm": 64.01,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "303 Sporting",
+      "l6_mm": 74.49,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "307 Win.",
+      "l6_mm": 65.02,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "308 Marlin Express",
+      "l6_mm": 66.04,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "310 Cadet Rifle",
+      "l6_mm": 40.64,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 Win. SL",
+      "l6_mm": 47.75,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 Win. Spec.",
+      "l6_mm": 65.15,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32-20 Win.",
+      "l6_mm": 40.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32-40 Win.",
+      "l6_mm": 63.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "33 Win.",
+      "l6_mm": 70.99,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "338 Marlin Express",
+      "l6_mm": 62.23,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "348 Win.",
+      "l6_mm": 70.99,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "35 Win.",
+      "l6_mm": 80.65,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "35 Win. SL",
+      "l6_mm": 41.91,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "350 Rigby No. 2",
+      "l6_mm": 93.73,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "351 Win. SL",
+      "l6_mm": 48.26,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "356 Win.",
+      "l6_mm": 65.02,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "360 Buckhammer",
+      "l6_mm": 63.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "360 N.E. 2 1/4",
+      "l6_mm": 76.2,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "369 N.E. Purdey",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "375 Fl. N.E. 21/2",
+      "l6_mm": 82.55,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "375 Fl. Mag. N.E.",
+      "l6_mm": 96.52,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "375 R Hölderlin",
+      "l6_mm": 87.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "375 R Verney-Carron",
+      "l6_mm": 92.25,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "375 Win.",
+      "l6_mm": 65.02,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38-40 Win.",
+      "l6_mm": 40.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38-55 Win.",
+      "l6_mm": 63.75,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "380 Long Rifle",
+      "l6_mm": 34.04,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "40-60 Win",
+      "l6_mm": 57.28,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "40-65 Win.",
+      "l6_mm": 62.74,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "40-82 Win.",
+      "l6_mm": 70.23,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "400/350 N.E.",
+      "l6_mm": 93.73,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "401 Win. SL",
+      "l6_mm": 50.93,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "405 Win.",
+      "l6_mm": 80.64,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "408 Win.",
+      "l6_mm": 65.53,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "416 Rigby N°2",
+      "l6_mm": 95.25,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "44-40 Win.",
+      "l6_mm": 40.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "444 Marlin",
+      "l6_mm": 65.28,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45-60 Win",
+      "l6_mm": 57.28,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45-70 Elko Mag.",
+      "l6_mm": 87.3,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45-70 Govt.",
+      "l6_mm": 64.77,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45-75 Win",
+      "l6_mm": 57.28,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45-90 WM",
+      "l6_mm": 82.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45-110 Sharps 2\"7/8",
+      "l6_mm": 85.3,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45-120 Sharps 3\"1/4",
+      "l6_mm": 105.66,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "450 N.E. 3\" 1/4",
+      "l6_mm": 100.33,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "450 N° 2 N.E. 3“1/2 Eley",
+      "l6_mm": 109.98,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "450/400 N.E. 3",
+      "l6_mm": 95.25,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "450/400 Mag. N.E. 31/4",
+      "l6_mm": 100.33,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "470 N.E.",
+      "l6_mm": 101.09,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "475 N° 2 N.E. 31/2",
+      "l6_mm": 109.98,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "475 N° 2 N.E. 3“1/2 Jeffery",
+      "l6_mm": 109.98,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "50-70 Govt.",
+      "l6_mm": 57.15,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "50-90 Sharps 2\" 1/2",
+      "l6_mm": 81.28,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "50-95 Win.",
+      "l6_mm": 57.4,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "56/50 Spencer",
+      "l6_mm": 38.56,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "500 Al Sharqi",
+      "l6_mm": 98.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "500 N.E. 3\"",
+      "l6_mm": 95.25,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "500/416 N.E. 3“1/4",
+      "l6_mm": 101.09,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "500/465 N.E.",
+      "l6_mm": 99.06,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "577/450 Sld. Mart.H.",
+      "l6_mm": 81.28,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "577 N.E. 3\"",
+      "l6_mm": 93.98,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "577 Sld. Snider",
+      "l6_mm": 62.74,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "600 N.E.",
+      "l6_mm": 93.98,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "700 H&H Nitro Exp.",
+      "l6_mm": 106.68,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,5 mm Rem. Mag.",
+      "l6_mm": 71.12,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 61 Super",
+      "l6_mm": 83.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 mm Rem. Mag.",
+      "l6_mm": 83.57,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 mm Rosè",
+      "l6_mm": 83.57,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 mm STW",
+      "l6_mm": 92.71,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 mm Weath. Mag.",
+      "l6_mm": 85.34,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 mm Rem. Mag.",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "10,3 x 68 Mag.",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "11,5 x 51",
+      "l6_mm": 62.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "224 Weath. Mag.",
+      "l6_mm": 59.18,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "240 Belt. Riml. N.E.",
+      "l6_mm": 82.55,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "240 Weath. Mag.",
+      "l6_mm": 78.74,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "244 H&H Mag.",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "257 Weath. Mag.",
+      "l6_mm": 81.51,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "264 Win. Mag.",
+      "l6_mm": 84.84,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "270 Weath. Mag.",
+      "l6_mm": 83.69,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "275 Belt. N.E.",
+      "l6_mm": 87.12,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30 Super Bl Riml. H&H",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30-378 Weath. Mag.",
+      "l6_mm": 95.25,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "300 H&H Mag.",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "300 Weath. Mag.",
+      "l6_mm": 90.42,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "300 Win. Mag.",
+      "l6_mm": 84.84,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "308 Norma Mag.",
+      "l6_mm": 85.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "338 Win. Mag.",
+      "l6_mm": 84.84,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "338-378 Weath. Mag",
+      "l6_mm": 95.58,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "340 Weath. Mag.",
+      "l6_mm": 93.35,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "350 Rem. Mag.",
+      "l6_mm": 71.12,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "358 Norma Mag.",
+      "l6_mm": 85.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "375 H&H Mag.",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "375 Weath. Mag.",
+      "l6_mm": 90.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "378 Weath.Mag.",
+      "l6_mm": 92.84,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "400 H&H Belt. Mag.",
+      "l6_mm": 90.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "416 Rem. Mag.",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "416 Taylor Mag.",
+      "l6_mm": 84.84,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "450 Marlin",
+      "l6_mm": 64.76,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "458 Lott",
+      "l6_mm": 91.44,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "458 Win. Mag.",
+      "l6_mm": 84.84,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "460 Weath. Mag.",
+      "l6_mm": 95.25,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "465 H&H Belt. Mag.",
+      "l6_mm": 90.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,45 x 18",
+      "l6_mm": 25.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "5,75 Velodog",
+      "l6_mm": 35.6,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "6,35 Browning",
+      "l6_mm": 23.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 x 49 GJW",
+      "l6_mm": 73.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 Penna",
+      "l6_mm": 34.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7 mm Penna L",
+      "l6_mm": 41.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,5 FK",
+      "l6_mm": 35.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,5 Ord. Suisse",
+      "l6_mm": 34.6,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,62 x 25 Tokarev",
+      "l6_mm": 35.2,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,62 Nagant",
+      "l6_mm": 37.3,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,63 Mauser",
+      "l6_mm": 35.08,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,65 Long",
+      "l6_mm": 30.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,65 mm Browning",
+      "l6_mm": 25.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "7,65 Parabellum",
+      "l6_mm": 29.85,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 mm Gasser",
+      "l6_mm": 36.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 mm Lebel",
+      "l6_mm": 37.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "8 mm Steyr",
+      "l6_mm": 28.7,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 x 18",
+      "l6_mm": 25.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 x 20 VGW",
+      "l6_mm": 30.69,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 x 21",
+      "l6_mm": 29.75,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 x 22 MJR",
+      "l6_mm": 29.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 x 25 Super Auto G",
+      "l6_mm": 32.7,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9-45 VAC",
+      "l6_mm": 34.78,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm Makarov",
+      "l6_mm": 25.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm Browning court",
+      "l6_mm": 25.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm Browning long",
+      "l6_mm": 28.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm FAR",
+      "l6_mm": 32.6,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm FX & CQT",
+      "l6_mm": 29.03,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm Luger",
+      "l6_mm": 29.69,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm Mauser",
+      "l6_mm": 35.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "9 mm Steyr",
+      "l6_mm": 33.1,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "10 x 22 T",
+      "l6_mm": 22.7,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "10 mm Auto",
+      "l6_mm": 32.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "10 mm FAR",
+      "l6_mm": 32.2,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "10,4 Ord. It.",
+      "l6_mm": 30.2,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "11 mm 73",
+      "l6_mm": 29.65,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "22 PICRA",
+      "l6_mm": 48.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "22 Rem. .Jet Mag.",
+      "l6_mm": 42.14,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "221 Rem. Fireball",
+      "l6_mm": 46.48,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "260 PICRA",
+      "l6_mm": 62.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30 PICRA",
+      "l6_mm": 56.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30 Super Carry",
+      "l6_mm": 29.69,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "30-357 AeT",
+      "l6_mm": 47.8,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 H&R Mag.",
+      "l6_mm": 34.29,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 Long Colt",
+      "l6_mm": 30.89,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 Short Colt",
+      "l6_mm": 25.78,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 S&W",
+      "l6_mm": 23.62,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 S&W Long",
+      "l6_mm": 32.51,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "32 S&W Long Wad Cut.",
+      "l6_mm": 25.4,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "320 Long",
+      "l6_mm": 30.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "320 Short",
+      "l6_mm": 26.7,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "357 Auto Mag.",
+      "l6_mm": 40.65,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "357 Magnum",
+      "l6_mm": 40.39,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "357 Maximum",
+      "l6_mm": 50.55,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "357 SIG",
+      "l6_mm": 28.96,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38 Long Colt",
+      "l6_mm": 34.54,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38 Short Colt",
+      "l6_mm": 30.48,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38 S&W",
+      "l6_mm": 31.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38 Special",
+      "l6_mm": 39.37,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38 Spl. AMU",
+      "l6_mm": 30.23,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38 Spl. Wad Cut.",
+      "l6_mm": 30.35,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38 Super Auto",
+      "l6_mm": 32.51,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38/357 FX",
+      "l6_mm": 30.99,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "38-45 ACP",
+      "l6_mm": 31.7,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "380 Long",
+      "l6_mm": 35.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "380 Short",
+      "l6_mm": 28.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "40 S&W",
+      "l6_mm": 28.83,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "41 ACT EXP",
+      "l6_mm": 29.25,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "41 Long Colt",
+      "l6_mm": 36.19,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "41 Rem. Mag.",
+      "l6_mm": 40.39,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "44 Colt",
+      "l6_mm": 38.1,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "44 Rem. Mag.",
+      "l6_mm": 40.89,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "44 S&W Russian",
+      "l6_mm": 36.32,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "44 S&W Special",
+      "l6_mm": 41.02,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45 Auto",
+      "l6_mm": 32.39,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45 Auto Rim",
+      "l6_mm": 32.39,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45 Colt",
+      "l6_mm": 40.64,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45 GAP",
+      "l6_mm": 28.89,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45 HP",
+      "l6_mm": 31.4,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45 S&W Schofield",
+      "l6_mm": 36.32,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "45 Win. Mag.",
+      "l6_mm": 40.01,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "450 SCH",
+      "l6_mm": 32.39,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "450 Short",
+      "l6_mm": 28.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "454 Casull",
+      "l6_mm": 44.83,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "455 MK II",
+      "l6_mm": 32.0,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "460 S&W Mag.",
+      "l6_mm": 58.12,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "475 Linebaugh",
+      "l6_mm": 44.43,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "480 Ruger",
+      "l6_mm": 41.91,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "50 AE",
+      "l6_mm": 40.5,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "500 S&W Mag.",
+      "l6_mm": 58.42,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "17 HMR",
+      "l6_mm": 34.67,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "17 Mach 2",
+      "l6_mm": 25.4,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "17 WSM",
+      "l6_mm": 40.39,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "21 Sharp",
+      "l6_mm": 25.4,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "22 Long Rifle",
+      "l6_mm": 25.4,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "22 Short",
+      "l6_mm": 17.65,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    },
+    {
+      "cartridge": "22 Win. Mag. R.F.",
+      "l6_mm": 34.29,
+      "source": "C.I.P.",
+      "retrieved": "2026-10-21"
+    }
+  ]
+}

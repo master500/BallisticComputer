@@ -9,21 +9,31 @@ const read = (name) => JSON.parse(readFileSync(new URL(`../data/cip/${name}`, im
 const tab1 = read('cip_pmax_tab1.json');
 const tab2 = read('cip_pmax_tab2-5.json');
 const l6 = read('cip_l6.json');
+const l6rest = read('cip_l6_tab2-5.json');
 
-for (const file of [tab1, tab2, l6]) {
+for (const file of [tab1, l6, l6rest]) {
   assert.equal(JSON.stringify(file).includes('pmax_mpa'), false);
 }
 assert.equal(tab1.entries.length, 214);
 assert.equal(tab2.entries.length, 279);
 assert.equal(l6.entries.length, 214);
+assert.equal(l6rest.entries.length, 279);
 assert.equal(tab1.entries.every((row) => Number.isInteger(row.pmax_bar)), true);
-assert.equal(tab2.entries.every((row) => Number.isInteger(row.pmax_bar)), true);
+assert.equal(tab2.entries.every((row) => Object.keys(row).join() === 'cartridge,pmax_mpa,source,retrieved'), true);
+assert.equal(l6rest.entries.every((row) => Object.keys(row).join() === 'cartridge,l6_mm,source,retrieved'), true);
+assert.equal(tab2.entries.every((row) => Number.isInteger(row.pmax_mpa * 10)), true);
 
 const names1 = new Set(tab1.entries.map((row) => row.cartridge));
 const names2 = new Set(tab2.entries.map((row) => row.cartridge));
+const namesL6 = new Set(l6.entries.map((row) => row.cartridge));
+const namesL6rest = new Set(l6rest.entries.map((row) => row.cartridge));
 assert.equal([...names1].some((name) => names2.has(name)), false);
+assert.equal([...names1].some((name) => namesL6rest.has(name)), false);
+assert.equal([...namesL6].some((name) => namesL6rest.has(name)), false);
+assert.equal([...names2].every((name) => namesL6rest.has(name)), true);
+for (const name of namesL6rest) assert.equal([...names1].some((other) => normalizeCipKey(other) === normalizeCipKey(name)), false);
 
-const index = buildCipIndex([...tab1.entries, ...tab2.entries], l6.entries);
+const index = buildCipIndex([...tab1.entries, ...tab2.entries], [...l6.entries, ...l6rest.entries]);
 assert.equal(index.rows.length, 493);
 
 const win = resolveCipQuery(index, '308 Win.');
@@ -44,7 +54,7 @@ for (const query of aliases) {
 const luger = resolveCipQuery(index, '9 mm Luger');
 assert.equal(luger.status, 'exact');
 assert.equal(luger.entry.pmaxBar, 2350);
-assert.equal(luger.entry.l6Mm, null);
+assert.equal(luger.entry.l6Mm, 29.69);
 
 for (const query of ['9 mm Makarov', '9 mm Luger Extra', 'Lug', '9', 'Luger', '308', 'Win']) {
   const hit = resolveCipQuery(index, query);

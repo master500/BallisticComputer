@@ -2,6 +2,13 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.1] – 2026-10-22
+### Hinzugefügt
+- L6 für TAB II–V, 279 Patronen, in `data/cip/cip_l6_tab2-5.json` (Felder `cartridge`, `l6_mm`, `source`, `retrieved`). Kein Patronenname doppelt zu TAB I.
+- TAB II–V Pmax bleibt die QA-Datei mit den vier Feldern `cartridge`, `pmax_mpa`, `source`, `retrieved`. Die Tabelle zeigt den Wert in bar (×10).
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.1`.
+
 ## [1.5.0] – 2026-10-22
 ### Hinzugefügt
 - CIP-Tabelle (`#/cip`): Nachschlagewerte Pmax in bar und L6 in mm, Quelle C.I.P., abgerufen 21.10.2026. Suche nur über den exakten Patronennamen oder feste Aliase (u. a. „9 mm“ → „9 mm Luger“). Das Suchfeld bleibt beim Tippen stehen.
