@@ -2,6 +2,12 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.6] – 2026-10-22
+### Hinzugefügt
+- Meine Daten: Pulvernamen als Textauswahl. Die Liste nennt echte Produktnamen und enthält keine Ladedaten. Filterwerte bleiben `rifle`, `handgun`, `shotshell`, `unbekannt`; die Anzeige sagt Büchse, Kurzwaffe, Flinte und unbekannt. Der gewählte Name bleibt auf dem Gerät (`localStorage`), nicht im Backup. Keine Abbranddaten. Simulation, Leiter und Optimierung laden den Katalog nicht.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.6`.
+
 ## [1.5.5] – 2026-10-22
 ### Geändert
 - Simulation, Ladungsleiter, Setztiefe und die Demo-Datenbank zeigen je Ergebnis einmal „Rechenwert – keine echten Ladedaten, keine Freigabe“. Die CIP-Tabelle bleibt ohne diesen Hinweis. Demo-Zahlen tragen keine Einheiten-Abkürzung mehr.

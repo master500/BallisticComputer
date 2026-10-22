@@ -1,0 +1,2724 @@
+{
+ "_note": "Echte Pulver nur als Textauswahl fuer Meine Daten. Keine Ladedaten, nicht mit der Simulation verknuepfen.",
+ "entries": [
+  {
+   "name": "Hodgdon H1000",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h1000/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon VARGET",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-varget/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H4350",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h4350/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon RETUMBO",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-retumbo/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Titegroup",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-titegroup/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H4895",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h4895/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon CFE 223",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-cfe-223/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H4831SC",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h4831sc/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H110",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h110/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H335",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h335/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon CFE Pistol",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-cfe-pistol/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Longshot",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-longshot/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H4198",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h4198/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon CFE BLK",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-cfe-blk/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Hi-Skor 700-X",
+   "manufacturer": "Hodgdon",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-hi-skor-700-x/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Titewad",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-titewad/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon BL-C(2)",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-bl-c-2/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon LEVERevolution",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-leverevolution/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Superformance",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-suprform/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H322",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h322/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon HP-38",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-hp-38/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon US 869",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-us-869/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Trail Boss",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-trail-boss/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon HS-6",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-hs-6/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Lil’Gun",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-lil-gun/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H380",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h380/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Clays",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-clays/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H4831",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h4831/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon International",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-international/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Perfect Pattern",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-perfect-pattern/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Benchmark",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-benchmark/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Universal",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-universal/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon Hybrid 100V",
+   "manufacturer": "Hodgdon",
+   "form": "hybrid",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-hybrid-100v/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon High Gun",
+   "manufacturer": "Hodgdon",
+   "form": "spherical",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-high-gun/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Hodgdon H50BMG",
+   "manufacturer": "Hodgdon",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/hodgdon-h50bmg/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 4350",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-4350/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 8208 XBR",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-8208-xbr/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 4895",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-4895/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 4064",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-4064/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 4198",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-4198/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 3031",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-3031/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 4831",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-4831/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 7828 SSC",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-7828-ssc/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR 4227",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-4227/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR Enduron 4955",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-enduron-4955/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR Enduron 4166",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-enduron-4166/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR Enduron 4451",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-enduron-4451/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR Enduron 8133",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-enduron-8133/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "IMR Enduron 7977",
+   "manufacturer": "IMR",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/imr-enduron-7977/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester StaBALL 6.5",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-staball-6-5/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester Super Handicap",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-super-handicap/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester 231",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-231/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester 748",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-748/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester 760",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-760/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester 296",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-296/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester WinClean 244",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-winclean-244/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester WST",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-wst/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester 572",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-572/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester Super Field",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-super-field/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester AUTOCOMP",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-autocomp/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester StaBALL HD",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-staball-hd/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Winchester StaBALL Match",
+   "manufacturer": "Winchester",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/winchester-staball-match/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate MAGPRO",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-magpro/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate No. 5",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-no-5/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 2520",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-2520/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate No. 7",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-no-7/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 4064",
+   "manufacturer": "Accurate",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-4064/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 2200",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-2200/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 2460",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-2460/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate No.2",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-no-2/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate No. 9",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-no-9/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 2230",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-2230/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 1680",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-1680/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 4350",
+   "manufacturer": "Accurate",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-4350/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 2495",
+   "manufacturer": "Accurate",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-2495/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Nitro 100 New Formulation",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/nitro-100-new-formulation/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 5744",
+   "manufacturer": "Accurate",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-5744/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 2015",
+   "manufacturer": "Accurate",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-2015/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 11FS",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-11fs/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 2700",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-2700/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate LT-30",
+   "manufacturer": "Accurate",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-lt-30/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate 4100",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-4100/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate LT-32",
+   "manufacturer": "Accurate",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-lt-32/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate TCM",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-tcm/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Accurate High Country",
+   "manufacturer": "Accurate",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/accurate-high-country/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot TAC",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-tac/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Hunter",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-hunter/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Competition",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-competition/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot X-Terminator",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-x-terminator/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Silhouette",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-silhouette/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot LRT",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-lrt/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Magnum",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-magnum/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Big Game",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-big-game/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot True Blue",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-true-blue/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Zip",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-zip/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Enforcer",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-enforcer/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ramshot Grand",
+   "manufacturer": "Ramshot",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shop.hodgdon.com/ramshot-grand/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "20/28",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/20_28.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "2400",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/2400.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "410",
+   "manufacturer": "Alliant",
+   "form": "flake",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/410.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "American Select",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/american_select.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "AR-Comp",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/ar_comp.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "BE-86",
+   "manufacturer": "Alliant",
+   "form": "flake",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/be-86.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Blue Dot",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/blue_dot.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Bullseye",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/bullseye.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Clay Dot",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/clay_dot.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "e3",
+   "manufacturer": "Alliant",
+   "form": "flake",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/e3.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Extra-Lite",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/extra_lite.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Green Dot",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/green_dot.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Herco",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/herco.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Power Pistol",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/power_pistol.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Power Pro 1200-R",
+   "manufacturer": "Alliant",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/power_pro_1200-r.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Power Pro 2000-MR",
+   "manufacturer": "Alliant",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/power_pro_2000.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Power Pro 300-MP",
+   "manufacturer": "Alliant",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/power_pro_300.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Power Pro 4000-MR",
+   "manufacturer": "Alliant",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/power_pro_4000.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Power Pro Varmint",
+   "manufacturer": "Alliant",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/power_pro_varmint.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Pro Reach",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/pro_reach.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Promo",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/promo.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Red Dot",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/red_dot.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 10x",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder10x.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 15",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder15.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 16",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder16.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 17",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder17.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 19",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder19.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 22",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder22.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 23",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder23.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 25",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder25.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 26",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder26.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 33",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder33.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 50",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder50.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder 7",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloder7.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder TS 11",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloderts-11.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Reloder TS 15.5",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/reloderts15-5.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Sport Pistol",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/sport-pistol.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Steel",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/steel.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Unique",
+   "manufacturer": "Alliant",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://www.alliantpowder.com/products/powder/unique.aspx",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N150",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n150-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N140",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n140-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N170",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n170-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N165",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n165-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N160",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n160-rifle-powders/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N135",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n135-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N133",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n133-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N130",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n130-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N120",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n120-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N110",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/n110-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N540",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-n540-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N555",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-n555-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N310",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://vihtavuori.com/powder/n310-handgun-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N570",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-n570-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N568",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-n568-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N565",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-n565-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N560",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-n560-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N550",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-n550-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "3N38",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://vihtavuori.com/powder/3n38-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "3N37",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://vihtavuori.com/powder/3n37-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N350",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://vihtavuori.com/powder/n350-handgun-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N340",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://vihtavuori.com/powder/n340-handgun-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N330",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://vihtavuori.com/powder/n330-handgun-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "N320",
+   "manufacturer": "Vihtavuori",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://vihtavuori.com/powder/n320-handgun-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "0N29",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-20n29-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "4N41",
+   "manufacturer": "Vihtavuori",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://vihtavuori.com/powder/vihtavuori-24n41-rifle-powder/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 202",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-202---20902025",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 1219",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-1219---10902197",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 201",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-201---20902015",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 204",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-204---20902045",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 217",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-217---20902175",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 1211",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-1211---10902117",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma URP",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-urp---20902195",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 1214",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-1214---10902147",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 200",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-200---20902005",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Norma 203-B",
+   "manufacturer": "Norma",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://www.norma-ammunition.com/products/components/gunpowder/norma-203-b---20902035",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS12",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/pistol/rs12-pistol-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS14",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle",
+    "handgun"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/pistol/rs14-rifle-pistol-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS20",
+   "manufacturer": "Reload Swiss",
+   "form": "flake",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/pistol/rs20-pistol-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS24",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/pistol/rs24-pistol-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS36",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs36-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS40",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs40-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS50",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs50-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS52",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs52-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS60",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs60-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS62",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs62-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS70",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs70-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS76",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs76-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "RS80",
+   "manufacturer": "Reload Swiss",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.reload-swiss.com/en/product/rifle/rs80-rifle-powder",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S385",
+   "manufacturer": "Somchem",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s385",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S365",
+   "manufacturer": "Somchem",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s365",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S361",
+   "manufacturer": "Somchem",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s361",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S355",
+   "manufacturer": "Somchem",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s355",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S341",
+   "manufacturer": "Somchem",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s341",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S335",
+   "manufacturer": "Somchem",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s335",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S321",
+   "manufacturer": "Somchem",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s321",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S265",
+   "manufacturer": "Somchem",
+   "form": "extruded",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s265",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S221",
+   "manufacturer": "Somchem",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s221",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "S121",
+   "manufacturer": "Somchem",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://www.somchemreload.com/propellants/s121",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "MS200",
+   "manufacturer": "Somchem",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://www.somchemreload.com/propellants/ms200",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "MP200",
+   "manufacturer": "Somchem",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://www.somchemreload.com/propellants/mp200",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Clean Shot",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/clean-shot/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ultimate Pistol",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ultimate-pistol/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Auto Pistol",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/auto-pistol/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Major Pistol",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/major-pistol/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Heavy Pistol",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "handgun"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/heavy-pistol/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Buffalo Rifle",
+   "manufacturer": "Shooters World",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/buffalo-rifle/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "SOCOM",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/socom/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Blackout",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/blackout/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "AR-Plus",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ar-plus/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Tactical Rifle",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/tactical-rifle/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Match Rifle",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/match-rifle/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Precision",
+   "manufacturer": "Shooters World",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/precision/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Long Rifle",
+   "manufacturer": "Shooters World",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/long-rifle/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "SW4350",
+   "manufacturer": "Shooters World",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/sw4350/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "SW 50BMG",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/sw-50bmg/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "The Patriot",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/the-patriot/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "The Creed",
+   "manufacturer": "Shooters World",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/the-creed/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "AS",
+   "manufacturer": "Shooters World",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/as/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "A1",
+   "manufacturer": "Shooters World",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/a1/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "AO",
+   "manufacturer": "Shooters World",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ao/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "STL",
+   "manufacturer": "Shooters World",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/stl/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "STXL",
+   "manufacturer": "Shooters World",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/stxl/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "ST2XL",
+   "manufacturer": "Shooters World",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/st2xl/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "ST3XL",
+   "manufacturer": "Shooters World",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/st3xl/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ba10",
+   "manufacturer": "Shooters World",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ba10/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ba9-½",
+   "manufacturer": "Shooters World",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ba9-%c2%bd/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ba9",
+   "manufacturer": "Shooters World",
+   "form": "extruded",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ba9/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ba7-½",
+   "manufacturer": "Shooters World",
+   "form": "extruded",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ba7-5/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Ba6-½",
+   "manufacturer": "Shooters World",
+   "form": "extruded",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://shootersworldpowder.com/portfolio_page/ba6-%c2%bd/",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S011-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S015-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S020-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S022-03",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S022-04",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S030-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S032-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S035-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "flake",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S040-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle",
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S050-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S053-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S060-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S062-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S065-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S070-04",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S070-05",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S070-06",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex S071-03",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "extruded",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D013-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D032-03",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D036-03",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "unbekannt"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D036-07",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "spherical",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D037-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D037-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle",
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D039-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "flake",
+   "application": [
+    "rifle",
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D040-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle",
+    "handgun",
+    "shotshell"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D060-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle",
+    "handgun"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D063-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D063-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D063-06",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D063-07",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D073-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "spherical",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D073-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D073-03",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D073-04",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D073-05",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D073-06",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D083-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D083-03",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D100-01",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  },
+  {
+   "name": "Lovex D100-02",
+   "manufacturer": "Lovex (Explosia)",
+   "form": "unbekannt",
+   "application": [
+    "rifle"
+   ],
+   "source": "https://explosia.cz/wp-content/uploads/2025/07/Explosia_kat-Propellants-2023_en.pdf",
+   "retrieved": "2026-10-22"
+  }
+ ]
+}

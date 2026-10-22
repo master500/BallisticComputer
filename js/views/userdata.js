@@ -16,6 +16,7 @@ import { OFFICIAL_SOURCES } from '../userdata/sources.js';
 import { loadCipIndex } from '../cip/lookup.js';
 import { mountCipCheck } from '../userdata/cipcheck.js';
 import { primerHintFor } from '../userdata/primer.js';
+import { APPLICATION_LABELS, APPLICATIONS, filterPowderNames, loadPowderCatalog, loadSelectedPowderName, saveSelectedPowderName } from '../userdata/powders.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
 const ui = { filter: '', pending: null };
@@ -30,6 +31,7 @@ export function renderUserData(root) {
     el('section', { class: 'card notice', role: 'note' },
       el('strong', {}, 'Eigene Daten – Verantwortung beim Nutzer. Immer mit aktuellen Herstellerangaben abgleichen.'),
       el('p', { class: 'small' }, 'Diese Daten werden nur angezeigt – ohne Extrapolation oder Druckprognose. Sie bleiben lokal auf diesem Gerät und werden nicht in Simulation/Optimierung verwendet (dort nur fiktive Demo-Werte).')),
+    powderSection(),
     importSection(importBox, refresh),
     cipBox,
     listBox,
@@ -49,6 +51,47 @@ export function renderUserData(root) {
     renderCompare(compareBox);
   }
   refresh();
+}
+
+/* ---------- Pulvernamen (nur Text) ---------- */
+
+function powderSection() {
+  const state = { application: '', query: loadSelectedPowderName(), entries: [] };
+  const count = el('p', { class: 'muted small' }, 'Lade Pulvernamen …');
+  const list = el('ul', { class: 'list powder-names' });
+  const input = el('input', {
+    type: 'text',
+    'aria-label': 'Pulvername',
+    placeholder: 'Name tippen oder aus der Liste wählen',
+    value: state.query,
+    oninput: (e) => { state.query = e.target.value; saveSelectedPowderName(state.query); fill(); },
+  });
+  const application = el('select', {
+    'aria-label': 'Anwendung',
+    onchange: (e) => { state.application = e.target.value; fill(); },
+  }, el('option', { value: '' }, 'alle'), ...APPLICATIONS.map((value) => el('option', { value }, APPLICATION_LABELS[value])));
+  const section = el('section', { class: 'card' },
+    el('h2', {}, 'Pulvername'),
+    el('p', { class: 'muted small' }, 'Nur Namen zur Auswahl. Keine Abbranddaten und keine Ladung.'),
+    el('label', {}, 'Anwendung', application),
+    el('label', {}, 'Pulver', input),
+    count,
+    list);
+  loadPowderCatalog()
+    .then((entries) => { state.entries = entries; fill(); })
+    .catch((err) => { count.textContent = `Pulvernamen konnten nicht geladen werden. ${err.message || err}`; });
+  return section;
+
+  function fill() {
+    const names = filterPowderNames(state.entries, state);
+    count.textContent = `${names.length} Namen`;
+    list.replaceChildren(...names.map((name) => el('li', {},
+      el('button', {
+        type: 'button',
+        class: 'powder-pick',
+        onclick: () => { state.query = name; input.value = name; saveSelectedPowderName(name); fill(); },
+      }, name))));
+  }
 }
 
 /* ---------- Import ---------- */

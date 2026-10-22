@@ -1,7 +1,7 @@
-# BallisticComputer (Demo) – v1.5.5
+# BallisticComputer (Demo) – v1.5.6
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
-> Alle Pulver-, Geschoss- und Zündhütchennamen sind erfunden, alle Modellkonstanten unkalibriert.
+> Die Pulverliste nennt echte Produktnamen und enthält keine Ladedaten. Geschoss- und Zündhütchennamen der Demo sind erfunden, alle Modellkonstanten unkalibriert.
 > Die Oberfläche zeigt Druck in bar, Gewichte in grain und Geschwindigkeit in m/s. Simulationszahlen sind Demo-Werte.
 > Die Ergebnisse haben keinerlei Bezug zu realen Waffen, Pulvern oder Ladedaten
 > und dürfen niemals als solche verwendet werden.
@@ -16,18 +16,18 @@ python3 server.py --port 8080            # http://127.0.0.1:8080/
 ```
 
 Im Verzeichnis des Repositories starten. Kein Build-Schritt, keine Abhängigkeiten (nur Python 3 Standardbibliothek).
-Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs && node tests/cip.test.mjs && node tests/pressure.test.mjs && node tests/primer.test.mjs && node tests/ladder.test.mjs && node tests/units.test.mjs && node tests/separation.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
+Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs && node tests/cip.test.mjs && node tests/pressure.test.mjs && node tests/primer.test.mjs && node tests/ladder.test.mjs && node tests/units.test.mjs && node tests/separation.test.mjs && node tests/powder.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
 
 ## Ansichten
 
 | Tab | Inhalt |
 |---|---|
-| **Datenbank** | Acht DemoPowder, sechs Demo-Zündhütchen, acht Demo-Geschosse in grain, Demo-Cartridge-1…4 (Anzeige in bar) |
+| **Datenbank** | Acht DemoPowder, acht Demo-Zündhütchen, acht Demo-Geschosse in grain, Demo-Cartridge-1…4 (Anzeige in bar) |
 | **Simulation** | Druckverlauf in bar für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Demo-Zündhütchen × Ladung in grain |
 | **Optimierung** | Demo-Ladungsleiter und Setztiefe; Grenze nur die fiktive Demo-Patrone |
 | **CIP** (`#/cip`) | Nachschlagewerte Pmax in bar und L6 in mm. Nicht Teil der Simulation |
 | **KI-Squad** | Statuskarten der 6 simulierten Agenten aus `log.jsonl` |
-| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze plus CIP-Prüfung (localStorage) |
+| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze, CIP-Prüfung und Pulvernamen (nur Text, localStorage) |
 
 ## Architektur
 

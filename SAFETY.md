@@ -11,5 +11,8 @@
 - A user's own Gordon's Reloading Tool project (`*.grtload`) may be parsed in the browser for display on that device only. Do not copy those files or their values into the repository, do not import GRT powder-model parameters, and do not feed imported records into the demo simulation.
 - CIP Pmax and L6 values are lookup numbers only. They may appear in the CIP table and in the checks on Meine Daten. The simulation and the optimizer must not import or apply them. Ladder limits stay on the fictional demo cartridges.
 - PSI is converted to bar at 1 psi = 0.0689476 bar, shown to one decimal, and labeled „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“. Any other pressure unit drops the whole row. The unit name is not shown.
+- The powder catalog lists real product names only: no burn rates and no loads. The simulation, the ladder and the optimizer must not load it.
 
 **DE (CIP):** CIP-Pmax und CIP-L6 sind nur Nachschlagewerte in der CIP-Tabelle und in den Prüfungen unter Meine Daten. Simulation und Optimierung dürfen sie nicht lesen und nicht verwenden. Die Ladungsleiter bleibt an den fiktiven Demo-Grenzen. PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet und als „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet. Jede andere Druckeinheit verwirft die ganze Zeile; der Einheitenname wird nicht angezeigt.
+
+**DE (Pulvernamen):** Der Pulverkatalog nennt echte Produktnamen: nur Namen, keine Abbrandgeschwindigkeit und keine Ladungen. Simulation, Leiter und Optimierung dürfen ihn nicht laden.
