@@ -3,9 +3,9 @@
  *
  * Vereinfachtes, lehrbuchartiges "Lumped-Parameter"-Modell mit
  * Lagrange-artiger Massenkorrektur. ALLE Konstanten sind frei erfunden und
- * NICHT kalibriert. Die Einheiten sind Pseudo-Einheiten ("sim-MPa",
- * "sim-m/s", Ladung in abstrakten "Ladungseinheiten" LE). Die Ergebnisse
- * haben keinen Bezug zu realen Waffen, Pulvern oder Ladedaten.
+ * NICHT kalibriert. Die Oberfläche zeigt Druck in bar (intern × 10) und
+ * Geschwindigkeit in m/s. Die Ladung der Demo bleibt in LE. Die Ergebnisse
+ * sind Demo-Werte und haben keinen Bezug zu realen Waffen oder Ladedaten.
  *
  * Zustandsgrößen: z (verbrannter Anteil 0..1), x (Weg), v (Geschwindigkeit).
  *   p      = K * c * z / (V0 + x) - Verlust      (Gasdruck, Pseudo-Einheiten)
@@ -22,17 +22,17 @@ export const MODEL_CONSTANTS = Object.freeze({
   A: 9.0,          // "Querschnitt" (Pseudo)
   mc: 0.12,        // Ladungsmassenfaktor für Lagrange-Korrektur (Pseudo)
   n: 0.85,         // Druckexponent im Abbrandgesetz
-  p0: 5,           // Zündimpuls (sim-MPa)
+  p0: 5,           // Zündimpuls (interne Demo-Einheit)
   barrelLength: 6, // Lauflänge (Pseudo-Wegeinheiten)
   dt: 2e-4,        // Zeitschritt (Pseudo-Zeit)
   maxSteps: 200000,
-  vScale: 5,       // Anzeige-Skalierung für sim-m/s (Pseudo)
+  vScale: 5,       // Anzeige-Skalierung für m/s (Demo-Wert)
 });
 
 /**
  * Erfundene Abbrandkoeffizienten je burn_rate_rank.
  * Rang 1 ist am schnellsten; jeder höhere Rang brennt langsamer.
- * Dieselbe Reihenfolge steht in data/db.json. `sim_beta` überschreibt den Rang.
+ * Dieselbe Reihenfolge steht in data/db.json. `beta` überschreibt den Rang.
  */
 const BURN_BETA_BY_RANK = {
   1: 0.40, // extrafast
@@ -47,18 +47,20 @@ const BURN_BETA_BY_RANK = {
 
 /** Liefert den Abbrandkoeffizienten für ein Demo-Pulver. */
 export function powderBeta(powder) {
-  if (powder && typeof powder.sim_beta === 'number') return powder.sim_beta;
+  if (powder && typeof powder.beta === 'number') return powder.beta;
   const rank = powder && powder.burn_rate_rank;
   return BURN_BETA_BY_RANK[rank] ?? 0.17;
 }
 
+/** 1 grain = 0.06479891 g. Nur intern, die Anzeige sagt grain. */
+export const GRAMS_PER_GRAIN = 0.06479891;
+
 /**
- * Pseudo-Masse eines Demo-Geschosses. Nutzt optional `sim_mass`, sonst wird
- * eine Zahl mit "g" aus dem Namen gelesen (z. B. "Demo FMJ 9.5g"), sonst 10.
- * Der Wert wird nur als dimensionslose Modellgröße verwendet.
+ * Modellmasse eines Demo-Geschosses. `mass_grain` wird in die bisherige
+ * Modellgröße umgerechnet. Ohne Angabe wird eine Zahl mit "g" aus dem Namen gelesen, sonst 10.
  */
 export function bulletMass(bullet) {
-  if (bullet && typeof bullet.sim_mass === 'number') return bullet.sim_mass;
+  if (bullet && typeof bullet.mass_grain === 'number') return bullet.mass_grain * GRAMS_PER_GRAIN;
   const m = bullet && /([\d.]+)\s*g\b/i.exec(bullet.name || '');
   return m ? parseFloat(m[1]) : 10;
 }

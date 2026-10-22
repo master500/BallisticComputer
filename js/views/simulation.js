@@ -4,7 +4,7 @@ import { simulate } from '../model.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 import { flightStore } from '../flight.js';
-import { GRAMS_PER_GRAIN, demoLadderStep, flightSolution, v0SourceText } from '../trajectory.js';
+import { demoLadderStep, flightSolution, v0SourceText } from '../trajectory.js';
 
 const state = { powderId: null, bulletId: null, cartridge: null, charge: 5, axis: 'x' };
 
@@ -34,7 +34,7 @@ export function renderSimulation(root, { db }) {
       onclick: (e) => { state.axis = a; [...e.target.parentNode.children].forEach((b) => b.classList.toggle('active', b === e.target)); run(); },
     }, a === 'x' ? 'über Weg' : 'über Zeit')));
 
-  const canvas = el('canvas', { class: 'chart', 'aria-label': 'Druckverlauf (simuliert)' });
+  const canvas = el('canvas', { class: 'chart', 'aria-label': 'Druckverlauf' });
   const kpis = el('div', { class: 'kpis' });
   const flight = flightStore.read();
   const temperature = field('Temperatur (°C)', flight.temperatureC, (value) => { flightStore.save({ temperatureC: value ?? 15 }); run(); });
@@ -43,13 +43,13 @@ export function renderSimulation(root, { db }) {
 
   root.replaceChildren(
     el('section', { class: 'card' },
-      el('label', {}, 'Demo-Patrone', select(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${l.max_mpa_sim} sim-MPa)`)),
+      el('label', {}, 'Demo-Patrone', select(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${fmt(l.pmax_bar, 0)} bar)`)),
       el('label', {}, 'Demo-Pulver', select(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
       el('label', {}, 'Demo-Geschoss', select(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
       el('label', {}, el('span', {}, 'Ladung (abstrakte LE): ', chargeOut), slider)),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
-      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Pseudo-Einheiten, kein Realbezug.')),
+      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Demo-Wert, keine echten Ladedaten.')),
     el('section', { class: 'card' },
       el('h2', {}, 'Geschwindigkeit über Entfernung'),
       el('p', { class: 'muted small' }, 'Punktmasse mit G1 oder G7. Standardatmosphäre 15 °C, sofern Temperatur und Luftdruck nicht geändert werden.'),
@@ -66,18 +66,18 @@ export function renderSimulation(root, { db }) {
     const r = simulate({ powder, bullet, charge: state.charge });
     const over = r.peakPressure > limit.max;
     kpis.replaceChildren(
-      kpi('Spitzendruck', `${fmt(r.peakPressure)} sim-MPa`, over ? 'bad' : 'good'),
-      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity)} sim-m/s`),
-      kpi('Limit', `${fmt(limit.max)} sim-MPa`, over ? 'bad' : ''),
+      kpi('Spitzendruck', `${fmt(r.peakPressure * 10)} bar · Demo-Wert`, over ? 'bad' : ''),
+      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity)} m/s · Demo-Wert`),
+      kpi('Demo-Grenze', `${fmt(limit.bar)} bar`, over ? 'bad' : ''),
       kpi('Abbrand an Mündung', `${fmt(r.burnedAtExit * 100)} %`),
     );
     const key = state.axis;
     drawLineChart(canvas, {
       series: [{ color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(),
-        points: r.samples.map((s) => [key === 'x' ? s.x : s.t * 1000, s.p]) }],
-      xLabel: key === 'x' ? 'Weg (Pseudo-Einheiten)' : 'Zeit (Pseudo-ms)',
-      yLabel: 'Druck (sim-MPa)',
-      hLine: { value: limit.max, label: `Demo-Limit ${limit.max}` },
+        points: r.samples.map((s) => [key === 'x' ? s.x : s.t * 1000, s.p * 10]) }],
+      xLabel: key === 'x' ? 'Weg' : 'Zeit',
+      yLabel: 'Druck (bar)',
+      hLine: { value: limit.bar, label: `Demo-Grenze ${fmt(limit.bar)} bar` },
     });
     drawFlight(flightHost, bullet, r.muzzleVelocity, state.charge);
   }
@@ -106,7 +106,7 @@ function parseDecimal(value) {
 
 function drawFlight(host, bullet, simulated, charge) {
   const stored = flightStore.read();
-  const massGrain = Number(bullet.sim_mass) / GRAMS_PER_GRAIN;
+  const massGrain = Number(bullet.mass_grain);
   const solved = flightSolution({
     bcG1: bullet.bc_g1, bcG7: bullet.bc_g7, user: stored, v0Simulated: simulated, massGrain,
     temperatureC: stored.temperatureC, pressureHpa: stored.pressureHpa,

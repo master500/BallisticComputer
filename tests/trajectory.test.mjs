@@ -47,7 +47,7 @@ const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url), 
 const b08 = db.bullets.find((bullet) => bullet.id === 'B-08');
 assert.equal(b08.bc_g1, 0.06);
 const wad = velocityTable({
-  v0: 800, bc: b08.bc_g1, drag: 'G1', massGrain: b08.sim_mass / GRAMS_PER_GRAIN,
+  v0: 800, bc: b08.bc_g1, drag: 'G1', massGrain: b08.mass_grain,
 });
 assert.equal(wad.rows.length, 13);
 assert.deepEqual(wad.rows.map((row) => row.distanceM), [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300]);

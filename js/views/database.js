@@ -15,10 +15,10 @@ export function renderDatabase(root, { db }) {
       el('span', { class: 'chip' }, [p.burn_class, p.burn_rate_rank != null ? `Rang ${p.burn_rate_rank}` : null].filter(Boolean).join(' · ') || '—'))),
     section('Geschosse', db.bullets, (b) => el('li', {},
       el('div', {}, el('strong', {}, b.name), el('div', { class: 'muted small' }, b.id)),
-      el('span', { class: 'chip' }, Number.isFinite(b.sim_mass) ? `${fmt(b.sim_mass, 1)} g` : '—'))),
+      el('span', { class: 'chip' }, Number.isFinite(b.mass_grain) ? `${fmt(b.mass_grain, 1)} grain` : '—'))),
     section('Druckgrenzen', db.pressure_limits, (l) => el('li', {},
       el('strong', {}, l.cartridge),
-      el('span', { class: 'chip warn' }, `${l.max_mpa_sim} sim-MPa`))),
+      el('span', { class: 'chip warn' }, `${fmt(l.pmax_bar, 0)} bar · Demo-Wert`))),
     db.last_optimization
       ? el('section', { class: 'card' }, el('h2', {}, 'Letzte Optimierung (Routine)'),
           el('pre', { class: 'small' }, JSON.stringify(db.last_optimization, null, 2)))

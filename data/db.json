@@ -1,32 +1,140 @@
 {
-  "_note": "SIMULATED DEMO DATA - fictional values, not real or safe load data",
+  "_note": "FICTIONAL DEMO DATA - not real or safe load data",
   "version": 2,
   "updated": "2026-10-21T23:50:00Z",
   "powders": [
-    {"id": "P-04", "name": "DemoPowder Extrafast-D", "burn_rate_rank": 1, "burn_class": "extrafast", "sim_beta": 0.40},
-    {"id": "P-01", "name": "DemoPowder Fast-A", "burn_rate_rank": 2, "burn_class": "fast", "sim_beta": 0.30},
-    {"id": "P-05", "name": "DemoPowder Mediumfast-E", "burn_rate_rank": 3, "burn_class": "mediumfast", "sim_beta": 0.24},
-    {"id": "P-08", "name": "DemoPowder Plateau-H", "burn_rate_rank": 4, "burn_class": "plateau", "sim_beta": 0.20},
-    {"id": "P-02", "name": "DemoPowder Medium-B", "burn_rate_rank": 5, "burn_class": "medium", "sim_beta": 0.17},
-    {"id": "P-06", "name": "DemoPowder Mediumslow-F", "burn_rate_rank": 6, "burn_class": "mediumslow", "sim_beta": 0.14},
-    {"id": "P-03", "name": "DemoPowder Slow-C", "burn_rate_rank": 7, "burn_class": "slow", "sim_beta": 0.10},
-    {"id": "P-07", "name": "DemoPowder Extraslow-G", "burn_rate_rank": 8, "burn_class": "extraslow", "sim_beta": 0.06}
+    {
+      "id": "P-04",
+      "name": "DemoPowder Extrafast-D",
+      "burn_rate_rank": 1,
+      "burn_class": "extrafast",
+      "beta": 0.4
+    },
+    {
+      "id": "P-01",
+      "name": "DemoPowder Fast-A",
+      "burn_rate_rank": 2,
+      "burn_class": "fast",
+      "beta": 0.3
+    },
+    {
+      "id": "P-05",
+      "name": "DemoPowder Mediumfast-E",
+      "burn_rate_rank": 3,
+      "burn_class": "mediumfast",
+      "beta": 0.24
+    },
+    {
+      "id": "P-08",
+      "name": "DemoPowder Plateau-H",
+      "burn_rate_rank": 4,
+      "burn_class": "plateau",
+      "beta": 0.2
+    },
+    {
+      "id": "P-02",
+      "name": "DemoPowder Medium-B",
+      "burn_rate_rank": 5,
+      "burn_class": "medium",
+      "beta": 0.17
+    },
+    {
+      "id": "P-06",
+      "name": "DemoPowder Mediumslow-F",
+      "burn_rate_rank": 6,
+      "burn_class": "mediumslow",
+      "beta": 0.14
+    },
+    {
+      "id": "P-03",
+      "name": "DemoPowder Slow-C",
+      "burn_rate_rank": 7,
+      "burn_class": "slow",
+      "beta": 0.1
+    },
+    {
+      "id": "P-07",
+      "name": "DemoPowder Extraslow-G",
+      "burn_rate_rank": 8,
+      "burn_class": "extraslow",
+      "beta": 0.06
+    }
   ],
   "bullets": [
-    {"id": "B-01", "name": "Demo FMJ 9.5g", "sim_mass": 9.5, "bc_g1": 0.390, "bc_g7": 0.195},
-    {"id": "B-02", "name": "Demo HPBT 10.9g", "sim_mass": 10.9, "bc_g1": 0.470, "bc_g7": 0.240},
-    {"id": "B-03", "name": "Demo RN 8.2g", "sim_mass": 8.2, "bc_g1": 0.250, "bc_g7": 0.120},
-    {"id": "B-04", "name": "Demo SP 7.4g", "sim_mass": 7.4, "bc_g1": 0.300, "bc_g7": 0.150},
-    {"id": "B-05", "name": "Demo HP 12.6g", "sim_mass": 12.6, "bc_g1": 0.455, "bc_g7": 0.230},
-    {"id": "B-06", "name": "Demo TC 6.8g", "sim_mass": 6.8, "bc_g1": 0.180, "bc_g7": 0.090},
-    {"id": "B-07", "name": "Demo FN 11.4g", "sim_mass": 11.4, "bc_g1": 0.170, "bc_g7": 0.085},
-    {"id": "B-08", "name": "Demo WC 5.5g", "sim_mass": 5.5, "bc_g1": 0.060, "bc_g7": 0.030}
+    {
+      "id": "B-01",
+      "name": "Demo FMJ",
+      "mass_grain": 146.60740435294358,
+      "bc_g1": 0.39,
+      "bc_g7": 0.195
+    },
+    {
+      "id": "B-02",
+      "name": "Demo HPBT",
+      "mass_grain": 168.2127060470616,
+      "bc_g1": 0.47,
+      "bc_g7": 0.24
+    },
+    {
+      "id": "B-03",
+      "name": "Demo RN",
+      "mass_grain": 126.54533849411972,
+      "bc_g1": 0.25,
+      "bc_g7": 0.12
+    },
+    {
+      "id": "B-04",
+      "name": "Demo SP",
+      "mass_grain": 114.1994518117666,
+      "bc_g1": 0.3,
+      "bc_g7": 0.15
+    },
+    {
+      "id": "B-05",
+      "name": "Demo HP",
+      "mass_grain": 194.447715247062,
+      "bc_g1": 0.455,
+      "bc_g7": 0.23
+    },
+    {
+      "id": "B-06",
+      "name": "Demo TC",
+      "mass_grain": 104.94003680000172,
+      "bc_g1": 0.18,
+      "bc_g7": 0.09
+    },
+    {
+      "id": "B-07",
+      "name": "Demo FN",
+      "mass_grain": 175.92888522353232,
+      "bc_g1": 0.17,
+      "bc_g7": 0.085
+    },
+    {
+      "id": "B-08",
+      "name": "Demo WC",
+      "mass_grain": 84.87797094117786,
+      "bc_g1": 0.06,
+      "bc_g7": 0.03
+    }
   ],
   "pressure_limits": [
-    {"cartridge": "Demo-Cartridge-1", "max_mpa_sim": 380},
-    {"cartridge": "Demo-Cartridge-2", "max_mpa_sim": 265},
-    {"cartridge": "Demo-Cartridge-3", "max_mpa_sim": 440},
-    {"cartridge": "Demo-Cartridge-4", "max_mpa_sim": 510}
+    {
+      "cartridge": "Demo-Cartridge-1",
+      "pmax_bar": 3800
+    },
+    {
+      "cartridge": "Demo-Cartridge-2",
+      "pmax_bar": 2650
+    },
+    {
+      "cartridge": "Demo-Cartridge-3",
+      "pmax_bar": 4400
+    },
+    {
+      "cartridge": "Demo-Cartridge-4",
+      "pmax_bar": 5100
+    }
   ],
   "last_optimization": null
 }

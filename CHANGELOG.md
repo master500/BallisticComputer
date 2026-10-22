@@ -2,6 +2,11 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.1] – 2026-10-22
+### Geändert
+- Sichtbare Einheiten sind bar, grain, m, m/s und J. Demo-Felder heißen `beta`, `mass_grain`, `bc_g1`, `bc_g7` und `pmax_bar`. Berechnete Demo-Zahlen heißen Demo-Wert, ein Demo-BC „fiktiver Demo-BC“.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.1`.
+
 ## [1.5.0] – 2026-10-22
 ### Hinzugefügt
 - Simulation: Tabelle V0 bis V300 in 25-m-Schritten (13 Zeilen). Spalten Entfernung (m), Geschwindigkeit (m/s), Energie (J). Geschossmasse in grain, intern mit 1 grain = 0,06479891 g. Widerstandsfunktion G7, wenn ein G7-BC vorliegt, sonst G1. Standardatmosphäre 15 °C und 1013,25 hPa, Temperatur und Luftdruck sind eingebbar. Ohne BC steht „Kein BC hinterlegt – keine Flugbahnwerte“.
@@ -20,7 +25,7 @@ Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versioni
 
 ## [1.3.0] – 2026-10-21
 ### Hinzugefügt
-- Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.
+- Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in bar.
 - Simulation: Auswahl der Demo-Patrone. Optimierung: Limit je Patrone; Diagramm je Geschoss; Liste aller Pulver×Geschoss-Kombinationen.
 ### Geändert
 - Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.3.0`.
