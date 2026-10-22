@@ -137,7 +137,7 @@ export function buildLadder({ powder, bullet, primer, limitPressure, run = defau
   const safe = steps.filter((step) => !step.over);
   const top = safe.length ? safe[safe.length - 1].grain : 0;
   const seatingCharge = seatingChargeGrain(top);
-  const seatingInput = seatingDepthsMm(bullet?.sim_ogive).map((depthMm) => {
+  const seatingInput = seatingDepthsMm(bullet?.ogive_form).map((depthMm) => {
     const result = run({
       powder, bullet, primer, seatingMm: depthMm, charge: seatingCharge / GRAIN_PER_LE,
     });

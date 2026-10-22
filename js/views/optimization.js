@@ -38,7 +38,7 @@ export function renderOptimization(root, { db }) {
 
   root.replaceChildren(
     el('section', { class: 'card' },
-      el('label', {}, 'Demo-Patrone', choose(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${fmt(demoBar(l.max_mpa_sim), 0)} bar)`)),
+      el('label', {}, 'Demo-Patrone', choose(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${fmt(l.pmax_bar, 0)} bar)`)),
       el('label', {}, 'Demo-Pulver', choose(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
       el('label', {}, 'Demo-Geschoss', choose(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
       el('label', {}, 'Demo-Zündhütchen', choose(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
@@ -74,7 +74,7 @@ export function renderOptimization(root, { db }) {
     const ladder = buildLadder({ powder, bullet, primer, limitPressure: limit.max });
     const magnumText = magnumStandardHint(primer?.name, state.cartridge);
     const canvas = el('canvas', { class: 'chart', 'aria-label': 'Leiter Druck über Ladung' });
-    const limitBar = demoBar(limit.max);
+    const limitBar = limit.bar;
     setChildren(out,
       state.primerHint ? el('p', { class: 'hint-yellow', role: 'status' }, state.primerHint) : null,
       magnumText ? el('p', { class: 'hint-yellow', role: 'status' }, magnumText) : null,

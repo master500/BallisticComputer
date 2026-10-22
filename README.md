@@ -1,8 +1,8 @@
-# BallisticComputer (Demo) – v1.5.3
+# BallisticComputer (Demo) – v1.5.4
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-, Geschoss- und Zündhütchennamen sind erfunden, alle Modellkonstanten unkalibriert.
-> Die Oberfläche zeigt Druck in bar und Gewichte in grain. Geschwindigkeit bleibt eine Pseudo-Einheit (sim-m/s).
+> Die Oberfläche zeigt Druck in bar, Gewichte in grain und Geschwindigkeit in m/s. Simulationszahlen sind Demo-Werte.
 > Die Ergebnisse haben keinerlei Bezug zu realen Waffen, Pulvern oder Ladedaten
 > und dürfen niemals als solche verwendet werden.
 
@@ -56,8 +56,9 @@ Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/
 **Datenfluss:** `server.py` liefert die App aus dem Repository-Wurzelverzeichnis.
 `/data/db.json` und `/data/log.jsonl` kommen aus dem übergeordneten Ordner, falls die Dateien dort liegen, sonst aus `data/`.
 Das Format von `db.json` wird nur erweitert. Felder, die das Modell nutzt:
-`powders[].sim_beta`, `powders[].burn_class`, `primers[].sim_ignition`, `bullets[].sim_mass_gr`, `bullets[].sim_ogive`.
-Der Demo-Katalog ist erfunden. Interne Druckgrenzen stehen im Feld `max_mpa_sim` und werden in der Oberfläche mit Faktor 10 als bar gezeigt.
+`powders[].beta`, `powders[].burn_class`, `primers[].ignition`, `bullets[].mass_grain`, `bullets[].ogive_form`.
+Der Demo-Katalog ist erfunden. Druckgrenzen stehen im Feld `pmax_bar`.
+CIP-Pmax liegt in `data/cip/cip_pmax_bar_tab1.json` und `data/cip/cip_pmax_bar_tab2-5.json`.
 CIP-Dateien unter `data/cip/` liest nur die CIP-Tabelle und die Prüfung in Meine Daten.
 Log-Zeilen: `{"ts", "event", "note", optional "agent"}` – `agent` ordnet einen
 Eintrag eindeutig einem KI-Squad-Agenten zu (ballistics, database, optimization,
@@ -113,7 +114,7 @@ JSON: Array solcher Objekte oder `{ "records": [...] }` (eigenes Backup ist wied
 Spalten werden anhand der Kopfzeile zugeordnet (z. B. `Cartridge`/`Patrone`,
 `Powder`/`Pulver`, `Projectile`, `Projectile Mass [gr]`, `Charge [gr]`, `COAL [mm]`,
 `Notes`). **Berechnete Spalten** (z. B. `Velocity`, `v0`, `Pmax`, alles mit
-`pred`/`calc`/`berechn`/`sim`) werden **nie automatisch** übernommen – insbesondere
+`pred`/`calc`/`berechn`/`prognose`) werden **nie automatisch** übernommen – insbesondere
 nicht als „gemessene v“. Manuelle Zuordnung ist möglich, mit Warnhinweis.
 
 ## Auf den iPhone-Homescreen legen

@@ -4,7 +4,7 @@
  */
 import { aliasCartridge, normalizeCipKey } from './aliases.js';
 
-const PMAX_URLS = ['data/cip/cip_pmax_tab1.json', 'data/cip/cip_pmax_tab2-5.json'];
+const PMAX_URLS = ['data/cip/cip_pmax_bar_tab1.json', 'data/cip/cip_pmax_bar_tab2-5.json'];
 const L6_URLS = ['data/cip/cip_l6.json', 'data/cip/cip_l6_tab2-5.json'];
 
 export function buildCipIndex(pmaxEntries, l6Entries) {

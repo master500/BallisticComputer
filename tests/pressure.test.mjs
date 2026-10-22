@@ -9,7 +9,7 @@ import { parseBarList } from '../js/userdata/cipcheck.js';
 
 const read = (name) => JSON.parse(readFileSync(new URL(`../data/cip/${name}`, import.meta.url)));
 const index = buildCipIndex(
-  [...read('cip_pmax_tab1.json').entries, ...read('cip_pmax_tab2-5.json').entries],
+  [...read('cip_pmax_bar_tab1.json').entries, ...read('cip_pmax_bar_tab2-5.json').entries],
   [...read('cip_l6.json').entries, ...read('cip_l6_tab2-5.json').entries],
 );
 const luger = resolveCipQuery(index, '9 mm Luger').entry.pmaxBar;

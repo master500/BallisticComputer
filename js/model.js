@@ -5,8 +5,8 @@
  * Lagrange-artiger Massenkorrektur. ALLE Konstanten sind frei erfunden und
  * NICHT kalibriert. Intern bleiben Pseudo-Einheiten; die Oberfläche zeigt
  * Druck in bar (intern × 10) und Ladung in grain (5 grain je Modelleinheit,
- * keine echte Umrechnung). Geschwindigkeit bleibt sim-m/s. Die Ergebnisse
- * haben keinen Bezug zu realen Waffen, Pulvern oder Ladedaten.
+ * keine echte Umrechnung). Geschwindigkeit wird in m/s gezeigt. Die Ergebnisse
+ * sind Demo-Werte und haben keinen Bezug zu realen Waffen, Pulvern oder Ladedaten.
  *
  * Zustandsgrößen: z (verbrannter Anteil 0..1), x (Weg), v (Geschwindigkeit).
  *   p      = K * c * z / (V0 + x) - Verlust      (Gasdruck, Pseudo-Einheiten)
@@ -27,13 +27,13 @@ export const MODEL_CONSTANTS = Object.freeze({
   barrelLength: 6, // Lauflänge (Pseudo-Wegeinheiten)
   dt: 2e-4,        // Zeitschritt (Pseudo-Zeit)
   maxSteps: 200000,
-  vScale: 5,       // Anzeige-Skalierung für sim-m/s (Pseudo)
+  vScale: 5,       // Anzeige-Skalierung für m/s (Demo-Wert)
 });
 
 /**
  * Erfundene Abbrandkoeffizienten je burn_rate_rank.
  * Rang 1 ist am schnellsten; jeder höhere Rang brennt langsamer.
- * Dieselbe Reihenfolge steht in data/db.json. `sim_beta` überschreibt den Rang.
+ * Dieselbe Reihenfolge steht in data/db.json. `beta` überschreibt den Rang.
  */
 const BURN_BETA_BY_RANK = {
   1: 0.40, // extrafast
@@ -48,7 +48,7 @@ const BURN_BETA_BY_RANK = {
 
 /** Liefert den Abbrandkoeffizienten für ein Demo-Pulver. */
 export function powderBeta(powder) {
-  if (powder && typeof powder.sim_beta === 'number') return powder.sim_beta;
+  if (powder && typeof powder.beta === 'number') return powder.beta;
   const rank = powder && powder.burn_rate_rank;
   return BURN_BETA_BY_RANK[rank] ?? 0.17;
 }
@@ -58,7 +58,7 @@ export function powderBeta(powder) {
  * (p0 und beta). Ohne Angabe bleibt der Faktor 1.
  */
 export function ignitionFactor(primer) {
-  if (primer && typeof primer.sim_ignition === 'number') return primer.sim_ignition;
+  if (primer && typeof primer.ignition === 'number') return primer.ignition;
   return 1;
 }
 
@@ -67,10 +67,10 @@ export const GRAMS_PER_GRAIN = 0.06479891;
 
 /**
  * Interne Pseudo-Masse eines Demo-Geschosses in Gramm.
- * `sim_mass_gr` wird mit 0.06479891 g/grain umgerechnet. Ohne Angabe: 10.
+ * `mass_grain` wird mit 0.06479891 g/grain umgerechnet. Ohne Angabe: 10.
  */
 export function bulletMass(bullet) {
-  if (bullet && typeof bullet.sim_mass_gr === 'number') return bullet.sim_mass_gr * GRAMS_PER_GRAIN;
+  if (bullet && typeof bullet.mass_grain === 'number') return bullet.mass_grain * GRAMS_PER_GRAIN;
   return 10;
 }
 
@@ -78,7 +78,7 @@ export function bulletMass(bullet) {
  * Führt eine Simulation aus.
  * @param {{powder: object, bullet: object, charge: number, primer?: object, constants?: object}} input
  *        charge in Ladungseinheiten (LE, abstrakt, sinnvoll ca. 1–10).
- *        primer.sim_ignition ist ein erfundener Faktor, Standard 1.
+ *        primer.ignition ist ein erfundener Faktor, Standard 1.
  * @returns {{samples: Array<{t:number,x:number,v:number,p:number,z:number}>,
  *            peakPressure:number, muzzleVelocity:number, exitTime:number,
  *            burnedAtExit:number, exited:boolean}}

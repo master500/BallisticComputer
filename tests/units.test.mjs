@@ -50,4 +50,24 @@ function walk(dir) {
 walk(new URL('..', import.meta.url).pathname);
 assert.deepEqual(hits, []);
 
+const simToken = /\bsim[-_. ]/i;
+const simHits = [];
+const visibleRoots = ['README.md', 'CHANGELOG.md', 'SAFETY.md', 'index.html', 'js/views', 'data'];
+function walkVisible(target) {
+  const stat = statSync(target);
+  if (stat.isDirectory()) {
+    for (const name of readdirSync(target)) walkVisible(join(target, name));
+    return;
+  }
+  if (!/\.(js|mjs|html|md|json|jsonl)$/.test(target)) return;
+  const source = readFileSync(target, 'utf8');
+  if (simToken.test(source) || source.includes('sim-')) simHits.push(target);
+  if (/\bMPa\b|pmax_mpa/.test(source)) simHits.push(`${target} (MPa)`);
+}
+const root = new URL('..', import.meta.url).pathname;
+for (const rel of visibleRoots) walkVisible(join(root, rel));
+assert.deepEqual(simHits, []);
+assert.equal(readFileSync(join(root, 'data/cip/cip_pmax_bar_tab1.json'), 'utf8').includes('pmax_bar'), true);
+assert.equal(readFileSync(join(root, 'data/cip/cip_pmax_bar_tab2-5.json'), 'utf8').includes('pmax_bar'), true);
+
 console.log('OK – Einheiten grain und bar.');

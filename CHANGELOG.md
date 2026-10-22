@@ -2,6 +2,12 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.4] – 2026-10-22
+### Geändert
+- Sichtbare Einheiten sind bar, grain, mm und m/s. Demo-Felder heißen `beta`, `ignition`, `mass_grain`, `ogive_form` und `pmax_bar`. Berechnete Demo-Zahlen heißen Demo-Wert.
+- CIP-Pmax steht nur in `cip_pmax_bar_tab1.json` und `cip_pmax_bar_tab2-5.json`, jeweils mit dem Feld `pmax_bar`.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.4`.
+
 ## [1.5.3] – 2026-10-22
 ### Geändert
 - Ein GRT-Druck in PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet (62 000 psi → 4 274,8 bar) und mit „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet. Andere Druckeinheiten verwerfen die betroffenen Zeilen. Die Zusammenfassung lautet „X Zeilen verworfen (Druckeinheit nicht unterstützt)“ und nennt die Einheit nicht.
@@ -31,14 +37,14 @@ Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versioni
 ## [1.5.0] – 2026-10-22
 ### Hinzugefügt
 - CIP-Tabelle (`#/cip`): Nachschlagewerte Pmax in bar und L6 in mm, Quelle C.I.P., abgerufen 21.10.2026. Suche nur über den exakten Patronennamen oder feste Aliase (u. a. „9 mm“ → „9 mm Luger“). Das Suchfeld bleibt beim Tippen stehen.
-- Meine Daten: CIP-Zuordnung, Druckprüfung in bar (gelb ab 0,9×Pmax bis Pmax, rot darüber oder bei einem Schuss über 1,15×Pmax), PSI umgerechnet mit ungefährem CIP-Vergleich, L6-Hinweis in mm. Numerischer GRT-Schussdruck wird von MPa mit Faktor 10 in bar übernommen.
+- Meine Daten: CIP-Zuordnung, Druckprüfung in bar (gelb ab 0,9×Pmax bis Pmax, rot darüber oder bei einem Schuss über 1,15×Pmax), PSI umgerechnet mit ungefährem CIP-Vergleich, L6-Hinweis in mm. Numerischer GRT-Schussdruck wird mit Faktor 10 in bar übernommen.
 - Sechs fiktive Demo-Zündhütchen mit erfundenem Zündfaktor nur für das Spielzeugmodell. In Meine Daten ist das Zündhütchen Freitext ohne Leistungswerte; ändert es sich, erscheint ein gelber Hinweis.
 - Demo-Ladungsleiter in grain (Start 90 % der Demo-Grenze, Schritte 0,8 %, Ende an der Grenze, nie darüber). Setztiefe in mm. Ogivenform je Demo-Geschoss.
 - Identische Backup-Zeilen werden beim zweiten Import derselben Datei übersprungen.
 ### Behoben
 - Leere CIP-Hinweise und optionale Karten schreiben nicht mehr das Wort „null“ in die Ansicht.
 ### Geändert
-- Demo-Geschossmassen stehen als `sim_mass_gr` (grain). Die Anzeige von Gewichten ist grain, Drücke der Demo sind bar. GRT-Gewichte werden mit 1 grain = 0,06479891 g umgerechnet und als „aus Gramm umgerechnet“ gekennzeichnet.
+- Demo-Geschossmassen stehen als `mass_grain` (grain). Die Anzeige von Gewichten ist grain, Drücke der Demo sind bar. GRT-Gewichte werden mit 1 grain = 0,06479891 g umgerechnet und als „aus Gramm umgerechnet“ gekennzeichnet.
 - Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.0`.
 ### Bewusst nicht enthalten
 - Keine echten Ladedaten. CIP-Pmax und CIP-L6 gehen nicht in Simulation oder Optimierung. Die Leiter nutzt nur die fiktive Demo-Grenze.
@@ -53,7 +59,7 @@ Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versioni
 
 ## [1.3.0] – 2026-10-21
 ### Hinzugefügt
-- Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.
+- Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in bar.
 - Simulation: Auswahl der Demo-Patrone. Optimierung: Limit je Patrone; Diagramm je Geschoss; Liste aller Pulver×Geschoss-Kombinationen.
 ### Geändert
 - Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.3.0`.

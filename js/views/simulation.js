@@ -45,12 +45,12 @@ export function renderSimulation(root, { db }) {
     }, a === 'x' ? 'über Weg' : 'über Zeit')));
 
   const primerHints = el('div');
-  const canvas = el('canvas', { class: 'chart', 'aria-label': 'Druckverlauf (simuliert)' });
+  const canvas = el('canvas', { class: 'chart', 'aria-label': 'Druckverlauf' });
   const kpis = el('div', { class: 'kpis' });
 
   root.replaceChildren(
     el('section', { class: 'card' },
-      el('label', {}, 'Demo-Patrone', select(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${fmt(demoBar(l.max_mpa_sim), 0)} bar)`)),
+      el('label', {}, 'Demo-Patrone', select(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${fmt(l.pmax_bar, 0)} bar)`)),
       el('label', {}, 'Demo-Pulver', select(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
       el('label', {}, 'Demo-Geschoss', select(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
       el('label', {}, 'Demo-Zündhütchen', select(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
@@ -58,7 +58,7 @@ export function renderSimulation(root, { db }) {
       el('label', {}, el('span', {}, 'Ladung ', chargeOut), slider)),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
-      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Pseudo-Einheiten, kein Realbezug.')),
+      el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Demo-Wert, keine echten Ladedaten.')),
   );
 
   function run() {
@@ -73,10 +73,10 @@ export function renderSimulation(root, { db }) {
     if (!powder || !bullet) return;
     const r = simulate({ powder, bullet, primer, charge: state.chargeGrain / GRAIN_PER_LE });
     const over = r.peakPressure > limit.max;
-    const limitBar = demoBar(limit.max);
+    const limitBar = limit.bar;
     kpis.replaceChildren(
       kpi('Spitzendruck', `${fmt(demoBar(r.peakPressure), 0)} bar`, over ? 'bad' : ''),
-      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity, 0)} sim-m/s`),
+      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity, 0)} m/s · Demo-Wert`),
       kpi('Demo-Grenze', `${fmt(limitBar, 0)} bar`, over ? 'bad' : ''),
       kpi('Abbrand an Mündung', `${fmt(r.burnedAtExit * 100, 0)} %`),
     );
@@ -84,7 +84,7 @@ export function renderSimulation(root, { db }) {
     drawLineChart(canvas, {
       series: [{ color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(),
         points: r.samples.map((s) => [key === 'x' ? s.x : s.t * 1000, demoBar(s.p)]) }],
-      xLabel: key === 'x' ? 'Weg (Pseudo-Einheiten)' : 'Zeit (Pseudo-ms)',
+      xLabel: key === 'x' ? 'Weg' : 'Zeit',
       yLabel: 'Druck (bar)',
       hLine: { value: limitBar, label: `Demo-Grenze ${fmt(limitBar, 0)} bar` },
     });

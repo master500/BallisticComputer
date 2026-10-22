@@ -6,8 +6,8 @@ import { buildCipIndex, filterCipRows, resolveCipQuery } from '../js/cip/lookup.
 import { setChildren } from '../js/util.js';
 
 const read = (name) => JSON.parse(readFileSync(new URL(`../data/cip/${name}`, import.meta.url)));
-const tab1 = read('cip_pmax_tab1.json');
-const tab2 = read('cip_pmax_tab2-5.json');
+const tab1 = read('cip_pmax_bar_tab1.json');
+const tab2 = read('cip_pmax_bar_tab2-5.json');
 const l6 = read('cip_l6.json');
 const l6rest = read('cip_l6_tab2-5.json');
 

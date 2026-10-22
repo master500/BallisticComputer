@@ -3,7 +3,7 @@
  *
  * Geparst wird im Browser mit DOMParser. Textwerte sind URL-kodiert
  * (decodeURIComponent). Die Ladung steht in der Datei in Kilogramm.
- * Ein numerischer Schussdruck in MPa wird mit Faktor 10 in bar übernommen
+ * Ein numerischer Schussdruck aus der Datei wird mit Faktor 10 in bar übernommen
  * und als „berechnet (GRT)“ gekennzeichnet. Text-Platzhalter werden verworfen.
  *
  * Übernommen werden ausschließlich Anzeigefelder: Titel, Kalibername,

@@ -60,8 +60,9 @@ assert.equal(ladderNeedsRestart({ powderId: 'a', bulletId: 'b', primerId: 'c' },
 const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url)));
 const powder = db.powders[0];
 const bullet = db.bullets[0];
-const plain = db.bullets.find((item) => item.sim_ogive === 'none');
-const limit = db.pressure_limits[0].max_mpa_sim;
+const plain = db.bullets.find((item) => item.ogive_form === 'none');
+const secantBullet = db.bullets.find((item) => item.ogive_form === 'secant');
+const limit = db.pressure_limits[0].pmax_bar / 10;
 const ladder = buildLadder({ powder, bullet, primer: db.primers[0], limitPressure: limit, run: simulate });
 assert.ok(ladder.steps.length >= 3);
 assert.ok(ladder.steps.every((step) => step.grain <= ladder.limitGrain + 1e-9));
@@ -82,6 +83,9 @@ if (ladder.seating.some((row) => row.over)) assert.equal(ladder.seatingRecommend
 else assert.equal(ladder.seatingRecommendation.pressure, Math.min(...ladder.seating.map((row) => row.pressure)));
 assert.ok(ladder.seatingChargeGrain <= ladder.steps.filter((step) => !step.over).at(-1).grain * 0.97 + 1e-9);
 assert.equal(buildLadder({ powder, bullet: plain, limitPressure: limit, run: simulate }).seating.length, 0);
+assert.equal(secantBullet.ogive_form, 'secant');
+assert.equal(seatingDepthsMm(secantBullet.ogive_form)[0], -0.25);
+assert.equal(db.bullets.every((item) => typeof item.ogive_form === 'string' && item.ogive_form.length > 0), true);
 assert.equal(demoBar(380), 3800);
 assert.equal(demoBar(265), 2650);
 

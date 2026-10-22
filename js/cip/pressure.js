@@ -22,7 +22,7 @@ export function psiToBar(psi) {
   return Math.round(Number(psi) * BAR_PER_PSI * 10) / 10;
 }
 
-/** GRT-Schussdruck steht in der Datei in MPa und wird beim Import ×10 in bar. */
+/** GRT-Schussdruck aus der Datei wird beim Import ×10 in bar. */
 export function mpaToBar(mpa) {
   return Number(mpa) * 10;
 }
