@@ -32,18 +32,45 @@ export function parseCSV(text, delimiter = detectDelimiter(text)) {
   return { headers: headers.map((h) => h.trim()), rows: body, delimiter };
 }
 
+function isBackupRecord(record) {
+  return !!record && typeof record === 'object' && !Array.isArray(record);
+}
+
+/** Backup-Datensätze tief kopieren, ohne sie zu Text zu machen. `id` wird neu vergeben. */
+export function restoreBackupRecords(records) {
+  return records.filter(isBackupRecord).map((record) => {
+    const copy = structuredClone(record);
+    delete copy.id;
+    return copy;
+  });
+}
+
 /**
  * Wandelt Text (CSV oder JSON) in { headers, rows } um.
- * JSON: Array von Objekten oder { records: [...] } (z. B. eigener Export).
+ * JSON: Array von Objekten oder { records: [...] }.
+ * Ein BallisticComputer-Backup (`kind: "user-data-backup"`) bleibt strukturiert,
+ * damit verschachtelte Felder (z. B. `charges` einer .grtload) erhalten bleiben.
  */
 export function parseInput(text) {
   const trimmed = text.trim();
   if (trimmed.startsWith('[') || trimmed.startsWith('{')) {
     const data = JSON.parse(trimmed);
+    if (data && !Array.isArray(data) && data.kind === 'user-data-backup' && Array.isArray(data.records)) {
+      const records = restoreBackupRecords(data.records);
+      if (!records.length) throw new Error('JSON enthält keine Datensätze.');
+      return { format: 'backup', records };
+    }
     const list = Array.isArray(data) ? data : (data.records || data.data || []);
     if (!Array.isArray(list) || !list.length) throw new Error('JSON enthält keine Datensätze.');
-    const headers = [...new Set(list.flatMap((o) => Object.keys(o)))];
-    return { headers, rows: list.map((o) => headers.map((h) => (o[h] == null ? '' : String(o[h])))), format: 'json' };
+    const headers = [...new Set(list.flatMap((o) => (o && typeof o === 'object' ? Object.keys(o) : [])))];
+    return {
+      headers,
+      rows: list.map((o) => headers.map((h) => {
+        const value = o?.[h];
+        return value == null ? '' : String(value);
+      })),
+      format: 'json',
+    };
   }
   return { ...parseCSV(text), format: 'csv' };
 }

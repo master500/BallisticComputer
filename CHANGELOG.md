@@ -2,6 +2,14 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.4.0] – 2026-10-21
+### Geändert
+- JSON-Backup aus **Meine Daten** wird beim erneuten Import strukturiert übernommen; verschachtelte `.grtload`-Ladungen bleiben erhalten.
+- DemoPowder-Ränge 1–8 sind absteigend nach Abbrand sortiert (Rang 1 am schnellsten), gleich wie `data/db.json`.
+- Schüsse mit Geschwindigkeit 0, leer oder negativ zählen nicht in Mittelwert, SD und ES.
+- Optimierung rechnet den Sweep nicht mehr bei jeder Auswahl sofort, sondern gebündelt und in kleinen Schritten.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.4.0`.
+
 ## [1.3.0] – 2026-10-21
 ### Hinzugefügt
 - Demo-Katalog: fünf weitere `DemoPowder` (extrafast, mediumfast, mediumslow, extraslow, plateau), sechs weitere Demo-Geschosse mit verschiedenen Gewichten, `Demo-Cartridge-2` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.

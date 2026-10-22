@@ -1,4 +1,4 @@
-# BallisticComputer (Demo) – v1.3.0
+# BallisticComputer (Demo) – v1.4.0
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert,

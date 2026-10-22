@@ -75,18 +75,19 @@ function grainsFromGrams(grams) {
   return grams == null ? null : grams / GRAMS_PER_GRAIN;
 }
 
-/** Mittelwert, Stichproben-Standardabweichung (n−1) und Extremstreuung der gemessenen Schüsse. */
+/** Mittelwert, Stichproben-Standardabweichung (n−1) und Extremstreuung der gemessenen Schüsse. 0 und negative Werte zählen nicht. */
 export function seriesStats(values) {
-  if (!values.length) return null;
-  const n = values.length;
-  const mean = values.reduce((sum, value) => sum + value, 0) / n;
+  const measured = values.filter((value) => Number.isFinite(value) && value > 0);
+  if (!measured.length) return null;
+  const n = measured.length;
+  const mean = measured.reduce((sum, value) => sum + value, 0) / n;
   if (n < 2) return { n, mean, sd: null, es: null };
-  const variance = values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / (n - 1);
+  const variance = measured.reduce((sum, value) => sum + (value - mean) ** 2, 0) / (n - 1);
   return {
     n,
     mean,
     sd: Math.sqrt(variance),
-    es: Math.max(...values) - Math.min(...values),
+    es: Math.max(...measured) - Math.min(...measured),
   };
 }
 
@@ -96,7 +97,7 @@ function parseCharge(node) {
   const velocitiesMs = [];
   for (const shot of directChildren(node, 'shot')) {
     const velocity = readNumber(shot.getAttribute('velocity'));
-    if (velocity != null) velocitiesMs.push(velocity);
+    if (velocity != null && velocity > 0) velocitiesMs.push(velocity);
   }
   return {
     name: decodeGrtValue(node.getAttribute('name')).trim(),

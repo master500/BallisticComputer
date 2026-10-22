@@ -24,9 +24,23 @@ assert.equal(ql.headers[qm.coal], 'COAL [in]');
 assert.equal(qm.measured_velocity, -1, 'berechnete Velocity nie automatisch als gemessen');
 assert.equal(qm.notes, -1, 'Pmax nicht automatisch übernommen');
 
-// JSON-Backup re-import
+// Flaches JSON bleibt eine Tabelle
 const j = parseInput(JSON.stringify({ records: [{ cartridge: 'A', charge: 1 }] }));
+assert.equal(j.format, 'json');
 assert.deepEqual(j.headers, ['cartridge', 'charge']);
+
+// Backup mit verschachtelter .grtload-Ladungsliste bleibt verlustfrei
+const charges = [{ name: 'Serie A', note: 'FIKTIV', grams: 1.5, velocitiesMs: [10, 20], stats: { n: 2, mean: 15, sd: null, es: null } }];
+const backup = parseInput(JSON.stringify({
+  app: 'BallisticComputer',
+  kind: 'user-data-backup',
+  records: [{ id: 'alt', kind: 'grtload', title: 'Demo Fiktiv', charges }, { cartridge: 'Demo', charge: 2 }],
+}));
+assert.equal(backup.format, 'backup');
+assert.equal(backup.records[0].id, undefined);
+assert.deepEqual(backup.records[0].charges, charges);
+assert.equal(backup.records[1].cartridge, 'Demo');
+assert.equal(backup.records[1].charge, 2);
 assert.equal(parseNumber('1.234,5'), 1234.5); assert.equal(parseNumber('42.5 gr'), 42.5); assert.equal(parseNumber(''), null);
 
 // Trennung: Modell und Demo-Views importieren keine Nutzerdaten

@@ -1,7 +1,7 @@
 // Tests für den lokalen .grtload-Import. Aufruf: node tests/grtload.test.mjs
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { GRAMS_PER_GRAIN, decodeGrtValue, isGrtLoad, parseGrtLoad } from '../js/userdata/grtload.js';
+import { GRAMS_PER_GRAIN, decodeGrtValue, isGrtLoad, parseGrtLoad, seriesStats } from '../js/userdata/grtload.js';
 
 class XmlNode {
   constructor(tag) {
@@ -124,6 +124,12 @@ assert.ok(Math.abs(first.kilograms - 0.0015) < 1e-12);
 assert.ok(Math.abs(first.grams - 1.5) < 1e-9);
 assert.ok(Math.abs(first.grains - (1.5 / GRAMS_PER_GRAIN)) < 1e-9);
 assert.deepEqual(first.velocitiesMs, [10, 20, 30]);
+assert.equal(first.velocitiesMs.includes(0), false);
+const ignored = seriesStats([10, 0, -4, 20, Number.NaN]);
+assert.equal(ignored.n, 2);
+assert.equal(ignored.mean, 15);
+assert.equal(ignored.es, 10);
+assert.equal(seriesStats([0, -1]), null);
 assert.equal(first.stats.n, 3);
 assert.equal(first.stats.mean, 20);
 assert.equal(first.stats.sd, 10);

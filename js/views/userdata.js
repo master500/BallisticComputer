@@ -55,9 +55,14 @@ function importSection(pendingBox, refresh) {
         status.textContent = `GRT-Projekt „${project.title || fileName}“ gelesen. Nur Anzeige – bitte die Ladungsnotiz prüfen.`;
       } else {
         const parsed = parseInput(text);
-        if (!parsed.rows.length) throw new Error('Keine Datenzeilen gefunden.');
-        ui.pending = { mode: 'table', ...parsed, fileName, mapping: suggestMapping(parsed.headers) };
-        status.textContent = `${parsed.rows.length} Zeile(n) aus „${fileName}“ erkannt (${parsed.format.toUpperCase()}). Bitte Zuordnung prüfen.`;
+        if (parsed.format === 'backup') {
+          ui.pending = { mode: 'backup', fileName, records: parsed.records };
+          status.textContent = `${parsed.records.length} Datensatz/Datensätze aus dem Backup. Verschachtelte Angaben bleiben erhalten.`;
+        } else {
+          if (!parsed.rows.length) throw new Error('Keine Datenzeilen gefunden.');
+          ui.pending = { mode: 'table', ...parsed, fileName, mapping: suggestMapping(parsed.headers) };
+          status.textContent = `${parsed.rows.length} Zeile(n) aus „${fileName}“ erkannt (${parsed.format.toUpperCase()}). Bitte Zuordnung prüfen.`;
+        }
       }
     } catch (err) {
       ui.pending = null;
@@ -85,6 +90,24 @@ function importSection(pendingBox, refresh) {
 function renderPending(box, refresh) {
   const p = ui.pending;
   if (!p) { box.replaceChildren(); return; }
+  if (p.mode === 'backup') {
+    const grt = p.records.filter((r) => r.kind === 'grtload');
+    const flat = p.records.filter((r) => r.kind !== 'grtload');
+    box.replaceChildren(el('div', { class: 'mapping' },
+      el('h3', {}, 'Backup'),
+      el('p', { class: 'muted small' }, `${p.records.length} Datensätze, davon ${grt.length} GRT-Projekt(e). Ladungen und andere verschachtelte Felder werden mit gespeichert.`),
+      grt.map((project) => grtDetails(project)),
+      flat.length ? recordTable(flat, { compact: true }) : null,
+      el('div', { class: 'row-btns' },
+        el('button', { class: 'btn primary', type: 'button', onclick: () => {
+          const n = userStore.add(p.records);
+          ui.pending = null;
+          refresh();
+          toast(`${n} Datensatz/Datensätze aus dem Backup gespeichert.`);
+        } }, `${p.records.length} speichern`),
+        el('button', { class: 'btn', type: 'button', onclick: () => { ui.pending = null; refresh(); } }, 'Abbrechen'))));
+    return;
+  }
   if (p.mode === 'grt') {
     box.replaceChildren(el('div', { class: 'mapping' },
       grtDetails(p.project),

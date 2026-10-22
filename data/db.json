@@ -3,14 +3,14 @@
   "version": 2,
   "updated": "2026-10-21T23:50:00Z",
   "powders": [
-    {"id": "P-01", "name": "DemoPowder Fast-A", "burn_rate_rank": 1, "burn_class": "fast", "sim_beta": 0.30},
-    {"id": "P-02", "name": "DemoPowder Medium-B", "burn_rate_rank": 2, "burn_class": "medium", "sim_beta": 0.17},
-    {"id": "P-03", "name": "DemoPowder Slow-C", "burn_rate_rank": 3, "burn_class": "slow", "sim_beta": 0.10},
-    {"id": "P-04", "name": "DemoPowder Extrafast-D", "burn_rate_rank": 4, "burn_class": "extrafast", "sim_beta": 0.40},
-    {"id": "P-05", "name": "DemoPowder Mediumfast-E", "burn_rate_rank": 5, "burn_class": "mediumfast", "sim_beta": 0.24},
+    {"id": "P-04", "name": "DemoPowder Extrafast-D", "burn_rate_rank": 1, "burn_class": "extrafast", "sim_beta": 0.40},
+    {"id": "P-01", "name": "DemoPowder Fast-A", "burn_rate_rank": 2, "burn_class": "fast", "sim_beta": 0.30},
+    {"id": "P-05", "name": "DemoPowder Mediumfast-E", "burn_rate_rank": 3, "burn_class": "mediumfast", "sim_beta": 0.24},
+    {"id": "P-08", "name": "DemoPowder Plateau-H", "burn_rate_rank": 4, "burn_class": "plateau", "sim_beta": 0.20},
+    {"id": "P-02", "name": "DemoPowder Medium-B", "burn_rate_rank": 5, "burn_class": "medium", "sim_beta": 0.17},
     {"id": "P-06", "name": "DemoPowder Mediumslow-F", "burn_rate_rank": 6, "burn_class": "mediumslow", "sim_beta": 0.14},
-    {"id": "P-07", "name": "DemoPowder Extraslow-G", "burn_rate_rank": 7, "burn_class": "extraslow", "sim_beta": 0.06},
-    {"id": "P-08", "name": "DemoPowder Plateau-H", "burn_rate_rank": 8, "burn_class": "plateau", "sim_beta": 0.20}
+    {"id": "P-03", "name": "DemoPowder Slow-C", "burn_rate_rank": 7, "burn_class": "slow", "sim_beta": 0.10},
+    {"id": "P-07", "name": "DemoPowder Extraslow-G", "burn_rate_rank": 8, "burn_class": "extraslow", "sim_beta": 0.06}
   ],
   "bullets": [
     {"id": "B-01", "name": "Demo FMJ 9.5g", "sim_mass": 9.5},

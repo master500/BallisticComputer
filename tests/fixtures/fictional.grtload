@@ -30,6 +30,9 @@
           <shot name="" pressure="SENTINEL-P-9" velocity="10"/>
           <shot name="" pressure="0" velocity="20"/>
           <shot name="" pressure="0" velocity="30"/>
+          <shot name="" pressure="0" velocity="0"/>
+          <shot name="" pressure="0" velocity="-4"/>
+          <shot name="" pressure="0" velocity=""/>
         </charge>
         <charge name="Serie B" note="" value="0.001">
           <shot name="" pressure="0" velocity=""/>

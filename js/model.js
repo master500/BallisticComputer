@@ -31,19 +31,18 @@ export const MODEL_CONSTANTS = Object.freeze({
 
 /**
  * Erfundene Abbrandkoeffizienten je burn_rate_rank.
- * 1–3 sind die ursprünglichen Klassen (schnell, mittel, langsam).
- * 4–8 sind weitere Demo-Klassen; höhere Zahl ist hier nicht „langsamer“.
- * `sim_beta` am Pulver überschreibt den Rang.
+ * Rang 1 ist am schnellsten; jeder höhere Rang brennt langsamer.
+ * Dieselbe Reihenfolge steht in data/db.json. `sim_beta` überschreibt den Rang.
  */
 const BURN_BETA_BY_RANK = {
-  1: 0.30, // fast
-  2: 0.17, // medium
-  3: 0.10, // slow
-  4: 0.40, // extrafast
-  5: 0.24, // mediumfast
+  1: 0.40, // extrafast
+  2: 0.30, // fast
+  3: 0.24, // mediumfast
+  4: 0.20, // plateau
+  5: 0.17, // medium
   6: 0.14, // mediumslow
-  7: 0.06, // extraslow
-  8: 0.20, // plateau
+  7: 0.10, // slow
+  8: 0.06, // extraslow
 };
 
 /** Liefert den Abbrandkoeffizienten für ein Demo-Pulver. */

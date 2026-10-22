@@ -4,7 +4,8 @@ import { readFileSync } from 'node:fs';
 import { bulletMass, powderBeta, simulate, sweep } from '../js/model.js';
 
 const db = JSON.parse(readFileSync(new URL('../data/db.json', import.meta.url)));
-const [fast, , slow] = db.powders;
+const fast = db.powders.find((p) => p.burn_class === 'fast');
+const slow = db.powders.find((p) => p.burn_class === 'slow');
 const bullet = db.bullets[0];
 
 const a = simulate({ powder: fast, bullet, charge: 4 });
@@ -25,6 +26,11 @@ for (const limitRow of db.pressure_limits) {
 }
 assert.equal(bulletMass({ name: 'Demo X 1g', sim_mass: 4 }), 4);
 assert.equal(powderBeta(db.powders.find((p) => p.burn_class === 'extrafast')), 0.40);
+const byRank = [...db.powders].sort((a, b) => a.burn_rate_rank - b.burn_rate_rank);
+assert.deepEqual(db.powders.map((p) => p.burn_rate_rank), byRank.map((p) => p.burn_rate_rank), 'db.json folgt der Rangfolge');
+for (let i = 1; i < byRank.length; i++) {
+  assert.ok(powderBeta({ burn_rate_rank: byRank[i].burn_rate_rank }) < powderBeta({ burn_rate_rank: byRank[i - 1].burn_rate_rank }), 'höherer Rang brennt langsamer');
+}
 assert.ok(simulate({ powder: db.powders.find((p) => p.burn_class === 'extrafast'), bullet, charge: 6 }).peakPressure
   > simulate({ powder: db.powders.find((p) => p.burn_class === 'extraslow'), bullet, charge: 6 }).peakPressure);
 

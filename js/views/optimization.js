@@ -5,7 +5,8 @@ import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 
 const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
-const state = { cartridge: null, chartBulletId: null };
+const state = { cartridge: null, chartBulletId: null, timer: 0, token: 0 };
+const SELECT_DEBOUNCE_MS = 200;
 
 export function renderOptimization(root, { db }) {
   db.powders ??= [];
@@ -16,12 +17,12 @@ export function renderOptimization(root, { db }) {
 
   const out = el('div');
   const cartridgeSelect = el('select', {
-    onchange: (e) => { state.cartridge = e.target.value; run(); },
+    onchange: (e) => { state.cartridge = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
   }, db.pressure_limits.map((l) => el('option', {
     value: l.cartridge, selected: l.cartridge === state.cartridge,
   }, `${l.cartridge} (${l.max_mpa_sim} sim-MPa)`)));
   const bulletSelect = el('select', {
-    onchange: (e) => { state.chartBulletId = e.target.value; run(); },
+    onchange: (e) => { state.chartBulletId = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
   }, db.bullets.map((b) => el('option', {
     value: b.id, selected: b.id === state.chartBulletId,
   }, b.name)));
@@ -30,14 +31,42 @@ export function renderOptimization(root, { db }) {
     el('section', { class: 'card' },
       el('label', {}, 'Demo-Patrone (Drucklimit)', cartridgeSelect),
       el('label', {}, 'Diagramm-Geschoss', bulletSelect),
-      el('button', { class: 'btn primary', type: 'button', onclick: run }, 'Sweep starten')),
+      el('button', { class: 'btn primary', type: 'button', onclick: () => schedule(0) }, 'Sweep starten')),
     out,
   );
 
-  function run() {
+  function schedule(delay) {
+    state.token += 1;
+    const token = state.token;
+    if (state.timer) clearTimeout(state.timer);
+    out.replaceChildren(el('p', { class: 'muted', role: 'status' }, 'Berechne …'));
+    state.timer = setTimeout(() => {
+      state.timer = 0;
+      if (token === state.token) computeChunked(token);
+    }, delay);
+  }
+
+  function computeChunked(token) {
     const limit = limitFor(db, state.cartridge);
     const chartBullet = db.bullets.find((b) => b.id === state.chartBulletId) || db.bullets[0];
-    const { results, best } = sweep({ powders: db.powders, bullets: db.bullets, limit: limit.max });
+    const results = [];
+    let index = 0;
+    const step = () => {
+      if (token !== state.token) return;
+      if (index >= db.powders.length) {
+        publish(results, limit, chartBullet);
+        return;
+      }
+      const powder = db.powders[index++];
+      results.push(...sweep({ powders: [powder], bullets: db.bullets, limit: limit.max }).results);
+      setTimeout(step, 0);
+    };
+    step();
+  }
+
+  function publish(results, limit, chartBullet) {
+    const ok = results.filter((r) => r.underLimit);
+    const best = ok.length ? ok.reduce((a, b) => (b.muzzleVelocity > a.muzzleVelocity ? b : a)) : null;
     const canvas = el('canvas', { class: 'chart' });
     const combos = [];
     for (const p of db.powders) for (const b of db.bullets) combos.push({ p, b });
@@ -73,7 +102,7 @@ export function renderOptimization(root, { db }) {
       hLine: { value: limit.max, label: `Demo-Limit ${limit.max}` },
     }));
   }
-  run();
+  schedule(0);
 }
 
 const kpiBox = (l, v) => el('div', { class: 'kpi' }, el('div', { class: 'muted small' }, l), el('div', { class: 'kpi-value' }, v));
