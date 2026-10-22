@@ -2,6 +2,12 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.3] – 2026-10-22
+### Hinzugefügt
+- Meine Daten: Pulvernamen als Textauswahl. Filterwerte bleiben `rifle`, `handgun`, `shotshell`, `unbekannt`; die Anzeige sagt Büchse, Kurzwaffe, Flinte und unbekannt. Der gewählte Name bleibt auf dem Gerät (`localStorage`), nicht im Backup. Keine Abbranddaten und keine Ladungen. Simulation, Leiter und Optimierung laden den Katalog nicht.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.3`.
+
 ## [1.5.2] – 2026-10-22
 ### Geändert
 - TAB II–V Pmax ist die QA-Datei mit `pmax_bar` (Felder `cartridge`, `pmax_bar`, `source`, `retrieved`). Kein Faktor ×10. Die Zeile „9 mm“ bleibt entfernt.
