@@ -3,8 +3,9 @@
  *
  * Vereinfachtes, lehrbuchartiges "Lumped-Parameter"-Modell mit
  * Lagrange-artiger Massenkorrektur. ALLE Konstanten sind frei erfunden und
- * NICHT kalibriert. Die Einheiten sind Pseudo-Einheiten ("sim-MPa",
- * "sim-m/s", Ladung in abstrakten "Ladungseinheiten" LE). Die Ergebnisse
+ * NICHT kalibriert. Intern bleiben Pseudo-Einheiten; die Oberfläche zeigt
+ * Druck in bar (intern × 10) und Ladung in grain (5 grain je Modelleinheit,
+ * keine echte Umrechnung). Geschwindigkeit bleibt sim-m/s. Die Ergebnisse
  * haben keinen Bezug zu realen Waffen, Pulvern oder Ladedaten.
  *
  * Zustandsgrößen: z (verbrannter Anteil 0..1), x (Weg), v (Geschwindigkeit).
@@ -22,7 +23,7 @@ export const MODEL_CONSTANTS = Object.freeze({
   A: 9.0,          // "Querschnitt" (Pseudo)
   mc: 0.12,        // Ladungsmassenfaktor für Lagrange-Korrektur (Pseudo)
   n: 0.85,         // Druckexponent im Abbrandgesetz
-  p0: 5,           // Zündimpuls (sim-MPa)
+  p0: 5,           // Zündimpuls (interner Demo-Druck)
   barrelLength: 6, // Lauflänge (Pseudo-Wegeinheiten)
   dt: 2e-4,        // Zeitschritt (Pseudo-Zeit)
   maxSteps: 200000,
@@ -61,15 +62,16 @@ export function ignitionFactor(primer) {
   return 1;
 }
 
+/** 1 grain = 0.06479891 g. Nur die interne Umrechnung der Demo-Masse, nie eine Anzeige in Gramm. */
+export const GRAMS_PER_GRAIN = 0.06479891;
+
 /**
- * Pseudo-Masse eines Demo-Geschosses. Nutzt optional `sim_mass`, sonst wird
- * eine Zahl mit "g" aus dem Namen gelesen (z. B. "Demo FMJ 9.5g"), sonst 10.
- * Der Wert wird nur als dimensionslose Modellgröße verwendet.
+ * Interne Pseudo-Masse eines Demo-Geschosses in Gramm.
+ * `sim_mass_gr` wird mit 0.06479891 g/grain umgerechnet. Ohne Angabe: 10.
  */
 export function bulletMass(bullet) {
-  if (bullet && typeof bullet.sim_mass === 'number') return bullet.sim_mass;
-  const m = bullet && /([\d.]+)\s*g\b/i.exec(bullet.name || '');
-  return m ? parseFloat(m[1]) : 10;
+  if (bullet && typeof bullet.sim_mass_gr === 'number') return bullet.sim_mass_gr * GRAMS_PER_GRAIN;
+  return 10;
 }
 
 /**
@@ -81,13 +83,15 @@ export function bulletMass(bullet) {
  *            peakPressure:number, muzzleVelocity:number, exitTime:number,
  *            burnedAtExit:number, exited:boolean}}
  */
-export function simulate({ powder, bullet, charge, primer, constants = {} }) {
+export function simulate({ powder, bullet, charge, primer, seatingMm = 0, constants = {} }) {
   const C = { ...MODEL_CONSTANTS, ...constants };
   const ignite = ignitionFactor(primer);
   const beta = powderBeta(powder) * ignite;
   const p0 = C.p0 * ignite;
-  const m = bulletMass(bullet) / 10; // normiert
+  const m = bulletMass(bullet) / 10; // normiert, Masse kam aus grain
   const c = Math.max(0, Number(charge) || 0);
+  const seat = Math.max(0, Number(seatingMm) || 0);
+  const volume = C.V0 * (1 - Math.min(0.15, seat * 0.008));
   const effMass = m + (c * C.mc) / 3;
 
   let t = 0, x = 0, v = 0, z = 0.001;
@@ -97,7 +101,7 @@ export function simulate({ powder, bullet, charge, primer, constants = {} }) {
 
   for (let i = 0; i < C.maxSteps && x < C.barrelLength; i++) {
     // Druck: Gas aus verbranntem Anteil, verdünnt durch Expansionsvolumen.
-    const p = Math.max(p0, (C.K * c * z) / (C.V0 + x));
+    const p = Math.max(p0, (C.K * c * z) / (volume + x));
     if (p > peak) peak = p;
     if (i % sampleEvery === 0) samples.push({ t, x, v: v * C.vScale, p, z });
 
@@ -109,7 +113,7 @@ export function simulate({ powder, bullet, charge, primer, constants = {} }) {
     t += C.dt;
   }
   const exited = x >= C.barrelLength;
-  const lastP = Math.max(p0, (C.K * c * z) / (C.V0 + x));
+  const lastP = Math.max(p0, (C.K * c * z) / (volume + x));
   samples.push({ t, x: Math.min(x, C.barrelLength), v: v * C.vScale, p: lastP, z });
 
   return {

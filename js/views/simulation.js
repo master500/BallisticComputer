@@ -3,8 +3,9 @@ import { el, fmt } from '../util.js';
 import { simulate } from '../model.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
+import { GRAIN_PER_LE, demoBar } from '../ladder.js';
 
-const state = { powderId: null, bulletId: null, primerId: null, cartridge: null, charge: 5, axis: 'x' };
+const state = { powderId: null, bulletId: null, primerId: null, cartridge: null, chargeGrain: 25, axis: 'x' };
 
 export function renderSimulation(root, { db }) {
   db.powders ??= [];
@@ -23,10 +24,10 @@ export function renderSimulation(root, { db }) {
     return el('option', { value, selected: value === state[key] }, labelOf(item));
   }));
 
-  const chargeOut = el('output', {}, fmt(state.charge, 2));
+  const chargeOut = el('output', {}, `${fmt(state.chargeGrain, 1)} grain`);
   const slider = el('input', {
-    type: 'range', min: 1, max: 10, step: 0.25, value: state.charge,
-    oninput: (e) => { state.charge = Number(e.target.value); chargeOut.textContent = fmt(state.charge, 2); run(); },
+    type: 'range', min: 5, max: 50, step: 0.1, value: state.chargeGrain,
+    oninput: (e) => { state.chargeGrain = Number(e.target.value); chargeOut.textContent = `${fmt(state.chargeGrain, 1)} grain`; run(); },
   });
   const axisToggle = el('div', { class: 'segmented' },
     ['x', 't'].map((a) => el('button', {
@@ -39,11 +40,11 @@ export function renderSimulation(root, { db }) {
 
   root.replaceChildren(
     el('section', { class: 'card' },
-      el('label', {}, 'Demo-Patrone', select(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${l.max_mpa_sim} sim-MPa)`)),
+      el('label', {}, 'Demo-Patrone', select(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${fmt(demoBar(l.max_mpa_sim), 0)} bar)`)),
       el('label', {}, 'Demo-Pulver', select(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
       el('label', {}, 'Demo-Geschoss', select(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
       el('label', {}, 'Demo-Zündhütchen', select(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
-      el('label', {}, el('span', {}, 'Ladung (abstrakte LE): ', chargeOut), slider)),
+      el('label', {}, el('span', {}, 'Ladung ', chargeOut), slider)),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
       el('p', { class: 'muted small' }, 'Spielzeugmodell (Lagrange-artig, unkalibriert). Pseudo-Einheiten, kein Realbezug.')),
@@ -55,21 +56,22 @@ export function renderSimulation(root, { db }) {
     const primer = db.primers.find((p) => p.id === state.primerId);
     const limit = limitFor(db, state.cartridge);
     if (!powder || !bullet) return;
-    const r = simulate({ powder, bullet, primer, charge: state.charge });
+    const r = simulate({ powder, bullet, primer, charge: state.chargeGrain / GRAIN_PER_LE });
     const over = r.peakPressure > limit.max;
+    const limitBar = demoBar(limit.max);
     kpis.replaceChildren(
-      kpi('Spitzendruck', `${fmt(r.peakPressure)} sim-MPa`, over ? 'bad' : 'good'),
-      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity)} sim-m/s`),
-      kpi('Limit', `${fmt(limit.max)} sim-MPa`, over ? 'bad' : ''),
-      kpi('Abbrand an Mündung', `${fmt(r.burnedAtExit * 100)} %`),
+      kpi('Spitzendruck', `${fmt(demoBar(r.peakPressure), 0)} bar`, over ? 'bad' : ''),
+      kpi('Mündungsgeschw.', `${fmt(r.muzzleVelocity, 0)} sim-m/s`),
+      kpi('Demo-Grenze', `${fmt(limitBar, 0)} bar`, over ? 'bad' : ''),
+      kpi('Abbrand an Mündung', `${fmt(r.burnedAtExit * 100, 0)} %`),
     );
     const key = state.axis;
     drawLineChart(canvas, {
       series: [{ color: getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(),
-        points: r.samples.map((s) => [key === 'x' ? s.x : s.t * 1000, s.p]) }],
+        points: r.samples.map((s) => [key === 'x' ? s.x : s.t * 1000, demoBar(s.p)]) }],
       xLabel: key === 'x' ? 'Weg (Pseudo-Einheiten)' : 'Zeit (Pseudo-ms)',
-      yLabel: 'Druck (sim-MPa)',
-      hLine: { value: limit.max, label: `Demo-Limit ${limit.max}` },
+      yLabel: 'Druck (bar)',
+      hLine: { value: limitBar, label: `Demo-Grenze ${fmt(limitBar, 0)} bar` },
     });
   }
   requestAnimationFrame(run);

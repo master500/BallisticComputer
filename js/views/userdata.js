@@ -200,9 +200,9 @@ function recordItem(r, refresh) {
   return el('li', {},
     el('div', { class: 'rec' },
       el('strong', {}, [r.cartridge, r.powder].filter(Boolean).join(' · ') || '—'),
-      el('div', { class: 'small' }, [r.bullet, r.bullet_weight != null ? `${fmt(r.bullet_weight, 1)} (Gew.)` : null].filter(Boolean).join(' · ')),
+      el('div', { class: 'small' }, [r.bullet, r.bullet_weight != null ? `${fmt(r.bullet_weight, 1)} grain` : null].filter(Boolean).join(' · ')),
       el('div', { class: 'small' },
-        `Ladung ${r.charge != null ? fmt(r.charge, 2) : '—'} · COAL ${r.coal != null ? fmt(r.coal, 2) : '—'} · v gemessen ${r.measured_velocity != null ? fmt(r.measured_velocity) : '—'}`),
+        `Ladung ${r.charge != null ? `${fmt(r.charge, 1)} grain` : '—'} · COAL ${r.coal != null ? `${fmt(r.coal, 2)} mm` : '—'} · v gemessen ${r.measured_velocity != null ? fmt(r.measured_velocity) : '—'}`),
       r.notes ? el('div', { class: 'muted small' }, r.notes) : null,
       primerEditor(r, refresh),
       el('div', { class: 'origin small' }, r.origin, r.source ? ` · Quelle: ${r.source}` : '', ` · ${fmtTime(r.importedAt)}`)),
@@ -258,11 +258,11 @@ function grtDetails(project) {
       fact('Hülsenvolumen', Number.isFinite(project.caseVolumeCm3) ? `${flex(project.caseVolumeCm3, 3)} cm³` : '—'),
       fact('pMaxZul', [Number.isFinite(project.pMaxBar) ? `${flex(project.pMaxBar, 1)} bar` : '—', project.pressureMethod].filter(Boolean).join(' · ')),
       fact('Geschoss', project.projectileName || '—'),
-      fact('Geschossgewicht', [Number.isFinite(project.projectileWeightG) ? `${flex(project.projectileWeightG, 3)} g` : null, Number.isFinite(project.projectileWeightGr) ? `${flex(project.projectileWeightGr, 1)} gr` : null].filter(Boolean).join(' · ') || '—'),
+      fact('Geschossgewicht', Number.isFinite(project.projectileWeightGr) ? `${flex(project.projectileWeightGr, 1)} grain · aus Gramm umgerechnet` : '—'),
       fact('Geschosslänge', Number.isFinite(project.projectileLengthMm) ? `${flex(project.projectileLengthMm, 2)} mm` : '—'),
       fact('Pulvername', project.propellantName || '—')),
     el('h3', {}, 'Ladungen'),
-    el('p', { class: 'muted small' }, 'Der Ladungswert steht in der Datei in kg und wird hier in g und grain angezeigt.'),
+    el('p', { class: 'muted small' }, 'Gewichte aus der Datei: aus Gramm umgerechnet.'),
     charges.length ? charges.map((charge) => chargeBlock(charge)) : el('p', { class: 'muted small' }, 'Keine Ladungen in der Datei.'));
 }
 
@@ -278,9 +278,8 @@ function chargeBlock(charge) {
   return el('div', { class: 'charge-block' },
     el('strong', {}, charge.name || 'Ladung'),
     charge.note ? el('p', { class: 'charge-note', role: 'note' }, el('span', { class: 'charge-note-label' }, 'Ladungsnotiz'), charge.note) : null,
-    el('div', {}, Number.isFinite(charge.grams) ? `${flex(charge.grams, 3)} g · ${flex(charge.grains, 1)} gr` : '—'),
+    el('div', {}, Number.isFinite(charge.grains) ? `${flex(charge.grains, 1)} grain · aus Gramm umgerechnet` : '—'),
     charge.bars?.length ? el('div', {}, `${charge.bars.map((bar) => `${flex(bar, 0)} bar`).join(', ')} · ${charge.barOrigin}`) : null,
-    Number.isFinite(charge.kilograms) ? el('div', { class: 'muted small' }, `in der Datei: ${flex(charge.kilograms, 6)} kg`) : null,
     velocities.length ? el('div', { class: 'small' }, `Schüsse: ${velocities.map((v) => flex(v, 1)).join(', ')} m/s`) : null,
     el('div', { class: 'small' }, summary));
 }
@@ -328,7 +327,7 @@ function renderCompare(box) {
     recordTable([...recs].sort((a, b) => (a.cartridge || '').localeCompare(b.cartridge || '') || a.charge - b.charge), { compare: true })));
   requestAnimationFrame(() => drawLineChart(canvas, {
     series: keys.map((k, i) => ({ color: COLORS[i % COLORS.length], dots: true, points: groups.get(k).map((r) => [r.charge, r.measured_velocity]) })),
-    xLabel: 'Ladung (wie importiert)', yLabel: 'gemessene v (wie importiert)', fitToData: true,
+    xLabel: 'Ladung (grain)', yLabel: 'gemessene v (wie importiert)', fitToData: true,
   }));
 }
 

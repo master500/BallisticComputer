@@ -1,11 +1,12 @@
-/** View: Optimierung – Parameter-Sweep, höchste v unter dem Demo-Druckgrenzwert. */
+/** View: Optimierung – Demo-Leiter unter der Demo-Grenze, nie unter CIP. */
 import { el, fmt } from '../util.js';
-import { sweep } from '../model.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
+import { buildLadder, demoBar, ladderNeedsRestart } from '../ladder.js';
 
-const COLORS = ['#0a84ff', '#30d158', '#ff9f0a', '#bf5af2', '#64d2ff', '#ff375f', '#ffd60a', '#ac8e68'];
-const state = { cartridge: null, chartBulletId: null, primerId: null, timer: 0, token: 0 };
+const state = {
+  cartridge: null, powderId: null, bulletId: null, primerId: null, pick: null, timer: 0, token: 0,
+};
 const SELECT_DEBOUNCE_MS = 200;
 
 export function renderOptimization(root, { db }) {
@@ -14,102 +15,101 @@ export function renderOptimization(root, { db }) {
   db.primers ??= [];
   db.pressure_limits ??= [];
   if (!db.pressure_limits.some((l) => l.cartridge === state.cartridge)) state.cartridge = db.pressure_limits[0]?.cartridge ?? null;
-  if (!db.bullets.some((b) => b.id === state.chartBulletId)) state.chartBulletId = db.bullets[0]?.id ?? null;
+  if (!db.powders.some((p) => p.id === state.powderId)) state.powderId = db.powders[0]?.id ?? null;
+  if (!db.bullets.some((b) => b.id === state.bulletId)) state.bulletId = db.bullets[0]?.id ?? null;
   if (!db.primers.some((p) => p.id === state.primerId)) state.primerId = db.primers[0]?.id ?? null;
 
   const out = el('div');
-  const cartridgeSelect = el('select', {
-    onchange: (e) => { state.cartridge = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
-  }, db.pressure_limits.map((l) => el('option', {
-    value: l.cartridge, selected: l.cartridge === state.cartridge,
-  }, `${l.cartridge} (${l.max_mpa_sim} sim-MPa)`)));
-  const bulletSelect = el('select', {
-    onchange: (e) => { state.chartBulletId = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
-  }, db.bullets.map((b) => el('option', {
-    value: b.id, selected: b.id === state.chartBulletId,
-  }, b.name)));
-  const primerSelect = el('select', {
-    onchange: (e) => { state.primerId = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
-  }, db.primers.map((p) => el('option', { value: p.id, selected: p.id === state.primerId }, p.name)));
+  const choose = (items, key, valueOf, labelOf) => el('select', {
+    onchange: (e) => { state[key] = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
+  }, items.map((item) => {
+    const value = valueOf(item);
+    return el('option', { value, selected: value === state[key] }, labelOf(item));
+  }));
 
   root.replaceChildren(
     el('section', { class: 'card' },
-      el('label', {}, 'Demo-Patrone (Drucklimit)', cartridgeSelect),
-      el('label', {}, 'Diagramm-Geschoss', bulletSelect),
-      el('label', {}, 'Demo-Zündhütchen', primerSelect),
-      el('button', { class: 'btn primary', type: 'button', onclick: () => schedule(0) }, 'Sweep starten')),
+      el('label', {}, 'Demo-Patrone', choose(db.pressure_limits, 'cartridge', (l) => l.cartridge, (l) => `${l.cartridge} (${fmt(demoBar(l.max_mpa_sim), 0)} bar)`)),
+      el('label', {}, 'Demo-Pulver', choose(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
+      el('label', {}, 'Demo-Geschoss', choose(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
+      el('label', {}, 'Demo-Zündhütchen', choose(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
+      el('p', {}, 'Maximalladung = Demo-Grenze'),
+      el('p', {}, 'Rechenwert – keine Freigabe'),
+      el('p', { class: 'muted small' }, '„Maximal“ meint die Demo-Grenze. Echte Ladungen beginnen immer bei der Startladung des Herstellers.')),
     out,
   );
 
+  function currentPick() {
+    return { powderId: state.powderId, bulletId: state.bulletId, primerId: state.primerId };
+  }
+
   function schedule(delay) {
+    if (ladderNeedsRestart(state.pick, currentPick())) state.pick = currentPick();
     state.token += 1;
     const token = state.token;
     if (state.timer) clearTimeout(state.timer);
     out.replaceChildren(el('p', { class: 'muted', role: 'status' }, 'Berechne …'));
     state.timer = setTimeout(() => {
       state.timer = 0;
-      if (token === state.token) computeChunked(token);
+      if (token === state.token) publish(token);
     }, delay);
   }
 
-  function computeChunked(token) {
+  function publish(token) {
+    if (token !== state.token) return;
+    const powder = db.powders.find((p) => p.id === state.powderId);
+    const bullet = db.bullets.find((b) => b.id === state.bulletId);
+    const primer = db.primers.find((p) => p.id === state.primerId);
     const limit = limitFor(db, state.cartridge);
-    const chartBullet = db.bullets.find((b) => b.id === state.chartBulletId) || db.bullets[0];
-    const results = [];
-    let index = 0;
-    const step = () => {
-      if (token !== state.token) return;
-      if (index >= db.powders.length) {
-        publish(results, limit, chartBullet);
-        return;
-      }
-      const powder = db.powders[index++];
-      const primer = db.primers.find((p) => p.id === state.primerId);
-      results.push(...sweep({ powders: [powder], bullets: db.bullets, primer, limit: limit.max }).results);
-      setTimeout(step, 0);
-    };
-    step();
-  }
-
-  function publish(results, limit, chartBullet) {
-    const ok = results.filter((r) => r.underLimit);
-    const best = ok.length ? ok.reduce((a, b) => (b.muzzleVelocity > a.muzzleVelocity ? b : a)) : null;
-    const canvas = el('canvas', { class: 'chart' });
-    const combos = [];
-    for (const p of db.powders) for (const b of db.bullets) combos.push({ p, b });
-    const chartCombos = chartBullet ? db.powders.map((p) => ({ p, b: chartBullet })) : [];
-
+    if (!powder || !bullet) return;
+    const ladder = buildLadder({ powder, bullet, primer, limitPressure: limit.max });
+    const canvas = el('canvas', { class: 'chart', 'aria-label': 'Leiter Druck über Ladung' });
+    const limitBar = demoBar(limit.max);
     out.replaceChildren(
-      el('p', { class: 'muted small' }, `Alle Demo-Pulver × alle Demo-Geschosse × Ladung (1–10 LE, Schritt 0,25). Höchste simulierte Geschwindigkeit mit Spitzendruck ≤ ${fmt(limit.max)} sim-MPa (${limit.cartridge}). Das Diagramm zeigt ${chartBullet ? chartBullet.name : '—'}.`),
-      best
-        ? el('section', { class: 'card highlight' },
-            el('h2', {}, 'Bestes Ergebnis (simuliert)'),
-            el('div', { class: 'kpis' },
-              kpiBox('Geschw.', `${fmt(best.muzzleVelocity)} sim-m/s`),
-              kpiBox('Druck', `${fmt(best.peakPressure)} sim-MPa`),
-              kpiBox('Ladung', `${fmt(best.charge, 2)} LE`)),
-            el('p', {}, `${best.powderName} + ${best.bulletName}`))
-        : el('section', { class: 'card' }, el('p', {}, 'Keine Kombination unter dem Limit.')),
-      el('section', { class: 'card' }, el('h2', {}, 'Druck über Ladung'), canvas,
-        el('div', { class: 'legend' }, chartCombos.map((c, i) => el('span', {}, el('i', { style: `background:${COLORS[i % COLORS.length]}` }), c.p.name.replace('DemoPowder ', ''))))),
-      el('section', { class: 'card' }, el('h2', {}, 'Beste je Kombination ', el('span', { class: 'badge' }, combos.length)),
-        el('ul', { class: 'list' }, combos.map(({ p, b }) => {
-          const ok = results.filter((r) => r.powderId === p.id && r.bulletId === b.id && r.underLimit);
-          const top = ok.reduce((a, r) => (!a || r.muzzleVelocity > a.muzzleVelocity ? r : a), null);
-          return el('li', {}, el('div', {}, el('strong', {}, p.name), el('div', { class: 'muted small' }, b.name)),
-            el('span', { class: 'chip' }, top ? `${fmt(top.muzzleVelocity)} sim-m/s @ ${fmt(top.charge, 2)} LE` : '—'));
-        }))),
+      el('p', { class: 'muted small' }, `Leiter ab 90 % der Demo-Grenzladung, Schritte 0,8 % davon, Ende an der Grenze. Farben und Abbruch nutzen ${fmt(limitBar, 0)} bar (${limit.cartridge}).`),
+      el('section', { class: 'card' },
+        el('h2', {}, 'Ladungsleiter'),
+        ladder.steps.length
+          ? el('ul', { class: 'list' }, ladder.steps.map((step) => stepRow(step, ladder.selection)))
+          : el('p', {}, 'Keine Demo-Ladung unter der Demo-Grenze.')),
+      ladder.selection
+        ? el('section', { class: 'card' },
+          el('h2', {}, 'Auswahl'),
+          el('p', {}, `${fmt(ladder.selection.grain, 1)} grain`))
+        : null,
+      el('section', { class: 'card' }, el('h2', {}, 'Druck über Ladung'), canvas),
+      seatingSection(ladder),
     );
     requestAnimationFrame(() => drawLineChart(canvas, {
-      series: chartCombos.map(({ p, b }, i) => ({
-        color: COLORS[i % COLORS.length],
-        points: results.filter((r) => r.powderId === p.id && r.bulletId === b.id).map((r) => [r.charge, r.peakPressure]),
-      })),
-      xLabel: 'Ladung (LE)', yLabel: 'Spitzendruck (sim-MPa)',
-      hLine: { value: limit.max, label: `Demo-Limit ${limit.max}` },
+      series: [{ color: '#0a84ff', points: ladder.steps.map((step) => [step.grain, demoBar(step.pressure)]) }],
+      xLabel: 'Ladung (grain)',
+      yLabel: 'Druck (bar)',
+      hLine: { value: limitBar, label: `Demo-Grenze ${fmt(limitBar, 0)} bar` },
     }));
   }
+
   schedule(0);
 }
 
-const kpiBox = (l, v) => el('div', { class: 'kpi' }, el('div', { class: 'muted small' }, l), el('div', { class: 'kpi-value' }, v));
+function stepRow(step, selection) {
+  const tone = step.over ? 'hint-red' : step.yellow ? 'hint-yellow' : '';
+  const mark = step.over ? 'über der Demo-Grenze' : step.yellow ? 'ab 90 % der Demo-Grenze' : 'unter 90 % der Demo-Grenze';
+  const selected = selection && step.grain === selection.grain;
+  return el('li', {},
+    el('div', { class: tone },
+      el('strong', {}, `${fmt(step.grain, 1)} grain`),
+      el('div', { class: 'small' }, `${fmt(demoBar(step.pressure), 0)} bar · ${mark}`),
+      selected ? el('div', {}, 'Auswahl') : null));
+}
+
+function seatingSection(ladder) {
+  if (!ladder.seating.length) {
+    return el('section', { class: 'card' }, el('h2', {}, 'Setztiefe'), el('p', {}, 'Ohne Ogive kein Setztiefentest.'));
+  }
+  return el('section', { class: 'card' },
+    el('h2', {}, 'Setztiefe'),
+    el('p', {}, `Ladung ${fmt(ladder.seatingChargeGrain, 1)} grain, mindestens 3 % unter dem obersten Leiter-Schritt.`),
+    el('ul', { class: 'list' }, ladder.seating.map((row) => el('li', {},
+      el('strong', {}, `${row.depthMm.toLocaleString('de-DE', { maximumFractionDigits: 2 })} mm`),
+      el('span', { class: 'chip' }, `${fmt(demoBar(row.pressure), 0)} bar`)))));
+}

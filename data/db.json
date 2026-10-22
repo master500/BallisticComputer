@@ -13,14 +13,14 @@
     {"id": "P-07", "name": "DemoPowder Extraslow-G", "burn_rate_rank": 8, "burn_class": "extraslow", "sim_beta": 0.06}
   ],
   "bullets": [
-    {"id": "B-01", "name": "Demo FMJ 9.5g", "sim_mass": 9.5},
-    {"id": "B-02", "name": "Demo HPBT 10.9g", "sim_mass": 10.9},
-    {"id": "B-03", "name": "Demo RN 8.2g", "sim_mass": 8.2},
-    {"id": "B-04", "name": "Demo SP 7.4g", "sim_mass": 7.4},
-    {"id": "B-05", "name": "Demo HP 12.6g", "sim_mass": 12.6},
-    {"id": "B-06", "name": "Demo TC 6.8g", "sim_mass": 6.8},
-    {"id": "B-07", "name": "Demo FN 11.4g", "sim_mass": 11.4},
-    {"id": "B-08", "name": "Demo WC 5.5g", "sim_mass": 5.5}
+    {"id": "B-01", "name": "Demo FMJ 147 grain", "sim_mass_gr": 147, "sim_ogive": "tangent"},
+    {"id": "B-02", "name": "Demo HPBT 168 grain", "sim_mass_gr": 168, "sim_ogive": "secant"},
+    {"id": "B-03", "name": "Demo RN 127 grain", "sim_mass_gr": 127, "sim_ogive": "none"},
+    {"id": "B-04", "name": "Demo SP 114 grain", "sim_mass_gr": 114, "sim_ogive": "tangent"},
+    {"id": "B-05", "name": "Demo HP 194 grain", "sim_mass_gr": 194, "sim_ogive": "hybrid"},
+    {"id": "B-06", "name": "Demo TC 105 grain", "sim_mass_gr": 105, "sim_ogive": "none"},
+    {"id": "B-07", "name": "Demo FN 176 grain", "sim_mass_gr": 176, "sim_ogive": "none"},
+    {"id": "B-08", "name": "Demo WC 85 grain", "sim_mass_gr": 85, "sim_ogive": "none"}
   ],
   "primers": [
     {"id": "PR-SR", "name": "DemoPrimer Small Rifle", "sim_ignition": 1.00},
