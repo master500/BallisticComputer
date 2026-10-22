@@ -11,11 +11,31 @@ function write(list) { localStorage.setItem(KEY, JSON.stringify(list)); }
 
 const newId = () => (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
 
+/** Vergleich ohne id, damit dasselbe Backup kein zweites Mal anlegt. */
+export function withoutId(record) {
+  const copy = structuredClone(record);
+  delete copy.id;
+  return copy;
+}
+
+export function dedupeRecords(existing, incoming) {
+  const seen = new Set((existing || []).map((record) => JSON.stringify(withoutId(record))));
+  const unique = [];
+  for (const record of incoming || []) {
+    const copy = withoutId(record);
+    const key = JSON.stringify(copy);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(copy);
+  }
+  return unique;
+}
+
 export const userStore = {
   all: () => read(),
   add(records) {
     const list = read();
-    const added = records.map((r) => ({ id: newId(), ...r }));
+    const added = dedupeRecords(list, records).map((record) => ({ id: newId(), ...record }));
     write(list.concat(added));
     return added.length;
   },

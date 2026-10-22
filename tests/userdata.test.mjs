@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parseCSV, parseInput } from '../js/userdata/csv.js';
 import { suggestMapping, applyMapping, parseNumber } from '../js/userdata/mapping.js';
+import { userStore } from '../js/userdata/store.js';
 
 // Generisches Schema (Semikolon, deutsches Dezimalkomma, Anführungszeichen)
 const generic = 'cartridge;powder;bullet;bullet_weight;charge;coal;measured_velocity;notes;source\n"Test-Patrone";Pulver X;Geschoss Y;10,0;5,5;70,1;800;"Notiz; mit Semikolon";Eigene Messung\n';
@@ -42,6 +43,29 @@ assert.deepEqual(backup.records[0].charges, charges);
 assert.equal(backup.records[1].cartridge, 'Demo');
 assert.equal(backup.records[1].charge, 2);
 assert.equal(parseNumber('1.234,5'), 1234.5); assert.equal(parseNumber('42.5 gr'), 42.5); assert.equal(parseNumber(''), null);
+
+const memory = new Map();
+globalThis.localStorage = {
+  getItem: (key) => (memory.has(key) ? memory.get(key) : null),
+  setItem: (key, value) => memory.set(key, String(value)),
+  removeItem: (key) => memory.delete(key),
+};
+userStore.clear();
+const duplicate = {
+  kind: 'grtload',
+  title: 'Demo Fiktiv',
+  charges,
+  importedAt: '2026-10-22T00:00:00.000Z',
+};
+assert.equal(userStore.add([duplicate, structuredClone(duplicate)]), 1);
+assert.equal(userStore.add([duplicate]), 0);
+const restored = parseInput(userStore.exportJSON());
+assert.equal(restored.format, 'backup');
+assert.equal(userStore.add(restored.records), 0);
+assert.equal(userStore.all().length, 1);
+assert.equal(userStore.all()[0].charges[0].grams, 1.5);
+assert.equal(userStore.add([{ ...duplicate, title: 'Andere Serie' }]), 1);
+assert.equal(userStore.all().length, 2);
 
 // Trennung: Modell und Demo-Views importieren keine Nutzerdaten
 for (const f of ['js/model.js', 'js/views/simulation.js', 'js/views/optimization.js']) {
