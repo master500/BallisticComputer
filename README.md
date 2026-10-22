@@ -87,8 +87,11 @@ validation, safety, reporting); sonst wird über Stichwörter in `event` zugeord
   Schritte werden auf 0,1 grain abgerundet und liegen nie darüber. Ohne exakte Kombination aus Patrone,
   Pulver, Geschossgewicht, Geschossart, Zündhütchen und COAL gilt die Zeile nicht. Der Spielzeugdruck
   wird für diese Zeilen nicht angezeigt. Der angegebene Druck wird gegen CIP-Pmax geprüft.
-  PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet. Andere Druckeinheiten
-  verwerfen die ganze Zeile. Die Beispieldatei `samples/fictional-manufacturer-loads.json` ist fiktiv
+  PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet und gelb als
+  „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet.
+  Ab 90 % von CIP-Pmax gilt Gelb, darüber Rot. Andere Druckeinheiten werden nicht umgerechnet:
+  der Druck entfällt, die Ladungszeile bleibt, die Anzeige sagt „kein Druck angegeben“.
+  Die Beispieldatei `samples/fictional-manufacturer-loads.json` ist fiktiv
   und liegt nicht unter `data/`.
 - **Strikte Trennung:** Simulation/Optimierung verwenden ausschließlich die fiktiven
   Demo-Pulver aus `db.json`. `js/model.js` und die Demo-Views lesen keine Nutzerdaten

@@ -4,7 +4,9 @@
 import { psiNote, rateMeanBar } from '../cip/pressure.js';
 
 export function rateStated({ pmaxBar = null, pressureBar = null, origin = '' } = {}) {
-  if (!Number.isFinite(Number(pressureBar))) return { tone: 'none', text: '', psiNote: '' };
+  if (pressureBar == null || pressureBar === '' || !Number.isFinite(Number(pressureBar))) {
+    return { tone: 'none', text: '', psiNote: '' };
+  }
   const rated = rateMeanBar(Number.isFinite(Number(pmaxBar)) ? Number(pmaxBar) : NaN, Number(pressureBar));
   return {
     tone: rated.tone,

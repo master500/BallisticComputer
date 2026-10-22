@@ -4,7 +4,7 @@ Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versioni
 
 ## [1.5.4] – 2026-10-22
 ### Hinzugefügt
-- Lokaler Import von Herstellerzeilen (`bc.mfrloads.v1`, nicht im Backup und nicht unter `data/`). Die Leiter startet bei der Startladung, sonst bei 90 % der Maximalladung, endet an der Maximalladung und rundet jeden Schritt auf 0,1 grain ab. Ohne exakte Kombination erscheint „Herstellerdaten gelten nicht für diese Kombination“ und es gibt keine Schritte darüber. Der Spielzeugdruck wird für diese Zeilen nicht angezeigt. Der angegebene Druck wird gegen CIP-Pmax geprüft. PSI wird mit 0,0689476 bar je psi auf eine Nachkommastelle umgerechnet. Andere Druckeinheiten verwerfen die ganze Zeile. Quelle und Datum stehen an jeder Zeile. Die Beispieldatei ist fiktiv.
+- Lokaler Import von Herstellerzeilen (`bc.mfrloads.v1`, nicht im Backup und nicht unter `data/`). Die Leiter startet bei der Startladung, sonst bei 90 % der Maximalladung, endet an der Maximalladung und rundet jeden Schritt auf 0,1 grain ab. Ohne exakte Kombination erscheint „Herstellerdaten gelten nicht für diese Kombination“ und es gibt keine Schritte darüber. Der Spielzeugdruck wird für diese Zeilen nicht angezeigt. Der angegebene Druck wird gegen CIP-Pmax geprüft. PSI wird mit 0,0689476 bar je psi auf eine Nachkommastelle umgerechnet und gegen CIP-Pmax geprüft. Andere Druckeinheiten überspringen nur den Druck; die Ladungszeile bleibt ohne Druckangabe. Quelle und Datum stehen an jeder Zeile. Die Beispieldatei ist fiktiv.
 ### Geändert
 - Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.4`.
 

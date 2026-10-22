@@ -1,6 +1,6 @@
 /**
  * Herstellerladungen aus lokalem CSV oder JSON.
- * Druck nur in bar oder PSI. Jede andere Druckeinheit verwirft die ganze Zeile.
+ * Druck nur in bar oder PSI. Jede andere Druckeinheit lässt die Zeile stehen und verwirft nur den Druck.
  * Fehlende oder „gr“-Gewichtseinheit ist nicht eindeutig.
  */
 import { parseCSV } from '../userdata/csv.js';
@@ -51,7 +51,7 @@ function unitFromRest(rest) {
   if (rest === 'gramm' || rest === 'gram' || rest === 'g') return 'gram';
   if (rest === 'gr') return 'ambiguous';
   if (rest === 'bar' || rest === 'psi' || rest === 'mm' || rest === 'ms') return rest;
-  return null;
+  return 'other';
 }
 
 function unitInAlias(alias) {
@@ -107,7 +107,7 @@ function pressureOf(value, unit) {
   const token = normKey(unit);
   if (!token || token === 'bar') return { bar: n, origin: '' };
   if (token === 'psi') return { bar: psiToBar(n), origin: 'psi' };
-  return { drop: true };
+  return { bar: null, origin: '', skipped: true };
 }
 
 function num(value) {
@@ -127,11 +127,11 @@ function normalizeRecord(raw, headerUnits) {
   const max = weightToGrain(pick('maxCharge'), maxUnit, { floor: true });
   if (bullet.error || start.error || max.error) return { error: 'ambiguous' };
   const pressure = pressureOf(pick('pressure'), pressureUnit);
-  if (pressure.drop) return { drop: true };
   if (!String(pick('cartridge') || '').trim() || !String(pick('powder') || '').trim()) return { invalid: true };
   if (!Number.isFinite(max.grain) || !(max.grain > 0)) return { invalid: true };
   const importedAt = raw.importedAt || new Date().toISOString();
   return {
+    skippedPressure: Boolean(pressure.skipped),
     row: {
       cartridge: String(pick('cartridge')).trim(),
       powder: String(pick('powder')).trim(),
@@ -154,23 +154,25 @@ function normalizeRecord(raw, headerUnits) {
   };
 }
 
-function finish(rows, droppedUnit, ambiguous) {
-  if (ambiguous) return { rows: [], droppedUnit: 0, summary: '', error: 'Gewichtseinheit nicht eindeutig.' };
-  const summary = droppedUnit ? `${droppedUnit} Zeilen verworfen (Druckeinheit nicht unterstützt)` : '';
-  return { rows, droppedUnit, summary, error: '' };
+function finish(rows, skippedPressure, ambiguous) {
+  if (ambiguous) return { rows: [], skippedPressure: 0, summary: '', error: 'Gewichtseinheit nicht eindeutig.' };
+  const summary = skippedPressure ? `${skippedPressure} Druckwerte übersprungen (Druckeinheit nicht unterstützt)` : '';
+  return { rows, skippedPressure, summary, error: '' };
 }
 
 function consume(list, headerUnits) {
   const rows = [];
-  let droppedUnit = 0;
+  let skippedPressure = 0;
   let ambiguous = false;
   for (const raw of list) {
     const result = normalizeRecord(raw, headerUnits);
     if (result.error === 'ambiguous') ambiguous = true;
-    else if (result.drop) droppedUnit += 1;
-    else if (result.row) rows.push(result.row);
+    else if (result.row) {
+      rows.push(result.row);
+      if (result.skippedPressure) skippedPressure += 1;
+    }
   }
-  return finish(rows, droppedUnit, ambiguous);
+  return finish(rows, skippedPressure, ambiguous);
 }
 
 function canonicalObject(obj) {
@@ -200,19 +202,19 @@ function canonicalObject(obj) {
 
 export function parseManufacturer(text) {
   const trimmed = String(text ?? '').trim();
-  if (!trimmed) return { rows: [], droppedUnit: 0, summary: '', error: 'Keine Daten.' };
+  if (!trimmed) return { rows: [], skippedPressure: 0, summary: '', error: 'Keine Daten.' };
   if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
     let data;
     try { data = JSON.parse(trimmed); }
-    catch { return { rows: [], droppedUnit: 0, summary: '', error: 'JSON nicht lesbar.' }; }
+    catch { return { rows: [], skippedPressure: 0, summary: '', error: 'JSON nicht lesbar.' }; }
     const list = Array.isArray(data) ? data : (data.rows || data.records || data.entries || []);
-    if (!Array.isArray(list)) return { rows: [], droppedUnit: 0, summary: '', error: 'JSON enthält keine Zeilen.' };
+    if (!Array.isArray(list)) return { rows: [], skippedPressure: 0, summary: '', error: 'JSON enthält keine Zeilen.' };
     return consume(list.map(canonicalObject), {});
   }
   const table = parseCSV(trimmed);
   const classified = table.headers.map(classifyHeader);
   if (classified.some((item) => item && item.unit === 'ambiguous')) {
-    return { rows: [], droppedUnit: 0, summary: '', error: 'Gewichtseinheit nicht eindeutig.' };
+    return { rows: [], skippedPressure: 0, summary: '', error: 'Gewichtseinheit nicht eindeutig.' };
   }
   const headerUnits = {};
   const fields = classified.map((item) => {

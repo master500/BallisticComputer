@@ -71,17 +71,35 @@ assert.equal(psi.rows[0].pressureOrigin, 'psi');
 
 const unsupportedUnit = 'CUP';
 const otherUnsupportedUnit = 'LUP';
-const dropped = parseManufacturer(JSON.stringify({
+const skipped = parseManufacturer(JSON.stringify({
   rows: [
     baseRow({ pressure: 1000, pressureUnit: unsupportedUnit }),
     baseRow({ pressure: 1000, pressureUnit: otherUnsupportedUnit }),
   ],
 }));
-assert.equal(dropped.rows.length, 0);
-assert.equal(dropped.droppedUnit, 2);
-assert.equal(dropped.summary, '2 Zeilen verworfen (Druckeinheit nicht unterstützt)');
-assert.equal(dropped.summary.includes(unsupportedUnit), false);
-assert.equal(dropped.summary.includes(otherUnsupportedUnit), false);
+assert.equal(skipped.rows.length, 2);
+assert.equal(skipped.rows[0].maxChargeGrain, 12);
+assert.equal(skipped.rows[0].pressureBar, null);
+assert.equal(skipped.rows[1].pressureBar, null);
+assert.equal(skipped.skippedPressure, 2);
+assert.equal(skipped.summary, '2 Druckwerte übersprungen (Druckeinheit nicht unterstützt)');
+assert.equal(skipped.summary.includes(unsupportedUnit), false);
+assert.equal(skipped.summary.includes(otherUnsupportedUnit), false);
+assert.equal(JSON.stringify(skipped.rows).includes(unsupportedUnit), false);
+const skippedCsv = parseManufacturer(`Patrone;Pulver;Geschossgewicht [grain];Maximalladung [grain];Druck [${unsupportedUnit}]\nFiktiv-Patrone Alpha;FiktivPulver Blau;100;12;1000\n`);
+assert.equal(skippedCsv.rows.length, 1);
+assert.equal(skippedCsv.rows[0].pressureBar, null);
+assert.equal(skippedCsv.rows[0].maxChargeGrain, 12);
+assert.equal(skippedCsv.summary.includes(unsupportedUnit), false);
+const kept = describeManufacturer(skipped.rows, skipped.rows[0], { pmaxBar: 2350 });
+assert.equal(kept.status, 'match');
+assert.equal(kept.steps.at(-1), 12);
+assert.equal(kept.rating.tone, 'none');
+assert.equal(kept.rating.text, '');
+const near = describeManufacturer([{ ...rowPlaceholder(), pressureBar: 2115 }], rowPlaceholder(), { pmaxBar: 2350 });
+assert.equal(near.rating.tone, 'yellow');
+const below = describeManufacturer([{ ...rowPlaceholder(), pressureBar: 2114 }], rowPlaceholder(), { pmaxBar: 2350 });
+assert.equal(below.rating.tone, 'under');
 
 const ambiguous = parseManufacturer('Patrone;Pulver;Geschossgewicht;Startladung [gr];Maximalladung [grain]\nA;B;100;10;12\n');
 assert.equal(ambiguous.error, 'Gewichtseinheit nicht eindeutig.');
@@ -135,12 +153,17 @@ assert.match(readFileSync(new URL('../js/mfr/panel.js', import.meta.url), 'utf8'
 assert.match(readFileSync(new URL('../js/mfr/panel.js', import.meta.url), 'utf8'), /grain/);
 assert.match(readFileSync(new URL('../js/mfr/panel.js', import.meta.url), 'utf8'), /Quelle/);
 assert.match(readFileSync(new URL('../js/mfr/panel.js', import.meta.url), 'utf8'), /Datum/);
+assert.match(readFileSync(new URL('../js/mfr/panel.js', import.meta.url), 'utf8'), /kein Druck angegeben/);
 for (const file of ['js/views/simulation.js', 'js/views/optimization.js', 'js/views/userdata.js']) {
   assert.match(readFileSync(new URL(`../${file}`, import.meta.url), 'utf8'), /mountManufacturer/);
 }
 const sw = readFileSync(new URL('../sw.js', import.meta.url), 'utf8');
 assert.equal(sw.includes('samples/fictional-manufacturer-loads.json'), false);
 assert.equal(sw.includes('fictional-manufacturer-loads'), false);
+
+function rowPlaceholder() {
+  return baseRow({ pressureBar: 1000 });
+}
 
 function baseRow(extra) {
   return {
