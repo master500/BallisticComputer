@@ -14,9 +14,9 @@ keine fremden Ladedaten-Datenbanken (GRT/QuickLOAD/Handbücher) einbinden oder s
 3. **Optimierungsergebnis zurückschreiben** – Ergebnis des Sweeps als `last_optimization` (Format dokumentieren) übernehmen und in Datenbank/KI-Squad anzeigen; Abgleich mit dem Wert der Routine.
 
 ## P1b – Meine Daten
-- Echte GRT-/QuickLOAD-Beispielexporte (vom Nutzer bereitgestellt) als anonymisierte Test-Fixtures; Aliasliste erweitern.
+- Synthetische GRT-/QuickLOAD-Fixtures (keine echten Exporte) als Test-Fixtures; Aliasliste erweitern.
 - Gespeicherte Zuordnungsprofile je Exportformat; Duplikaterkennung beim Import.
-- Einzelne Datensätze bearbeiten; CSV-Export; Einheitenfeld (gr/g, fps/m/s) nur zur Anzeige, ohne Umrechnung von Ladungen.
+- Einzelne Datensätze bearbeiten; CSV-Export; Einheitenhinweis (grain, m/s, mm, bar) nur zur Anzeige.
 - `scripts/check-links.sh` regelmäßig laufen lassen und tote Links in Offizielle Quellen ersetzen.
 
 ## P2

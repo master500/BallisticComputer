@@ -1,8 +1,8 @@
-# BallisticComputer (Demo) – v1.4.0
+# BallisticComputer (Demo) – v1.5.0
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
-> Alle Pulver-/Geschossnamen sind erfunden, alle Modellkonstanten unkalibriert,
-> alle Einheiten Pseudo-Einheiten (sim-MPa, sim-m/s, Ladungseinheiten „LE“).
+> Alle Pulver-, Geschoss- und Zündhütchennamen sind erfunden, alle Modellkonstanten unkalibriert.
+> Die Oberfläche zeigt Druck in bar und Gewichte in grain. Geschwindigkeit bleibt eine Pseudo-Einheit (sim-m/s).
 > Die Ergebnisse haben keinerlei Bezug zu realen Waffen, Pulvern oder Ladedaten
 > und dürfen niemals als solche verwendet werden.
 
@@ -12,54 +12,53 @@ Veranschaulichung eines lehrbuchartigen Innenballistik-Spielzeugmodells.
 ## Starten (lokal)
 
 ```bash
-cd /workspace/chambersim/app
 python3 server.py --port 8080            # http://127.0.0.1:8080/
-# im Hintergrund:
-nohup python3 server.py --port 8080 > ../server.log 2>&1 &
 ```
 
-Kein Build-Schritt, keine Abhängigkeiten (nur Python 3 Standardbibliothek).
-Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
+Im Verzeichnis des Repositories starten. Kein Build-Schritt, keine Abhängigkeiten (nur Python 3 Standardbibliothek).
+Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs && node tests/cip.test.mjs && node tests/pressure.test.mjs && node tests/primer.test.mjs && node tests/ladder.test.mjs && node tests/units.test.mjs && node tests/separation.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
 
 ## Ansichten
 
 | Tab | Inhalt |
 |---|---|
-| **Datenbank** | Acht DemoPowder, acht Demo-Geschosse, Demo-Cartridge-1…4 aus `db.json` |
-| **Simulation** | Druckverlauf für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Ladung |
-| **Optimierung** | Sweep aller Demo-Kombinationen; Limit je Demo-Patrone (sim-MPa) |
+| **Datenbank** | Acht DemoPowder, sechs Demo-Zündhütchen, acht Demo-Geschosse in grain, Demo-Cartridge-1…4 (Anzeige in bar) |
+| **Simulation** | Druckverlauf in bar für Demo-Patrone × Demo-Pulver × Demo-Geschoss × Demo-Zündhütchen × Ladung in grain |
+| **Optimierung** | Demo-Ladungsleiter und Setztiefe; Grenze nur die fiktive Demo-Patrone |
+| **CIP** (`#/cip`) | Nachschlagewerte Pmax in bar und L6 in mm. Nicht Teil der Simulation |
 | **KI-Squad** | Statuskarten der 6 simulierten Agenten aus `log.jsonl` |
-| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze (CSV/JSON und `.grtload`, localStorage) + Offizielle Quellen |
+| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze plus CIP-Prüfung (localStorage) |
 
 ## Architektur
 
 ```
-app/
+./
 ├── index.html            App-Shell, Demo-Banner, Tab-Leiste, PWA-Meta-Tags
 ├── manifest.webmanifest  PWA-Manifest (standalone)
 ├── sw.js                 Service Worker (Shell cache-first, data/* network-first)
-├── server.py             Mini-Server; bildet /data/db.json + /data/log.jsonl auf ../ ab
+├── server.py             Mini-Server, Start im Repository-Wurzelverzeichnis
 ├── css/style.css         Mobile-first, Safe-Area-Insets, Dark Theme
-├── js/app.js             Hash-Router (#/datenbank, #/simulation, #/optimierung, #/squad)
+├── js/app.js             Hash-Router inkl. #/cip
 ├── js/api.js             Laden von db.json / log.jsonl
-├── js/model.js           Spielzeugmodell (simulate, sweep) – reine Funktionen, testbar
+├── js/model.js           Spielzeugmodell (simulate, sweep) – ohne CIP
+├── js/ladder.js          Demo-Leiter in grain und Setztiefe in mm
+├── js/cip/               Nachschlagewerte, nur CIP-Ansicht und Meine Daten
 ├── js/chart.js           Minimaler Canvas-Linienchart
 ├── js/util.js            DOM-/Format-Helfer
-├── js/views/*.js         Je eine Datei pro Ansicht: render<View>(root, {db, log})
-├── js/userdata/          csv.js, grtload.js (Anzeige einer eigenen .grtload), mapping.js, store.js, sources.js
+├── js/views/*.js         Je eine Datei pro Ansicht
+├── js/userdata/          csv, grtload, cipcheck, primer, mapping, store, sources
 ├── icons/                apple-touch-icon (180), icon-192, icon-512
-├── data/                 Statische Kopie der Daten für Hosting ohne server.py
+├── data/                 Demo-Katalog; data/cip/ ist nur Nachschlagewerk
 ├── scripts/              make_icons.py, sync-data.sh, check-links.sh, shots-daten.mjs
-└── tests/                model.test.mjs, userdata.test.mjs
+└── tests/                Modell, Import, CIP, Leiter, Einheiten, Trennung
 ```
 
-**Datenfluss:** Die Status-Routine schreibt `/workspace/chambersim/db.json` und
-`log.jsonl`. Lokal liefert `server.py` diese Live-Dateien unter `/data/` aus.
-Für statisches Hosting kopiert `scripts/sync-data.sh` sie nach `app/data/`.
-Das Format von `db.json` wird nur gelesen; optionale Zusatzfelder, die das Modell
-nutzt: `powders[].sim_beta` (Abbrandkoeffizient), `powders[].burn_class`, `bullets[].sim_mass`.
-Der Demo-Katalog ist erfunden: acht `DemoPowder`-Klassen, acht `Demo`-Geschosse und
-`Demo-Cartridge-1` bis `Demo-Cartridge-4` mit fiktiven Grenzen in sim-MPa.
+**Datenfluss:** `server.py` liefert die App aus dem Repository-Wurzelverzeichnis.
+`/data/db.json` und `/data/log.jsonl` kommen aus dem übergeordneten Ordner, falls die Dateien dort liegen, sonst aus `data/`.
+Das Format von `db.json` wird nur erweitert. Felder, die das Modell nutzt:
+`powders[].sim_beta`, `powders[].burn_class`, `primers[].sim_ignition`, `bullets[].sim_mass_gr`, `bullets[].sim_ogive`.
+Der Demo-Katalog ist erfunden. Interne Druckgrenzen stehen im Feld `max_mpa_sim` und werden in der Oberfläche mit Faktor 10 als bar gezeigt.
+CIP-Dateien unter `data/cip/` liest nur die CIP-Tabelle und die Prüfung in Meine Daten.
 Log-Zeilen: `{"ts", "event", "note", optional "agent"}` – `agent` ordnet einen
 Eintrag eindeutig einem KI-Squad-Agenten zu (ballistics, database, optimization,
 validation, safety, reporting); sonst wird über Stichwörter in `event` zugeordnet.
@@ -76,10 +75,11 @@ validation, safety, reporting); sonst wird über Stichwörter in `event` zugeord
   Spaltenzuordnung + Vorschau. Gespeichert wird nur im `localStorage` des Geräts
   (Schlüssel `bc.userdata.v1`), mit JSON-Backup-Export, Einzel- und Komplettlöschung.
 - Eine eigene GRT-Projektdatei (`.grtload`, XML) wird mit `DOMParser` im Browser gelesen.
-  Angezeigt werden Titel, Kaliber, Hülsenvolumen, zulässiger Druck (`pMaxZul` und Verfahren),
-  Geschoss (Name, Gewicht in g und grain, Länge), Pulvername, Ladungen (in der Datei kg,
-  Anzeige in g und grain) mit Ladungsnotiz sowie gemessene Schussgeschwindigkeiten
+  Angezeigt werden Titel, Kaliber, Hülsenvolumen, zulässiger Druck (`pMaxZul` in bar und Verfahren),
+  Geschoss (Name, Gewicht in grain, Länge in mm), Pulvername, Ladungen in grain
+  („aus Gramm umgerechnet“) mit Ladungsnotiz sowie gemessene Schussgeschwindigkeiten
   mit Mittelwert, Standardabweichung und Extremstreuung je Serie, falls vorhanden.
+  Ein numerischer Schussdruck aus der Datei wird mit Faktor 10 in bar gezeigt.
   Pulvermodell-Parameter werden nicht übernommen. Nur Anzeige, kein Upload, keine Simulation.
 - Jeder Datensatz trägt `origin = "Eigene Daten / Import: <Dateiname>"`.
 - **Strikte Trennung:** Simulation/Optimierung verwenden ausschließlich die fiktiven
