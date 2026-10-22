@@ -4,6 +4,7 @@ import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 import { buildLadder, demoBar, ladderNeedsRestart } from '../ladder.js';
 import { magnumStandardHint, primerChangeHint } from '../userdata/primer.js';
+import { mountManufacturer } from '../mfr/panel.js';
 
 const state = {
   cartridge: null, powderId: null, bulletId: null, primerId: null, pick: null, timer: 0, token: 0, primerHint: '',
@@ -45,6 +46,7 @@ export function renderOptimization(root, { db }) {
       el('p', {}, 'Maximalladung = Demo-Grenze'),
       el('p', {}, 'Rechenwert – keine Freigabe'),
       el('p', { class: 'muted small' }, '„Maximal“ meint die Demo-Grenze. Echte Ladungen beginnen immer bei der Startladung des Herstellers.')),
+    manufacturerHost(),
     out,
   );
 
@@ -101,6 +103,12 @@ export function renderOptimization(root, { db }) {
   }
 
   schedule(0);
+}
+
+function manufacturerHost() {
+  const box = el('div');
+  mountManufacturer(box);
+  return box;
 }
 
 function stepRow(step, selection) {

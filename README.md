@@ -1,4 +1,4 @@
-# BallisticComputer (Demo) – v1.5.3
+# BallisticComputer (Demo) – v1.5.4
 
 > ⚠️ **Simulation / Demo – fiktive Werte, keine Ladedaten.**
 > Alle Pulver-, Geschoss- und Zündhütchennamen sind erfunden, alle Modellkonstanten unkalibriert.
@@ -16,7 +16,7 @@ python3 server.py --port 8080            # http://127.0.0.1:8080/
 ```
 
 Im Verzeichnis des Repositories starten. Kein Build-Schritt, keine Abhängigkeiten (nur Python 3 Standardbibliothek).
-Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs && node tests/cip.test.mjs && node tests/pressure.test.mjs && node tests/primer.test.mjs && node tests/ladder.test.mjs && node tests/units.test.mjs && node tests/separation.test.mjs && node tests/powder.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
+Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/grtload.test.mjs && node tests/cip.test.mjs && node tests/pressure.test.mjs && node tests/primer.test.mjs && node tests/ladder.test.mjs && node tests/units.test.mjs && node tests/separation.test.mjs && node tests/powder.test.mjs && node tests/mfr.test.mjs`. Links prüfen: `scripts/check-links.sh`. Icons neu erzeugen: `python3 scripts/make_icons.py` (Pillow).
 
 ## Ansichten
 
@@ -27,7 +27,7 @@ Tests: `node tests/model.test.mjs && node tests/userdata.test.mjs && node tests/
 | **Optimierung** | Demo-Ladungsleiter und Setztiefe; Grenze nur die fiktive Demo-Patrone |
 | **CIP** (`#/cip`) | Nachschlagewerte Pmax in bar und L6 in mm. Nicht Teil der Simulation |
 | **KI-Squad** | Statuskarten der 6 simulierten Agenten aus `log.jsonl` |
-| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze, CIP-Prüfung und Pulvernamen (nur Text, localStorage) |
+| **Meine Daten** (`#/daten`) | Import/Liste/Suche/Vergleich **eigener** Datensätze, CIP-Prüfung, Pulvernamen und lokale Herstellerzeilen |
 
 ## Architektur
 
@@ -82,6 +82,17 @@ validation, safety, reporting); sonst wird über Stichwörter in `event` zugeord
   Ein numerischer Schussdruck aus der Datei wird mit Faktor 10 in bar gezeigt.
   Pulvermodell-Parameter werden nicht übernommen. Nur Anzeige, kein Upload, keine Simulation.
 - Jeder Datensatz trägt `origin = "Eigene Daten / Import: <Dateiname>"`.
+- Eine Herstellerzeile kann lokal importiert werden (Schlüssel `bc.mfrloads.v1`, nicht im Backup).
+  Die Leiter beginnt bei der Startladung, sonst bei 90 % der Maximalladung, und endet bei der Maximalladung.
+  Schritte werden auf 0,1 grain abgerundet und liegen nie darüber. Ohne exakte Kombination aus Patrone,
+  Pulver, Geschossgewicht, Geschossart, Zündhütchen und COAL gilt die Zeile nicht. Der Spielzeugdruck
+  wird für diese Zeilen nicht angezeigt. Der angegebene Druck wird gegen CIP-Pmax geprüft.
+  PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet und gelb als
+  „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet.
+  Ab 90 % von CIP-Pmax gilt Gelb, darüber Rot. Andere Druckeinheiten werden nicht umgerechnet:
+  der Druck entfällt, die Ladungszeile bleibt, die Anzeige sagt „kein Druck angegeben“.
+  Die Beispieldatei `samples/fictional-manufacturer-loads.json` ist fiktiv
+  und liegt nicht unter `data/`.
 - **Strikte Trennung:** Simulation/Optimierung verwenden ausschließlich die fiktiven
   Demo-Pulver aus `db.json`. `js/model.js` und die Demo-Views lesen keine Nutzerdaten
   (per Test abgesichert). Nutzerdaten werden nur angezeigt – keine Berechnung,

@@ -2,6 +2,12 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.4] – 2026-10-22
+### Hinzugefügt
+- Lokaler Import von Herstellerzeilen (`bc.mfrloads.v1`, nicht im Backup und nicht unter `data/`). Die Leiter startet bei der Startladung, sonst bei 90 % der Maximalladung, endet an der Maximalladung und rundet jeden Schritt auf 0,1 grain ab. Ohne exakte Kombination erscheint „Herstellerdaten gelten nicht für diese Kombination“ und es gibt keine Schritte darüber. Der Spielzeugdruck wird für diese Zeilen nicht angezeigt. Der angegebene Druck wird gegen CIP-Pmax geprüft. PSI wird mit 0,0689476 bar je psi auf eine Nachkommastelle umgerechnet und gegen CIP-Pmax geprüft. Andere Druckeinheiten überspringen nur den Druck; die Ladungszeile bleibt ohne Druckangabe. Quelle und Datum stehen an jeder Zeile. Die Beispieldatei ist fiktiv.
+### Geändert
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.4`.
+
 ## [1.5.3] – 2026-10-22
 ### Hinzugefügt
 - Meine Daten: Pulvernamen als Textauswahl. Filterwerte bleiben `rifle`, `handgun`, `shotshell`, `unbekannt`; die Anzeige sagt Büchse, Kurzwaffe, Flinte und unbekannt. Der gewählte Name bleibt auf dem Gerät (`localStorage`), nicht im Backup. Keine Abbranddaten und keine Ladungen. Simulation, Leiter und Optimierung laden den Katalog nicht.

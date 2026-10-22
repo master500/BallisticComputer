@@ -1,0 +1,20 @@
+{
+  "_note": "FIKTIV. Keine Herstellerladung und keine echten Werte. Nur eine Beispieldatei für den lokalen Import.",
+  "rows": [
+    {
+      "cartridge": "Fiktiv-Patrone Alpha",
+      "powder": "FiktivPulver Blau",
+      "bulletWeightGrain": 100,
+      "bulletType": "Fiktiv FMJ",
+      "primer": "Fiktiv Klein",
+      "coalMm": 50,
+      "startChargeGrain": 10,
+      "maxChargeGrain": 12,
+      "pressureBar": 1000,
+      "velocityMs": 500,
+      "source": "Fiktive Beispielquelle",
+      "edition": "Keine echte Ausgabe",
+      "date": "2026-01-01"
+    }
+  ]
+}

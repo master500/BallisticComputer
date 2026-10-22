@@ -1,6 +1,6 @@
 /** Kleine DOM-Helfer. */
 export function el(tag, attrs = {}, ...children) {
-  const node = document.createElement(tag);
+  const node = globalThis.document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
     if (v == null || v === false) continue;
     if (k === 'class') node.className = v;
@@ -9,7 +9,7 @@ export function el(tag, attrs = {}, ...children) {
   }
   for (const c of children.flat()) {
     if (c == null || c === false) continue;
-    node.append(c instanceof Node ? c : document.createTextNode(String(c)));
+    node.append(c instanceof globalThis.Node ? c : globalThis.document.createTextNode(String(c)));
   }
   return node;
 }
