@@ -1,6 +1,16 @@
 /** Freitext-Hinweis, wenn sich das Zündhütchen gegenüber einem früheren Eintrag ändert. */
 export const PRIMER_HINT = 'Zündhütchen geändert – Ladung neu von unten aufbauen';
 
+/** Magnum-Zündhütchen, die Patrone heißt nicht Magnum. */
+export const MAGNUM_STANDARD_HINT = 'Magnum-Zündhütchen in Standardpatrone';
+
+export function magnumStandardHint(primerName, cartridgeName) {
+  const primer = String(primerName ?? '');
+  const cartridge = String(cartridgeName ?? '');
+  if (primer.includes('Magnum') && !cartridge.includes('Magnum')) return MAGNUM_STANDARD_HINT;
+  return '';
+}
+
 export function primerChangeHint(previous, next) {
   const before = String(previous ?? '').trim();
   const after = String(next ?? '').trim();

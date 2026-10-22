@@ -24,7 +24,12 @@ assert.deepEqual(db.primers.map((p) => p.name), [
   'DemoPrimer Large Rifle Magnum',
   'DemoPrimer Small Pistol',
   'DemoPrimer Large Pistol',
+  'DemoPrimer Small Pistol Magnum',
+  'DemoPrimer Large Pistol Magnum',
 ]);
+const seated = [-0.25, 0, 0.25, 1, 2, 3].map((seatingMm) => simulate({ powder: fast, bullet, charge: 4, seatingMm }).peakPressure);
+assert.equal(seated[1], a.peakPressure);
+for (let i = 1; i < seated.length; i += 1) assert.ok(seated[i] < seated[i - 1], String(i));
 assert.equal(ignitionFactor(undefined), 1);
 assert.ok(simulate({ powder: fast, bullet, charge: 6, primer: { sim_ignition: 1.06 } }).peakPressure
   > simulate({ powder: fast, bullet, charge: 6 }).peakPressure);

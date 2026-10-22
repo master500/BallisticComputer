@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parseCSV, parseInput } from '../js/userdata/csv.js';
-import { suggestMapping, applyMapping, parseNumber } from '../js/userdata/mapping.js';
+import { suggestMapping, applyMapping, parseNumber, unitsForMapping } from '../js/userdata/mapping.js';
 import { userStore } from '../js/userdata/store.js';
 
 // Generisches Schema (Semikolon, deutsches Dezimalkomma, Anführungszeichen)
@@ -10,20 +10,46 @@ const generic = 'cartridge;powder;bullet;bullet_weight;charge;coal;measured_velo
 const g = parseInput(generic);
 assert.equal(g.format, 'csv');
 const gm = suggestMapping(g.headers);
-assert.ok(Object.values(gm).every((i) => i >= 0), 'alle Felder generisch zugeordnet');
-const [rec] = applyMapping(g.rows, gm, { fileName: 'test.csv' });
-assert.equal(rec.charge, 5.5); assert.equal(rec.notes, 'Notiz; mit Semikolon');
+assert.equal(gm.bullet_weight, -1, 'Gewicht ohne Einheit bleibt frei');
+assert.equal(gm.charge, -1, 'Ladung ohne Einheit bleibt frei');
+assert.equal(gm.coal, -1, 'COAL ohne Einheit bleibt frei');
+assert.ok(['cartridge', 'powder', 'bullet', 'measured_velocity', 'notes', 'source'].every((key) => gm[key] >= 0));
+const manual = {
+  ...gm,
+  bullet_weight: g.headers.indexOf('bullet_weight'),
+  charge: g.headers.indexOf('charge'),
+  coal: g.headers.indexOf('coal'),
+};
+const [unmapped] = applyMapping(g.rows, manual, { fileName: 'test.csv', units: { bullet_weight: '', charge: '', coal: '' } });
+assert.equal(unmapped.charge, null);
+const [rec] = applyMapping(g.rows, manual, { fileName: 'test.csv', units: { bullet_weight: 'grain', charge: 'grain', coal: 'mm' } });
+assert.equal(rec.charge, 5.5); assert.equal(rec.bullet_weight, 10); assert.equal(rec.coal, 70.1);
+assert.equal(rec.notes, 'Notiz; mit Semikolon');
 assert.equal(rec.origin, 'Eigene Daten / Import: test.csv');
 
 // GRT/QuickLOAD-artige Kopfzeilen: berechnete Spalten werden NICHT automatisch übernommen
 const ql = parseCSV('Cartridge,Powder,Projectile,Projectile Mass [gr],Charge [gr],COAL [in],Velocity [fps],Pmax [psi],v predicted\nA,B,C,1,2,3,4,5,6\n');
 const qm = suggestMapping(ql.headers);
 assert.equal(ql.headers[qm.cartridge], 'Cartridge');
-assert.equal(ql.headers[qm.charge], 'Charge [gr]');
-assert.equal(ql.headers[qm.bullet_weight], 'Projectile Mass [gr]');
+assert.equal(qm.charge, -1, 'Charge [gr] hat keine erkennbare Einheit');
+assert.equal(qm.bullet_weight, -1, 'Projectile Mass [gr] hat keine erkennbare Einheit');
 assert.equal(ql.headers[qm.coal], 'COAL [in]');
+assert.equal(unitsForMapping(ql.headers, qm).coal, 'zoll');
+assert.equal(applyMapping(ql.rows, qm, { units: unitsForMapping(ql.headers, qm) })[0].coal, 76.2);
 assert.equal(qm.measured_velocity, -1, 'berechnete Velocity nie automatisch als gemessen');
 assert.equal(qm.notes, -1, 'Pmax nicht automatisch übernommen');
+
+const converted = parseCSV('Charge [g],COAL [in],Gewicht\n2.85,2.800,147\n');
+const cm = suggestMapping(converted.headers);
+assert.equal(converted.headers[cm.charge], 'Charge [g]');
+assert.equal(converted.headers[cm.coal], 'COAL [in]');
+assert.equal(cm.bullet_weight, -1, 'Gewicht bleibt unzugeordnet');
+const [crow] = applyMapping(converted.rows, cm, { units: unitsForMapping(converted.headers, cm) });
+assert.equal(crow.charge, 44);
+assert.equal(crow.charge_note, 'aus Gramm umgerechnet');
+assert.equal(crow.coal, 71.12);
+assert.equal(crow.coal_note, 'umgerechnet');
+assert.equal(crow.bullet_weight, null);
 
 // Flaches JSON bleibt eine Tabelle
 const j = parseInput(JSON.stringify({ records: [{ cartridge: 'A', charge: 1 }] }));
@@ -69,6 +95,8 @@ assert.equal(userStore.all().length, 2);
 
 // Trennung: Modell und Demo-Views importieren keine Nutzerdaten
 for (const f of ['js/model.js', 'js/views/simulation.js', 'js/views/optimization.js']) {
-  assert.ok(!/userdata|localStorage/.test(readFileSync(new URL(`../${f}`, import.meta.url), 'utf8')), `${f} ist von Nutzerdaten getrennt`);
+  const source = readFileSync(new URL(`../${f}`, import.meta.url), 'utf8');
+  assert.equal(/localStorage|userStore|userdata\/store|userdata\/csv|userdata\/mapping/.test(source), false, `${f} liest keine Nutzerdaten`);
+  assert.equal(/userdata\/(?!primer\.js)/.test(source), false, `${f} importiert nur den Zündhütchen-Hinweis`);
 }
 console.log('OK – alle Import-Tests bestanden.');

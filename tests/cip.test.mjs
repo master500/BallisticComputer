@@ -11,7 +11,7 @@ const tab2 = read('cip_pmax_tab2-5.json');
 const l6 = read('cip_l6.json');
 const l6rest = read('cip_l6_tab2-5.json');
 
-for (const file of [tab1, l6, l6rest]) {
+for (const file of [tab1, tab2, l6, l6rest]) {
   assert.equal(JSON.stringify(file).includes('pmax_mpa'), false);
 }
 assert.equal(tab1.entries.length, 214);
@@ -19,9 +19,11 @@ assert.equal(tab2.entries.length, 279);
 assert.equal(l6.entries.length, 214);
 assert.equal(l6rest.entries.length, 279);
 assert.equal(tab1.entries.every((row) => Number.isInteger(row.pmax_bar)), true);
-assert.equal(tab2.entries.every((row) => Object.keys(row).join() === 'cartridge,pmax_mpa,source,retrieved'), true);
+assert.equal(tab2.entries.every((row) => Object.keys(row).join() === 'cartridge,pmax_bar,source,retrieved'), true);
 assert.equal(l6rest.entries.every((row) => Object.keys(row).join() === 'cartridge,l6_mm,source,retrieved'), true);
-assert.equal(tab2.entries.every((row) => Number.isInteger(row.pmax_mpa * 10)), true);
+assert.equal(tab2.entries.every((row) => Number.isInteger(row.pmax_bar)), true);
+assert.match(tab2._note, /Zeile '9 mm'/);
+assert.equal(tab2.entries.some((row) => row.cartridge === '9 mm'), false);
 
 const names1 = new Set(tab1.entries.map((row) => row.cartridge));
 const names2 = new Set(tab2.entries.map((row) => row.cartridge));

@@ -7,20 +7,13 @@ import { aliasCartridge, normalizeCipKey } from './aliases.js';
 const PMAX_URLS = ['data/cip/cip_pmax_tab1.json', 'data/cip/cip_pmax_tab2-5.json'];
 const L6_URLS = ['data/cip/cip_l6.json', 'data/cip/cip_l6_tab2-5.json'];
 
-/** TAB I liegt als pmax_bar vor. TAB II–V behält pmax_mpa; die Anzeige rechnet ×10 in bar. */
-export function pmaxBarOf(entry) {
-  if (typeof entry.pmax_bar === 'number') return entry.pmax_bar;
-  if (typeof entry.pmax_mpa === 'number') return entry.pmax_mpa * 10;
-  return NaN;
-}
-
 export function buildCipIndex(pmaxEntries, l6Entries) {
   const byKey = new Map();
   const rows = [];
   for (const entry of pmaxEntries) {
     const row = {
       cartridge: entry.cartridge,
-      pmaxBar: pmaxBarOf(entry),
+      pmaxBar: Number(entry.pmax_bar),
       l6Mm: null,
       source: entry.source,
       retrieved: entry.retrieved,

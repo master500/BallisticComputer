@@ -1,1677 +1,1677 @@
 {
- "_note": "CIP Pmax (Mittelwert, Transducer, TAB II-V). Nur fuer die Pruefung unter Meine Daten, nie im Simulationsmodul importieren. Keine Ladedaten. TAB V Randfeuer nach Crusher-Methode (22 Patronen, Angaben in Joule) bewusst nicht enthalten.",
+ "_note": "CIP Pmax (Mittelwert, Transducer, TAB II-V). Nur fuer die Pruefung unter Meine Daten, nie im Simulationsmodul importieren. Keine Ladedaten. TAB V Randfeuer nach Crusher-Methode (22 Patronen, Angaben in Joule) bewusst nicht enthalten. Zeile '9 mm' (TAB III, 4400 bar) entfernt: Listenname passt nicht zum verlinkten Massblatt (416 Weath. Mag.); nicht mit 9 mm Luger (TAB IV) verwechseln.",
  "entries": [
   {
    "cartridge": "4 Bore Rifle",
-   "pmax_mpa": 250.0,
+   "pmax_bar": 2500,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,6 x 35 R",
-   "pmax_mpa": 270.0,
+   "pmax_bar": 2700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,6 x 50 R Mag.",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,6 x 52 R",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,6 x 57 R",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,6 x 61 R SE v. H.",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,6 x 70 R",
-   "pmax_mpa": 260.0,
+   "pmax_bar": 2600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6 x 50 R Scheiring",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6 x 52 R BB2",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6 x 52 R Bretschneider",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6 x 62 R Freres",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6 x 70 R",
-   "pmax_mpa": 260.0,
+   "pmax_bar": 2600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 50 R",
-   "pmax_mpa": 365.0,
+   "pmax_bar": 3650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 51 R (Arisaka)",
-   "pmax_mpa": 295.0,
+   "pmax_bar": 2950,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 52 R",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 52 R K&S",
-   "pmax_mpa": 325.0,
+   "pmax_bar": 3250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 57 R",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 58 R",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 65 R RWS",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 68 R",
-   "pmax_mpa": 390.0,
+   "pmax_bar": 3900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 x 70 R",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7-30 Waters",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 50 R",
-   "pmax_mpa": 365.0,
+   "pmax_bar": 3650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 57 R",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 mm Mag.Fl. H&H",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 65 R",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 67 R Luyven",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 72 R",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 75 R SE.v. H.",
-   "pmax_mpa": 415.0,
+   "pmax_bar": 4150,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,62 x 53 R",
-   "pmax_mpa": 390.0,
+   "pmax_bar": 3900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,62 x 54 R",
-   "pmax_mpa": 390.0,
+   "pmax_bar": 3900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 50 R",
-   "pmax_mpa": 355.0,
+   "pmax_bar": 3550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 51 R Lebel",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 56 R M30S",
-   "pmax_mpa": 355.0,
+   "pmax_bar": 3550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 56 R M89 Port. Krop.",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 57 R 360",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 57 IR",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 57 IRS",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 58 R",
-   "pmax_mpa": 220.0,
+   "pmax_bar": 2200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 60 R",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 60 RS",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 65 R",
-   "pmax_mpa": 390.0,
+   "pmax_bar": 3900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 65 RS",
-   "pmax_mpa": 405.0,
+   "pmax_bar": 4050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 72 R",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 x 75 RS",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 mm – 348 Win.",
-   "pmax_mpa": 300.0,
+   "pmax_bar": 3000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8,15 x 46 R",
-   "pmax_mpa": 165.0,
+   "pmax_bar": 1650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8,2 x 53 R",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8,5 x 63 R",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8,5 x 75 R Scheiring",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 x 53 R",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 x 57 R",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9,3 x 53 R Finnish",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9,3 x 72 R",
-   "pmax_mpa": 200.0,
+   "pmax_bar": 2000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9,3 x 74 R",
-   "pmax_mpa": 340.0,
+   "pmax_bar": 3400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "10,3 x 60 R",
-   "pmax_mpa": 270.0,
+   "pmax_bar": 2700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "11,15 x 60 R",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "17 Hornet",
-   "pmax_mpa": 370.0,
+   "pmax_bar": 3700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "218 Bee",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "219 Zipper",
-   "pmax_mpa": 285.0,
+   "pmax_bar": 2850,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "22 Hornet",
-   "pmax_mpa": 300.0,
+   "pmax_bar": 3000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "22 Savage",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "222 R Stief",
-   "pmax_mpa": 370.0,
+   "pmax_bar": 3700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "225 Win.",
-   "pmax_mpa": 390.0,
+   "pmax_bar": 3900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "240 Fl. N.E.",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "25-20 Win.",
-   "pmax_mpa": 270.0,
+   "pmax_bar": 2700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "25-35 Win.",
-   "pmax_mpa": 305.0,
+   "pmax_bar": 3050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "256 Win. Mag.",
-   "pmax_mpa": 350.0,
+   "pmax_bar": 3500,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "280 Fl. N.E.",
-   "pmax_mpa": 295.0,
+   "pmax_bar": 2950,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30 R Blaser",
-   "pmax_mpa": 405.0,
+   "pmax_bar": 4050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30 Fl. N.E. Purdey",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30 Super Fl. H&H",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30-06 R Stief",
-   "pmax_mpa": 405.0,
+   "pmax_bar": 4050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30-30 Win.",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30-40 Krag",
-   "pmax_mpa": 325.0,
+   "pmax_bar": 3250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "300/295 Rook Rifle",
-   "pmax_mpa": 120.0,
+   "pmax_bar": 1200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "300 Sherwood",
-   "pmax_mpa": 140.0,
+   "pmax_bar": 1400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "303 British",
-   "pmax_mpa": 365.0,
+   "pmax_bar": 3650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "303 Savage",
-   "pmax_mpa": 270.0,
+   "pmax_bar": 2700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "303 Sporting",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "307 Win.",
-   "pmax_mpa": 415.0,
+   "pmax_bar": 4150,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "308 Marlin Express",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "310 Cadet Rifle",
-   "pmax_mpa": 110.0,
+   "pmax_bar": 1100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 Win. SL",
-   "pmax_mpa": 155.0,
+   "pmax_bar": 1550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 Win. Spec.",
-   "pmax_mpa": 305.0,
+   "pmax_bar": 3050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32-20 Win.",
-   "pmax_mpa": 210.0,
+   "pmax_bar": 2100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32-40 Win.",
-   "pmax_mpa": 235.0,
+   "pmax_bar": 2350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "33 Win.",
-   "pmax_mpa": 305.0,
+   "pmax_bar": 3050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "338 Marlin Express",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "348 Win.",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "35 Win.",
-   "pmax_mpa": 305.0,
+   "pmax_bar": 3050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "35 Win. SL",
-   "pmax_mpa": 240.0,
+   "pmax_bar": 2400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "350 Rigby No. 2",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "351 Win. SL",
-   "pmax_mpa": 365.0,
+   "pmax_bar": 3650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "356 Win.",
-   "pmax_mpa": 415.0,
+   "pmax_bar": 4150,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "360 Buckhammer",
-   "pmax_mpa": 353.5,
+   "pmax_bar": 3535,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "360 N.E. 2 1/4",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "369 N.E. Purdey",
-   "pmax_mpa": 305.0,
+   "pmax_bar": 3050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "375 Fl. N.E. 21/2",
-   "pmax_mpa": 220.0,
+   "pmax_bar": 2200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "375 Fl. Mag. N.E.",
-   "pmax_mpa": 325.0,
+   "pmax_bar": 3250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "375 R Hölderlin",
-   "pmax_mpa": 360.0,
+   "pmax_bar": 3600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "375 R Verney-Carron",
-   "pmax_mpa": 410.0,
+   "pmax_bar": 4100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "375 Win.",
-   "pmax_mpa": 380.0,
+   "pmax_bar": 3800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38-40 Win.",
-   "pmax_mpa": 115.0,
+   "pmax_bar": 1150,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38-55 Win.",
-   "pmax_mpa": 240.0,
+   "pmax_bar": 2400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "380 Long Rifle",
-   "pmax_mpa": 95.0,
+   "pmax_bar": 950,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "40-60 Win",
-   "pmax_mpa": 192.0,
+   "pmax_bar": 1920,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "40-65 Win.",
-   "pmax_mpa": 210.0,
+   "pmax_bar": 2100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "40-82 Win.",
-   "pmax_mpa": 165.0,
+   "pmax_bar": 1650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "400/350 N.E.",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "401 Win. SL",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "405 Win.",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "408 Win.",
-   "pmax_mpa": 410.0,
+   "pmax_bar": 4100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "416 Rigby N°2",
-   "pmax_mpa": 325.0,
+   "pmax_bar": 3250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "44-40 Win.",
-   "pmax_mpa": 110.0,
+   "pmax_bar": 1100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "444 Marlin",
-   "pmax_mpa": 355.0,
+   "pmax_bar": 3550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45-60 Win",
-   "pmax_mpa": 192.0,
+   "pmax_bar": 1920,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45-70 Elko Mag.",
-   "pmax_mpa": 295.0,
+   "pmax_bar": 2950,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45-70 Govt.",
-   "pmax_mpa": 220.0,
+   "pmax_bar": 2200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45-75 Win",
-   "pmax_mpa": 205.0,
+   "pmax_bar": 2050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45-90 WM",
-   "pmax_mpa": 220.0,
+   "pmax_bar": 2200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45-110 Sharps 2\"7/8",
-   "pmax_mpa": 255.0,
+   "pmax_bar": 2550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45-120 Sharps 3\"1/4",
-   "pmax_mpa": 255.0,
+   "pmax_bar": 2550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "450 N.E. 3\" 1/4",
-   "pmax_mpa": 305.0,
+   "pmax_bar": 3050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "450 N° 2 N.E. 3“1/2 Eley",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "450/400 N.E. 3",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "450/400 Mag. N.E. 31/4",
-   "pmax_mpa": 295.0,
+   "pmax_bar": 2950,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "470 N.E.",
-   "pmax_mpa": 270.0,
+   "pmax_bar": 2700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "475 N° 2 N.E. 31/2",
-   "pmax_mpa": 275.0,
+   "pmax_bar": 2750,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "475 N° 2 N.E. 3“1/2 Jeffery",
-   "pmax_mpa": 275.0,
+   "pmax_bar": 2750,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "50-70 Govt.",
-   "pmax_mpa": 210.0,
+   "pmax_bar": 2100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "50-90 Sharps 2\" 1/2",
-   "pmax_mpa": 210.0,
+   "pmax_bar": 2100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "50-95 Win.",
-   "pmax_mpa": 210.0,
+   "pmax_bar": 2100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "56/50 Spencer",
-   "pmax_mpa": 205.0,
+   "pmax_bar": 2050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "500 Al Sharqi",
-   "pmax_mpa": 300.0,
+   "pmax_bar": 3000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "500 N.E. 3\"",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "500/416 N.E. 3“1/4",
-   "pmax_mpa": 315.0,
+   "pmax_bar": 3150,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "500/465 N.E.",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "577/450 Sld. Mart.H.",
-   "pmax_mpa": 175.0,
+   "pmax_bar": 1750,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "577 N.E. 3\"",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "577 Sld. Snider",
-   "pmax_mpa": 150.0,
+   "pmax_bar": 1500,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "600 N.E.",
-   "pmax_mpa": 245.0,
+   "pmax_bar": 2450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "700 H&H Nitro Exp.",
-   "pmax_mpa": 275.0,
+   "pmax_bar": 2750,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,5 mm Rem. Mag.",
-   "pmax_mpa": 435.0,
+   "pmax_bar": 4350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 61 Super",
-   "pmax_mpa": 405.0,
+   "pmax_bar": 4050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 mm Rem. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 mm Rosè",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 mm STW",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 mm Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 mm Rem. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "10,3 x 68 Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "11,5 x 51",
-   "pmax_mpa": 400.0,
+   "pmax_bar": 4000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "224 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "240 Belt. Riml. N.E.",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "240 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "244 H&H Mag.",
-   "pmax_mpa": 435.0,
+   "pmax_bar": 4350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "257 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "264 Win. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "270 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "275 Belt. N.E.",
-   "pmax_mpa": 415.0,
+   "pmax_bar": 4150,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30 Super Bl Riml. H&H",
-   "pmax_mpa": 365.0,
+   "pmax_bar": 3650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30-378 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "300 H&H Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "300 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "300 Win. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "308 Norma Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "338 Win. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "338-378 Weath. Mag",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "340 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "350 Rem. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "358 Norma Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "375 H&H Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "375 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "378 Weath.Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "400 H&H Belt. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "416 Rem. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "416 Taylor Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "450 Marlin",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "458 Lott",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "458 Win. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "460 Weath. Mag.",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "465 H&H Belt. Mag.",
-   "pmax_mpa": 430.0,
+   "pmax_bar": 4300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,45 x 18",
-   "pmax_mpa": 175.0,
+   "pmax_bar": 1750,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "5,75 Velodog",
-   "pmax_mpa": 68.0,
+   "pmax_bar": 680,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "6,35 Browning",
-   "pmax_mpa": 120.0,
+   "pmax_bar": 1200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 x 49 GJW",
-   "pmax_mpa": 440.0,
+   "pmax_bar": 4400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 Penna",
-   "pmax_mpa": 250.0,
+   "pmax_bar": 2500,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7 mm Penna L",
-   "pmax_mpa": 275.0,
+   "pmax_bar": 2750,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,5 FK",
-   "pmax_mpa": 350.0,
+   "pmax_bar": 3500,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,5 Ord. Suisse",
-   "pmax_mpa": 185.0,
+   "pmax_bar": 1850,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,62 x 25 Tokarev",
-   "pmax_mpa": 250.0,
+   "pmax_bar": 2500,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,62 Nagant",
-   "pmax_mpa": 77.0,
+   "pmax_bar": 770,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,63 Mauser",
-   "pmax_mpa": 225.0,
+   "pmax_bar": 2250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,65 Long",
-   "pmax_mpa": 165.0,
+   "pmax_bar": 1650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,65 mm Browning",
-   "pmax_mpa": 160.0,
+   "pmax_bar": 1600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "7,65 Parabellum",
-   "pmax_mpa": 235.0,
+   "pmax_bar": 2350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 mm Gasser",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 mm Lebel",
-   "pmax_mpa": 125.0,
+   "pmax_bar": 1250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "8 mm Steyr",
-   "pmax_mpa": 210.0,
+   "pmax_bar": 2100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 x 18",
-   "pmax_mpa": 180.0,
+   "pmax_bar": 1800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 x 20 VGW",
-   "pmax_mpa": 300.0,
+   "pmax_bar": 3000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 x 21",
-   "pmax_mpa": 235.0,
+   "pmax_bar": 2350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 x 22 MJR",
-   "pmax_mpa": 255.0,
+   "pmax_bar": 2550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 x 25 Super Auto G",
-   "pmax_mpa": 255.0,
+   "pmax_bar": 2550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9-45 VAC",
-   "pmax_mpa": 235.0,
+   "pmax_bar": 2350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm Makarov",
-   "pmax_mpa": 160.0,
+   "pmax_bar": 1600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm Browning court",
-   "pmax_mpa": 135.0,
+   "pmax_bar": 1350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm Browning long",
-   "pmax_mpa": 165.0,
+   "pmax_bar": 1650,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm FAR",
-   "pmax_mpa": 260.0,
+   "pmax_bar": 2600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm FX & CQT",
-   "pmax_mpa": 35.0,
+   "pmax_bar": 350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm Luger",
-   "pmax_mpa": 235.0,
+   "pmax_bar": 2350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm Mauser",
-   "pmax_mpa": 260.0,
+   "pmax_bar": 2600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "9 mm Steyr",
-   "pmax_mpa": 135.0,
+   "pmax_bar": 1350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "10 x 22 T",
-   "pmax_mpa": 45.0,
+   "pmax_bar": 450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "10 mm Auto",
-   "pmax_mpa": 230.0,
+   "pmax_bar": 2300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "10 mm FAR",
-   "pmax_mpa": 225.0,
+   "pmax_bar": 2250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "10,4 Ord. It.",
-   "pmax_mpa": 63.0,
+   "pmax_bar": 630,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "11 mm 73",
-   "pmax_mpa": 115.0,
+   "pmax_bar": 1150,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "22 PICRA",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "22 Rem. .Jet Mag.",
-   "pmax_mpa": 255.0,
+   "pmax_bar": 2550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "221 Rem. Fireball",
-   "pmax_mpa": 320.0,
+   "pmax_bar": 3200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "260 PICRA",
-   "pmax_mpa": 390.0,
+   "pmax_bar": 3900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30 PICRA",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30 Super Carry",
-   "pmax_mpa": 359.0,
+   "pmax_bar": 3590,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "30-357 AeT",
-   "pmax_mpa": 300.0,
+   "pmax_bar": 3000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 H&R Mag.",
-   "pmax_mpa": 140.0,
+   "pmax_bar": 1400,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 Long Colt",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 Short Colt",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 S&W",
-   "pmax_mpa": 90.0,
+   "pmax_bar": 900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 S&W Long",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "32 S&W Long Wad Cut.",
-   "pmax_mpa": 155.0,
+   "pmax_bar": 1550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "320 Long",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "320 Short",
-   "pmax_mpa": 120.0,
+   "pmax_bar": 1200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "357 Auto Mag.",
-   "pmax_mpa": 255.0,
+   "pmax_bar": 2550,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "357 Magnum",
-   "pmax_mpa": 300.0,
+   "pmax_bar": 3000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "357 Maximum",
-   "pmax_mpa": 310.0,
+   "pmax_bar": 3100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "357 SIG",
-   "pmax_mpa": 305.0,
+   "pmax_bar": 3050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38 Long Colt",
-   "pmax_mpa": 90.0,
+   "pmax_bar": 900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38 Short Colt",
-   "pmax_mpa": 90.0,
+   "pmax_bar": 900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38 S&W",
-   "pmax_mpa": 120.0,
+   "pmax_bar": 1200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38 Special",
-   "pmax_mpa": 150.0,
+   "pmax_bar": 1500,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38 Spl. AMU",
-   "pmax_mpa": 125.0,
+   "pmax_bar": 1250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38 Spl. Wad Cut.",
-   "pmax_mpa": 120.0,
+   "pmax_bar": 1200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38 Super Auto",
-   "pmax_mpa": 230.0,
+   "pmax_bar": 2300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38/357 FX",
-   "pmax_mpa": 35.0,
+   "pmax_bar": 350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "38-45 ACP",
-   "pmax_mpa": 235.0,
+   "pmax_bar": 2350,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "380 Long",
-   "pmax_mpa": 77.0,
+   "pmax_bar": 770,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "380 Short",
-   "pmax_mpa": 68.0,
+   "pmax_bar": 680,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "40 S&W",
-   "pmax_mpa": 225.0,
+   "pmax_bar": 2250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "41 ACT EXP",
-   "pmax_mpa": 225.0,
+   "pmax_bar": 2250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "41 Long Colt",
-   "pmax_mpa": 90.0,
+   "pmax_bar": 900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "41 Rem. Mag.",
-   "pmax_mpa": 300.0,
+   "pmax_bar": 3000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "44 Colt",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "44 Rem. Mag.",
-   "pmax_mpa": 280.0,
+   "pmax_bar": 2800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "44 S&W Russian",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "44 S&W Special",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45 Auto",
-   "pmax_mpa": 130.0,
+   "pmax_bar": 1300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45 Auto Rim",
-   "pmax_mpa": 120.0,
+   "pmax_bar": 1200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45 Colt",
-   "pmax_mpa": 110.0,
+   "pmax_bar": 1100,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45 GAP",
-   "pmax_mpa": 130.0,
+   "pmax_bar": 1300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45 HP",
-   "pmax_mpa": 130.0,
+   "pmax_bar": 1300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45 S&W Schofield",
-   "pmax_mpa": 100.0,
+   "pmax_bar": 1000,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "45 Win. Mag.",
-   "pmax_mpa": 275.0,
+   "pmax_bar": 2750,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "450 SCH",
-   "pmax_mpa": 225.0,
+   "pmax_bar": 2250,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "450 Short",
-   "pmax_mpa": 72.0,
+   "pmax_bar": 720,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "454 Casull",
-   "pmax_mpa": 390.0,
+   "pmax_bar": 3900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "455 MK II",
-   "pmax_mpa": 90.0,
+   "pmax_bar": 900,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "460 S&W Mag.",
-   "pmax_mpa": 395.0,
+   "pmax_bar": 3950,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "475 Linebaugh",
-   "pmax_mpa": 345.0,
+   "pmax_bar": 3450,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "480 Ruger",
-   "pmax_mpa": 330.0,
+   "pmax_bar": 3300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "50 AE",
-   "pmax_mpa": 230.0,
+   "pmax_bar": 2300,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "500 S&W Mag.",
-   "pmax_mpa": 370.0,
+   "pmax_bar": 3700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "17 HMR",
-   "pmax_mpa": 180.0,
+   "pmax_bar": 1800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "17 Mach 2",
-   "pmax_mpa": 180.0,
+   "pmax_bar": 1800,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "17 WSM",
-   "pmax_mpa": 220.0,
+   "pmax_bar": 2200,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "21 Sharp",
-   "pmax_mpa": 170.0,
+   "pmax_bar": 1700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "22 Long Rifle",
-   "pmax_mpa": 170.0,
+   "pmax_bar": 1700,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "22 Short",
-   "pmax_mpa": 105.0,
+   "pmax_bar": 1050,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   },
   {
    "cartridge": "22 Win. Mag. R.F.",
-   "pmax_mpa": 160.0,
+   "pmax_bar": 1600,
    "source": "C.I.P.",
    "retrieved": "2026-10-21"
   }

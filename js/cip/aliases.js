@@ -1,7 +1,9 @@
 /**
  * Exakte Alias-Namen für die CIP-Suche.
  * Nur Groß-/Kleinschreibung und Leerzeichen werden angeglichen – kein Teilstring.
- * Ein Treffer darf „9 mm Luger“ direkt zuordnen. Alles andere braucht eine ausdrückliche Wahl.
+ * Die CIP-Tabelle zeigt einen Alias nur als Vorschlag. Meine Daten ordnet ihn nicht zu
+ * und prüft den Druck nicht, bis die Patrone ausdrücklich gewählt ist.
+ * Festgelegt: „9mm“, „9 mm“, „9x19“, „9 x 19“, „9 mm Para“, „9 mm Parabellum“ → „9 mm Luger“.
  */
 export const CIP_ALIASES = Object.freeze({
   '9mm': '9 mm Luger',

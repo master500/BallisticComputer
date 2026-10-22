@@ -90,8 +90,9 @@ export function simulate({ powder, bullet, charge, primer, seatingMm = 0, consta
   const p0 = C.p0 * ignite;
   const m = bulletMass(bullet) / 10; // normiert, Masse kam aus grain
   const c = Math.max(0, Number(charge) || 0);
-  const seat = Math.max(0, Number(seatingMm) || 0);
-  const volume = C.V0 * (1 - Math.min(0.15, seat * 0.008));
+  // Sprung: positiv mehr Volumen, weniger Druck. Negativ (in den Feldern) höchster Druck. 0 lässt V0.
+  const jump = Number(seatingMm) || 0;
+  const volume = C.V0 * (1 + Math.min(0.15, Math.max(-0.15, jump * 0.008)));
   const effMass = m + (c * C.mc) / 3;
 
   let t = 0, x = 0, v = 0, z = 0.001;

@@ -2,10 +2,23 @@
 
 Format angelehnt an [Keep a Changelog](https://keepachangelog.com/de/), Versionierung nach SemVer.
 
+## [1.5.2] – 2026-10-22
+### Geändert
+- TAB II–V Pmax ist die QA-Datei mit `pmax_bar` (Felder `cartridge`, `pmax_bar`, `source`, `retrieved`). Kein Faktor ×10. Die Zeile „9 mm“ bleibt entfernt.
+- Leiter-Schritte werden auf 0,1 grain abgerundet (42,5 grain → erster Schritt 38,2 grain), nie über 90 % der Demo-Grenze.
+- Weniger Sprung senkt den Demo-Druck. −0,25 mm ist „in den Feldern“ und hat den höchsten Druck. Setztiefe nutzt dieselben Farben wie die Leiter; liegt eine Zeile über der Demo-Grenze, gibt es keine Empfehlung.
+- PSI wird mit 1 psi = 0,0689476 bar auf eine Nachkommastelle umgerechnet und als „umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr“ gekennzeichnet. Dieselben Farbstufen wie bei bar.
+- PK wird mit einer Nachkommastelle gezeigt (2702,5 bar). Einzelschüsse zwischen Pmax und PK sind gelb, über PK rot.
+- Ein Alias ist in Meine Daten nur ein Vorschlag, bis die Patrone ausdrücklich gewählt ist. „9 x 19“ bleibt Alias für „9 mm Luger“.
+- Maßspalten werden nur mit erkennbarer Einheit zugeordnet. „Charge [g]“ und „COAL [in]“ werden umgerechnet; „Gewicht“, „Ladung“ und „COAL“ ohne Einheit nicht. „Charge [gr]“ bleibt frei.
+- Gemessene v in m/s, Ladung in der Vergleichstabelle in grain.
+- Zwei weitere fiktive Demo-Zündhütchen: Small Pistol Magnum und Large Pistol Magnum. Simulation und Optimierung zeigen den bestehenden Hinweis bei Zündhütchenwechsel und „Magnum-Zündhütchen in Standardpatrone“.
+- Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.2`.
+
 ## [1.5.1] – 2026-10-22
 ### Hinzugefügt
 - L6 für TAB II–V, 279 Patronen, in `data/cip/cip_l6_tab2-5.json` (Felder `cartridge`, `l6_mm`, `source`, `retrieved`). Kein Patronenname doppelt zu TAB I.
-- TAB II–V Pmax bleibt die QA-Datei mit den vier Feldern `cartridge`, `pmax_mpa`, `source`, `retrieved`. Die Tabelle zeigt den Wert in bar (×10).
+- TAB II–V Pmax ist die QA-Datei mit den vier Feldern `cartridge`, `pmax_bar`, `source`, `retrieved`.
 ### Geändert
 - Service Worker `CACHE_VERSION` → `ballisticcomputer-v1.5.1`.
 

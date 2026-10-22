@@ -21,11 +21,12 @@ for (const file of weightViews) {
 }
 
 for (const file of files) {
-  const source = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8').replaceAll('aus Gramm umgerechnet', '');
+  const source = readFileSync(new URL(`../${file}`, import.meta.url), 'utf8').split('aus Gramm umgerechnet').join('');
   assert.equal(/MPa/.test(source), false, file);
   assert.equal(/inch/i.test(source), false, file);
   assert.equal(/gramm/i.test(source), false, file);
   assert.equal(/\bgr\b/i.test(source), false, file);
+  assert.equal(/\bg\b/i.test(source), false, file);
 }
 
 assert.equal(GRAMS_PER_GRAIN, 0.06479891);

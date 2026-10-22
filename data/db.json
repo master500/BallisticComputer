@@ -28,7 +28,9 @@
     {"id": "PR-LR", "name": "DemoPrimer Large Rifle", "sim_ignition": 1.01},
     {"id": "PR-LRM", "name": "DemoPrimer Large Rifle Magnum", "sim_ignition": 1.06},
     {"id": "PR-SP", "name": "DemoPrimer Small Pistol", "sim_ignition": 0.98},
-    {"id": "PR-LP", "name": "DemoPrimer Large Pistol", "sim_ignition": 0.99}
+    {"id": "PR-LP", "name": "DemoPrimer Large Pistol", "sim_ignition": 0.99},
+    {"id": "PR-SPM", "name": "DemoPrimer Small Pistol Magnum", "sim_ignition": 1.03},
+    {"id": "PR-LPM", "name": "DemoPrimer Large Pistol Magnum", "sim_ignition": 1.04}
   ],
   "pressure_limits": [
     {"cartridge": "Demo-Cartridge-1", "max_mpa_sim": 380},

@@ -13,10 +13,10 @@ export function demoBar(internal) {
   return Number(internal) * 10;
 }
 
-/** Eine Nachkommastelle. Liegt der gerundete Wert über der Grenze, wird abgerundet. */
+/** Jede Stufe auf 0,1 grain abgerundet. 1e-9 fängt Binärfehler ab; nie über die Grenze. */
 export function roundStepGrain(value, limitGrain) {
   const top = Math.floor((limitGrain + 1e-9) * 10) / 10;
-  let rounded = Math.round(value * 10) / 10;
+  let rounded = Math.floor(value * 10 + 1e-9) / 10;
   if (rounded - limitGrain > 1e-9) rounded = top;
   return rounded;
 }
@@ -58,13 +58,32 @@ export function limitChargeLe(run, input, maxPressure) {
   return lo;
 }
 
-/** Sprünge 0,25 / 1 / 2 / 3 mm, danach fein. Tangente und Hybrid gröber. Ohne Ogive: kein Test. */
+/** −0,25 mm liegt in den Feldern, danach 0,25 / 1 / 2 / 3 mm und feine Schritte. Ohne Ogive: kein Test. */
 export function seatingDepthsMm(ogive) {
   if (!ogive || ogive === 'none') return [];
   const fine = ogive === 'tangent' || ogive === 'hybrid' ? 0.13 : 0.05;
-  const depths = [0.25, 1, 2, 3];
+  const depths = [-0.25, 0.25, 1, 2, 3];
   for (let extra = 1; extra <= 3; extra += 1) depths.push(Math.round((3 + fine * extra) * 1000) / 1000);
   return depths;
+}
+
+/** Negativer Sprung: „0,25 mm in den Feldern“. Sonst „1 mm Sprung“. */
+export function seatingJumpLabel(mm) {
+  const text = Math.abs(Number(mm)).toLocaleString('de-DE', { maximumFractionDigits: 2 });
+  return mm < 0 ? `${text} mm in den Feldern` : `${text} mm Sprung`;
+}
+
+/** Gelb ab 90 % der Demo-Grenze, rot darüber. Liegt eine Zeile darüber, gibt es keine Empfehlung. */
+export function assessSeating(rows, limitPressure) {
+  const seating = rows.map((row) => {
+    const over = row.pressure > limitPressure;
+    const yellow = !over && row.pressure >= limitPressure * 0.9;
+    return { ...row, over, yellow, label: seatingJumpLabel(row.depthMm) };
+  });
+  const recommendation = seating.some((row) => row.over) || !seating.length
+    ? null
+    : seating.reduce((best, row) => (row.pressure < best.pressure ? row : best));
+  return { seating, recommendation };
 }
 
 /** Mindestens 3 % unter dem obersten Leiter-Schritt, auf 0,1 grain abgerundet. */
@@ -118,11 +137,19 @@ export function buildLadder({ powder, bullet, primer, limitPressure, run = defau
   const safe = steps.filter((step) => !step.over);
   const top = safe.length ? safe[safe.length - 1].grain : 0;
   const seatingCharge = seatingChargeGrain(top);
-  const seating = seatingDepthsMm(bullet?.sim_ogive).map((depthMm) => {
+  const seatingInput = seatingDepthsMm(bullet?.sim_ogive).map((depthMm) => {
     const result = run({
       powder, bullet, primer, seatingMm: depthMm, charge: seatingCharge / GRAIN_PER_LE,
     });
     return { depthMm, pressure: result.peakPressure };
   });
-  return { limitGrain, steps, selection: ocwSelection(steps), seatingChargeGrain: seatingCharge, seating };
+  const assessed = assessSeating(seatingInput, limitPressure);
+  return {
+    limitGrain,
+    steps,
+    selection: ocwSelection(steps),
+    seatingChargeGrain: seatingCharge,
+    seating: assessed.seating,
+    seatingRecommendation: assessed.recommendation,
+  };
 }

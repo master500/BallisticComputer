@@ -3,9 +3,10 @@ import { el, fmt, setChildren } from '../util.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 import { buildLadder, demoBar, ladderNeedsRestart } from '../ladder.js';
+import { magnumStandardHint, primerChangeHint } from '../userdata/primer.js';
 
 const state = {
-  cartridge: null, powderId: null, bulletId: null, primerId: null, pick: null, timer: 0, token: 0,
+  cartridge: null, powderId: null, bulletId: null, primerId: null, pick: null, timer: 0, token: 0, primerHint: '',
 };
 const SELECT_DEBOUNCE_MS = 200;
 
@@ -21,7 +22,15 @@ export function renderOptimization(root, { db }) {
 
   const out = el('div');
   const choose = (items, key, valueOf, labelOf) => el('select', {
-    onchange: (e) => { state[key] = e.target.value; schedule(SELECT_DEBOUNCE_MS); },
+    onchange: (e) => {
+      if (key === 'primerId') {
+        const prev = db.primers.find((p) => p.id === state.primerId);
+        const next = db.primers.find((p) => p.id === e.target.value);
+        state.primerHint = primerChangeHint(prev?.name, next?.name);
+      }
+      state[key] = e.target.value;
+      schedule(SELECT_DEBOUNCE_MS);
+    },
   }, items.map((item) => {
     const value = valueOf(item);
     return el('option', { value, selected: value === state[key] }, labelOf(item));
@@ -63,9 +72,12 @@ export function renderOptimization(root, { db }) {
     const limit = limitFor(db, state.cartridge);
     if (!powder || !bullet) return;
     const ladder = buildLadder({ powder, bullet, primer, limitPressure: limit.max });
+    const magnumText = magnumStandardHint(primer?.name, state.cartridge);
     const canvas = el('canvas', { class: 'chart', 'aria-label': 'Leiter Druck über Ladung' });
     const limitBar = demoBar(limit.max);
     setChildren(out,
+      state.primerHint ? el('p', { class: 'hint-yellow', role: 'status' }, state.primerHint) : null,
+      magnumText ? el('p', { class: 'hint-yellow', role: 'status' }, magnumText) : null,
       el('p', { class: 'muted small' }, `Leiter ab 90 % der Demo-Grenzladung, Schritte 0,8 % davon, Ende an der Grenze. Farben und Abbruch nutzen ${fmt(limitBar, 0)} bar (${limit.cartridge}).`),
       el('section', { class: 'card' },
         el('h2', {}, 'Ladungsleiter'),
@@ -106,10 +118,20 @@ function seatingSection(ladder) {
   if (!ladder.seating.length) {
     return el('section', { class: 'card' }, el('h2', {}, 'Setztiefe'), el('p', {}, 'Ohne Ogive kein Setztiefentest.'));
   }
+  const recommendation = ladder.seatingRecommendation;
   return el('section', { class: 'card' },
     el('h2', {}, 'Setztiefe'),
     el('p', {}, `Ladung ${fmt(ladder.seatingChargeGrain, 1)} grain, mindestens 3 % unter dem obersten Leiter-Schritt.`),
-    el('ul', { class: 'list' }, ladder.seating.map((row) => el('li', {},
-      el('strong', {}, `${row.depthMm.toLocaleString('de-DE', { maximumFractionDigits: 2 })} mm`),
-      el('span', { class: 'chip' }, `${fmt(demoBar(row.pressure), 0)} bar`)))));
+    recommendation
+      ? el('p', {}, `Empfehlung: ${recommendation.label}`)
+      : el('p', {}, 'Keine Empfehlung – eine Setztiefe liegt über der Demo-Grenze.'),
+    el('ul', { class: 'list' }, ladder.seating.map((row) => {
+      const tone = row.over ? 'hint-red' : row.yellow ? 'hint-yellow' : '';
+      const marked = recommendation && row.depthMm === recommendation.depthMm;
+      return el('li', {},
+        el('div', { class: tone },
+          el('strong', {}, row.label),
+          el('span', { class: 'chip' }, `${fmt(demoBar(row.pressure), 0)} bar`),
+          marked ? el('div', {}, 'Empfehlung') : null));
+    })));
 }

@@ -10,7 +10,7 @@ import { el, fmt, fmtTime } from '../util.js';
 import { drawLineChart } from '../chart.js';
 import { parseInput } from '../userdata/csv.js';
 import { isGrtLoad, parseGrtLoad } from '../userdata/grtload.js';
-import { FIELDS, suggestMapping, applyMapping, normalizeHeader, LIKELY_PREDICTED } from '../userdata/mapping.js';
+import { FIELDS, suggestMapping, applyMapping, normalizeHeader, LIKELY_PREDICTED, unitsForMapping, headerMeasureUnit } from '../userdata/mapping.js';
 import { userStore } from '../userdata/store.js';
 import { OFFICIAL_SOURCES } from '../userdata/sources.js';
 import { loadCipIndex } from '../cip/lookup.js';
@@ -71,7 +71,8 @@ function importSection(pendingBox, refresh) {
           status.textContent = `${parsed.records.length} Datensatz/Datensätze aus dem Backup. Verschachtelte Angaben bleiben erhalten.`;
         } else {
           if (!parsed.rows.length) throw new Error('Keine Datenzeilen gefunden.');
-          ui.pending = { mode: 'table', ...parsed, fileName, mapping: suggestMapping(parsed.headers) };
+          const mapping = suggestMapping(parsed.headers);
+          ui.pending = { mode: 'table', ...parsed, fileName, mapping, units: unitsForMapping(parsed.headers, mapping) };
           status.textContent = `${parsed.rows.length} Zeile(n) aus „${fileName}“ erkannt (${parsed.format.toUpperCase()}). Bitte Zuordnung prüfen.`;
         }
       }
@@ -133,18 +134,42 @@ function renderPending(box, refresh) {
     return;
   }
 
+  p.units ??= { bullet_weight: '', charge: '', coal: '' };
+  const measureUnits = {
+    bullet_weight: [['', 'Einheit wählen'], ['grain', 'grain'], ['masse', 'Masse umrechnen']],
+    charge: [['', 'Einheit wählen'], ['grain', 'grain'], ['masse', 'Masse umrechnen']],
+    coal: [['', 'Einheit wählen'], ['mm', 'mm'], ['zoll', 'Zoll umrechnen']],
+  };
   const selects = FIELDS.map((f) => {
-    const sel = el('select', { onchange: (e) => { p.mapping[f.key] = Number(e.target.value); refresh(); } },
+    const sel = el('select', { onchange: (e) => {
+      p.mapping[f.key] = Number(e.target.value);
+      if (measureUnits[f.key]) {
+        const idx = p.mapping[f.key];
+        p.units[f.key] = idx >= 0 ? (headerMeasureUnit(p.headers[idx]) || '') : '';
+      }
+      refresh();
+    } },
       el('option', { value: -1 }, '— nicht zuordnen —'),
       p.headers.map((h, i) => el('option', { value: i, selected: p.mapping[f.key] === i }, h || `Spalte ${i + 1}`)));
     const idx = p.mapping[f.key];
     const warn = idx >= 0 && (f.key === 'measured_velocity' || f.key === 'notes') && LIKELY_PREDICTED.test(normalizeHeader(p.headers[idx]))
       ? el('div', { class: 'warn-text small' }, '⚠️ Diese Spalte enthält in GRT/QuickLOAD-Exporten oft berechnete Werte. Nur zuordnen, wenn wirklich gemessen.')
       : null;
-    return el('div', { class: 'map-row' }, el('span', { class: 'small' }, f.label), sel, warn);
+    const unitPick = measureUnits[f.key] && idx >= 0
+      ? el('select', {
+        'aria-label': `Einheit ${f.label}`,
+        onchange: (e) => { p.units[f.key] = e.target.value; refresh(); },
+      }, measureUnits[f.key].map(([value, label]) => el('option', { value, selected: p.units[f.key] === value }, label)))
+      : null;
+    const mark = p.units[f.key] === 'masse'
+      ? el('div', { class: 'small' }, 'aus Gramm umgerechnet')
+      : p.units[f.key] === 'zoll'
+        ? el('div', { class: 'small' }, 'umgerechnet')
+        : null;
+    return el('div', { class: 'map-row' }, el('span', { class: 'small' }, f.label), sel, unitPick, mark, warn);
   });
 
-  const preview = applyMapping(p.rows.slice(0, 5), p.mapping, { fileName: p.fileName });
+  const preview = applyMapping(p.rows.slice(0, 5), p.mapping, { fileName: p.fileName, units: p.units });
   box.replaceChildren(
     el('div', { class: 'mapping' },
       el('h3', {}, 'Spaltenzuordnung'),
@@ -154,7 +179,7 @@ function renderPending(box, refresh) {
       recordTable(preview, { compact: true }),
       el('div', { class: 'row-btns' },
         el('button', { class: 'btn primary', type: 'button', onclick: () => {
-          const recs = applyMapping(p.rows, p.mapping, { fileName: p.fileName });
+          const recs = applyMapping(p.rows, p.mapping, { fileName: p.fileName, units: p.units });
           const n = userStore.add(recs);
           ui.pending = null;
           refresh();
@@ -195,6 +220,17 @@ function renderList(box, refresh) {
       el('button', { class: 'btn danger', type: 'button', onclick: () => { if (confirm('Alle eigenen Daten auf diesem Gerät löschen?')) { userStore.clear(); refresh(); } } }, 'Alle löschen')) : null));
 }
 
+function withNote(text, note) {
+  return note ? `${text} · ${note}` : text;
+}
+
+function cellText(record, key) {
+  const value = record[key];
+  if (value == null || value === '') return '—';
+  const shown = typeof value === 'number' ? fmt(value, 2) : value;
+  return withNote(shown, record[`${key}_note`]);
+}
+
 function recordItem(r, refresh) {
   if (r.kind === 'grtload') return grtRecordItem(r, refresh);
   return el('li', {},
@@ -202,7 +238,7 @@ function recordItem(r, refresh) {
       el('strong', {}, [r.cartridge, r.powder].filter(Boolean).join(' · ') || '—'),
       el('div', { class: 'small' }, [r.bullet, r.bullet_weight != null ? `${fmt(r.bullet_weight, 1)} grain` : null].filter(Boolean).join(' · ')),
       el('div', { class: 'small' },
-        `Ladung ${r.charge != null ? `${fmt(r.charge, 1)} grain` : '—'} · COAL ${r.coal != null ? `${fmt(r.coal, 2)} mm` : '—'} · v gemessen ${r.measured_velocity != null ? fmt(r.measured_velocity) : '—'}`),
+        `Ladung ${r.charge != null ? withNote(`${fmt(r.charge, 1)} grain`, r.charge_note) : '—'} · COAL ${r.coal != null ? withNote(`${fmt(r.coal, 2)} mm`, r.coal_note) : '—'} · v gemessen ${r.measured_velocity != null ? `${fmt(r.measured_velocity)} m/s` : '—'}`),
       r.notes ? el('div', { class: 'muted small' }, r.notes) : null,
       primerEditor(r, refresh),
       el('div', { class: 'origin small' }, r.origin, r.source ? ` · Quelle: ${r.source}` : '', ` · ${fmtTime(r.importedAt)}`)),
@@ -327,17 +363,17 @@ function renderCompare(box) {
     recordTable([...recs].sort((a, b) => (a.cartridge || '').localeCompare(b.cartridge || '') || a.charge - b.charge), { compare: true })));
   requestAnimationFrame(() => drawLineChart(canvas, {
     series: keys.map((k, i) => ({ color: COLORS[i % COLORS.length], dots: true, points: groups.get(k).map((r) => [r.charge, r.measured_velocity]) })),
-    xLabel: 'Ladung (grain)', yLabel: 'gemessene v (wie importiert)', fitToData: true,
+    xLabel: 'Ladung (grain)', yLabel: 'gemessene v (m/s)', fitToData: true,
   }));
 }
 
 function recordTable(recs, { compact = false, compare = false } = {}) {
   const cols = compare
-    ? [['cartridge', 'Patrone'], ['powder', 'Pulver'], ['bullet', 'Geschoss'], ['charge', 'Ladung'], ['measured_velocity', 'v gem.']]
+    ? [['cartridge', 'Patrone'], ['powder', 'Pulver'], ['bullet', 'Geschoss'], ['charge', 'Ladung (grain)'], ['measured_velocity', 'v gem. (m/s)']]
     : FIELDS.map((f) => [f.key, f.label]);
   return el('div', { class: 'table-wrap' }, el('table', { class: compact ? 'compact' : '' },
     el('thead', {}, el('tr', {}, cols.map(([, l]) => el('th', {}, l)))),
-    el('tbody', {}, recs.map((r) => el('tr', {}, cols.map(([k]) => el('td', {}, r[k] == null || r[k] === '' ? '—' : (typeof r[k] === 'number' ? fmt(r[k], 2) : r[k]))))))));
+    el('tbody', {}, recs.map((r) => el('tr', {}, cols.map(([k]) => el('td', {}, cellText(r, k))))))));
 }
 
 /* ---------- Offizielle Quellen ---------- */
@@ -346,9 +382,9 @@ function sourcesSection() {
   return el('section', { class: 'card' },
     el('h2', {}, 'Offizielle Quellen'),
     el('p', { class: 'muted small' }, 'Aktuelle Ladedaten nur direkt beim Hersteller. Links öffnen die offiziellen Seiten in einem neuen Fenster.'),
-    OFFICIAL_SOURCES.map((g) => el('div', {},
-      el('h3', { class: 'group-title' }, g.group),
-      el('ul', { class: 'list' }, g.items.map((s) => el('li', {},
+    OFFICIAL_SOURCES.map((group) => el('div', {},
+      el('h3', { class: 'group-title' }, group.group),
+      el('ul', { class: 'list' }, group.items.map((s) => el('li', {},
         el('a', { href: s.url, target: '_blank', rel: 'noopener noreferrer', class: 'ext' },
           el('strong', {}, s.name),
           el('div', { class: 'muted small' }, [s.note, new URL(s.url).hostname].filter(Boolean).join(' · '))),

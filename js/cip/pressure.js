@@ -10,8 +10,16 @@ export function pkBar(pmaxBar) {
   return pmaxBar * 115 / 100;
 }
 
+/** Eine Nachkommastelle, 2350 bar → 2702,5. Nicht auf 2703 runden. */
 export function pkBarDisplay(pmaxBar) {
-  return Math.round(pkBar(pmaxBar));
+  return Math.round(pkBar(pmaxBar) * 10) / 10;
+}
+
+/** 1 psi = 0,0689476 bar, Anzeige auf eine Nachkommastelle. */
+export const BAR_PER_PSI = 0.0689476;
+
+export function psiToBar(psi) {
+  return Math.round(Number(psi) * BAR_PER_PSI * 10) / 10;
 }
 
 /** GRT-Schussdruck steht in der Datei in MPa und wird beim Import ×10 in bar. */
@@ -35,6 +43,16 @@ export function rateMeanBar(pmaxBar, valueBar) {
   return { tone: 'under', text: 'unter CIP-Pmax – Rechenwert, keine Freigabe' };
 }
 
+function rateShotBar(pmaxBar, shotBar) {
+  const shot = Number(shotBar);
+  if (!Number.isFinite(shot)) return null;
+  if (shotExceedsPk(pmaxBar, shot)) return { tone: 'red', text: 'Überdruck – nicht zulässig' };
+  if (shot > pmaxBar) return { tone: 'yellow', text: 'Grenzbereich' };
+  return rateMeanBar(pmaxBar, shot);
+}
+
+const TONE_RANK = { none: 0, under: 1, yellow: 2, red: 3 };
+
 export function ratePressure({ pmaxBar, meanBar = null, shotsBar = [] } = {}) {
   if (!Number.isFinite(pmaxBar)) {
     return { tone: 'none', text: 'kein CIP-Grenzwert hinterlegt', pkBar: null, pkDisplay: null, pkText: 'PK ≈ 1,15 × Pmax' };
@@ -44,15 +62,21 @@ export function ratePressure({ pmaxBar, meanBar = null, shotsBar = [] } = {}) {
     pkDisplay: pkBarDisplay(pmaxBar),
     pkText: 'PK ≈ 1,15 × Pmax',
   };
-  if ((Number.isFinite(meanBar) && meanBar > pmaxBar) || shotsBar.some((shot) => shotExceedsPk(pmaxBar, shot))) {
-    return { ...summary, tone: 'red', text: 'Überdruck – nicht zulässig' };
+  const parts = [];
+  if (Number.isFinite(meanBar)) parts.push(rateMeanBar(pmaxBar, meanBar));
+  for (const shot of shotsBar) {
+    const rated = rateShotBar(pmaxBar, shot);
+    if (rated && rated.tone !== 'none') parts.push(rated);
   }
-  if (Number.isFinite(meanBar)) return { ...summary, ...rateMeanBar(pmaxBar, meanBar) };
-  return { ...summary, tone: 'under', text: 'unter CIP-Pmax – Rechenwert, keine Freigabe' };
+  if (!parts.length) {
+    return { ...summary, tone: 'under', text: 'unter CIP-Pmax – Rechenwert, keine Freigabe' };
+  }
+  const worst = parts.reduce((best, part) => (TONE_RANK[part.tone] > TONE_RANK[best.tone] ? part : best));
+  return { ...summary, tone: worst.tone, text: worst.text };
 }
 
 export function psiNote() {
-  return 'nicht mit CIP vergleichbar';
+  return 'umgerechnet aus PSI (SAAMI-Messverfahren) – Vergleich mit CIP nur ungefähr';
 }
 
 export function l6Hint(oalMm, l6Mm) {

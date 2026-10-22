@@ -1,11 +1,12 @@
 /** View: Simulation – Druckverlauf über Weg/Zeit und Mündungsgeschwindigkeit. */
-import { el, fmt } from '../util.js';
+import { el, fmt, setChildren } from '../util.js';
+import { magnumStandardHint, primerChangeHint } from '../userdata/primer.js';
 import { simulate } from '../model.js';
 import { drawLineChart } from '../chart.js';
 import { limitFor } from '../api.js';
 import { GRAIN_PER_LE, demoBar } from '../ladder.js';
 
-const state = { powderId: null, bulletId: null, primerId: null, cartridge: null, chargeGrain: 25, axis: 'x' };
+const state = { powderId: null, bulletId: null, primerId: null, cartridge: null, chargeGrain: 25, axis: 'x', primerHint: '' };
 
 export function renderSimulation(root, { db }) {
   db.powders ??= [];
@@ -18,7 +19,15 @@ export function renderSimulation(root, { db }) {
   if (!db.pressure_limits.some((l) => l.cartridge === state.cartridge)) state.cartridge = db.pressure_limits[0]?.cartridge ?? null;
 
   const select = (items, key, valueOf, labelOf) => el('select', {
-    onchange: (e) => { state[key] = e.target.value; run(); },
+    onchange: (e) => {
+      if (key === 'primerId') {
+        const prev = db.primers.find((p) => p.id === state.primerId);
+        const next = db.primers.find((p) => p.id === e.target.value);
+        state.primerHint = primerChangeHint(prev?.name, next?.name);
+      }
+      state[key] = e.target.value;
+      run();
+    },
   }, items.map((item) => {
     const value = valueOf(item);
     return el('option', { value, selected: value === state[key] }, labelOf(item));
@@ -35,6 +44,7 @@ export function renderSimulation(root, { db }) {
       onclick: (e) => { state.axis = a; [...e.target.parentNode.children].forEach((b) => b.classList.toggle('active', b === e.target)); run(); },
     }, a === 'x' ? 'über Weg' : 'über Zeit')));
 
+  const primerHints = el('div');
   const canvas = el('canvas', { class: 'chart', 'aria-label': 'Druckverlauf (simuliert)' });
   const kpis = el('div', { class: 'kpis' });
 
@@ -44,6 +54,7 @@ export function renderSimulation(root, { db }) {
       el('label', {}, 'Demo-Pulver', select(db.powders, 'powderId', (p) => p.id, (p) => p.name)),
       el('label', {}, 'Demo-Geschoss', select(db.bullets, 'bulletId', (b) => b.id, (b) => b.name)),
       el('label', {}, 'Demo-Zündhütchen', select(db.primers, 'primerId', (p) => p.id, (p) => p.name)),
+      primerHints,
       el('label', {}, el('span', {}, 'Ladung ', chargeOut), slider)),
     kpis,
     el('section', { class: 'card' }, axisToggle, canvas,
@@ -55,6 +66,10 @@ export function renderSimulation(root, { db }) {
     const bullet = db.bullets.find((b) => b.id === state.bulletId);
     const primer = db.primers.find((p) => p.id === state.primerId);
     const limit = limitFor(db, state.cartridge);
+    const magnumText = magnumStandardHint(primer?.name, state.cartridge);
+    setChildren(primerHints,
+      state.primerHint ? el('p', { class: 'hint-yellow', role: 'status' }, state.primerHint) : null,
+      magnumText ? el('p', { class: 'hint-yellow', role: 'status' }, magnumText) : null);
     if (!powder || !bullet) return;
     const r = simulate({ powder, bullet, primer, charge: state.chargeGrain / GRAIN_PER_LE });
     const over = r.peakPressure > limit.max;
